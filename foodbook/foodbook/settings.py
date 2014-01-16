@@ -1,6 +1,7 @@
 # Django settings for foodbook project.
 
 import os
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -12,13 +13,21 @@ ADMINS = (
 MANAGERS = ADMINS
 
 DATABASES = {
-    'default': {
+    'production': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'gchau+foodbook',
         'OPTIONS': {
             'read_default_file' : os.path.expanduser('~/.my.cnf'),
         },
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+    },
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'local-database.db',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': '',
     }
 }
 
@@ -112,6 +121,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    os.path.join(BASE_DIR, 'foodbook'),
 )
 
 INSTALLED_APPS = (
