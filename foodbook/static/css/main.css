@@ -1,0 +1,71 @@
+
+/* Header (Navigation bar) code */
+.header {
+	position: fixed;
+	width: 100%;
+	/* TODO: (kpeng94) Change color scheme later */
+	background: -webkit-linear-gradient(#FFFFFF, #CCCCCC);
+	background: -linear-gradient(#FFFFFF, #CCCCCC);
+	text-decoration: none;
+	top: 0;
+	left: 0;
+  height: 50px;
+}
+
+.header > ul {
+	display: inline-block;
+}
+
+.header li {
+	text-decoration: none;
+}
+
+.header .login-icon {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  /*margin: 10px 10px 0 10px;*/
+  width: 40px;
+  height: 40px;
+	background-color: #0022FF;
+	-webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+	border-radius: 50px;
+  display: inline-block;
+}
+
+.header .login {
+	position: absolute;
+  background-color: yellow;
+  height: 100px;
+	right: 0px;
+  top: 50px;
+	bottom: 0;
+	padding: 0;
+  visibility: hidden;
+}
+
+.header .login.visible{
+  visibility: visible;
+}
+
+.header > .login > form > input {
+  display: block;
+  position: absolute;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  right: 0;
+}
+
+.header .login-field {
+  display: block;
+}
+
+.header .login-field input {
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 10px;
+  -webkit-box-shadow: 0;
+  outline: none;
+}
