@@ -112,6 +112,8 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
+
 ROOT_URLCONF = 'foodbook.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
@@ -127,7 +129,7 @@ TEMPLATE_DIRS = (
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
-    'django.contrib.sessions',
+    # 'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
@@ -168,3 +170,5 @@ LOGGING = {
     }
 }
 
+# Login information
+LOGIN_URL = '/home'
