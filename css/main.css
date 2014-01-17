@@ -1,0 +1,26 @@
+.header {
+	position: fixed;
+	width: 100%;
+	/*overflow-y: visible;*/
+	background-color: blue;
+	padding: 0 15px 0 0;
+	top: 0;
+	left: 0;
+}
+
+nav ul {
+
+}
+
+nav.logo {
+
+}
+
+nav ul li {
+  display: inline-block;
+  padding: ;
+}
+
+body {
+
+}
