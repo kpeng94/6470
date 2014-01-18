@@ -1,32 +1,58 @@
+body {
+  /*font-family: ;*/
+  /*font: */
+  line-height: 20px;
+  display: block;
+  color: #000000;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
 
 /* Header (Navigation bar) code */
-.header {
-	position: fixed;
-	width: 100%;
-	/* TODO: (kpeng94) Change color scheme later */
-	background: -webkit-linear-gradient(#FFFFFF, #CCCCCC);
-	background: -linear-gradient(#FFFFFF, #CCCCCC);
-	text-decoration: none;
-	top: 0;
-	left: 0;
-  height: 50px;
-}
-
-.header > ul {
-	display: inline-block;
-}
-
-.header li {
-	text-decoration: none;
-}
-
-.header .login-icon {
+nav {
   position: absolute;
-  right: 5px;
-  top: 5px;
+  margin-top: -150px;
+  margin-bottom: 0;
+	width: 100%;
+  background-color: #000000;
+  height: 150px;
+  z-index: 1;
+}
+
+nav.navbar-open {
+  margin-top: 0;
+  -webkit-transition: margin-top 500ms ease;
+  transition: margin-top 500ms ease;
+}
+
+nav.navbar-closed {
+  margin-top: -150px;
+  -webkit-transition: margin-top 500ms ease;
+  transition: margin-top 500ms ease;
+}
+
+.foodbook-symbol {
+  /* TODO: insert image */
+  position: absolute;
+  top: 0px;
+  left: 15px;
+  width: 70px;
+  height: 70px;
+  background-color: yellow;
+  -webkit-box-shadow: 0px 3px 4px #888888;
+  box-shadow: 0px 3px 4px #888888;
+  z-index: 100;
+}
+
+nav .login-icon {
+  position: absolute;
+  right: 10px;
+  top: 10px;
   /*margin: 10px 10px 0 10px;*/
-  width: 40px;
-  height: 40px;
+  width: 80px;
+  height: 80px;
 	background-color: #0022FF;
 	-webkit-border-radius: 50px;
   -moz-border-radius: 50px;
@@ -34,7 +60,7 @@
   display: inline-block;
 }
 
-.header .login {
+nav .login {
 	position: absolute;
   background-color: yellow;
   height: 100px;
@@ -45,11 +71,11 @@
   visibility: hidden;
 }
 
-.header .login.visible{
+nav .login.visible{
   visibility: visible;
 }
 
-.header > .login > form > input {
+nav > .login > form > input {
   display: block;
   position: absolute;
   padding: 5px;
@@ -58,14 +84,46 @@
   right: 0;
 }
 
-.header .login-field {
+nav .login-field {
   display: block;
 }
 
-.header .login-field input {
+nav .login-field input {
   padding: 5px;
   border: 1px solid black;
   border-radius: 10px;
   -webkit-box-shadow: 0;
   outline: none;
+}
+
+
+.top-half {
+  background-color: blue;
+  width: 100%;
+  height: 50%;
+}
+
+.bottom-half {
+  width: 100%;
+  height: 50%;
+  background-color: green;
+}
+
+#nav-button {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  right: 25px;
+  -webkit-box-shadow: 0px 3px 4px #888888;
+  box-shadow: 0px 3px 4px #888888;
+  background-color: yellow;
+  /* Insert image here*/
+  -webkit-transition: margin-top 500ms ease;
+  transition: margin-top 500ms ease;
+}
+
+#nav-button.navbar-open {
+  margin-top: 150px;
+  -webkit-transition: margin-top 500ms ease;
+  transition: margin-top 500ms ease;
 }
