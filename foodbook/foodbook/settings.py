@@ -82,6 +82,8 @@ STATICFILES_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
      os.path.join(BASE_DIR, "static"),
+     os.path.join(BASE_DIR, "static/css"),
+     os.path.join(BASE_DIR, "static/js"),
 )
 
 # List of finder classes that know how to find static files in
@@ -125,6 +127,11 @@ TEMPLATE_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
     os.path.join(BASE_DIR, 'templates'),
 )
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'foodbook.views.login_processor',
+    'django.contrib.auth.context_processors.auth',
+    )
 
 INSTALLED_APPS = (
     'django.contrib.auth',

@@ -1,0 +1,20 @@
+{% extends "footer_header.html" %}
+
+{% block content %} 
+<div class="simple-search-bar">
+<form method="post" action=""> {% csrf_token %}
+	{{ form.as_p }}
+	<input type="submit" value="Search"/>
+</form>
+</div>
+<div class='simple-list'>
+	{% for ingredient in ingredient_list %}
+		<a href='/ingredients/{{ ingredient.name }}'>{{ ingredient.name }}</a> <br/>
+	{% empty %}
+		There were no ingredients that matched your search. <br/>
+	{% endfor %}
+	{% if search %}
+	<a href='/ingredients'> Back to full list </a>
+	{% endif %}
+</div>
+{% endblock %}

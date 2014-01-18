@@ -1,7 +1,7 @@
 from django.shortcuts import render_to_response, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.template import RequestContext
-from django import forms
+from forms import UserLoginForm, SearchBar
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from foodbook.models import Ingredient, IngredientType, ServingSize
@@ -56,15 +56,27 @@ def default_page(request):
 		return redirect('/home')
 	return render_to_response('default.html', {'username': request.user.username})
 
-class UserLoginForm(forms.Form):
-	username = forms.CharField(max_length=100)
-	password = forms.CharField(widget=forms.PasswordInput)
-
-class UserRegistrationForm(UserCreationForm):
-	email = forms.CharField(widget=forms.EmailInput)
-
 def show_ingredient(request, ingredient):
 	ingredient = Ingredient.objects.filter(name__iexact=ingredient)
 	if ingredient:
 		ingredient = ingredient.values()[0]
 	return render_to_response('ingredient.html', {'ingredient': ingredient})
+
+def search_ingredients(request):
+	if request.method == 'POST':
+		form = SearchBar(request.POST)
+		search = True
+		if form.is_valid():
+			manager = Ingredient.objects.filter(name__startswith=form.cleaned_data['searchbar']).order_by('name')
+	else:
+		form = SearchBar()
+		search = False
+		manager = Ingredient.objects.all()
+	return render_to_response('search_ingredients.html', {'form': form, 'ingredient_list': manager, 'search': search}, context_instance=RequestContext(request))
+
+############################## CONTEXT PROCESSORS
+def login_processor(request):
+	# Makes sure the login form is always given to a page
+	return {
+		'LOGIN_FORM': UserLoginForm()
+	}

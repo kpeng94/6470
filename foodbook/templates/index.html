@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+{% extends "footer_header.html" %}
+{% block content %}
+=======
 <html>
   <head>
   	<title>FoodBook</title>
@@ -29,9 +33,17 @@
         </div>
         {% endif %}
       </div>
+>>>>>>> 7ba16b3ab2ae309da2ef8686ead97bfceb9d0bf1
       <div class = 'testpart'>
+        {% if message %}
         {{ message }}
+        {% else %}
+        There is nothing on this page.
+        {% endif %}
       </div>
+<<<<<<< HEAD
+{% endblock %}
+=======
     </nav>
     <div class = 'foodbook-symbol'> </div>
     <div id = 'nav-button' onclick = 'toggleToolbar()'></div>
@@ -49,3 +61,4 @@
   <script src = 'static/js/main.js'></script>
 
 </html>
+>>>>>>> 7ba16b3ab2ae309da2ef8686ead97bfceb9d0bf1

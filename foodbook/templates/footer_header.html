@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <title>FoodBook</title>
+    <meta charset = 'utf-8' />
+    <link rel = 'stylesheet' href = '/static/css/main.css'>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class = 'header'>
+      <ul>
+        <li class = 'foodbook-symbol'> FoodBook </li>
+      </ul>
+      <div class = 'ingredient-database'>
+        <a href='/ingredients'>Ingredients</a>
+      </div>
+      <div class = 'login-icon' onclick = 'toggleLoginVisibility()'></div>
+      <div class = 'login'>
+        {% if not user.is_authenticated %}
+        <form method = 'post' action = ''>
+          {% csrf_token %}
+        {% for field in LOGIN_FORM %}
+        <div class='login-field'>
+            {{ field.errors }}
+            {{ field }}
+        </div>
+        {% endfor %}
+        <input type='submit', value='Login'/>
+        </form>
+        {% else %}
+        <div id='text'>
+          You are currently logged in as {{ user.username }}. <br/>
+            <form method = 'post' action='/logout'>
+            {% csrf_token %}
+            <input type='submit', value='Logout'>
+        </div>
+        {% endif %}
+      </div>
+    </nav><br/><br/>
+    <div>
+    {% block content %}
+    {% endblock %}
+  </div>
+  </body>
+  <script src = '/static/js/main.js'></script>
+
+</html>
