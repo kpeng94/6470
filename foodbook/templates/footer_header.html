@@ -2,7 +2,7 @@
   <head>
     <title>FoodBook</title>
     <meta charset = 'utf-8' />
-    <link rel = 'stylesheet' href = 'static/css/main.css'>
+    <link rel = 'stylesheet' href = '/static/css/main.css'>
   </head>
   <body>
     <!-- Navbar -->
@@ -26,6 +26,7 @@
             <form method = 'post' action='/logout'>
             {% csrf_token %}
             <input type='submit', value='Logout'>
+          </form>
         </div>
         {% endif %}
       </div>
@@ -39,11 +40,11 @@
     </nav>
 
    <div class = 'foodbook-symbol'> </div>
-   <div id = 'nav-button' onclick = 'toggleToolbar()'></div>
+   <div id = 'nav-button' onclick = 'toggleToolbar()'></div> <br/><br/><br/><br/><br/>
 
     {% block content %}
     {% endblock %}
   </body>
-  <script src = 'static/js/main.js'></script>
+  <script src = '/static/js/main.js'></script>
 
 </html>
