@@ -96,7 +96,7 @@ nav .login-field input {
   outline: none;
 }
 
-.header .ingredient-database {
+nav .ingredient-database {
   position: absolute;
   left: 150px;
   top: 15px;

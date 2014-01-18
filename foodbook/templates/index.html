@@ -1,52 +1,5 @@
-<<<<<<< HEAD
 {% extends "footer_header.html" %}
 {% block content %}
-=======
-<html>
-  <head>
-  	<title>FoodBook</title>
-  	<meta charset = 'utf-8' />
-  	<link rel = 'stylesheet' href = 'static/css/main.css'>
-  </head>
-  <body>
-  	<!-- Navbar -->
-  	<nav id = 'main-navbar' class = ''>
-      <div class = 'login-icon' onclick = 'toggleLoginVisibility()'></div>
-      <div class = 'login'>
-        {% if not_logged_in %}
-        <form method = 'post' action = '/home'>
-          {% csrf_token %}
-        {% for field in form %}
-        <div class='login-field'>
-            {{ field.errors }}
-            {{ field }}
-        </div>
-        {% endfor %}
-        <input type='submit', value='Login'/>
-        </form>
-        {% else %}
-        <div id='text'>
-          You are currently logged in as {{ user.username }}. <br/>
-            <form method = 'post' action='/logout'>
-            {% csrf_token %}
-            <input type='submit', value='Logout'>
-        </div>
-        {% endif %}
-      </div>
->>>>>>> 7ba16b3ab2ae309da2ef8686ead97bfceb9d0bf1
-      <div class = 'testpart'>
-        {% if message %}
-        {{ message }}
-        {% else %}
-        There is nothing on this page.
-        {% endif %}
-      </div>
-<<<<<<< HEAD
-{% endblock %}
-=======
-    </nav>
-    <div class = 'foodbook-symbol'> </div>
-    <div id = 'nav-button' onclick = 'toggleToolbar()'></div>
 
     <div class = 'top-half'>
       asdf
@@ -57,8 +10,4 @@
       </div>
     </div>
 
-  </body>
-  <script src = 'static/js/main.js'></script>
-
-</html>
->>>>>>> 7ba16b3ab2ae309da2ef8686ead97bfceb9d0bf1
+{% endblock %}
