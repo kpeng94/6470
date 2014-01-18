@@ -69,3 +69,9 @@
   -webkit-box-shadow: 0;
   outline: none;
 }
+
+.header .ingredient-database {
+  position: absolute;
+  left: 150px;
+  top: 15px;
+}
