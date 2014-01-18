@@ -29,9 +29,9 @@ def parse_csv(dat):
             data[line[0]] = (float(line[2]) / 100, line[1].replace('\xc2\xb5', '\xe6')) 
     return FoodStuff(foodid, name, data)
 
-def get_all():
+def get_foods(start=1, end=TOT):
     dat = []
-    for i in xrange(1, TOT):
+    for i in xrange(start, end):
         print "Getting food #%s" % i
         dat.append(parse_csv(get_csv(i)))
     return dat
