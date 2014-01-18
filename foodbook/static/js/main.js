@@ -66,9 +66,7 @@ var hideToolbar = function() {
 var toggleToolbar = function() {
 	var navbar = document.getElementById('main-navbar');
 	var navbarButton = document.getElementById('nav-button');
-  console.log('2');
   var dimOverlay = document.getElementById('dim-overlay');
-  console.log('1');
   var open = 'navbar-open';
   var close = 'navbar-closed';
 	toggleClass(navbar, open);
