@@ -1,5 +1,4 @@
 # Django settings for foodbook project.
-
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
@@ -140,6 +139,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'django.contrib.admin',
     'django.contrib.admindocs',
+    'foodbook'
 )
 
 # A sample logging configuration. The only tangible logging

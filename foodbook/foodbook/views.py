@@ -4,6 +4,7 @@ from django.template import RequestContext
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
+from foodbook.models import Ingredient, IngredientType, ServingSize
 
 def showHome(request):
 	return render_to_response('index.html', {})
@@ -61,3 +62,9 @@ class UserLoginForm(forms.Form):
 
 class UserRegistrationForm(UserCreationForm):
 	email = forms.CharField(widget=forms.EmailInput)
+
+def show_ingredient(request, ingredient):
+	ingredient = Ingredient.objects.filter(name__iexact=ingredient)
+	if ingredient:
+		ingredient = ingredient.values()[0]
+	return render_to_response('ingredient.html', {'ingredient': ingredient})

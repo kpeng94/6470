@@ -2,7 +2,7 @@ from django.conf.urls import patterns, include, url
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
-from views import showHome, test_login, register, default_page, logout_user
+from views import showHome, test_login, register, default_page, logout_user, show_ingredient
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -14,7 +14,8 @@ urlpatterns = patterns('',
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin', include(admin.site.urls)),
+    url(r'^ingredients/([a-zA-Z]+)$', show_ingredient),
     url(r'^home$', test_login),
     url(r'^register$', register),
     url(r'^logout$', logout_user),
