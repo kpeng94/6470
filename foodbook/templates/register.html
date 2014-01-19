@@ -1,31 +1,20 @@
-<html>
-  <head>
-  	<title>FoodBook</title>
-  	<meta charset = "utf-8" />
-  	<link rel = "stylesheet" href = "static/main.css">
-  </head>
-  <body>
-  	<!-- Navbar -->
-  	<nav class = 'header'>
- 	   	<ul>
-  			<li class = 'foodbook-symbol'> FoodBook </li>
-	   	</ul>
+{% extends "footer_header.html" %}
+
+{% block content %}
+<br/><br/><br/><br/>
+      {{ message }}
       <div class = 'register'>
         <form method = 'post' action = '/register'>
           {% csrf_token %}
+          {{ form.errors }}
     {% for field in form %}
-        <div class="fieldWrapper">
+        <div class="register-field">
             {{ field.errors }}
-            {{ field.label_tag }} {{ field }}
+            {{ field }}
         </div>
     {% endfor %}
           <input type="submit", value="Register"/>
         </form>
       </div>
-      <div class = 'testpart'>
-        {{ message }}
-      </div>
 
-    </nav>
-  </body>
-</html>
+{% endblock %}

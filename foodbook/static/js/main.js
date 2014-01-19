@@ -86,4 +86,6 @@ var toggleToolbar = function() {
 // Global functions
 
 // document.getElementsByClassName('login-icon')[0].addEventListener('click', toggleLoginVisibility, false);
-
+document.getElementById("register").onclick = function () {
+        location.href = "/register";
+    };	

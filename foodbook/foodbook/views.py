@@ -1,8 +1,8 @@
 from django.shortcuts import render_to_response, redirect
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
 from django.template import RequestContext
-from forms import UserLoginForm, SearchBar
-from django.contrib.auth.forms import UserCreationForm
+from forms import UserLoginForm, SearchBar, UserCreationForm
 from django.contrib.auth.decorators import login_required
 from foodbook.models import Ingredient, IngredientType, ServingSize
 
@@ -40,7 +40,7 @@ def register(request):
 	if request.method == 'POST':
 		form = UserCreationForm(request.POST)
 		if form.is_valid():
-			new_user = form.save()
+			new_user = User.objects.create_user(form.cleaned_data['username'], form.cleaned_data['email'], form.cleaned_data['password'])
 			message = 'Registration successful!'
 	else:
 		form = UserCreationForm()
