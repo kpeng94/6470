@@ -1,0 +1,25 @@
+{% extends "footer_header.html" %}
+
+{% block css %}
+<link rel = 'stylesheet' href = '/static/css/recipe.css'>
+<script type='text/javascript' src='/static/js/recipe.js'></script>
+{% endblock %}
+
+{% block content %}
+<div class='recipe-content'>
+	<div class='type-tab'>
+		<a href="#" class="tab-link" id="all" onclick="change_search('All');">All</a> <br/>
+		{% for type in type_list %}
+		<a href="#" class="tab-link" id="{{type|lower}}" onclick="change_search('{{type|lower}}');">{{ type }}</a> <br/>
+		{% endfor %}
+	</div>
+	<div class='simple-search-bar'>
+<input id='ingredient-search' type='text' onkeyup="Dajaxice.ingredient.update(Dajax.process, {'search':$('#ingredient-search').val(), 'div_id': 'ingredient-list'})" onpaste="Dajaxice.ingredient.update(Dajax.process, {'search':$('#ingredient-search').val(), 'div_id': 'ingredient-list'})" placeholder="Search"/>
+</div>
+	<div class='ingredient-list' id='ingredient-list'>
+	</div>
+	<div class='recipe-list' id='recipe-list'>
+		This is where the ingredients your recipe consist of go.
+	</div>
+</div>
+{% endblock %}

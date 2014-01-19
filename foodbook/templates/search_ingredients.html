@@ -3,8 +3,8 @@
 {% block content %} 
 <br/><br/><br/>
 <div class='simple-search-bar'>
-<input id='ingredient-search' type='text' onkeyup="Dajaxice.ingredient.update(Dajax.process, {'search':$('#ingredient-search').val()})" onpaste="Dajaxice.ingredient.update(Dajax.process, {'search':$('#ingredient-search').val()})"/>
-	<input type="button" value="Search" onclick="Dajaxice.ingredient.update(Dajax.process, {'search':$('#ingredient-search').val()})"/>
+<input id='ingredient-search' type='text' onkeyup="Dajaxice.ingredient.update(Dajax.process, {'search':$('#ingredient-search').val(), 'div_id': 'ingredient-list'})" onpaste="Dajaxice.ingredient.update(Dajax.process, {'search':$('#ingredient-search').val(), 'div_id': 'ingredient-list'})"/>
+	<input type="button" value="Search" onclick="Dajaxice.ingredient.update(Dajax.process, {'search':$('#ingredient-search').val(), 'div_id': 'ingredient-list'})"/>
 </div>
 <div class='simple-list' id='ingredient-list'>
 	{% for ingredient in ingredient_list %}

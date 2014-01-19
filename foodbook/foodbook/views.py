@@ -74,6 +74,11 @@ def search_ingredients(request):
 		manager = Ingredient.objects.all()
 	return render_to_response('search_ingredients.html', {'form': form, 'ingredient_list': manager, 'search': search}, context_instance=RequestContext(request))
 
+def add_recipe(request):
+	ingredient_types = IngredientType.objects.all()
+	i_types = [types.name for types in ingredient_types]
+	return render_to_response('add_recipe.html', {'type_list': i_types})
+
 ############################## CONTEXT PROCESSORS
 def login_processor(request):
 	# Makes sure the login form is always given to a page

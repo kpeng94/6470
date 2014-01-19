@@ -4,12 +4,19 @@ from foodbook.models import Ingredient
 from dajaxice.decorators import dajaxice_register
 
 @dajaxice_register(method='GET', name='ingredient.update')
-def update_search(request, search):
+def update_search(request, div_id, search, search_type="All"):
 	dajax = Dajax()
-	ingredients = Ingredient.objects.filter(name__istartswith=search)
+	if search_type != "All":
+		ingredients = Ingredient.objects.filter(name__istartswith=search, ingredient_type__name__iexact=search_type)
+	else:
+		ingredients = Ingredient.objects.filter(name__istartswith=search)
 	out = []
 	for ingredient in ingredients:
-		out.append("<a href='/ingredients/%s'>%s</a><br/>" % (ingredient.name, ingredient.name))
+		next = "<a href='/ingredients/%s' id='ingredient_num_%s'>%s " % (ingredient.name, ingredient.id, ingredient.name)
+		if ingredient.modifier:
+			next += "(%s)" % ingredient.modifier
+		next += "</a><br/>"
+		out.append(next)
 
-	dajax.assign('#ingredient-list', 'innerHTML', "".join(out))
+	dajax.assign('#' + div_id, 'innerHTML', "".join(out))
 	return dajax.json()
