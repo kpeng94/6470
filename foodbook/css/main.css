@@ -1,0 +1,225 @@
+body {
+  font-family: 'Exo 2', sans-serif;
+  font: 14px;
+  line-height: 20px;
+  display: block;
+  color: #000000;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Header (Navigation bar) code */
+nav {
+  position: absolute;
+  margin-top: -180px;
+  margin-bottom: 0;
+	width: 100%;
+  background-color: #DDD4BC;
+  height: 180px;
+  z-index: 12;
+}
+
+nav.navbar-open {
+  margin-top: 0;
+  -webkit-transition: margin-top 500ms ease;
+  transition: margin-top 500ms ease;
+}
+
+nav.navbar-closed {
+  margin-top: -180px;
+  -webkit-transition: margin-top 500ms ease;
+  transition: margin-top 500ms ease;
+}
+
+.foodbook-symbol {
+  /* TODO: insert image */
+  position: absolute;
+  top: 0px;
+  left: 15px;
+  width: 70px;
+  height: 70px;
+  background-color: yellow;
+  -webkit-box-shadow: 0px 3px 4px #888888;
+  box-shadow: 0px 3px 4px #888888;
+  z-index: 100;
+}
+
+nav .login-icon {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  /*margin: 10px 10px 0 10px;*/
+  width: 80px;
+  height: 80px;
+	background-color: #0022FF;
+	-webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+	border-radius: 50px;
+  display: inline-block;
+}
+
+nav .login {
+	position: absolute;
+  background-color: yellow;
+  height: 100px;
+	right: 0px;
+  top: 50px;
+	bottom: 0;
+	padding: 0;
+  visibility: hidden;
+}
+
+nav .login.visible{
+  visibility: visible;
+}
+
+nav > .login > form > input {
+  display: block;
+  position: absolute;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  right: 0;
+}
+
+nav .login-field {
+  display: block;
+}
+
+nav .login-field input {
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 10px;
+  -webkit-box-shadow: 0;
+  outline: none;
+}
+
+nav .ingredient-database {
+  position: absolute;
+  left: 150px;
+  top: 15px;
+}
+
+.top-half {
+  background-color: blue;
+  width: 100%;
+  height: 50%;
+}
+
+.bottom-half {
+  width: 100%;
+  height: 50%;
+  background-color: yellow;
+}
+
+#nav-button {
+  background-color: #f8dc0b;
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  right: 25px;
+  -webkit-box-shadow: 0px 3px 4px #888888;
+  box-shadow: 0px 3px 4px #888888;
+  /* Insert image here*/
+  z-index: 100;
+}
+
+#nav-button.navbar-closed {
+  margin-top: 0px;
+  -webkit-transition: margin-top 500ms ease;
+  transition: margin-top 500ms ease;
+}
+
+#nav-button.navbar-open {
+  margin-top: 180px;
+  -webkit-transition: margin-top 500ms ease;
+  transition: margin-top 500ms ease;
+}
+
+#nav-button:hover {
+  background-color: #ffe520;
+  -webkit-transition: margin-top 500ms ease, background-color 500ms ease;
+  transition: margin-top 500ms ease, background-color 500ms ease;
+}
+
+#dim-overlay {
+  position: absolute;
+  background-color: #000000;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 2;
+}
+
+#dim-overlay.navbar-closed {
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: opacity 500ms ease;
+  transition: opacity 500ms ease;
+}
+
+#dim-overlay.navbar-open {
+  opacity: 0.5;
+  visibility: visible;
+  -webkit-transition: opacity 500ms ease;
+  transition: opacity 500ms ease;
+}
+
+#start-button {
+  width: 250px;
+  height: 50px;
+  border: black 1px solid;
+  background-image: linear-gradient(#14AD47 0%, #14AD47 49%,
+                                    #13A443 50%, #13A443 100%);
+  text-align: center;
+  font-size: 24px;
+  margin: auto auto;
+  line-height: 50px;
+  color: white;
+}
+
+#start-button:hover {
+  /*background-image: linear-gradient(#);*/
+}
+
+.navbar-content {
+  position: relative;
+  float: left;
+  display: inline-block;
+  text-align: center;
+  width: 15%;
+  height: 120px;
+  margin: 30px 1% 30px 1%;
+}
+
+.navbar-content:nth-child(1) {
+  margin-left: 16%;
+}
+
+.navbar-content:after {
+  position: absolute;
+  content:"";
+  width: 1px;
+  height: 120px;
+  background-color: #777777;
+  opacity: 0.5;
+  top: 0;
+  left: 0;
+  -webkit-box-shadow: 1px 1px 5px #777777;
+  box-shadow: 1px 1px 5px #777777;
+}
+
+.navbar-content:nth-child(1):after {
+  width: 0;
+}
+
+.main-content {
+  text-align: center;
+  margin: 0px auto 0px auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 300px;
+}

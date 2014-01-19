@@ -1,9 +1,11 @@
 from django.conf.urls import patterns, include, url
+from dajaxice.core import dajaxice_autodiscover, dajaxice_config
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 from views import showHome, test_login, register, default_page, logout_user, show_ingredient, search_ingredients
 admin.autodiscover()
+dajaxice_autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
@@ -20,5 +22,6 @@ urlpatterns = patterns('',
     url(r'^home$', test_login),
     url(r'^register$', register),
     url(r'^logout$', logout_user),
+    url(dajaxice_config.dajaxice_url, include('dajaxice.urls')),
     url(r'', default_page),
 )

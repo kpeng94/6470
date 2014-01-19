@@ -1,13 +1,12 @@
 {% extends "footer_header.html" %}
 
 {% block content %} 
+<br/><br/><br/>
 <div class='simple-search-bar'>
-<form method='post' action=''> {% csrf_token %}
-	{{ form.as_p }}
-	<input type="submit" value="Search"/>
-</form>
+<input id='ingredient-search' type='text' onkeyup="Dajaxice.ingredient.update(Dajax.process, {'search':$('#ingredient-search').val()})" onpaste="Dajaxice.ingredient.update(Dajax.process, {'search':$('#ingredient-search').val()})"/>
+	<input type="button" value="Search" onclick="Dajaxice.ingredient.update(Dajax.process, {'search':$('#ingredient-search').val()})"/>
 </div>
-<div class='simple-list'>
+<div class='simple-list' id='ingredient-list'>
 	{% for ingredient in ingredient_list %}
 		<a href='/ingredients/{{ ingredient.name }}'>{{ ingredient.name }}</a> <br/>
 	{% empty %}
