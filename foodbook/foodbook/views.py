@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from foodbook.models import Ingredient, IngredientType, ServingSize
 
 def showHome(request):
-	return render_to_response('index.html', {})
+	return render_to_response('index.html', {}, context_instance=RequestContext(request))
 
 def test_login(request):
 	message = ''
@@ -21,7 +21,7 @@ def test_login(request):
 		not_logged_in = False
 	else:
 		not_logged_in = True
-	return render_to_response('index.html', {'message': message, 'form': form, 'not_logged_in': not_logged_in, 'user': request.user}, context_instance=RequestContext(request))
+	return render_to_response('index.html', {'message': message, 'form': form}, context_instance=RequestContext(request))
 
 def login_user(request):
 	form = UserLoginForm(request.POST)

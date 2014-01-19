@@ -27,7 +27,7 @@
         {% endfor %}
         <input type='submit', value='Login'/>
         </form>
-         <button id = 'register' value="Register" type="button">Register</button>
+         <button id = 'register' value="Register" type="button" onclick="location.href = '/register'">Register</button>
         {% else %}
         <div id='text'>
           You are currently logged in as {{ user.username }}. <br/>
