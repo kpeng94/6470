@@ -87,7 +87,7 @@ def search_ingredients(request):
 def add_recipe(request):
 	ingredient_list = []
 	recipe_id =  ''
-	if request.user.is_authenticated() and request.method == 'GET':
+	if request.user.is_authenticated() and request.method == 'GET' and 'rid' in request.GET:
 		recipe_id = request.GET['rid']
 		try:
 			recipe = Recipe.objects.get(id=recipe_id, user_id=request.user)
