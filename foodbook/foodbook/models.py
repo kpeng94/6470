@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User;
 
 class IngredientType(models.Model):
 	name = models.CharField(max_length=50)
@@ -40,6 +41,20 @@ class ServingSize(models.Model):
 	abbr = models.CharField(max_length=10)
 	gram_conversion = models.DecimalField(max_digits=10, decimal_places=5)
 	ingredients = models.ManyToManyField(Ingredient)
+
+	def __unicode__(self):
+		return self.name
+
+class Recipe(models.Model):
+	user_id = models.ManyToManyField(User)
+	name = models.CharField(max_length=50, blank=True)
+	description = models.TextField(blank=True)
+	servings = models.IntegerField(null = True, blank = True)
+	ingredients = models.TextField(blank=True)
+	instructions = models.TextField(blank=True)
+	notes = models.TextField(blank=True)
+	upvotes = models.IntegerField()
+	variant = models.ForeignKey('self', null = True, blank=True)
 
 	def __unicode__(self):
 		return self.name

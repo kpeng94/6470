@@ -32,15 +32,3 @@ div .simple-search-bar {
 	left: 750px;
 	width: 600px;
 }
-
-#save-recipe {
-	position:absolute;
-	top: 100px;
-	left: 1300px;
-}
-
-#personal-recipe-list {
-	position:absolute;
-	top: 100px;
-	left: 200px;
-}

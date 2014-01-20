@@ -25,22 +25,12 @@ function show_ingredient(data){
 	$('#recipe-list').append(div_elem);
 }
 
-function check_ingredient(){
-	chosen_ingredients = $('#recipe-list').children();
-	for(var i=0; i < chosen_ingredients.length; i++) {
-		var id = Number(chosen_ingredients[i].getAttribute('id').match('[0-9]+')[0]);
-		if(iid_l.indexOf(id) == -1)
-			iid_l.push(id);
-	}
-}
-
 function add_ingredient(iid){
-	check_ingredient();
 	if(iid_l.indexOf(iid) != -1)
 		return false;
 	Dajaxice.recipe.add_ingredient(show_ingredient, {'iid': iid.toString()});
 	iid_l.push(iid);
-	return true;
+	return false;
 }
 
 function clear_cache(){
@@ -62,12 +52,7 @@ function summary_ingredients(){
 }
 
 function confirm_save(data){
-	if(data.success){
-		alert("Save successful.");
-	}
-	else{
-		alert("Save failed.");
-	}
+	alert(data.ingredients);
 }
 
 function save_recipe(){

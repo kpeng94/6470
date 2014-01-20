@@ -7,10 +7,31 @@ var Dajaxice = {
     
 
     
+    recipe: {
+    
+    save: function(callback_function, argv, custom_settings){
+        return Dajaxice.call('recipe.save', 'POST', callback_function, argv, custom_settings);
+    },
+
+    add_ingredient: function(callback_function, argv, custom_settings){
+        return Dajaxice.call('recipe.add_ingredient', 'GET', callback_function, argv, custom_settings);
+    }
+
+
+    
+    
+    }
+    
+,
+    
     ingredient: {
     
+    update_url: function(callback_function, argv, custom_settings){
+        return Dajaxice.call('ingredient.update_url', 'GET', callback_function, argv, custom_settings);
+    },
+
     update: function(callback_function, argv, custom_settings){
-        return Dajaxice.call('ingredient.update', 'POST', callback_function, argv, custom_settings);
+        return Dajaxice.call('ingredient.update', 'GET', callback_function, argv, custom_settings);
     }
 
 

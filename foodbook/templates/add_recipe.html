@@ -7,6 +7,7 @@
 
 {% block content %}
 <div class='recipe-content'>
+	<input id='recipe-id-unique' type='hidden' value='{{ recipe_id }}'/>
 	<div class='type-tab'>
 		<a href="#" class="tab-link" id="all" onclick="change_search('All');">All</a> <br/>
 		{% for type in type_list %}
@@ -14,12 +15,22 @@
 		{% endfor %}
 	</div>
 	<div class='simple-search-bar'>
-<input id='ingredient-search' type='text' onkeyup="Dajaxice.ingredient.update(Dajax.process, {'search':$('#ingredient-search').val(), 'div_id': 'ingredient-list'})" onpaste="Dajaxice.ingredient.update(Dajax.process, {'search':$('#ingredient-search').val(), 'div_id': 'ingredient-list'})" placeholder="Search"/>
+<input id='ingredient-search' type='text' onkeyup="perform_search()" onpaste="perform_search()" placeholder="Search"/>
 </div>
 	<div class='ingredient-list' id='ingredient-list'>
 	</div>
-	<div class='recipe-list' id='recipe-list'>
+	<div class='container' id='recipe-list'>
 		This is where the ingredients your recipe consist of go.
-	</div>
+		{% for ingredient in ingredient_list %}
+		<div class='ingredient-line' id='ingredient_line_{{ ingredient.ingredient_id }}'>
+		{{ ingredient.name }} <input type='number' id='ingredient_line_{{ ingredient.ingredient_id }}_number' value={{ingredient.qty }} /> <select id='ingredient_line_{{ ingredient.ingredient_id }}_select'>
+		{% for ss in ingredient.servingsize %}
+		<option value='{{ ss.name }}'
+		{% if ss.name == ingredient.unit %} selected='selected' {% endif %}>{{ ss.name }}</option>
+		{% endfor %}
+	</select>
 </div>
+		{% endfor %}
+	</div>
+	<button onclick='save_recipe();' id='save-recipe'>Save</button></div>
 {% endblock %}
