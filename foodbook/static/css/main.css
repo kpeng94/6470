@@ -61,15 +61,18 @@ body {
   float: right;
 }
 
-#header .header-login {
+#header .header-login.user-icon{
   -webkit-border-radius: 100px;
   -moz-border-radius: 100px;
   border-radius: 100px;
-  background-image: url('/static/img/rene.jpg');
   background-color: #FFFFFF;
   width: 80px;
   height: 80px;
   background-size: 80px 80px;
+}
+
+#header .user-icon {
+  background-image: url('/static/img/rene.jpg');
 }
 
 #header .header-data {
@@ -196,3 +199,41 @@ body {
   margin: auto;
   height: 30px;
 }
+
+.profile-body {
+  width: 80%;
+  margin-left: 10%;
+}
+
+.profile-content {
+  height: 200px;
+  width: 100%;
+  background-color: #DDDDDD;
+}
+
+.profile-image {
+  width: 150px;
+  height: 150px;
+  background-color: #FFFFFF;
+  background-size: 150px 150px;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  border-radius: 100px;
+}
+
+.profile-image-container {
+  position: relative;
+  top: 25px;
+  left: 20px;
+  width: 200px;
+}
+
+.profile-info {
+  position: relative;
+  width: 200px;
+  height: 150px;
+  top: 25px;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
