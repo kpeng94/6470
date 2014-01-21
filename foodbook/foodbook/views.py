@@ -4,46 +4,32 @@ from django.contrib.auth.models import User
 from django.template import RequestContext
 from forms import UserLoginForm, SearchBar, UserCreationForm
 from django.contrib.auth.decorators import login_required
-from foodbook.models import Ingredient, IngredientType, ServingSize, Recipe
+from foodbook.models import Ingredient, IngredientType, ServingSize, Recipe, IngredientWrapper
 import json
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 
-class IngredientWrapper():
-	def __init__(self, iid, quantity, measurement, iname):
-		self.ingredient_id = iid
-		self.qty = quantity
-		self.unit = measurement
-		self.name = iname
-		self.servingsize = Ingredient.objects.get(id=iid).servingsize_set.all()
-
-def showHome(request):
-	return render_to_response('index.html', {}, context_instance=RequestContext(request))
-
-def test_login(request):
+def home(request):
 	message = ''
 	if request.method == 'POST':
 		form = UserLoginForm(request.POST)
 		if form.is_valid():
 			message = login_user(request)
+			return HttpResponseRedirect(request.META['HTTP_REFERER'])
 	else:
 		form = UserLoginForm()
-	if request.user.is_authenticated():
-		not_logged_in = False
-	else:
-		not_logged_in = True
 	return render_to_response('index.html', {'message': message, 'form': form}, context_instance=RequestContext(request))
 
 def login_user(request):
-	form = UserLoginForm(request.POST)
-	form.is_valid()
-	username = form.cleaned_data['username']
-	password = form.cleaned_data['password']
-	user = authenticate(username=username, password=password)
-	if user is not None:
-		login(request,user)
-		return 'You have logged in as ' + username + '.'
-	else:
-		return 'Your username/password combination was not correct.'
+	if request.method == 'POST':
+		form = UserLoginForm(request.POST)
+		form.is_valid()
+		username = form.cleaned_data['username']
+		password = form.cleaned_data['password']
+		user = authenticate(username=username, password=password)
+		if user is not None:
+			login(request,user)
+		return redirect(request.META['HTTP_REFERER'])
+	return redirect('/home')
 
 def register(request):
 	message = ''
@@ -59,12 +45,10 @@ def register(request):
 def logout_user(request):
 	if request.user.is_authenticated():
 		logout(request)
-	return redirect('/home')
+	return HttpResponseRedirect('/home')
 
 def default_page(request):
-	if not request.user.is_authenticated():
-		return redirect('/home')
-	return render_to_response('default.html', {'username': request.user.username})
+	return redirect('/home')
 
 def show_ingredient(request, ingredient):
 	ingredient = Ingredient.objects.filter(name__iexact=ingredient)

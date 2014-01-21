@@ -58,3 +58,23 @@ class Recipe(models.Model):
 
 	def __unicode__(self):
 		return self.name
+
+class UserPicture(models.Model):
+	user_id = models.ForeignKey(User)
+	pic_link = models.TextField()
+
+class IngredientWrapper():
+	def __init__(self, iid, quantity, measurement, iname):
+		self.ingredient_id = iid
+		self.qty = quantity
+		self.unit = measurement
+		self.conversion = ServingSize.objects.get(name__iexact=measurement, ingredients__id=iid).gram_conversion
+		self.name = iname
+		self.servingsize = Ingredient.objects.get(id=iid).servingsize_set.all()
+
+class NutritionalValue():
+	def __unicode__(self):
+		return;
+
+def calculate_nutritional_value(ingredient_list):
+	return;

@@ -3,7 +3,7 @@ from dajaxice.core import dajaxice_autodiscover, dajaxice_config
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
-from views import showHome, test_login, register, default_page, logout_user, show_ingredient, search_ingredients, add_recipe, list_my_recipes
+from views import home, login_user, register, default_page, logout_user, show_ingredient, search_ingredients, add_recipe, list_my_recipes
 admin.autodiscover()
 dajaxice_autodiscover()
 
@@ -22,8 +22,9 @@ urlpatterns = patterns('',
     url(r'^recipe', list_my_recipes),
     url(r'^ingredients[/]?$', search_ingredients),
     url(r'^ingredients/([a-zA-Z]+)$', show_ingredient),
-    url(r'^home$', test_login),
+    url(r'^home$', home),
     url(r'^register$', register),
+    url(r'^login$', login_user),
     url(r'^logout$', logout_user),
     url(dajaxice_config.dajaxice_url, include('dajaxice.urls')),
     url(r'', default_page),
