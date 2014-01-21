@@ -1,10 +1,40 @@
 {% extends "footer_header.html" %}
-
 {% block content %}
-<br/><br/><br/><br/><br/><br/><br/><br/><br/>
+  <!-- TODO: Move this to somewhere else more appropriate later -->
+  <link rel = 'stylesheet' type = 'text/css' href = '/static/css/profile.css'>
+	<div class = 'profile-body'>
+		<div class = 'profile-content-background'>
+      <div class = 'profile-content'>
+  			<div class = 'profile-image-container'>
+  				<div class = 'profile-image user-icon'></div>
+  			</div>
+  		  <div class = 'profile-info'>
+  			  <div class = 'profile-name'> Rene Zhang </div>
+          <div class = 'profile-location'> New York City </div>
+          <div class = 'profile-email'> rz99@cornell.edu </div>
+  		  </div>
+  			<div class = 'profile-achievements'>
+  				<div class = 'profile-reputation'><span>REPUTATION</span></div>
+  				<div class = 'profile-awards'><span>AWARDS</span></div>
+  			</div>
+      </div>
+		</div>
+    <div class = 'profile-tabs-container'>
+      <div class = 'profile-tabs'>
+        <div class = 'profile-tab'></div>
+        <div class = 'profile-tab'></div>
+        <div class = 'profile-tab'></div>
+        <div class = 'profile-tab'></div>
+      </div>
+    </div>
+	</div>
+
+
+	<!-- TODO: EDIT THIS LATER FOR A NICER INTERFACE -->
 	<form enctype='multipart/form-data' name='prof_pic' action='/user' method='post'>
 		{% csrf_token %}
 		{{ form.as_p }}
 	<button type='submit' value='Submit'>SUBMIT THIS</button>
 	</form>
+
 {% endblock %}

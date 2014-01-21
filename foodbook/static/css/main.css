@@ -102,7 +102,7 @@ body {
   background-color: #EEEEEE;
   height: 100px;
 	right: 0px;
-  top: 100px;
+  top: 60px;
 	bottom: 0;
 	padding: 0;
   visibility: hidden;
@@ -152,6 +152,9 @@ body {
   left: 150px;
   top: 15px;
 }
+
+
+/* MAIN PAGE */
 
 .top-half {
   position: relative;
@@ -205,41 +208,4 @@ body {
   padding-top: 10px;
   margin: auto;
   height: 30px;
-}
-
-.profile-body {
-  width: 80%;
-  margin-left: 10%;
-}
-
-.profile-content {
-  height: 200px;
-  width: 100%;
-  background-color: #DDDDDD;
-}
-
-.profile-image {
-  width: 150px;
-  height: 150px;
-  background-color: #FFFFFF;
-  background-size: 150px 150px;
-  -webkit-border-radius: 100px;
-  -moz-border-radius: 100px;
-  border-radius: 100px;
-}
-
-.profile-image-container {
-  position: relative;
-  top: 25px;
-  left: 20px;
-  width: 200px;
-}
-
-.profile-info {
-  position: relative;
-  width: 200px;
-  height: 150px;
-  top: 25px;
-  padding-left: 25px;
-  padding-right: 25px;
 }

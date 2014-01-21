@@ -103,8 +103,24 @@ $(document).ready(function(){
 	}
 });
 
-// Global functions
+/**
+ * Resizes the image based on the threshold
+ */
+var resizeImage = function(threshold, image) {
+	var height = image.naturalHeight;
+	var width = image.naturalWidth;
+	if (height > 80 && width > 80) {
+		if (height > width) {
+			image.style.width = threshold + 'px';
+			image.style.top = -(image.height - 80) / 2 + 'px';
+		} else {
+			image.style.height = threshold + 'px';
+			image.style.left = -(image.width - 80) / 2 + 'px';
+		}
+	}
+}
 
+// Global functions
 if(document.getElementById("register")){
 document.getElementById("register").onclick = function () {
         location.href = "/register";
