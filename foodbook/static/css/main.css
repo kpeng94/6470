@@ -7,11 +7,12 @@ body {
   margin: 0;
   width: 100%;
   height: 100%;
+  position: absolute;
 }
 
 /* Header (Navigation bar) code */
 #header {
-  position: fixed;
+  position: relative;
 	width: 100%;
   background-color: #000000;
   height: 100px;
@@ -143,16 +144,20 @@ body {
 }
 
 .top-half {
+  position: relative;
   background-color: #FFFFFF;
   width: 100%;
-  top: 100px;
   height: 50%;
+  background-image: url('/static/img/dummybackground.jpg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
 }
 
 .bottom-half {
+  position: relative;
   width: 100%;
-  height: 50%;
-  background-color: yellow;
+  height: 35%;
+  background-color: #DDDDDD;
 }
 
 #start-button {
@@ -171,14 +176,15 @@ body {
 .main-content {
   text-align: center;
   margin: 0px auto 0px auto;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  width: 300px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  width: 400px;
 }
 
 #footer {
+  position: relative;
   background-color: #000000;
-  height: 50px;
+  height: 60px;
   width: 100%;
 }
 
