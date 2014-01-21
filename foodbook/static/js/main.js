@@ -87,8 +87,26 @@ var toggleToolbar = function() {
 	}
 }
 
+$(document).ready(function(){
+	var image = document.getElementById('login-pic');
+	var height = image.naturalHeight;
+	var width = image.naturalWidth;
+	if(height > 80 && width > 80){
+		if(height > width){
+			image.style.width = '80px';
+			image.style.top = -(image.height-80)/2 + 'px';
+		}
+		else{
+			image.style.height = '80px';
+			image.style.left = -(image.width-80)/2 + 'px';
+		}
+	}
+});
+
 // Global functions
 
+if(document.getElementById("register")){
 document.getElementById("register").onclick = function () {
         location.href = "/register";
     };
+}

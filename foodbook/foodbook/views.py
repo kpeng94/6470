@@ -2,11 +2,12 @@ from django.shortcuts import render_to_response, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.template import RequestContext
-from forms import UserLoginForm, SearchBar, UserCreationForm
+from forms import UserLoginForm, SearchBar, UserCreationForm, ProfilePictureForm
 from django.contrib.auth.decorators import login_required
-from foodbook.models import Ingredient, IngredientType, ServingSize, Recipe, IngredientWrapper
+from foodbook.models import Ingredient, IngredientType, ServingSize, Recipe, IngredientWrapper, UserPicture
 import json
 from django.http import HttpResponse, HttpResponseRedirect
+from user import upload_picture
 
 def home(request):
 	message = ''
@@ -93,9 +94,28 @@ def list_my_recipes(request):
 	else:
 		return HttpResponse("Log in to see your recipes.")
 
+def display_user_profile(request):
+	if request.method == 'POST':
+		upload_picture(request)
+		return redirect('/user')
+	if request.user.is_authenticated():
+		form = ProfilePictureForm()
+		return render_to_response('user_page.html', {'form': form}, context_instance = RequestContext(request))
+	return redirect('/home')
+
 ############################## CONTEXT PROCESSORS
 def login_processor(request):
 	# Makes sure the login form is always given to a page
 	return {
 		'LOGIN_FORM': UserLoginForm()
+	}
+
+def user_profile(request):
+	pic = UserPicture.objects.filter(user_id=request.user)
+	if pic:
+		url = pic[0].pic_link
+	else:
+		url = '/static/img/user/default'
+	return {
+		'PROFILE_PICTURE': url
 	}

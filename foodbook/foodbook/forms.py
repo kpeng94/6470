@@ -23,3 +23,6 @@ class UserCreationForm(forms.Form):
 				raise forms.ValidationError(u'Your passwords must be the same.')
 
 		return cleaned_data
+
+class ProfilePictureForm(forms.Form):
+	image = forms.ImageField()
