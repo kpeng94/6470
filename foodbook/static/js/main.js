@@ -67,25 +67,28 @@ var toggleToolbar = function() {
 	var navbar = document.getElementById('main-navbar');
 	var navbarButton = document.getElementById('nav-button');
   var dimOverlay = document.getElementById('dim-overlay');
+  var triangleImg = document.getElementById('triangle');
   var open = 'navbar-open';
   var close = 'navbar-closed';
 	toggleClass(navbar, open);
 	toggleClass(navbarButton, open);
   toggleClass(dimOverlay, open);
+  toggleClass(triangle, open);
 	if (hasClass(navbar, open)) {
 		removeClass(navbar, close);
 		removeClass(navbarButton, close);
     removeClass(dimOverlay, close);
+    removeClass(triangle, close);
 	} else {
 		addClass(navbar, close);
 		addClass(navbarButton, close);
     addClass(dimOverlay, close);
+    addClass(triangle, close);
 	}
 }
 
 // Global functions
 
-// document.getElementsByClassName('login-icon')[0].addEventListener('click', toggleLoginVisibility, false);
 document.getElementById("register").onclick = function () {
         location.href = "/register";
-    };	
+    };
