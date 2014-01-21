@@ -35,7 +35,7 @@ body {
 
 #header #header-search input {
   color: black;
-  height: 70px;
+  height: 0px;
   font-size: 40px;
   position: absolute;
   padding-left: 60px;
@@ -68,7 +68,6 @@ body {
   background-color: #FFFFFF;
   width: 80px;
   height: 80px;
-	/*background-image: #0022FF;*/
 	-webkit-border-radius: 50px;
   -moz-border-radius: 50px;
 	border-radius: 50px;
@@ -76,6 +75,11 @@ body {
   overflow:hidden;
   text-align: center;
   background-size: 80px 80px;
+}
+
+#header .header-login img {
+  position: relative;
+  display: block;
 }
 
 #header .user-icon {
@@ -242,9 +246,4 @@ body {
   top: 25px;
   padding-left: 25px;
   padding-right: 25px;
-}
-
-nav .login-icon img {
-  position: relative;
-  display: block;
 }

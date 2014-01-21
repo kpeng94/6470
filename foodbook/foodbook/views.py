@@ -111,11 +111,11 @@ def login_processor(request):
 	}
 
 def user_profile(request):
-	pic = UserPicture.objects.filter(user_id=request.user)
-	if pic:
-		url = pic[0].pic_link
-	else:
-		url = '/static/img/user/default'
+	url = '/static/img/user/default'
+	if request.user.is_authenticated():
+		pic = UserPicture.objects.filter(user_id=request.user)
+		if pic:
+			url = pic[0].pic_link
 	return {
 		'PROFILE_PICTURE': url
 	}

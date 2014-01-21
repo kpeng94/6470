@@ -21,15 +21,9 @@
         <input type='text'/>
         <div class = 'search-icon'></div>
       </div>
-      <div class = 'header-content header-login user-icon' onclick = 'toggleLoginVisibility()'></div>
+      <div class = 'header-content header-login user-icon' onclick = 'toggleLoginVisibility()'><img id='login-pic' src='{{PROFILE_PICTURE}}'/></div>
       <div class = 'header-content header-data'></div>
-<<<<<<< HEAD
-      <div class = 'header-content header-login'></div>
-
-      <div class = 'login-icon' onclick = 'toggleLoginVisibility()'><img id='login-pic' src='{{PROFILE_PICTURE}}'/></div>
-=======
       <div class = 'header-content header-recipe'><a href="/recipes"></a></div>
->>>>>>> 2016a3baea66e06167699988d6a0bc85f9a4f28f
       <div class = 'login'>
         {% if not user.is_authenticated %}
         <form method = 'post' action = '/login'>
