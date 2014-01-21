@@ -7,43 +7,22 @@ body {
   margin: 0;
   width: 100%;
   height: 100%;
-  overflow: hidden;
+  overflow: scroll;
 }
 
 /* Header (Navigation bar) code */
 nav {
   position: absolute;
-  margin-top: -180px;
   margin-bottom: 0;
 	width: 100%;
-  background-color: #DDD4BC;
-  height: 180px;
+  background-color: #000000;
+  height: 100px;
   z-index: 12;
 }
 
-nav.navbar-open {
-  margin-top: 0;
-  -webkit-transition: margin-top 500ms ease;
-  transition: margin-top 500ms ease;
-}
-
-nav.navbar-closed {
-  margin-top: -180px;
-  -webkit-transition: margin-top 500ms ease;
-  transition: margin-top 500ms ease;
-}
-
-.foodbook-symbol {
-  /* TODO: insert image */
-  position: absolute;
-  top: 0px;
-  left: 15px;
-  width: 70px;
-  height: 70px;
-  background-color: yellow;
-  -webkit-box-shadow: 0px 3px 4px #888888;
-  box-shadow: 0px 3px 4px #888888;
-  z-index: 100;
+nav * {
+  color: #FFFFFF;
+  text-decoration: none;
 }
 
 nav .login-icon {
@@ -222,4 +201,20 @@ nav .ingredient-database {
   padding-top: 10px;
   padding-bottom: 10px;
   width: 300px;
+}
+
+#footer {
+  background-color: #000000;
+  height: 50px;
+  width: 100%;
+}
+
+#footer-content {
+  text-align: center;
+  color: #FFFFFF;
+  width: 300px;
+  padding-top: 10px;
+  margin: auto;
+  height: 30px;
+
 }
