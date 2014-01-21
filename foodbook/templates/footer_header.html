@@ -21,9 +21,9 @@
         <input type='text'/>
         <div class = 'search-icon'></div>
       </div>
-      <div class = 'header-content header-recipe'><a href="/recipes"></a></div>
-      <div class = 'header-content header-data'></div>
       <div class = 'header-content header-login' onclick = 'toggleLoginVisibility()'></div>
+      <div class = 'header-content header-data'></div>
+      <div class = 'header-content header-recipe'><a href="/recipes"></a></div>
       <div class = 'login'>
         {% if not user.is_authenticated %}
         <form method = 'post' action = '/home'>
