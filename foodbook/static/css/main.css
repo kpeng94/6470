@@ -68,6 +68,13 @@ body {
   background-color: #FFFFFF;
   width: 80px;
   height: 80px;
+	/*background-image: #0022FF;*/
+	-webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+	border-radius: 50px;
+  display: inline-block;
+  overflow:hidden;
+  text-align: center;
   background-size: 80px 80px;
 }
 
@@ -237,3 +244,7 @@ body {
   padding-right: 25px;
 }
 
+nav .login-icon img {
+  position: relative;
+  display: block;
+}

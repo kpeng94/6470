@@ -1,0 +1,10 @@
+{% extends "footer_header.html" %}
+
+{% block content %}
+<br/><br/><br/><br/><br/><br/><br/><br/><br/>
+	<form enctype='multipart/form-data' name='prof_pic' action='/user' method='post'>
+		{% csrf_token %}
+		{{ form.as_p }}
+	<button type='submit' value='Submit'>SUBMIT THIS</button>
+	</form>
+{% endblock %}
