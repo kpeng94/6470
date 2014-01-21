@@ -15,12 +15,12 @@
   </head>
   <body>
     <!-- Navbar -->
-    <nav id = 'main-navbar' class = ''>
-
-      <div class = 'navbar-content'><a href="/recipes">My Recipes</a></div>
-      <div class = 'navbar-content'>B</div>
-      <div class = 'navbar-content'></div>
-      <div class = 'navbar-content'><img src = '/static/img/glyphicons_free/glyphicons/png/glyphicons_034_old_man.png' width = '32' height = '32' ></img><div>JOIN</div></div>
+    <nav id = 'header' class = ''>
+      <div id = 'header-logo'></div>
+      <div id = 'header-search'></div>
+      <div class = 'header-content header-recipe'><a href="/recipes"></a></div>
+      <div class = 'header-content header-data'></div>
+      <div class = 'header-content header-login'></div>
 
       <div class = 'login-icon' onclick = 'toggleLoginVisibility()'></div>
       <div class = 'login'>
@@ -48,12 +48,10 @@
       </div>
 
     </nav>
-   <div class = 'foodbook-symbol'> </div>
-   <div id = 'nav-button' onclick = 'toggleToolbar()'><div id = 'triangle'></div></div>
 
     {% block content %}
     {% endblock %}
-  <div id = 'footer'> Foodbook was created by Genghis Chau, Kevin Peng, and Rene Zhang. \u00A9 2014.</div>
+  <div id = 'footer'> <div id = 'footer-content'> Foodbook was created by Genghis Chau, Kevin Peng, and Rene Zhang. &#xA9 2014.</div></div>
   </body>
   <script src = '/static/js/main.js'></script>
 
