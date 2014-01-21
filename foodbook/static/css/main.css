@@ -26,10 +26,29 @@ body {
 #header #header-search {
   right: 500px;
   position: absolute;
-  outline: none;
-  width: 700px;
   height: 70px;
+  background-color: white;
   margin-top: 15px;
+  width: 700px;
+}
+
+#header #header-search input {
+  color: black;
+  height: 70px;
+  font-size: 40px;
+  position: absolute;
+  padding-left: 60px;
+  width: 700px;
+  border: none;
+  outline: none;
+}
+
+#header .search-icon {
+  position: absolute;
+  top: 15px;
+  left: 10px;
+  height: 40px;
+  width: 40px;
   border: 1px solid black;
 }
 
