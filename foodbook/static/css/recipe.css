@@ -55,6 +55,14 @@
   width: 400px;
 }
 
-.ingredient-line .ingredient-input{
+.ingredient-line .ingredient-input-div{
+  display: inline-block;
+}
 
+.ingredient-line .ingredient-select-div {
+  display: inline-block;
+}
+
+.ingredient-line .ingredient-name {
+  display: inline-block;
 }
