@@ -46,7 +46,7 @@ def add_ingredient(request, iid):
 	ingredient = Ingredient.objects.get(id__exact=iid)
 	serving_sizes = ingredient.servingsize_set.all()
 	out = []
-	out.append("%s <div class='ingredient-input-div'><input type='number' id='ingredient_line_%s_number'/> </div><div class='ingredient-select-div'><select id='ingredient_line_%s_select'>" % (ingredient.name, ingredient.id, ingredient.id))
+	out.append("<div class='ingredient-name'>%s </div><div class='ingredient-input-div'><input type='number' id='ingredient_line_%s_number'/> </div><div class='ingredient-select-div'><select id='ingredient_line_%s_select'>" % (ingredient.name, ingredient.id, ingredient.id))
 	for ss in serving_sizes:
 		next = "<option value='%s'>%s </option>" % (ss.name, ss.name)
 		out.append(next)
