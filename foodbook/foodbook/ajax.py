@@ -2,6 +2,7 @@ from dajax.core import Dajax
 import json
 from foodbook.models import Ingredient, ServingSize, Recipe
 from dajaxice.decorators import dajaxice_register
+from recipe_utils import calculate_nutritional_value, decimal_json
 
 @dajaxice_register(method='GET', name='ingredient.update')
 def update_search(request, div_id, search, search_type="All"):
@@ -55,7 +56,7 @@ def add_ingredient(request, iid):
 
 @dajaxice_register(method='POST', name='recipe.save')
 def save_recipe(request, rid, ingredients):
-	if(request.user.is_authenticated):
+	if request.user.is_authenticated():
 		if rid:
 			recipe = Recipe.objects.get(id=rid, user_id=request.user)
 			if recipe:
@@ -68,3 +69,8 @@ def save_recipe(request, rid, ingredients):
 			recipe.save()
 			recipe.user_id.add(request.user)
 	return json.dumps({'success': True})
+
+@dajaxice_register(method='GET', name='recipe.check')
+def check_nutrients(request, ingredients):
+	if request.user.is_authenticated():
+		return json.dumps(calculate_nutritional_value(ingredients), default=decimal_json)

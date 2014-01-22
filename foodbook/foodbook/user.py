@@ -9,9 +9,6 @@ def upload_picture(request):
 		form = ProfilePictureForm(request.POST, request.FILES)
 		if form.is_valid():
 			url = save_picture(request, request.FILES['image'])
-		else:
-			return 0
-	return 0
 
 def save_picture(request, image):
 	pic = UserPicture.objects.filter(user_id=request.user)
@@ -23,4 +20,5 @@ def save_picture(request, image):
 		new_pic = UserPicture(user_id=request.user, pic_link='/static/img/user/' + str(request.user.id))
 		new_pic.save()
 	else:
-		old_url = pic[0].pic_link
+		pic[0].pic_link = '/static/img/user/' + str(request.user.id)
+		pic[0].save()

@@ -13,6 +13,10 @@ var Dajaxice = {
         return Dajaxice.call('recipe.save', 'POST', callback_function, argv, custom_settings);
     },
 
+    check: function(callback_function, argv, custom_settings){
+        return Dajaxice.call('recipe.check', 'GET', callback_function, argv, custom_settings);
+    },
+
     add_ingredient: function(callback_function, argv, custom_settings){
         return Dajaxice.call('recipe.add_ingredient', 'GET', callback_function, argv, custom_settings);
     }
