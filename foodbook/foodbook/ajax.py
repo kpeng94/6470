@@ -23,12 +23,17 @@ def update_search(request, div_id, search, search_type="All"):
 	return dajax.json()
 
 @dajaxice_register(method='GET', name='ingredient.update_url')
-def update_recipe_ingredient_search(request, div_id, search, search_type="All"):
+def update_recipe_ingredient_search(request, div_id, search, page='0', num_per_page=15, search_type="All"):
 	dajax = Dajax()
+	page = int(page)
 	if search_type != "All":
-		ingredients = Ingredient.objects.filter(name__istartswith=search, ingredient_type__name__iexact=search_type)
+		ingredients = Ingredient.objects.filter(name__icontains=search, ingredient_type__name__iexact=search_type)
+		count = ingredients.count()
+		ingredients = ingredients.order_by('name')[page*num_per_page:(page+1)*num_per_page]
 	else:
-		ingredients = Ingredient.objects.filter(name__istartswith=search)
+		ingredients = Ingredient.objects.filter(name__icontains=search)
+		count = ingredients.count()
+		ingredients = ingredients.order_by('name')[page*num_per_page:(page+1)*num_per_page]
 	out = []
 	for ingredient in ingredients:
 		next = "<div class='ingredient-%s'><a href='#' id='ingredient_num_%s' onclick='add_ingredient(%s)'>%s " % (ingredient.ingredient_type.name.encode('ascii', 'ignore').lower().split('/')[0], ingredient.id, ingredient.id , ingredient.name)
@@ -37,6 +42,10 @@ def update_recipe_ingredient_search(request, div_id, search, search_type="All"):
 		next += "</a></div>"
 		out.append(next)
 
+	if page != 0:
+		out.append('<button onclick="update_page(%d)">Previous</button>' % (page-1))
+	if page != count/num_per_page:
+		out.append('<button onclick="update_page(%d)">Next</button>' % (page+1))
 	dajax.assign('#' + div_id, 'innerHTML', "".join(out))
 	return dajax.json()
 
