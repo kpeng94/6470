@@ -89,18 +89,7 @@ var toggleToolbar = function() {
 
 $(document).ready(function(){
 	var image = document.getElementById('login-pic');
-	var height = image.naturalHeight;
-	var width = image.naturalWidth;
-	if(height > 80 && width > 80){
-		if(height > width){
-			image.style.width = '80px';
-			image.style.top = -(image.height-80)/2 + 'px';
-		}
-		else{
-			image.style.height = '80px';
-			image.style.left = -(image.width-80)/2 + 'px';
-		}
-	}
+	resizeImage(50, image);
 });
 
 /**
@@ -109,13 +98,13 @@ $(document).ready(function(){
 var resizeImage = function(threshold, image) {
 	var height = image.naturalHeight;
 	var width = image.naturalWidth;
-	if (height > 80 && width > 80) {
+	if (height > threshold && width > threshold) {
 		if (height > width) {
 			image.style.width = threshold + 'px';
-			image.style.top = -(image.height - 80) / 2 + 'px';
+			image.style.top = -(image.height - threshold) / 2 + 'px';
 		} else {
 			image.style.height = threshold + 'px';
-			image.style.left = -(image.width - 80) / 2 + 'px';
+			image.style.left = -(image.width - threshold) / 2 + 'px';
 		}
 	}
 }
