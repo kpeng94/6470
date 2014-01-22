@@ -31,7 +31,7 @@
 
 .ingredient-list {
   height: 500px;
-  width: 800px;
+  width: 600px;
   overflow: scroll;
 }
 
@@ -52,5 +52,9 @@
 
 .added-ingredients {
   display: inline-block;
+  width: 400px;
 }
 
+.ingredient-line .ingredient-input{
+
+}
