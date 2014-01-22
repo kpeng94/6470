@@ -39,13 +39,13 @@
          <button id = 'register' value="Register" type="button" onclick="location.href = '/register'">Register</button>
         {% else %}
       </div>
-        <div id='text'>
-          You are currently logged in as {{ user.username }}. <br/>
-            <form method = 'post' action='/logout'>
-            {% csrf_token %}
-            <input type='submit', value='Logout'>
-          </form>
-        </div>
+      <div id='text'>
+        You are currently logged in as {{ user.username }}. <br/>
+          <form method = 'post' action='/logout'>
+          {% csrf_token %}
+          <input type='submit', value='Logout'>
+        </form>
+      </div>
         {% endif %}
       </div>
 
