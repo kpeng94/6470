@@ -67,20 +67,51 @@ var toggleToolbar = function() {
 	var navbar = document.getElementById('main-navbar');
 	var navbarButton = document.getElementById('nav-button');
   var dimOverlay = document.getElementById('dim-overlay');
+  var triangleImg = document.getElementById('triangle');
   var open = 'navbar-open';
   var close = 'navbar-closed';
 	toggleClass(navbar, open);
 	toggleClass(navbarButton, open);
   toggleClass(dimOverlay, open);
+  toggleClass(triangle, open);
 	if (hasClass(navbar, open)) {
 		removeClass(navbar, close);
 		removeClass(navbarButton, close);
     removeClass(dimOverlay, close);
+    removeClass(triangle, close);
 	} else {
 		addClass(navbar, close);
 		addClass(navbarButton, close);
     addClass(dimOverlay, close);
+    addClass(triangle, close);
+	}
+}
+
+$(document).ready(function(){
+	var image = document.getElementById('login-pic');
+	resizeImage(50, image);
+});
+
+/**
+ * Resizes the image based on the threshold
+ */
+var resizeImage = function(threshold, image) {
+	var height = image.naturalHeight;
+	var width = image.naturalWidth;
+	if (height > threshold && width > threshold) {
+		if (height > width) {
+			image.style.width = threshold + 'px';
+			image.style.top = -(image.height - threshold) / 2 + 'px';
+		} else {
+			image.style.height = threshold + 'px';
+			image.style.left = -(image.width - threshold) / 2 + 'px';
+		}
 	}
 }
 
 // Global functions
+if(document.getElementById("register")){
+document.getElementById("register").onclick = function () {
+        location.href = "/register";
+    };
+}

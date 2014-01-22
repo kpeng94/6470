@@ -29,7 +29,7 @@ def login_user(request):
 		user = authenticate(username=username, password=password)
 		if user is not None:
 			login(request,user)
-		return redirect(request.META['HTTP_REFERER'])
+		return redirect('' + request.META['HTTP_REFERER'])
 	return redirect('/home')
 
 def register(request):
@@ -82,7 +82,7 @@ def add_recipe(request):
 			ingredients = json.loads(recipe.ingredients)
 			for i in xrange(len(ingredients['id'])):
 				ingredient_name = Ingredient.objects.get(id=ingredients['id'][i]).name
-				ingredient_list.append(IngredientWrapper(ingredients['id'][i], ingredients['qty'][i], ingredients['unit'][i], ingredient_name))
+				ingredient_list.append(IngredientWrapper(ingredients['id'][i], ingredients['qty'][i], ingredients['unit'][i]))
 	ingredient_types = IngredientType.objects.all()
 	i_types = [types.name for types in ingredient_types]
 	return render_to_response('add_recipe.html', {'type_list': i_types, 'ingredient_list': ingredient_list, 'recipe_id': recipe_id}, context_instance=RequestContext(request))

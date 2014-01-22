@@ -7,165 +7,170 @@ body {
   margin: 0;
   width: 100%;
   height: 100%;
-  overflow: hidden;
+  position: absolute;
 }
 
 /* Header (Navigation bar) code */
-nav {
-  position: absolute;
-  margin-top: -180px;
-  margin-bottom: 0;
+#header {
+  position: relative;
 	width: 100%;
-  background-color: #DDD4BC;
-  height: 180px;
-  z-index: 12;
-}
-
-nav.navbar-open {
-  margin-top: 0;
-  -webkit-transition: margin-top 500ms ease;
-  transition: margin-top 500ms ease;
-}
-
-nav.navbar-closed {
-  margin-top: -180px;
-  -webkit-transition: margin-top 500ms ease;
-  transition: margin-top 500ms ease;
-}
-
-.foodbook-symbol {
-  /* TODO: insert image */
-  position: absolute;
-  top: 0px;
-  left: 15px;
-  width: 70px;
-  height: 70px;
-  background-color: yellow;
-  -webkit-box-shadow: 0px 3px 4px #888888;
-  box-shadow: 0px 3px 4px #888888;
+  background-color: #000000;
+  height: 60px;
   z-index: 100;
 }
 
-nav .login-icon {
+#header * {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+#header #header-search {
+  right: 500px;
   position: absolute;
-  right: 10px;
+  height: 40px;
+  background-color: white;
+  margin-top: 10px;
+  width: 700px;
+}
+
+#header #header-search input {
+  color: black;
+  height: 0px;
+  font-size: 40px;
+  position: absolute;
+  padding-left: 60px;
+  width: 700px;
+  border: none;
+  outline: none;
+}
+
+#header .search-icon {
+  position: absolute;
   top: 10px;
-  /*margin: 10px 10px 0 10px;*/
-  width: 80px;
-  height: 80px;
-	background-color: #0022FF;
+  left: 10px;
+  height: 20px;
+  width: 20px;
+  border: 1px solid black;
+}
+
+#header .header-content {
+  display: inline-block;
+  -webkit-filter: grayscale(1);
+  filter: grayscale(1);
+  margin: 5px;
+  float: right;
+}
+
+#header .header-login.user-icon{
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  border-radius: 100px;
+  background-color: #FFFFFF;
+  width: 50px;
+  height: 50px;
 	-webkit-border-radius: 50px;
   -moz-border-radius: 50px;
 	border-radius: 50px;
   display: inline-block;
+  overflow:hidden;
+  text-align: center;
+  background-size: 50px 50px;
 }
 
-nav .login {
+#header .header-login img {
+  position: relative;
+  display: block;
+}
+
+#header .header-data {
+  width: 50px;
+  height: 50px;
+  background-color: #0000FF;
+  background-size: 40px 40px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url('/static/img/glyphicons_free/glyphicons/png/glyphicons_041_charts.png');
+}
+
+#header .header-login:hover {
+  -webkit-filter: grayscale(0);
+  filter: grayscale(0);
+}
+
+#header .login {
 	position: absolute;
-  background-color: yellow;
+  background-color: #EEEEEE;
   height: 100px;
 	right: 0px;
-  top: 50px;
+  top: 60px;
 	bottom: 0;
 	padding: 0;
   visibility: hidden;
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
 }
 
-nav .login.visible{
+#header .login * {
+  color: black;
+}
+#header .login.visible{
   visibility: visible;
 }
 
-nav > .login > form > input {
-  display: block;
-  position: absolute;
-  padding: 5px;
-  border: none;
-  border-radius: 5px;
-  right: 0;
-}
-
-nav .login-field {
-  display: block;
-}
-
-nav .login-field input {
-  padding: 5px;
+#header > .login > form > input {
+  padding: 2px 5px 2px 5px;
   border: 1px solid black;
-  border-radius: 10px;
+  background-color: #00FF00;
+  margin-right: 10px;
+  position: absolute;
+  right: 0px;
+}
+
+#header #register {
+  position: absolute;
+  left: 0px;
+  bottom: 4px;
+  margin: 5px 10px 2px 10px;
+  padding: 2px 5px 2px 5px;
+  border: 1px solid black;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+#header .login-field input {
+  padding: 5px;
+  margin: 5px 10px 2px 10px;
+  border: 1px solid black;
   -webkit-box-shadow: 0;
   outline: none;
+  bottom: 4px;
 }
 
-nav .ingredient-database {
+
+#header .ingredient-database {
   position: absolute;
   left: 150px;
   top: 15px;
 }
 
+
+/* MAIN PAGE */
+
 .top-half {
-  background-color: blue;
+  position: relative;
+  background-color: #FFFFFF;
   width: 100%;
   height: 50%;
+  background-image: url('/static/img/dummybackground.jpg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
 }
 
 .bottom-half {
+  position: relative;
   width: 100%;
-  height: 50%;
-  background-color: yellow;
-}
-
-#nav-button {
-  background-color: #f8dc0b;
-  position: absolute;
-  width: 70px;
-  height: 70px;
-  right: 25px;
-  -webkit-box-shadow: 0px 3px 4px #888888;
-  box-shadow: 0px 3px 4px #888888;
-  /* Insert image here*/
-  z-index: 100;
-}
-
-#nav-button.navbar-closed {
-  margin-top: 0px;
-  -webkit-transition: margin-top 500ms ease;
-  transition: margin-top 500ms ease;
-}
-
-#nav-button.navbar-open {
-  margin-top: 180px;
-  -webkit-transition: margin-top 500ms ease;
-  transition: margin-top 500ms ease;
-}
-
-#nav-button:hover {
-  background-color: #ffe520;
-  -webkit-transition: margin-top 500ms ease, background-color 500ms ease;
-  transition: margin-top 500ms ease, background-color 500ms ease;
-}
-
-#dim-overlay {
-  position: absolute;
-  background-color: #000000;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  visibility: hidden;
-  z-index: 2;
-}
-
-#dim-overlay.navbar-closed {
-  opacity: 0;
-  visibility: hidden;
-  -webkit-transition: opacity 500ms ease;
-  transition: opacity 500ms ease;
-}
-
-#dim-overlay.navbar-open {
-  opacity: 0.5;
-  visibility: visible;
-  -webkit-transition: opacity 500ms ease;
-  transition: opacity 500ms ease;
+  height: 35%;
+  background-color: #DDDDDD;
 }
 
 #start-button {
@@ -181,45 +186,26 @@ nav .ingredient-database {
   color: white;
 }
 
-#start-button:hover {
-  /*background-image: linear-gradient(#);*/
-}
-
-.navbar-content {
-  position: relative;
-  float: left;
-  display: inline-block;
-  text-align: center;
-  width: 15%;
-  height: 120px;
-  margin: 30px 1% 30px 1%;
-}
-
-.navbar-content:nth-child(1) {
-  margin-left: 16%;
-}
-
-.navbar-content:after {
-  position: absolute;
-  content:"";
-  width: 1px;
-  height: 120px;
-  background-color: #777777;
-  opacity: 0.5;
-  top: 0;
-  left: 0;
-  -webkit-box-shadow: 1px 1px 5px #777777;
-  box-shadow: 1px 1px 5px #777777;
-}
-
-.navbar-content:nth-child(1):after {
-  width: 0;
-}
-
 .main-content {
   text-align: center;
   margin: 0px auto 0px auto;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  width: 400px;
+}
+
+#footer {
+  position: relative;
+  background-color: #000000;
+  height: 60px;
+  width: 100%;
+}
+
+#footer-content {
+  text-align: center;
+  color: #FFFFFF;
   width: 300px;
+  padding-top: 10px;
+  margin: auto;
+  height: 30px;
 }

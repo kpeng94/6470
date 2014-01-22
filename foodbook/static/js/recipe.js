@@ -77,6 +77,16 @@ function save_recipe(){
 	return false;
 }
 
+function check_nutrients(){
+	summary_ingredients();
+	Dajaxice.recipe.check(test, {'ingredients': cache_list});
+	return false;
+}
+
+function test(data){
+	alert(data);
+}
+
 window.onload = function(e){
 	perform_search();	
 }

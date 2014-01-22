@@ -1,0 +1,116 @@
+.profile-body {
+  width: 80%;
+  margin-left: 10%;
+}
+
+.profile-content-background {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  background-color: #DDDDDD;
+}
+
+/*TODO: fix positioning using JS*/
+.profile-content-background:before {
+  content:'';
+  position: absolute;
+  margin: 0 45% 0 45%;
+  top: 200px;
+  height: 50px;
+  width:100px;
+  -webkit-border-radius: 0 0 100px 100px;
+  border-radius: 0px 0px 100px 100px;
+  background-color: #DDDDDD;
+  z-index: 1;
+}
+
+.profile-content {
+  height: 200px;
+  width: 1080px;
+  margin: 0 auto 0 auto;
+}
+
+.profile-image {
+  width: 150px;
+  height: 150px;
+  background-color: #FFFFFF;
+  background-size: 150px 150px;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  border-radius: 100px;
+}
+
+.profile-image-container {
+  vertical-align: top;
+  display: inline-block;
+  position: relative;
+  top: 25px;
+  left: 20px;
+  width: 200px;
+  height: 150px;
+}
+
+.profile-info {
+  position: relative;
+  display: inline-block;
+  width: 300px;
+  height: 150px;
+  top: 25px;
+  padding: 20px 25px 20px 25px;
+}
+
+.profile-info * {
+  line-height: 30px;
+  padding-bottom: 10px;
+  font-size: 30px;
+}
+
+.profile-achievements {
+  display: inline-block;
+  position: relative;
+  top: 25px;
+  left: 20px;
+  width: ;
+  height: ;
+  font-size: 30px;
+  line-height: 30px;
+}
+
+.profile-achievements * {
+  width: 200px;
+}
+
+.profile-reputation {
+  display: inline-block;
+  padding: 0 50px 0 0 ;
+}
+
+.profile-awards {
+  display: inline-block;
+  padding: 0 0 0 50px;
+}
+
+/* Total width right now: ~1020px for content*/
+
+.profile-tabs-container {
+  width: 100%;
+}
+
+.profile-tabs{
+  display: block;
+  width: 420px;
+  height: 210px;
+  margin: 0 auto 0 auto;
+}
+
+.profile-tab {
+  z-index: 0;
+  float: left;
+  position: relative;
+  padding: 0;
+  margin: 0;
+  border: 1px solid black;
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+}
