@@ -1,3 +1,10 @@
+#recipe-name {
+  width: 400px;
+  text-align: center;
+  margin: 10px auto 10px auto;
+  font-size: 20px;
+}
+
 .recipe-content {
   width: 80%;
   margin-left: 10%;
