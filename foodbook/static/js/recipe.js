@@ -25,6 +25,11 @@ function show_ingredient(data){
 	$('#recipe-list').append(div_elem);
 }
 
+function update_page(num){
+	Dajaxice.ingredient.update_url(Dajax.process, {'search': $('#ingredient-search').val(), 'div_id': 'ingredient-list', 'search_type': selected_type, 'page': num});
+	return false;
+}
+
 function check_ingredient(){
 	chosen_ingredients = $('#recipe-list').children();
 	for(var i=0; i < chosen_ingredients.length; i++) {
