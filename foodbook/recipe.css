@@ -1,52 +1,45 @@
 .recipe-content {
-	position:absolute;
-	top: 150px;
-	left: 150px;
-	width = 1000px;
+  width: 80%;
+}
+
+.recipe-content a {
+  text-decoration: none;
+  color: #000000;
+}
+
+.type-tabs {
+  vertical-align: top;
+  display: inline-block;
+  width: 150px;
 }
 
 .type-tab {
-	position: absolute;
-	top: 30px;
-	left: 0px;
-	width: 150px;
+  padding: 5px 0 5px 0;
+  text-align: center;
+  border: 1px solid black;
 }
 
-div .simple-search-bar {
-	position: absolute;
-	top: 0px;
-	left: 150px;
+.all-ingredients {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.simple-search-bar {
 }
 
 .ingredient-list {
-	position: absolute;
-	top: 30px;
-	left: 150px;
-	width: 600px;
-
+  height: 1000px;
+  width: 800px;
+  overflow: scroll;
 }
 
 #recipe-list {
-	position: absolute;
-	top: 30px;
-	left: 750px;
-	width: 600px;
 }
 
 #save-recipe {
-	position:absolute;
-	top: 100px;
-	left: 1300px;
 }
 
 #check-nutr {
-	position:absolute;
-	top: 130px;
-	left:1300px;
 }
 
-#personal-recipe-list {
-	position:absolute;
-	top: 100px;
-	left: 200px;
-}
+#personal-recipe-list {}

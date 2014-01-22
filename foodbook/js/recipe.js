@@ -80,6 +80,7 @@ function save_recipe(){
 function check_nutrients(){
 	summary_ingredients();
 	Dajaxice.recipe.check(test, {'ingredients': cache_list});
+	return false;
 }
 
 function test(data){

@@ -13,10 +13,10 @@ def update_search(request, div_id, search, search_type="All"):
 		ingredients = Ingredient.objects.filter(name__istartswith=search)
 	out = []
 	for ingredient in ingredients:
-		next = "<a href='/ingredients/%s' id='ingredient_num_%s'>%s " % (ingredient.name, ingredient.id, ingredient.name)
+		next = "<div class='ingredient-%s'><a href='/ingredients/%s' id='ingredient_num_%s'>%s " % (ingredient.ingredient_type.name.encode('ascii', 'ignore').lower().split('/')[0], ingredient.id, ingredient.id, ingredient.name)
 		if ingredient.modifier:
 			next += "(%s)" % ingredient.modifier
-		next += "</a><br/>"
+		next += "</a></div>"
 		out.append(next)
 
 	dajax.assign('#' + div_id, 'innerHTML', "".join(out))
@@ -31,7 +31,7 @@ def update_recipe_ingredient_search(request, div_id, search, search_type="All"):
 		ingredients = Ingredient.objects.filter(name__istartswith=search)
 	out = []
 	for ingredient in ingredients:
-		next = "<div class='ingredient-%s'><a href='#' id='ingredient_num_%s' onclick='add_ingredient(%s)'>%s " % (ingredient.ingredient_type.name, ingredient.id, ingredient.id , ingredient.name)
+		next = "<div class='ingredient-%s'><a href='#' id='ingredient_num_%s' onclick='add_ingredient(%s)'>%s " % (ingredient.ingredient_type.name.encode('ascii', 'ignore').lower().split('/')[0], ingredient.id, ingredient.id , ingredient.name)
 		if ingredient.modifier:
 			next += "(%s)" % ingredient.modifier
 		next += "</a></div>"
