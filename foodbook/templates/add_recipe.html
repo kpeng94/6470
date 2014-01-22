@@ -10,34 +10,42 @@
   Recipe Name Here
 </div>
 <div class='recipe-content'>
-	<input id='recipe-id-unique' type='hidden' value='{{ recipe_id }}'/>
-	<div class='type-tabs'>
-		<div class = 'type-tab'><a href="#" class="tab-link" id="all" onclick="change_search('All');">All</a></div>
-		{% for type in type_list %}
-		<div class = 'type-tab'><a href="#" class="tab-link" id="{{type|lower}}" onclick="change_search('{{type|lower}}');">{{ type }}</a></div>
-		{% endfor %}
-	</div>
-	<div class = 'all-ingredients'>
-    <div class='simple-search-bar'>
-      <input id='ingredient-search' type='text' onkeyup="perform_search()" onpaste="perform_search()" placeholder="Search"/>
+  <div id = 'recipe-add' class = 'selected'>
+  	<input id='recipe-id-unique' type='hidden' value='{{ recipe_id }}'/>
+  	<div class='type-tabs'>
+  		<div class = 'type-tab'><a href="#" class="tab-link" id="all" onclick="change_search('All');">All</a></div>
+  		{% for type in type_list %}
+  		<div class = 'type-tab'><a href="#" class="tab-link" id="{{type|lower}}" onclick="change_search('{{type|lower}}');">{{ type }}</a></div>
+  		{% endfor %}
+  	</div>
+  	<div class = 'all-ingredients'>
+      <div class='simple-search-bar'>
+        <input id='ingredient-search' type='text' onkeyup="perform_search()" onpaste="perform_search()" placeholder="Search"/>
+      </div>
+      <div class='ingredient-list' id='ingredient-list'>
+      </div>
     </div>
-    <div class='ingredient-list' id='ingredient-list'>
+    <div class='added-ingredients' id='recipe-list'>
+      This is where the ingredients your recipe consists of go.
+      {% for ingredient in ingredient_list %}
+      <div class='ingredient-line' id='ingredient_line_{{ ingredient.ingredient_id }}'>
+        {{ ingredient.name }} <input type='number' id='ingredient_line_{{ ingredient.ingredient_id }}_number' value={{ingredient.qty }} /> <select id='ingredient_line_{{ ingredient.ingredient_id }}_select'>
+        {% for ss in ingredient.servingsize %}
+        <option value='{{ ss.name }}'
+        {% if ss.name == ingredient.unit %} selected='selected' {% endif %}>{{ ss.name }}</option>
+        {% endfor %}
+      </select>
+      </div>
+    {% endfor %}
     </div>
   </div>
-  <div class='added-ingredients' id='recipe-list'>
-    This is where the ingredients your recipe consists of go.
-    {% for ingredient in ingredient_list %}
-    <div class='ingredient-line' id='ingredient_line_{{ ingredient.ingredient_id }}'>
-      {{ ingredient.name }} <input type='number' id='ingredient_line_{{ ingredient.ingredient_id }}_number' value={{ingredient.qty }} /> <select id='ingredient_line_{{ ingredient.ingredient_id }}_select'>
-      {% for ss in ingredient.servingsize %}
-      <option value='{{ ss.name }}'
-      {% if ss.name == ingredient.unit %} selected='selected' {% endif %}>{{ ss.name }}</option>
-      {% endfor %}
-    </select>
-    </div>
-  {% endfor %}
+  <div id = 'recipe-instructions-and-descriptions'>
+  </div>
+  <div id = 'recipe-summary'>
   </div>
 </div>
 <button onclick='save_recipe();' id='save-recipe'>Save</button>
 <button onclick='check_nutrients();' id='check-nutr'>Nutrients</button>
+<button onclick='nextContent();' id='next'>Next</button>
+<button onclick='previousContent();' id='prev'>prev</button>
 {% endblock %}

@@ -93,5 +93,42 @@ function test(data){
 }
 
 window.onload = function(e){
-	perform_search();	
+	perform_search();
 }
+
+var getTextWidth = function(div) {
+	var width = (div.clientWidth + 1);
+	return width;
+};
+
+var centerText = function(div, outerDiv) {
+	var outerWidth = outerDiv.offsetWidth;
+	var width = getTextWidth(div);
+	var margin = (outerWidth - width) / 2;
+	div.style.marginLeft = margin + 'px';
+	div.style.marginRight = margin + 'px';
+};
+
+var nextContent = function() {
+	var selectedDiv = document.getElementsByClassName('selected')[0];
+	if (selectedDiv.id == 'recipe-add') {
+		removeClass(selectedDiv, 'selected');
+		addClass(document.getElementById('recipe-instructions-and-descriptions'), 'selected');
+	} else if (selectedDiv.id == 'recipe-instructions-and-descriptions') {
+		removeClass(selectedDiv, 'selected');
+		addClass(document.getElementById('recipe-summary'),
+										 'selected');
+	}
+};
+
+var previousContent = function() {
+	var selectedDiv = document.getElementsByClassName('selected')[0];
+	if (selectedDiv.id == 'recipe-summary') {
+		removeClass(selectedDiv, 'selected');
+		addClass(document.getElementById('recipe-instructions-and-descriptions'), 'selected');
+	} else if (selectedDiv.id == 'recipe-instructions-and-descriptions') {
+		removeClass(selectedDiv, 'selected');
+		addClass(document.getElementById('recipe-add'),
+										 'selected');
+	}
+};

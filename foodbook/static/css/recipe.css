@@ -73,3 +73,36 @@
 .ingredient-line .ingredient-name {
   display: inline-block;
 }
+
+#recipe-instructions-and-descriptions {
+  border: 1px solid black;
+  visibility: hidden;
+  display: none;
+}
+
+#recipe-summary {
+  border: 10px solid black;
+  visibility: hidden;
+  display: none;
+}
+
+#recipe-add {
+  border: 1px solid blue;
+  visibility: hidden;
+  display: none;
+}
+
+#recipe-add.selected {
+  visibility: visible;
+  display: block;
+}
+
+#recipe-summary.selected {
+  visibility: visible;
+  display: block;
+}
+
+#recipe-instructions-and-descriptions.selected {
+  visibility: visible;
+  display: block;
+}

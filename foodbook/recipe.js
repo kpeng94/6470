@@ -90,17 +90,3 @@ function test(data){
 window.onload = function(e){
 	perform_search();
 }
-
-var getTextWidth = function(div) {
-	var width = (div.clientWidth + 1);
-	return width;
-};
-
-var centerText = function(div, outerDiv) {
-	var outerWidth = outerDiv.offsetWidth;
-	var width = getTextWidth(div);
-	var margin = (outerWidth - width) / 2;
-	div.style.marginLeft = margin + 'px';
-	div.style.marginRight = margin + 'px';
-}
-
