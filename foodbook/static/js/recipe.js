@@ -19,7 +19,7 @@ function perform_search(){
 
 function show_ingredient(data){
 	var div_elem = document.createElement("div");
-	div_elem.class = 'ingredient-line';
+	div_elem.className = 'ingredient-line';
 	div_elem.id = 'ingredient_line_' + data.id;
 	div_elem.innerHTML = data.html;
 	$('#recipe-list').append(div_elem);
