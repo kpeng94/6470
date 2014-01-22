@@ -38,13 +38,12 @@
         </form>
          <button id = 'register' value="Register" type="button" onclick="location.href = '/register'">Register</button>
         {% else %}
-      </div>
         <div id='text'>
           You are currently logged in as {{ user.username }}. <br/>
             <form method = 'post' action='/logout'>
             {% csrf_token %}
-            <input type='submit', value='Logout'>
-          </form>
+            <input type='submit', value='Logout'/>
+            </form>
         </div>
         {% endif %}
       </div>
@@ -57,5 +56,4 @@
   <div id = 'footer'> <div id = 'footer-content'> Foodbook was created by Genghis Chau, Kevin Peng, and Rene Zhang. &#xA9 2014.</div></div>
   </body>
   <script src = '/static/js/main.js'></script>
-
 </html>
