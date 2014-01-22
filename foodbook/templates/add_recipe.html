@@ -21,18 +21,16 @@
     <div class='ingredient-list' id='ingredient-list'>
     </div>
   </div>
-  <div>
-    <div class='container' id='recipe-list'>
-      This is where the ingredients your recipe consist of go.
-      {% for ingredient in ingredient_list %}
-      <div class='ingredient-line' id='ingredient_line_{{ ingredient.ingredient_id }}'>
-        {{ ingredient.name }} <input type='number' id='ingredient_line_{{ ingredient.ingredient_id }}_number' value={{ingredient.qty }} /> <select id='ingredient_line_{{ ingredient.ingredient_id }}_select'>
-        {% for ss in ingredient.servingsize %}
-        <option value='{{ ss.name }}'
-        {% if ss.name == ingredient.unit %} selected='selected' {% endif %}>{{ ss.name }}</option>
-        {% endfor %}
-      </select>
-      </div>
+  <div class='added-ingredients' id='recipe-list'>
+    This is where the ingredients your recipe consist of go.
+    {% for ingredient in ingredient_list %}
+    <div class='ingredient-line' id='ingredient_line_{{ ingredient.ingredient_id }}'>
+      {{ ingredient.name }} <input type='number' id='ingredient_line_{{ ingredient.ingredient_id }}_number' value={{ingredient.qty }} /> <select id='ingredient_line_{{ ingredient.ingredient_id }}_select'>
+      {% for ss in ingredient.servingsize %}
+      <option value='{{ ss.name }}'
+      {% if ss.name == ingredient.unit %} selected='selected' {% endif %}>{{ ss.name }}</option>
+      {% endfor %}
+    </select>
     </div>
   </div>
   {% endfor %}
