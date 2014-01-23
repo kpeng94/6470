@@ -20,7 +20,6 @@ body {
 }
 
 #header * {
-  color: #FFFFFF;
   text-decoration: none;
 }
 
@@ -28,20 +27,31 @@ body {
   right: 500px;
   position: absolute;
   height: 40px;
-  background-color: white;
+  background-color: #F1F1F1;
   margin-top: 10px;
   width: 700px;
 }
 
 #header #header-search input {
   color: black;
-  height: 0px;
-  font-size: 40px;
+  height: 24px;
+  font-size: 18px;
   position: absolute;
-  padding-left: 60px;
-  width: 700px;
+  padding-left: 40px;
+  top: 9px;
+  bottom: 9px;
+  width: 690px;
   border: none;
   outline: none;
+  font-family: Roboto, 'sans-serif';
+  font-weight: 300;
+  background-color: #F1F1F1;
+}
+
+#header #header-search:hover,
+#header #header-search input:hover,
+#header #header-search:hover input {
+  background-color: #FFFFFF;
 }
 
 #header .search-icon {
@@ -51,6 +61,10 @@ body {
   height: 20px;
   width: 20px;
   border: 1px solid black;
+  background: url('/static/img/glyphicons_free/glyphicons/png/glyphicons_027_search.png') no-repeat 0px 0px;
+  background-size: 20px 20px;
+  border: none;
+  opacity: 0.3;
 }
 
 #header .header-content {
@@ -111,16 +125,13 @@ body {
   border-bottom: 1px solid black;
 }
 
-#header .login * {
-  color: black;
-}
 #header .login.visible{
   visibility: visible;
 }
 
 #header > .login > form > input {
   border: 1px solid transparent;
-  background-color: #07BF07;
+  background-color: #0AD60A;
   margin-right: 10px;
   position: absolute;
   right: 0px;
@@ -136,31 +147,49 @@ body {
   top: 84px;
 }
 
+#header > .login > form > input:hover{
+  background-color: #07BF07;
+}
+
 #header .login-field input {
   padding: 5px;
   padding-left: 30px;
   margin: 7px 10px 2px 10px;
   border: 1px solid #c6c6c6;
   -webkit-box-shadow: 0;
-  outline-color: #07BF07;
+  outline-color: #09E809;
   bottom: 4px;
   width: 230px;
   font-family: Roboto;
   font-weight: 100;
 }
 
+#header #id_username {
+  color: #000000;
+  font-weight: 300;
+  background-color: #F1F1F1;
+}
+
+#header #id_password {
+  color: #000000;
+  font-weight: 300;
+  background-color: #F1F1F1;
+}
+
 #header .username-img {
   position: absolute;
-  top: 8px;
-  left: 11px;
+  top: 7px;
+  left: 10px;
   width: 30px;
   height: 30px;
-  background: url('/static/img/glyphicons_free/glyphicons/png/glyphicons_003_user.png') no-repeat 3px 3px;
+  background-size: 22px 22px;
+  background: url('/static/img/glyphicons_free/glyphicons/png/glyphicons_003_user.png') no-repeat 4px 4px;
   opacity: 0.3;
 }
 
 #header .login-field .password-img {
-  background: url('/static/img/glyphicons_free/glyphicons/png/glyphicons_204_unlock.png') no-repeat 4px 2px;
+  background: url('/static/img/glyphicons_free/glyphicons/png/glyphicons_204_unlock.png') no-repeat 6px 4px;
+  background-size: 18px 22px;
   position: absolute;
   top: 46px;
   left: 11px;
@@ -182,6 +211,7 @@ body {
   width: 250px;
   border-top: 1px solid #c6c6c6;
   text-align: center;
+  border-bottom: 1px solid transparent;
 }
 
 #register-area div {
@@ -192,11 +222,24 @@ body {
   font-family: Roboto, 'sans-serif';
   font-size: 12px;
   font-weight: 100;
+  color: #4C504C;
 }
 
 #register-area div a {
   text-decoration: none;
-  border-bottom: 1px solid #B3B7B3;
+  color: #4C504C;
+  border-bottom: 1px solid #D0D2D0;
+}
+
+#register-area div a:hover,
+#register-area div:hover a,
+#register-area div:hover {
+  color: black;
+}
+
+#register-area div:hover a,
+#register-area div a:hover {
+  border-bottom: 1px solid #000000;
 }
 
 
