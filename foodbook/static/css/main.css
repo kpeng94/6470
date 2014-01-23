@@ -107,6 +107,16 @@ body {
   background-image: url('/static/img/glyphicons_free/glyphicons/png/glyphicons_041_charts.png');
 }
 
+#header .header-recipe {
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  background-size: 40px 40px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url('/static/img/819.png');
+}
+
 #header .header-login:hover {
   -webkit-filter: grayscale(0);
   filter: grayscale(0);
