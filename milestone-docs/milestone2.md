@@ -29,7 +29,7 @@ We used Django to implement the backend. We also used some libraries for Django 
 
 For the front-end, we used jQuery. Everything else is implemented from pure HTML, CSS and JavaScript that we wrote by ourselves.
 <br/><br/>
-**7. What is the main browser you are targeting? **
+**7. What is the main browser you are targeting?**
 
 We are targeting Google Chrome.
 <br/><br/>
