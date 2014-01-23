@@ -1,3 +1,4 @@
+1. Our website focus has changed a little bit since the last milestone (User Research #1-4), as we are now focusing in on creating personalized recommendations for users who have certain dietary restrictions. As such, our application will suggest recipes and possible ingredient substitutions that will help users with special dietary destrictions more easily meet their goals. The other questions remain the same.
 2. We implemented a way to view recipes, add recipes, and view a user's diet. We set up a test account for the 6.470 staff:
 username: guestuser
 password: guest
