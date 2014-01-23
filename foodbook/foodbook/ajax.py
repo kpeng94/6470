@@ -34,7 +34,10 @@ def update_recipe_ingredient_search(request, div_id, search, page='0', num_per_p
 	ingredients = ingredients.order_by('name')[page*num_per_page:(page+1)*num_per_page]
 	out = []
 	for ingredient in ingredients:
-		next = "<div class='ingredient-%s'><a href='javascript:void(0);' class='ingredient-link' id='ingredient_num_%s' onclick='add_ingredient(%s)'>%s " % (ingredient.ingredient_type.name.encode('ascii', 'ignore').lower().split('/')[0], ingredient.id, ingredient.id , ingredient.name)
+		next = "<div class='ingredient-%s'><div class = 'ingredient-expanded-name'>%s " % (ingredient.ingredient_type.name.encode('ascii', 'ignore').lower().split('/')[0], ingredient.name)
+		if ingredient.modifier:
+			next += "(%s)" % ingredient.modifier
+		next += "</div><a href='javascript:void(0);' class='ingredient-link' id='ingredient_num_%s' onclick='add_ingredient(%s)'>%s " % (ingredient.id, ingredient.id , ingredient.name)
 		if ingredient.modifier:
 			next += "(%s)" % ingredient.modifier
 		next += "</a></div>"

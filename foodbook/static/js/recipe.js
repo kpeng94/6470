@@ -138,11 +138,6 @@ var previousContent = function() {
 	}
 };
 
-var showBoxOnHover = function(element) {
-	var textToDisplayInBox = element.innerHTML;
-
-}
-
 $('.ingredient-link').click(function(e){
 	e.preventDefault();
 })

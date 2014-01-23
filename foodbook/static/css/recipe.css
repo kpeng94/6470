@@ -69,6 +69,21 @@ body {
   overflow: hidden;
 }
 
+.ingredient-list > div:hover .ingredient-expanded-name {
+  visibility: visible;
+  display: block;
+  position: absolute;
+  left: 700px;
+  padding: 10px;
+  background-color: #00F2F2;
+  z-index: 2;
+}
+
+.ingredient-expanded-name {
+  visibility: hidden;
+  display: none;
+}
+
 .ingredient-fruit {
 }
 
