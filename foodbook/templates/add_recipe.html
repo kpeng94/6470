@@ -30,7 +30,7 @@
       This is where the ingredients your recipe consists of go.
       {% for ingredient in ingredient_list %}
       <div class='ingredient-line' id='ingredient_line_{{ ingredient.ingredient_id }}'>
-        {{ ingredient.name }} <input type='number' size='5' id='ingredient_line_{{ ingredient.ingredient_id }}_number' value={{ingredient.qty }} /> <select id='ingredient_line_{{ ingredient.ingredient_id }}_select'>
+        {{ ingredient.name }}<input type='number' size='5' id='ingredient_line_{{ ingredient.ingredient_id }}_number' value={{ingredient.qty }} /> <select class='ingredient-select' id='ingredient_line_{{ ingredient.ingredient_id }}_select'>
         {% for ss in ingredient.servingsize %}
         <option value='{{ ss.name }}'
         {% if ss.name == ingredient.unit %} selected='selected' {% endif %}>{{ ss.name }}</option>

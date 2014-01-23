@@ -74,7 +74,9 @@ def add_recipe(request):
 		else:
 			ingredients = json.loads(recipe.ingredients)
 			for i in xrange(len(ingredients['id'])):
-				ingredient_name = Ingredient.objects.get(id=ingredients['id'][i]).name
+				ingredient_name, ingredient_modifier = Ingredient.objects.get(id=ingredients['id'][i]).name, Ingredient.objects.get(id=ingredients['id'][i]).modifier
+				if ingredient_modifier:
+					ingredient_name = ingredient_name + ' (' + ingredient_modifier + ')'
 				ingredient_list.append(IngredientWrapper(ingredients['id'][i], ingredients['qty'][i], ingredients['unit'][i]))
 	ingredient_types = IngredientType.objects.all()
 	i_types = [types.name for types in ingredient_types]
