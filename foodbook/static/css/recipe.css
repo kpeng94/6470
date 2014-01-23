@@ -93,9 +93,13 @@ body {
 .ingredient-grain {
 }
 
+.ingredient-select {
+  width: 50px;
+}
+
 .added-ingredients {
   display: inline-block;
-  width: 400px;
+  width: 800px;
 }
 
 .ingredient-line .ingredient-input-div{

@@ -110,8 +110,23 @@ var resizeImage = function(threshold, image) {
 }
 
 // Global functions
-if(document.getElementById("register")){
-document.getElementById("register").onclick = function () {
-        location.href = "/register";
-    };
-}
+// Handlers for responsive fields
+
+$('#global-search').focus(function(){
+	$('#global-search').css('background-color', '#FFFFFF');
+	$('#header-search').css('background-color', '#FFFFFF');
+});
+
+$('#global-search').focusout(function(){
+	$('#global-search').css('background-color', '#F1F1F1');
+	$('#header-search').css('background-color', '#F1F1F1');
+});
+
+$('#header-search').hover(function(){
+	$('#global-search').css('background-color', '#FFFFFF');
+	$('#header-search').css('background-color', '#FFFFFF');
+}, function(){
+	if(!$('#global-search').is(':focus')){
+		$('#global-search').css('background-color', '#F1F1F1');
+		$('#header-search').css('background-color', '#F1F1F1');
+}}); 

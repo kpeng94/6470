@@ -69,6 +69,9 @@ class IngredientWrapper():
 		self.unit = measurement
 		self.conversion = ServingSize.objects.get(name__iexact=measurement, ingredients__id=iid).gram_conversion
 		self.name = Ingredient.objects.get(id=iid).name
+		ingredient_modifier = Ingredient.objects.get(id=iid).modifier
+		if ingredient_modifier:
+			self.name = self.name + ' (' + ingredient_modifier + ')'
 		self.servingsize = Ingredient.objects.get(id=iid).servingsize_set.all()
 
 class NutritionalValue():
