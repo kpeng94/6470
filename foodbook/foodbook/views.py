@@ -11,14 +11,7 @@ from user import upload_picture
 
 def home(request):
 	message = ''
-	if request.method == 'POST':
-		form = UserLoginForm(request.POST)
-		if form.is_valid():
-			message = login_user(request)
-			return HttpResponseRedirect(request.META['HTTP_REFERER'])
-	else:
-		form = UserLoginForm()
-	return render_to_response('index.html', {'message': message, 'form': form}, context_instance=RequestContext(request))
+	return render_to_response('index.html', {'message': message}, context_instance=RequestContext(request))
 
 def login_user(request):
 	if request.method == 'POST':
@@ -71,11 +64,11 @@ def search_ingredients(request):
 
 def add_recipe(request):
 	ingredient_list = []
-	recipe_id =  ''
+	recipe = None
 	if request.user.is_authenticated() and request.method == 'GET' and 'rid' in request.GET:
-		recipe_id = request.GET['rid']
+		recipe = request.GET['rid']
 		try:
-			recipe = Recipe.objects.get(id=recipe_id, user_id=request.user)
+			recipe = Recipe.objects.get(id=recipe, user_id=request.user)
 		except:
 			return HttpResponse("This isn't your recipe, or this recipe doesn't exist.")
 		else:
@@ -85,7 +78,7 @@ def add_recipe(request):
 				ingredient_list.append(IngredientWrapper(ingredients['id'][i], ingredients['qty'][i], ingredients['unit'][i]))
 	ingredient_types = IngredientType.objects.all()
 	i_types = [types.name for types in ingredient_types]
-	return render_to_response('add_recipe.html', {'type_list': i_types, 'ingredient_list': ingredient_list, 'recipe_id': recipe_id}, context_instance=RequestContext(request))
+	return render_to_response('add_recipe.html', {'type_list': i_types, 'ingredient_list': ingredient_list, 'recipe': recipe}, context_instance=RequestContext(request))
 
 def list_my_recipes(request):
 	if request.user.is_authenticated():

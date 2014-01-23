@@ -68,6 +68,7 @@ function summary_ingredients(){
 
 function confirm_save(data){
 	if(data.success){
+		$('#recipe-id-unique').val(data.rid);
 		alert("Save successful.");
 	}
 	else{
@@ -77,8 +78,11 @@ function confirm_save(data){
 
 function save_recipe(){
 	var id = $('#recipe-id-unique').val();
+	var description = $('#recipe-description').val();
+	var instructions = $('#recipe-instructions').val();
+	var name = $('#recipe-name-i').val();
 	summary_ingredients();
-	Dajaxice.recipe.save(confirm_save, {'rid': id, 'ingredients': cache_list});
+	Dajaxice.recipe.save(confirm_save, {'rid': id, 'ingredients': cache_list, 'name': name, 'description': description, 'instructions': instructions});
 	return false;
 }
 

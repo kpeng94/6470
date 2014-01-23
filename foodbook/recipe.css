@@ -1,5 +1,14 @@
+#recipe-name {
+  width: 400px;
+  text-align: center;
+  margin: 10px auto 10px auto;
+  font-size: 20px;
+}
+
 .recipe-content {
   width: 80%;
+  margin-left: 10%;
+  margin-top: 40px;
 }
 
 .recipe-content a {
@@ -28,18 +37,86 @@
 }
 
 .ingredient-list {
-  height: 1000px;
-  width: 800px;
+  height: 500px;
+  width: 600px;
   overflow: scroll;
 }
 
-#recipe-list {
+.ingredient-list > * {
+  padding: 2px 0 2px 0;
+  margin: 4px 10px 4px 10px;
+  background-color: #DDDDDD;
 }
 
-#save-recipe {
+.ingredient-fruit {
 }
 
-#check-nutr {
+.ingredient-meat {
 }
 
-#personal-recipe-list {}
+.ingredient-grain {
+}
+
+.added-ingredients {
+  display: inline-block;
+  width: 400px;
+}
+
+.ingredient-line .ingredient-input-div{
+  display: inline-block;
+}
+
+.ingredient-line .ingredient-select-div {
+  display: inline-block;
+}
+
+.ingredient-line .ingredient-name {
+  display: inline-block;
+}
+
+#recipe-instructions-and-descriptions {
+  border: 1px solid black;
+  visibility: hidden;
+  display: none;
+}
+
+#recipe-summary {
+  border: 10px solid black;
+  visibility: hidden;
+  display: none;
+}
+
+#recipe-add {
+  border: 1px solid blue;
+  visibility: hidden;
+  display: none;
+}
+
+#recipe-add.selected {
+  visibility: visible;
+  display: block;
+}
+
+#recipe-summary.selected {
+  visibility: visible;
+  display: block;
+}
+
+#recipe-instructions-and-descriptions.selected {
+  visibility: visible;
+  display: block;
+}
+
+input {
+	border: none;
+}
+
+input:focus {
+	background-color: #c6c6c6;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button{
+	-webkit-appearance: none;
+	margin: 0;
+}

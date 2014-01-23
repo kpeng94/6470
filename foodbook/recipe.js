@@ -19,10 +19,15 @@ function perform_search(){
 
 function show_ingredient(data){
 	var div_elem = document.createElement("div");
-	div_elem.class = 'ingredient-line';
+	div_elem.className = 'ingredient-line';
 	div_elem.id = 'ingredient_line_' + data.id;
 	div_elem.innerHTML = data.html;
 	$('#recipe-list').append(div_elem);
+}
+
+function update_page(num){
+	Dajaxice.ingredient.update_url(Dajax.process, {'search': $('#ingredient-search').val(), 'div_id': 'ingredient-list', 'search_type': selected_type, 'page': num});
+	return false;
 }
 
 function check_ingredient(){
@@ -63,6 +68,7 @@ function summary_ingredients(){
 
 function confirm_save(data){
 	if(data.success){
+		$('#recipe-id-unique').val(data.rid);
 		alert("Save successful.");
 	}
 	else{
@@ -72,8 +78,11 @@ function confirm_save(data){
 
 function save_recipe(){
 	var id = $('#recipe-id-unique').val();
+	var description = $('#recipe-description').val();
+	var instructions = $('#recipe-instructions').val();
+	var name = $('#recipe-name-i').val();
 	summary_ingredients();
-	Dajaxice.recipe.save(confirm_save, {'rid': id, 'ingredients': cache_list});
+	Dajaxice.recipe.save(confirm_save, {'rid': id, 'ingredients': cache_list, 'name': name, 'description': description, 'instructions': instructions});
 	return false;
 }
 
@@ -90,3 +99,40 @@ function test(data){
 window.onload = function(e){
 	perform_search();
 }
+
+var getTextWidth = function(div) {
+	var width = (div.clientWidth + 1);
+	return width;
+};
+
+var centerText = function(div, outerDiv) {
+	var outerWidth = outerDiv.offsetWidth;
+	var width = getTextWidth(div);
+	var margin = (outerWidth - width) / 2;
+	div.style.marginLeft = margin + 'px';
+	div.style.marginRight = margin + 'px';
+};
+
+var nextContent = function() {
+	var selectedDiv = document.getElementsByClassName('selected')[0];
+	if (selectedDiv.id == 'recipe-add') {
+		removeClass(selectedDiv, 'selected');
+		addClass(document.getElementById('recipe-instructions-and-descriptions'), 'selected');
+	} else if (selectedDiv.id == 'recipe-instructions-and-descriptions') {
+		removeClass(selectedDiv, 'selected');
+		addClass(document.getElementById('recipe-summary'),
+										 'selected');
+	}
+};
+
+var previousContent = function() {
+	var selectedDiv = document.getElementsByClassName('selected')[0];
+	if (selectedDiv.id == 'recipe-summary') {
+		removeClass(selectedDiv, 'selected');
+		addClass(document.getElementById('recipe-instructions-and-descriptions'), 'selected');
+	} else if (selectedDiv.id == 'recipe-instructions-and-descriptions') {
+		removeClass(selectedDiv, 'selected');
+		addClass(document.getElementById('recipe-add'),
+										 'selected');
+	}
+};
