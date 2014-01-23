@@ -242,6 +242,73 @@ body {
   border-bottom: 1px solid #000000;
 }
 
+#header .dropdown-icon a {
+  display: block;
+  width: 230px;
+  height: 28px;
+  background: #F1F1F1;
+  padding: 14px 10px 10px 15px;
+  color: black;
+  font-weight: bold;
+  font-family: Roboto;
+  font-weight: 100;
+  border-bottom: 1px solid #c6c6c6;
+  line-height: 25px;
+}
+
+#header #profile-img {
+  width: 30px;
+  height: 30px;
+  background: url('/static/img/glyphicons_free/glyphicons/png/glyphicons_155_show_big_thumbnails.png') no-repeat 4px 4px;
+  opacity: 0.3;
+  position: absolute;
+  right: 10px;
+  top: 11.5px;
+  pointer-events: none;
+}
+
+#header #settings-img {
+  width: 30px;
+  height: 30px;
+  background: url('/static/img/glyphicons_free/glyphicons/png/glyphicons_136_cogwheel.png') no-repeat 3px 3px;
+  opacity: 0.3;
+  position: absolute;
+  right: 10px;
+  top: 64.5px;
+  pointer-events: none;
+}
+
+#header #logout-img {
+  width: 30px;
+  height: 30px;
+  background-size: 24px 22px;
+  background: url('/static/img/glyphicons_free/glyphicons/png/glyphicons_388_exit.png') no-repeat 3px 4px;
+  opacity: 0.3;
+  position: absolute;
+  right: 14px;
+  top: 117.5px;
+  pointer-events: none;
+}
+
+#header .dropdown-icon input {
+  padding-left: 15px;
+  text-align: left;
+  border: none;
+  font-weight: bold;
+  font-family: Roboto;
+  font-weight: 100;
+  background: #F1F1F1;
+  font-size: 16px;
+  cursor: pointer;
+  width: 250px;
+  height: 54px;
+  left: 0;
+}
+
+#header .dropdown-icon input:hover,
+#header .dropdown-icon a:hover {
+  background-color: #FFFFFF;
+}
 
 /* MAIN PAGE */
 

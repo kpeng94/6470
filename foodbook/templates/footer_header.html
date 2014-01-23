@@ -46,12 +46,22 @@
         </div>
         {% else %}
         <div id='text'>
-          You are currently logged in as {{ user.username }}. <br/>
-            <form method = 'post' action='/logout'>
+          <div class='dropdown-icon' id='view-profile'>
+            <div class='dropdown-img' id='profile-img'></div>
+            <a href='/user'>View Profile</a>
+          </div>
+          <div class='dropdown-icon' id='account-settings'>
+            <div class='dropdown-img' id='settings-img'></div>
+            <a href='/settings'>Account Settings</a>
+          </div>
+          <div class='dropdown-icon' id='logout'>
+            <div class='dropdown-img' id='logout-img'></div>
+          <form method = 'post' action='/logout'>
             {% csrf_token %}
-            <input type='submit', value='Logout'/>
-            </form>
+            <input type='submit', value='Logout: {{ user.username }}'/>
+          </form>
         </div>
+      </div>
         {% endif %}
       </div>
 
