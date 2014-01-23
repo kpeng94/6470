@@ -353,7 +353,7 @@ body {
 #footer {
   position: relative;
   background-color: #000000;
-  height: 57px;
+  height: 59px;
   width: 100%;
   margin: 0;
 }
@@ -369,12 +369,12 @@ body {
 
 #fill {
   margin: 0;
-  height: 57px;
+  height: 59px;
 }
 
 #wrapper {
   min-height: 100%;
   height: auto !important;
   height: 100%;
-  margin: 0 0 -57px 0;
+  margin: 0 0 -59px 0;
 }
