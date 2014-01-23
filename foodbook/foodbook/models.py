@@ -58,6 +58,14 @@ class Recipe(models.Model):
 	def __unicode__(self):
 		return self.name
 
+class UserDiet(models.Model):
+	user = models.ForeignKey(User)
+	diet_description = models.CharField(max_length=50, blank=True)
+	calories = models.IntegerField(null=True, blank=True)
+	fat = models.IntegerField(null=True, blank=True)
+	sugar = models.IntegerField(null=True, blank=True)
+	protein = models.IntegerField(null=True, blank=True)
+
 class UserPicture(models.Model):
 	user_id = models.ForeignKey(User)
 	pic_link = models.TextField()
