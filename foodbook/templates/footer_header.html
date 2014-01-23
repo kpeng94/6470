@@ -25,7 +25,7 @@
         </div>
         <div class = 'header-content header-login user-icon' onclick = 'toggleLoginVisibility()'><img id='login-pic' src='{{PROFILE_PICTURE}}'/></div>
         <div class = 'header-content header-data'></div>
-        <div class = 'header-content header-recipe'><a href="/recipes"></a></div>
+        <a href="/recipes"><div class = 'header-content header-recipe'></div></a>
         <div class = 'login'>
           {% if not user.is_authenticated %}
           <form method = 'post' action = '/login'>
