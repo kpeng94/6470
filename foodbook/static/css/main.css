@@ -325,7 +325,7 @@ body {
 .bottom-half {
   position: relative;
   width: 100%;
-  height: 35%;
+  height: 37%;
   background-color: #DDDDDD;
 }
 
@@ -353,8 +353,9 @@ body {
 #footer {
   position: relative;
   background-color: #000000;
-  height: 60px;
+  height: 57px;
   width: 100%;
+  margin: 0;
 }
 
 #footer-content {
@@ -364,4 +365,16 @@ body {
   padding-top: 10px;
   margin: auto;
   height: 30px;
+}
+
+#fill {
+  margin: 0;
+  height: 57px;
+}
+
+#wrapper {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 0 -57px 0;
 }
