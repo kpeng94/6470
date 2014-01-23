@@ -136,3 +136,8 @@ var previousContent = function() {
 										 'selected');
 	}
 };
+
+var showBoxOnHover = function(element) {
+	var textToDisplayInBox = element.innerHTML;
+
+}
