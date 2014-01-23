@@ -81,8 +81,9 @@ function save_recipe(){
 	var description = $('#recipe-description').val();
 	var instructions = $('#recipe-instructions').val();
 	var name = $('#recipe-name-i').val();
+	var ss = $('#recipe-serving-size').val();
 	summary_ingredients();
-	Dajaxice.recipe.save(confirm_save, {'rid': id, 'ingredients': cache_list, 'name': name, 'description': description, 'instructions': instructions});
+	Dajaxice.recipe.save(confirm_save, {'rid': id, 'ss': ss, 'ingredients': cache_list, 'name': name, 'description': description, 'instructions': instructions});
 	return false;
 }
 
@@ -136,3 +137,7 @@ var previousContent = function() {
 										 'selected');
 	}
 };
+
+$('.ingredient-link').click(function(e){
+	e.preventDefault();
+})

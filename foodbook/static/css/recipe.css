@@ -1,14 +1,33 @@
+body {
+	background-color: #f1f1f1;
+}
+
 #recipe-name {
   width: 400px;
-  text-align: center;
   margin: 10px auto 10px auto;
-  font-size: 20px;
+  text-align: center;
+}
+
+#recipe-name div input[type=number] {
+  background-color: #f1f1f1;
+  text-align: center;
+  width: 30px;
+}
+
+#recipe-name input[type=text] {
+  display: block;
+  text-align: center;
+  font-size: 46px;
+  font-family: Petrona;
+  background-color: #f1f1f1;
+  width: 400px;
 }
 
 .recipe-content {
   width: 80%;
   margin-left: 10%;
-  margin-top: 40px;
+  margin-top: 0px;
+  background-color: #ffffff;
 }
 
 .recipe-content a {
@@ -86,7 +105,7 @@
 }
 
 #recipe-add {
-  border: 1px solid blue;
+  border: 1px solid #c6c6c6;
   visibility: hidden;
   display: none;
 }
@@ -113,6 +132,7 @@ input {
 
 input:hover {
 	border: 1px solid #c6c6c6;
+  background-color: #ffffff;
 }
 
 select:hover {
@@ -120,7 +140,7 @@ select:hover {
 }
 
 input:focus {
-	background-color: #fafafa;
+	background-color: #ffffff;
 	border: 1px solid #c6c6c6;
 	outline: none;
 }
