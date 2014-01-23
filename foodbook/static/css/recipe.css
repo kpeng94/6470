@@ -39,7 +39,6 @@
 .ingredient-list {
   height: 500px;
   width: 600px;
-  overflow: scroll;
 }
 
 .ingredient-list > * {
@@ -108,15 +107,37 @@
 }
 
 input {
-	border: none;
+	border: 1px solid transparent;
+	font-size: 14px;
+}
+
+input:hover {
+	border: 1px solid #c6c6c6;
+}
+
+select:hover {
+	border: 1px solid #c6c6c6;
 }
 
 input:focus {
-	background-color: #c6c6c6;
+	background-color: #fafafa;
+	border: 1px solid #c6c6c6;
+	outline: none;
+}
+
+input[type=number] {
+	width: 40px;
+	text-align: right;
 }
 
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button{
 	-webkit-appearance: none;
 	margin: 0;
+}
+
+select {
+	-webkit-appearance: none;
+	background-color: #fafafa;
+	border: 1px solid transparent;
 }

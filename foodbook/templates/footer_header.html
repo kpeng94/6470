@@ -8,7 +8,8 @@
     <link rel = 'stylesheet' href = '/static/css/main.css'>
     {% block css %}
     {% endblock %}
-    <link href='http://fonts.googleapis.com/css?family=Belgrano' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Petrona' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:700,100' rel='stylesheet' type='text/css'>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script src="{% static "dajax/jquery.dajax.core.js" %}" type='text/javascript'></script>
     <script src="{% static "dajaxice/dajaxice.core.js" %}" type='text/javascript'></script>
@@ -28,15 +29,21 @@
         {% if not user.is_authenticated %}
         <form method = 'post' action = '/login'>
           {% csrf_token %}
-        {% for field in LOGIN_FORM %}
         <div class='login-field'>
-            {{ field.errors }}
-            {{ field }}
+            <div class='login-username'>
+              <div class='username-img'></div>
+              <input type='text' id='id_username' name='username' placeholder='Username'/>
+            </div>
+            <div class='login-password'>
+              <div class='password-img'></div>
+              <input type='password' id='id_password' name='password' placeholder='Password'>
+            </div>
         </div>
-        {% endfor %}
-        <input type='submit', value='Login'/>
+        <input id='login-button' type='submit', value='Login'/>
         </form>
-         <button id = 'register' value="Register" type="button" onclick="location.href = '/register'">Register</button>
+        <div id='register-area'>
+          <div>Don't have an account? Register <a href='/register'>here</a>.</div>
+        </div>
         {% else %}
         <div id='text'>
           You are currently logged in as {{ user.username }}. <br/>
