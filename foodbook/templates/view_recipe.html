@@ -8,22 +8,23 @@
 <div class='content' id='personal-recipe-list'>
 	<div class = 'my-recipes'>
 		<div class = 'my-recipes-title'>My Recipes</div>
-		<div class = 'recipe-list'></div>
-		<div class = 'recipe-add-button'> Add </div>
+		<div class = 'recipe-list'>
 	{% for recipe in recipes %}
 	<a href=/recipe/edit?rid={{ recipe.id }}>{{ recipe.name }} </a><br/>
 	{% empty %}
 
 	{% endfor %}
+</div>
+		<div class = 'recipe-add-button' onclick='redirect();'> Add </div>
 	</div>
 	<div class = 'my-diet'>
 		<div class = 'my-diet-title'> My Diet </div>
-		<div class = 'diet-content'> <div class = 'diet-text'> Description</div><input type = 'text'></div>
-		<div class = 'diet-content'> <div class = 'diet-text'> Calories</div><input type = 'text'></div>
-		<div class = 'diet-content'> <div class = 'diet-text'> Fat</div><input type = 'text'></div>
-		<div class = 'diet-content'> <div class = 'diet-text'> Sugar</div><input type = 'text'></div>
-		<div class = 'diet-content'> <div class = 'diet-text'> Protein</div><input type = 'text'></div>
-		<div class = 'diet-save-button'> Save </div>
+		<div class = 'diet-content'> <div class = 'diet-text'> Description</div><input id='diet-description' value='{{ diet.diet_description }}' type = 'text'></div>
+		<div class = 'diet-content'> <div class = 'diet-text'> Calories</div><input id='diet-calories' value='{{ diet.calories }}' type = 'number'></div>
+		<div class = 'diet-content'> <div class = 'diet-text'> Fat</div><input id='diet-fat' value='{{ diet.fat }}' type = 'number'></div>
+		<div class = 'diet-content'> <div class = 'diet-text'> Sugar</div><input id='diet-sugar' value='{{ diet.sugar }}' type = 'number'></div>
+		<div class = 'diet-content'> <div class = 'diet-text'> Protein</div><input id='diet-protein' value='{{ diet.protein }}' type = 'number'></div>
+		<div class = 'diet-save-button' onclick='save_diet();'> Save </div>
 	</div>
 </div>
 {% endblock %}

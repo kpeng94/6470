@@ -1,6 +1,6 @@
 from dajax.core import Dajax
 import json
-from foodbook.models import Ingredient, ServingSize, Recipe
+from foodbook.models import Ingredient, ServingSize, Recipe, UserDiet
 from dajaxice.decorators import dajaxice_register
 from recipe_utils import calculate_nutritional_value, decimal_json
 
@@ -91,3 +91,21 @@ def save_recipe(request, rid, ingredients, name, description, instructions, ss):
 def check_nutrients(request, ingredients):
 	if request.user.is_authenticated():
 		return json.dumps(calculate_nutritional_value(ingredients), default=decimal_json)
+
+@dajaxice_register(method='POST', name='diet.update')
+def update_diet(request, restrictions, calories, fat, sugar, protein):
+	if request.user.is_authenticated():
+		try:
+			diet = UserDiet.objects.get(user=request.user)
+			diet.diet_description = restrictions
+			diet.calories = calories
+			diet.fat = fat
+			diet.sugar = sugar
+			diet.protein = protein
+			diet.save()
+			return json.dumps({'success': True})
+		except:
+			diet = UserDiet(user=request.user, diet_description=restrictions, calories=calories, fat=fat, sugar=sugar, protein=protein)
+			diet.save()
+			return json.dumps({'success': True})
+		return json.dumps({'success': False})

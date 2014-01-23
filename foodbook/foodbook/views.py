@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.template import RequestContext
 from forms import UserLoginForm, SearchBar, UserCreationForm, ProfilePictureForm
 from django.contrib.auth.decorators import login_required
-from foodbook.models import Ingredient, IngredientType, ServingSize, Recipe, IngredientWrapper, UserPicture
+from foodbook.models import Ingredient, UserDiet, IngredientType, ServingSize, Recipe, IngredientWrapper, UserPicture
 import json
 from django.http import HttpResponse, HttpResponseRedirect
 from user import upload_picture
@@ -85,7 +85,11 @@ def add_recipe(request):
 def list_my_recipes(request):
 	if request.user.is_authenticated():
 		my_recipes = Recipe.objects.filter(user_id=request.user)
-		return render_to_response('view_recipe.html', {'recipes': my_recipes}, context_instance=RequestContext(request))
+		try:
+			my_diet = UserDiet.objects.get(user=request.user)
+		except:
+			my_diet = None
+		return render_to_response('view_recipe.html', {'recipes': my_recipes, 'diet': my_diet}, context_instance=RequestContext(request))
 	else:
 		return HttpResponse("Log in to see your recipes.")
 

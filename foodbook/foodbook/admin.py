@@ -1,5 +1,5 @@
 from django.contrib import admin
-from models import Ingredient, IngredientType, ServingSize, Recipe, UserPicture
+from models import Ingredient, IngredientType, UserDiet, ServingSize, Recipe, UserPicture
 
 class ServingSizeAdmin(admin.ModelAdmin):
 	list_display = ('name', 'gram_conversion')
@@ -9,3 +9,4 @@ admin.site.register(ServingSize, ServingSizeAdmin)
 admin.site.register(IngredientType)
 admin.site.register(Recipe)
 admin.site.register(UserPicture)
+admin.site.register(UserDiet)
