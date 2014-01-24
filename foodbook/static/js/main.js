@@ -153,3 +153,8 @@ function confirm_save(data){
 var redirect = function(){
 	window.location.replace('/recipe/add');
 }
+
+var removeMessage = function(){
+	$(this).parent().remove();
+	console.log($(this));
+}
