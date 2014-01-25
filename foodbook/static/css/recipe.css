@@ -183,3 +183,39 @@ select {
 	background-color: #fafafa;
 	border: 1px solid transparent;
 }
+
+.prog-bar {
+  width: 200px;
+  height: 10px;
+  border-radius: 7.5px;
+  background-color: #f0f0f0;
+  border: none;
+}
+
+.prog-bar > span {
+  display: block;
+  height: 100%;
+  width: 100%;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border: none;
+}
+
+.prog-bar.red > span {
+  background-color: #F26553;
+}
+
+.prog-bar.yellow > span {
+  background-color: #F2F219;
+}
+
+.prog-bar.green > span {
+  background-color: #52CE54;
+}
+
+.nutritional-grid {
+  display: inline-block;
+  width: 19%;
+}

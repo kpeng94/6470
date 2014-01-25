@@ -14,6 +14,7 @@
   text-align: center;
   font-size: 46px;
   line-height: 46px;
+  border-bottom: 1px dashed #c6c6c6;
 }
 
 .recipe-list {

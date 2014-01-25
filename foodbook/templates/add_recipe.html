@@ -16,7 +16,7 @@
   	<div class='type-tabs'>
   		<div class = 'type-tab'><a href="#" class="tab-link" id="all" onclick="change_search('All');">All</a></div>
   		{% for type in type_list %}
-  		<div class = 'type-tab'><a href="#" class="tab-link" id="{{type|lower}}" onclick="change_search('{{type|lower}}');">{{ type }}</a></div>
+  		<div class = 'type-tab'><a href="#" class="tab-link" id="{{type.id}}" onclick="change_search('{{type|lower}}');">{{ type }}</a></div>
   		{% endfor %}
   	</div>
   	<div class = 'all-ingredients'>
@@ -38,6 +38,20 @@
       </select>
       </div>
     {% endfor %}
+    </div>
+    <div id='nutritional-facts'>
+      <div class='nutritional-grid' id='calories'>Calories: <div class='prog-bar green'><span style='width: 5%'></span></div></div>
+      <div class='nutritional-grid' id='total-fat'>Total Fat: <div class='prog-bar green'><span style='width: 15%'></span></div></div>
+      <div class='nutritional-grid' id='saturated-fat'>Saturated Fat: <div class='prog-bar green'><span style='width: 25%'></span></div></div>
+      <div class='nutritional-grid' id='polyunsaturated-fat'>Polyunsaturated Fat: <div class='prog-bar yellow'><span style='width: 35%'></span></div></div>
+      <div class='nutritional-grid' id='monounsaturated-fat'>Monounsaturated Fat: <div class='prog-bar yellow'><span style='width: 45%'></span></div></div>
+      <div class='nutritional-grid' id='trans-fat'>Trans Fat: <div class='prog-bar yellow'><span style='width: 55%'></span></div></div>
+      <div class='nutritional-grid' id='cholesterol'>Cholesterol: <div class='prog-bar yellow'><span style='width: 65%'></span></div></div>
+      <div class='nutritional-grid' id='sodium'>Sodium: <div class='prog-bar red'><span style='width: 75%'></span></div></div>
+      <div class='nutritional-grid' id='potassium'>Potassium: <div class='prog-bar red'><span style='width: 80%'></span></div></div>
+      <div class='nutritional-grid' id='carbohydrates'>Total Carbohydrates: <div class='prog-bar red'><span style='width: 85%'></span></div></div>
+      <div class='nutritional-grid' id='sugars'>Sugar: <div class='prog-bar red'><span style='width: 95%'></span></div></div>
+      <div class='nutritional-grid' id='fiber'>Dietary Fiber: <div class='prog-bar red'><span style='width: 100%'></span></div></div>
     </div>
   </div>
   <div id = 'recipe-instructions-and-descriptions'>
