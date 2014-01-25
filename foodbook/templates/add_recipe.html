@@ -14,9 +14,16 @@
   <div id = 'recipe-add' class = 'selected'>
   	<input id='recipe-id-unique' type='hidden' value='{{ recipe.id }}'/>
   	<div class='type-tabs'>
-  		<div class = 'type-tab'><a href="#" class="tab-link" id="all" onclick="change_search('All');">All</a></div>
+  		<div class = 'type-tab'>
+        <a href="#" class="tab-link" id="all" onclick="change_search('All');">All</a>
+      </div>
   		{% for type in type_list %}
-  		<div class = 'type-tab'><a href="#" class="tab-link" id="{{type|lower}}" onclick="change_search('{{type|lower}}');">{{ type }}</a></div>
+  		<div class = 'type-tab'>
+        <div class = 'type-tab-text'>
+          <a href="#" class="tab-link" id="{{type|lower}}" onclick="change_search('{{type|lower}}');">{{ type }}</a>
+        </div>
+        <div class = 'type-tab-img'></div>
+      </div>
   		{% endfor %}
   	</div>
   	<div class = 'all-ingredients'>

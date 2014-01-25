@@ -35,17 +35,59 @@ body {
   color: #000000;
 }
 
+/*
+ ______ ____   ____  _____    _________     _______  ______  _____
+ |  ____/ __ \ / __ \|  __ \  |__   __\ \   / /  __ \|  ____|/ ____|
+ | |__ | |  | | |  | | |  | |    | |   \ \_/ /| |__) | |__  | (___
+ |  __|| |  | | |  | | |  | |    | |    \   / |  ___/|  __|  \___ \
+ | |   | |__| | |__| | |__| |    | |     | |  | |    | |____ ____) |
+ |_|    \____/ \____/|_____/     |_|     |_|  |_|    |______|_____/
+
+*/
+
 .type-tabs {
   vertical-align: top;
   display: inline-block;
-  width: 150px;
+  width: 120px;
+  position: relative;
 }
 
 .type-tab {
+  height: 30px;
+  overflow: hidden;
+}
+
+.type-tab-img {
+  background-image: url('/static/img/foods/png/32px/1.png');
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: red;
+  height: 30px;
+  width: 30px;
+  float: right;
+  -webkit-filter: brightness(1000%);
+}
+
+.type-tab-text {
   padding: 5px 0 5px 0;
   text-align: center;
-  border: 1px solid black;
+  text-decoration: none;
+  background-color: #C1C1C1;
+  width: 0;
+  height: 20px;
+  float: right;
+  clear: right;
 }
+
+.type-tab:hover .type-tab-text {
+  width: 100px;
+  -webkit-transition: width 500ms ease;
+}
+
+#all {
+}
+
 
 .all-ingredients {
   display: inline-block;
