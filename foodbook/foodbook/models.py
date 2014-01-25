@@ -73,7 +73,7 @@ class UserPicture(models.Model):
 
 class Comment(models.Model):
 	original_poster = models.ForeignKey(User)
-	receiving_user = models.ForeignKey(User, blank=True, null=True)
+	receiving_user = models.ForeignKey(User, related_name='received_comment', blank=True, null=True)
 	receiving_recipe = models.ForeignKey(Recipe, blank=True, null=True)
 	comment = models.TextField()
 	date = models.DateTimeField(auto_now=True, auto_now_add=True)
@@ -103,7 +103,7 @@ class CustomIngredient(models.Model):
 	vitamin_b_6 = models.DecimalField(max_digits=10, decimal_places=5, help_text="mg per gram")
 	vitamin_b_12 = models.DecimalField(max_digits=10, decimal_places=5, help_text="ug per gram")
 	magnesium = models.DecimalField(max_digits=10, decimal_places=5, help_text="mg per gram")
-	restrictions = models.TextField()
+	restrictions = models.TextField(blank=True)
 
 class IngredientWrapper():
 	def __init__(self, iid, quantity, measurement):
