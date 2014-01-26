@@ -63,8 +63,15 @@ TITLE
 
 */
 
+
+#recipe-selection {
+  width: 46%;
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 2% 0 2%;
+}
+
 .recipe-selection-line {
-  margin-left: 2%;
   position: relative;
 }
 
@@ -75,10 +82,10 @@ TITLE
 }
 
 .simple-search-bar {
-  width: 42%;
+  width: 90%;
   height: 20px;
   border: 1px solid black;
-  margin: 5px;
+  margin: 5px 0 5px 5px;
   padding: 5px 0 5px 0;
   display: inline-block;
 }
@@ -297,6 +304,10 @@ TITLE
   display: block;
 }
 
+.mini {
+
+}
+
 /* ADDING INGREDIENTS
 */
 
@@ -304,7 +315,8 @@ TITLE
   vertical-align: top;
   border: 1px solid #c6c6c6;
   display: inline-block;
-  width: 42%;
+  width: 90%;
+  height: 500px;
 }
 
 .all-ingredients {
@@ -345,23 +357,37 @@ TITLE
   display: none;
 }
 
-.ingredient-fruit {
-}
-
-.ingredient-meat {
-}
-
-.ingredient-grain {
-}
-
 .ingredient-select {
   width: 50px;
 }
 
+/*
+
+ADDED INGREDIENTS
+
+*/
+
 .added-ingredients {
   display: inline-block;
-  width: 800px;
+  width: 46%;
+  vertical-align: top;
+  margin: 0 0 0 2%;
+  border: 1px solid #c6c6c6;
+  height: 542px;
 }
+
+.ingredients-title {
+  display: block;
+  text-align: center;
+  font-size: 24px;
+  font-family: Petrona;
+  width: 100%;
+  line-height: 40px;
+  height: 40px;
+  color: #FFFFFF;
+  background-color: #6F3F3F;
+}
+
 
 .ingredient-line .ingredient-input-div{
   display: inline-block;

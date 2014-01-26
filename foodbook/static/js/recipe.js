@@ -33,9 +33,12 @@ function update_page(num){
 function check_ingredient(){
 	chosen_ingredients = $('#recipe-list').children();
 	for(var i=0; i < chosen_ingredients.length; i++) {
-		var id = Number(chosen_ingredients[i].getAttribute('id').match('[0-9]+')[0]);
-		if(iid_l.indexOf(id) == -1)
-			iid_l.push(id);
+		var matchElement = chosen_ingredients[i].getAttribute('id');
+		if (matchElement != null) {
+			var id = Number(matchElement.match('[0-9]+')[0]);
+			if(iid_l.indexOf(id) == -1)
+				iid_l.push(id);
+		}
 	}
 }
 
