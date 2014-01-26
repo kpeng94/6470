@@ -388,17 +388,32 @@ ADDED INGREDIENTS
   background-color: #6F3F3F;
 }
 
-
-.ingredient-line .ingredient-input-div{
-  display: inline-block;
+.ingredient-line {
+  width: 96%;
+  margin: 0 2% 0 2%;
 }
 
-.ingredient-line .ingredient-select-div {
+.ingredient-input-div{
   display: inline-block;
+  width: 10%;
+  margin: 0 1% 0 0;
+}
+
+.ingredient-select-div {
+  display: inline-block;
+  width: 10%;
+  margin: 2px 1% 2px 1%;
+}
+
+.ingredient-select-div select {
+  text-align: center;
+  outline: red;
 }
 
 .ingredient-line .ingredient-name {
   display: inline-block;
+  width: 76%;
+  margin: 0 0 0 1%;
 }
 
 #recipe-instructions-and-descriptions {
@@ -460,6 +475,25 @@ select {
   border: 1px solid transparent;
 }
 
+#nutritional-info {
+  width: 93.6%;
+  border: 1px solid #c6c6c6;
+  margin: 20px 1.6% 20px 4.8%;
+}
+
+#nutritional-title {
+  display: block;
+  text-align: center;
+  font-size: 24px;
+  font-family: Petrona;
+  width: 100%;
+  line-height: 40px;
+  height: 40px;
+  color: #FFFFFF;
+  background-color: #3D8D3D;
+  margin-bottom: 20px;
+}
+
 .prog-bar {
   width: 200px;
   height: 10px;
@@ -494,4 +528,10 @@ select {
 .nutritional-grid {
   display: inline-block;
   width: 19%;
+  margin: 5px 0.3% 5px 0.3%;
+}
+
+#nutritional-facts {
+  width: 94%;
+  margin: 0 3% 20px 3%;
 }
