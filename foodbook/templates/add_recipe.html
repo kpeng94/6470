@@ -11,7 +11,7 @@
   <div id='recipe-content'>
     <div id = 'recipe-name'>
       <input id='recipe-name-i' value='{{ recipe.name|default:"Untitled Recipe" }}' placeholder='Recipe Name' type='text'/>
-      <div>Serves: <input type='number' id='recipe-serving-size' value='{{ recipe.serving_size|default:"1" }}' placeholder='Serving Size'/> person(s)</div>
+      <div id = 'recipe-serve'>Serves: <input type='number' id='recipe-serving-size' value='{{ recipe.serving_size|default:"1" }}' placeholder='Serving Size'/> person(s)</div>
     </div>
 
     <div id='recipe-info'>

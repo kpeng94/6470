@@ -59,6 +59,10 @@ TITLE
   width: 400px;
 }
 
+#recipe-serve {
+  text-align: center;
+}
+
 /* RECIPE INFO
 
 */
@@ -476,9 +480,9 @@ select {
 }
 
 #nutritional-info {
-  width: 93.6%;
+  width: 96.1%;
   border: 1px solid #c6c6c6;
-  margin: 20px 1.6% 20px 4.8%;
+  margin: 20px 1.6% 20px 2.3%;
 }
 
 #nutritional-title {
