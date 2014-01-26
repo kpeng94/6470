@@ -1,0 +1,63 @@
+.register {
+	margin: 0px auto 0px auto;
+	width: 1000px;
+	border: 1px solid #c6c6c6;
+	background-color: white;
+}
+
+.register .form-box {
+	display: inline-block;
+	width: 339px;
+	height: 400px;
+	float: right;
+	position: relative;
+	text-align: center;
+}
+
+.register .info-box {
+	display: inline-block;
+	width: 650px;
+	border-right: 1px solid #c6c6c6;
+	height: 400px;
+	padding: 10px 0px 0px 10px;
+}
+
+.register .form-box input {
+	width: 300px;
+	border: 1px solid #c6c6c6;
+	height: 30px;
+	font-family: Roboto;
+	font-weight: 100px;
+}
+
+.register .form-box .register-input-box {
+	padding-left: 30px;
+}
+
+.register .form-box div {
+	margin-bottom: 10px;
+}
+
+.register .register-username {
+	margin-top: 50px;
+}
+
+.register .form-box #register-submit {
+	font-family: Roboto;
+	font-weight: 700;
+	color: white;
+	background-color: #5371EA;
+	height: 40px;
+	font-size: 16px;
+}
+
+.register .username-img {
+  position: absolute;
+  top: 7px;
+  left: 10px;
+  width: 30px;
+  height: 30px;
+  background-size: 22px 22px;
+  background: url('/static/img/glyphicons_free/glyphicons/png/glyphicons_003_user.png') no-repeat 4px 4px;
+  opacity: 0.3;
+}

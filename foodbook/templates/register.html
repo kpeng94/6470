@@ -1,20 +1,32 @@
 {% extends "footer_header.html" %}
 
+{% block css %}
+<link rel='stylesheet' href='/static/css/register.css'></link>
+{% endblock %}
+
 {% block content %}
-<br/><br/><br/><br/>
-      {{ message }}
-      <div class = 'register'>
-        <form method = 'post' action = '/register'>
-          {% csrf_token %}
-          {{ form.errors }}
-    {% for field in form %}
-        <div class="register-field">
-            {{ field.errors }}
-            {{ field }}
-        </div>
-    {% endfor %}
-          <input type="submit", value="Register"/>
-        </form>
+  <div class='register'><div class='info-box'>Hi there</div><div class='form-box'>
+    <form method = 'post' action = '/register'>
+      {% csrf_token %}
+      <div class='register-username'>
+        <div class='username-img'></div>
+        <input class='register-input-box' type='text' id='register-username' placeholder='Username'/>
       </div>
+      <div class='register-password'>
+        <div class='password-img'></div>
+        <input class='register-input-box' type='password' id='register-password' placeholder='Password'/>
+      </div>
+      <div class='register-password2'>
+        <div class='password2-img'></div>
+        <input class='register-input-box' type='password' id='register-password2' placeholder='Confirm Password'/>
+      </div>
+      <div class='register-email'>
+        <div class='email-img'></div>
+        <input class='register-input-box' type='email' id='register-email' placeholder='E-mail'/>
+      </div>
+      <input type="submit" value="Register" id='register-submit'/>
+    </form>
+  </div>
+  </div>
 
 {% endblock %}
