@@ -14,12 +14,38 @@
 	text-align: center;
 }
 
+.register #info-title {
+	padding-top: 10px;
+	padding-left: 10px;
+	font-size: 20px;
+	font-family: Raleway;
+	font-weight: 700;
+}
+
+.register #info-text {
+	padding-top: 22px;
+	padding-left: 10px;
+	padding-right: 10px;
+	font-size: 14px;
+	font-family: Raleway;
+	font-weight: 500;
+}
+
 .register .info-box {
 	display: inline-block;
-	width: 650px;
+	width: 646px;
 	border-right: 1px solid #c6c6c6;
 	height: 400px;
 	padding: 10px 0px 0px 10px;
+}
+
+.register .register-form-text {
+	float: left;
+	padding-left: 20px;
+	padding-top: 20px;
+	font-size: 20px;
+	font-family: Raleway;
+	font-weight: 700;
 }
 
 .register .form-box input {
@@ -28,6 +54,15 @@
 	height: 30px;
 	font-family: Roboto;
 	font-weight: 100px;
+	outline-color: #6E86E8;
+}
+
+.register .form-box input:hover {
+	background-color: #f7f7f7;
+}
+
+.register .form-box input:focus {
+	background-color: #f7f7f7;
 }
 
 .register .form-box .register-input-box {
@@ -35,29 +70,66 @@
 }
 
 .register .form-box div {
-	margin-bottom: 10px;
+	margin-bottom: 13px;
 }
 
 .register .register-username {
-	margin-top: 50px;
+	margin-top: 65px;
 }
 
 .register .form-box #register-submit {
 	font-family: Roboto;
 	font-weight: 700;
 	color: white;
-	background-color: #5371EA;
+	background-color: #6E86E8;
 	height: 40px;
 	font-size: 16px;
 }
 
+.register .form-box #register-submit:hover {
+	background-color: #4A4ADB;
+}
+
 .register .username-img {
   position: absolute;
-  top: 7px;
-  left: 10px;
+  top: 65px;
+  left: 20px;
   width: 30px;
   height: 30px;
   background-size: 22px 22px;
   background: url('/static/img/glyphicons_free/glyphicons/png/glyphicons_003_user.png') no-repeat 4px 4px;
+  opacity: 0.3;
+}
+
+.register .password-img {
+  background: url('/static/img/glyphicons_free/glyphicons/png/glyphicons_204_unlock.png') no-repeat 6px 4px;
+  background-size: 18px 22px;
+  position: absolute;
+  top: 108px;
+  left: 20px;
+  width: 30px;
+  height: 30px;
+  opacity: 0.3;
+}
+
+.register .password2-img {
+  background: url('/static/img/glyphicons_free/glyphicons/png/glyphicons_085_repeat.png') no-repeat 5px 4px;
+  background-size: 20px 22px;
+  position: absolute;
+  top: 151px;
+  left: 20px;
+  width: 30px;
+  height: 30px;
+  opacity: 0.3;
+}
+
+.register .email-img {
+  background: url('/static/img/glyphicons_free/glyphicons/png/glyphicons_010_envelope.png') no-repeat 5px 7px;
+  background-size: 20px 16px;
+  position: absolute;
+  top: 195px;
+  left: 20px;
+  width: 30px;
+  height: 30px;
   opacity: 0.3;
 }

@@ -5,24 +5,30 @@
 {% endblock %}
 
 {% block content %}
-  <div class='register'><div class='info-box'>Hi there</div><div class='form-box'>
+  <div class='register'><div class='info-box'>
+    <div id='info-title'>About Foodbook</div>
+    <!-- TODO (gchau): put REAL text here -->
+    <div id='info-text'>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+  </div>
+  <div class='form-box'>
+  <div class='register-form-text'>Create an Account</div>
     <form method = 'post' action = '/register'>
       {% csrf_token %}
       <div class='register-username'>
         <div class='username-img'></div>
-        <input class='register-input-box' type='text' id='register-username' placeholder='Username'/>
+        <input class='register-input-box' type='text' id='id_username' placeholder='Username'/>
       </div>
       <div class='register-password'>
         <div class='password-img'></div>
-        <input class='register-input-box' type='password' id='register-password' placeholder='Password'/>
+        <input class='register-input-box' type='password' id='id_password' placeholder='Password'/>
       </div>
       <div class='register-password2'>
         <div class='password2-img'></div>
-        <input class='register-input-box' type='password' id='register-password2' placeholder='Confirm Password'/>
+        <input class='register-input-box' type='password' id='id_pw_confirm' placeholder='Confirm Password'/>
       </div>
       <div class='register-email'>
         <div class='email-img'></div>
-        <input class='register-input-box' type='email' id='register-email' placeholder='E-mail'/>
+        <input class='register-input-box' type='email' id='id_email' placeholder='E-mail'/>
       </div>
       <input type="submit" value="Register" id='register-submit'/>
     </form>
