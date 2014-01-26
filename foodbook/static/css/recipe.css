@@ -63,9 +63,31 @@ TITLE
 
 */
 
-#recipe-info {
-  /*position: relative;*/
+.recipe-selection-line {
+  margin-left: 2%;
+  position: relative;
 }
+
+.recipe-selection-filter {
+  width: 25px;
+  visibility: hidden;
+  display: inline-block;
+}
+
+.simple-search-bar {
+  width: 42%;
+  height: 20px;
+  border: 1px solid black;
+  margin: 5px;
+  padding: 5px 0 5px 0;
+  display: inline-block;
+}
+
+.simple-search-bar #ingredient-search {
+  height: 20px;
+  outline: none;
+}
+
 /*
  ______ ____   ____  _____    _________     _______  ______  _____
  |  ____/ __ \ / __ \|  __ \  |__   __\ \   / /  __ \|  ____|/ ____|
@@ -76,19 +98,11 @@ TITLE
 
 */
 
-/* Top calculation: title offset + margin above title +
-                    title height + margin below title +
-                    margin above serving + height of serving +
-                    margin below serving text + border height +
-                    search box height
-  30 + 0 + 60 + 0 + 10 + 30 + 10 + 1 + 20
-*/
 #type-tabs {
   vertical-align: top;
   display: inline-block;
   width: 30px;
   position: relative;
-  margin-left: 2%;
 }
 
 .type-tab {
@@ -120,7 +134,6 @@ TITLE
   position: absolute;
   padding: 5px 20px 5px 20px;
   border: 2px solid black;
-  background: yellow;
   -webkit-border-radius: 10px;
   border-radius: 10px;
 }
@@ -149,90 +162,135 @@ TITLE
 }
 
 #type-tab-text-all {
-
+  background: yellow;
 }
 
 #type-tab-text-all:after {
   border-color: transparent yellow;
 }
 
-#type-tab-text-meat {
+#all-img {
 
+}
+
+#type-tab-text-meat {
+  background: yellow;
 }
 
 #type-tab-text-meat:after {
   border-color: transparent yellow;
 }
 
+#meat-img {
+
+}
+
 #type-tab-text-fruits {
+  background: yellow;
 }
 
 #type-tab-text-fruits:after {
  border-color: transparent yellow;
 }
 
-#type-tab-text-grains {
+#fruits-img {
 
+}
+
+#type-tab-text-grains {
+  background: yellow;
 }
 
 #type-tab-text-grains:after {
  border-color: transparent yellow;
 }
 
-#type-tab-text-seafood {
+#grains-img {
 
+}
+
+#type-tab-text-seafood {
+  background: yellow;
 }
 
 #type-tab-text-seafood:after {
  border-color: transparent yellow;
 }
 
-#type-tab-text-nuts-and-legumes {
+#seafood-img {
 
+}
+
+#type-tab-text-nuts-and-legumes {
+  background: yellow;
 }
 
 #type-tab-text-nuts-and-legumes:after {
  border-color: transparent yellow;
 }
 
-#type-tab-text-soups-and-sauces {
+#nuts-and-legumes-img {
 
+}
+
+#type-tab-text-soups-and-sauces {
+  background: yellow;
 }
 
 #type-tab-text-soups-and-sauces:after {
  border-color: transparent yellow;
 }
 
-#type-tab-text-spices-and-herbs {
+#soups-and-sauces-img {
 
+}
+
+#type-tab-text-spices-and-herbs {
+  background: yellow;
 }
 
 #type-tab-text-spices-and-herbs:after {
  border-color: transparent yellow;
 }
 
-#type-tab-text-vegetables {
+#spices-and-herbs-img {
 
+}
+
+#type-tab-text-vegetables {
+  background: yellow;
 }
 
 #type-tab-text-vegetables:after {
  border-color: transparent yellow;
 }
 
-#type-tab-text-fats-and-oils {
+#vegetables-img {
 
+}
+
+#type-tab-text-fats-and-oils {
+  background: yellow;
 }
 
 #type-tab-text-fats-and-oils:after {
  border-color: transparent yellow;
 }
 
-#type-tab-text-dairy-and-eggs {
+#fats-and-oils-img {
 
+}
+
+#type-tab-text-dairy-and-eggs {
+  background: yellow;
 }
 
 #type-tab-text-dairy-and-eggs:after {
  border-color: transparent yellow;
+}
+
+#dairy-and-eggs-img {
+
 }
 
 .type-tab:hover .type-tab-text {
@@ -243,6 +301,7 @@ TITLE
 */
 
 #recipe-add {
+  vertical-align: top;
   border: 1px solid #c6c6c6;
   display: inline-block;
   width: 42%;
@@ -252,18 +311,6 @@ TITLE
   display: inline-block;
   vertical-align: top;
   width: 100%;
-}
-
-.simple-search-bar {
-  height: 20px;
-  border: 1px solid black;
-  margin: 5px;
-  padding: 5px 0 5px 0;
-}
-
-.simple-search-bar #ingredient-search {
-  height: 20px;
-  outline: none;
 }
 
 .ingredient-list {

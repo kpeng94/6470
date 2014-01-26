@@ -35,36 +35,44 @@
        -->
 
       <div id = 'recipe-selection'>
-        <div id='type-tabs'>
-          <!-- Type tab for all -->
-          <div class = 'type-tab'>
-            <div class = 'type-tab-text' id = 'type-tab-text-all'>
-              <a href="#" class="tab-link" id="all" onclick="change_search('All');">All</a>
-            </div>
-
-            <div class = 'type-tab-img' id = "{{type|lower}}-img"></div>
+        <div class = 'recipe-selection-line'>
+          <div class = 'recipe-selection-filter'> Filter
           </div>
-
-
-          <!-- Type tab for others -->
-          {% for type in type_list %}
-          <div class = 'type-tab'>
-            <div class = 'type-tab-text' id = 'type-tab-text-{{type|lower}}'>
-              <a href="#" class="tab-link" id='{{type|lower}}'onclick="change_search('{{type|lower}}');">{{ type }}</a>
-            </div>
-            <div class = 'type-tab-img' id = "{{type|lower}}-img"></div>
-
-          </div>
-          {% endfor %}
-        </div>
-        <div id = 'recipe-add' class = 'selected'>
-          <div class='simple-search-bar'>
+          <div class = 'simple-search-bar'>
             <input id='ingredient-search' type='text' onkeyup="perform_search()" onpaste="perform_search()" placeholder="Search"/>
           </div>
-          <input id='recipe-id-unique' type='hidden' value='{{ recipe.id }}'/>
-          <div class = 'all-ingredients'>
-            <div class='ingredient-list' id='ingredient-list'></div>
+        </div>
+        <div class = 'recipe-selection-line'>
+          <div id='type-tabs'>
+            <!-- Type tab for all -->
+            <div class = 'type-tab'>
+              <div class = 'type-tab-text' id = 'type-tab-text-all'>
+                <a href="#" class="tab-link" id="all" onclick="change_search('All');">All</a>
+              </div>
+
+              <div class = 'type-tab-img' id = "{{type|lower}}-img"></div>
+            </div>
+
+
+            <!-- Type tab for others -->
+            {% for type in type_list %}
+            <div class = 'type-tab'>
+              <div class = 'type-tab-text' id = 'type-tab-text-{{type|lower}}'>
+                <a href="#" class="tab-link" id='{{type|lower}}'onclick="change_search('{{type|lower}}');">{{ type }}</a>
+              </div>
+              <div class = 'type-tab-img' id = "{{type|lower}}-img"></div>
+
+            </div>
+            {% endfor %}
           </div>
+          <div id = 'recipe-add' class = 'selected'>
+            <input id='recipe-id-unique' type='hidden' value='{{ recipe.id }}'/>
+            <div class = 'all-ingredients'>
+              <div class='ingredient-list' id='ingredient-list'></div>
+            </div>
+          </div>
+        </div>
+        <div class = 'recipe-selection-line'>
         </div>
         <div class='added-ingredients' id='recipe-list'>
           This is where the ingredients your recipe consists of go.
