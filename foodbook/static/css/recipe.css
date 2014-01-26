@@ -553,18 +553,6 @@ select {
   border-bottom: 1px solid #C6C6C6;
 }
 
-.half-section-title {
-  display: inline-block;
-  width: 50%;
-  font-family: Petrona;
-  height: 50px;
-  line-height: 50px;
-  text-align: center;
-  font-size: 30px;
-  color: #FFFFFF;
-  position: relative;
-}
-
 #nr-variants {
   left: 0;
   background-color: #3D8D3D;
