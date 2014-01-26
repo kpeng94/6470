@@ -145,8 +145,8 @@ TITLE
   position: absolute;
   padding: 5px 20px 5px 20px;
   border: 2px solid black;
-  -webkit-border-radius: 10px;
-  border-radius: 10px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
 }
 
 .type-tab-text:before {
@@ -154,10 +154,10 @@ TITLE
   position: absolute;
   display: block;
   width: 0;
-  top: 5px;
-  right: -20px;
+  top: 11px;
+  right: -12px;
   border-style: solid;
-  border-width: 10px 0 10px 20px;
+  border-width: 5px 0 5px 12px;
   border-color: transparent black;
 }
 
@@ -167,9 +167,9 @@ TITLE
   border-style: solid;
   display: block;
   width: 0;
-  top: 8px;
-  right: -17px;
-  border-width: 7px 0 7px 17px;
+  top: 13px;
+  right: -10px;
+  border-width: 3px 0 3px 10px;
 }
 
 #type-tab-text-all {
