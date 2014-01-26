@@ -18,11 +18,12 @@ def login_user(request):
 	if request.method == 'POST':
 		form = UserLoginForm(request.POST)
 		form.is_valid()
-		username = form.cleaned_data['username']
-		password = form.cleaned_data['password']
-		user = authenticate(username=username, password=password)
-		if user is not None:
-			login(request,user)
+		if 'username' in form.cleaned_data and 'password' in form.cleaned_data:
+			username = form.cleaned_data['username']
+			password = form.cleaned_data['password']
+			user = authenticate(username=username, password=password)
+			if user is not None:
+				login(request,user)
 		return redirect('' + request.META['HTTP_REFERER'])
 	return redirect('/home')
 
