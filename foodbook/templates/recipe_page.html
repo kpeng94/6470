@@ -1,9 +1,33 @@
 {% extend "footer_header.html" %}
 
 {% block css %}
-<!-- Put your css stuff here -->
+<link rel = 'stylesheet' href = '/static/css/recipe.css'>
+<script type='text/javascript' src='/static/js/recipe.js'></script>
 {% endblock %}
 
 {% block content %}
-<!-- Put your html here -->
+<div id = 'recipe-page-wrapper'>
+  <div id='recipe-content'>
+    <div id = 'recipe-top-half'>
+      <div id = 'recipe-name'>
+        {{ recipe.name|default:"Untitled Recipe" }}
+        <div id = 'recipe-serve'>Serves: {{ recipe.serving_size|default:"1" }}</div>
+      </div>
+      <div id = 'nr-description'>
+        <div class = 'section-title' id = 'nr-description-title'></div><div id = 'nr-description-content'></div>
+      </div>
+      <div id = 'nr-instructions'>
+        <div class = 'section-title' id = 'nr-instructions-title'></div><div id = 'nr-instructions-content'></div>
+      </div>
+      <div id = 'nr-ingredients'>
+        <div class = 'section-title' id = 'nr-ingredients-title'></div><div id = 'nr-ingredients-content'></div>
+      </div>
+    </div>
+    <div id = 'nr-bottom-half'>
+      <div id = 'nr-tabs'>
+        <div class = 'half-section-title' id = 'nr-variants'>Variants</div><div class = 'half-section-title' id = 'nr-comments'>Comments</div>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}
