@@ -9,24 +9,33 @@
 <div id = 'recipe-page-wrapper'>
   <div id='recipe-content'>
     <div id = 'recipe-top-half'>
-      <div id = 'recipe-name'>
-        {{ recipe.name|default:"Untitled Recipe" }}
-        <div id = 'recipe-serve'>Serves: {{ recipe.serving_size|default:"1" }}</div>
+      <div id = 'nr-recipe-title'>
+        <div id = 'nr-recipe-name'>
+        {{ recipe.name|default:"Untitled Recipe" }}</div>
+        <div id = 'nr-recipe-serve'>Serves: {{ recipe.serving_size|default:"1" }} person(s)</div>
       </div>
-      <div id = 'nr-description'>
-        <div class = 'section-title' id = 'nr-description-title'></div><div id = 'nr-description-content'></div>
-      </div>
-      <div id = 'nr-instructions'>
-        <div class = 'section-title' id = 'nr-instructions-title'></div><div id = 'nr-instructions-content'></div>
-      </div>
-      <div id = 'nr-ingredients'>
-        <div class = 'section-title' id = 'nr-ingredients-title'></div><div id = 'nr-ingredients-content'></div>
+      <div id = 'nr-top-half-content'>
+        <div id = 'nr-top-half-left'>
+          <div id = 'nr-description'>
+            <div class = 'section-title' id = 'nr-description-title'>Description</div><div id = 'nr-description-content'></div>
+          </div>
+          <div id = 'nr-instructions'>
+            <div class = 'section-title' id = 'nr-instructions-title'>Instructions</div><div id = 'nr-instructions-content'></div>
+          </div>
+        </div>
+        <div id = 'nr-top-half-right'>
+          <div id = 'nr-ingredients'>
+            <div class = 'section-title' id = 'nr-ingredients-title'>Ingredients</div><div id = 'nr-ingredients-content'></div>
+          </div>
+        </div>
       </div>
     </div>
     <div id = 'nr-bottom-half'>
       <div id = 'nr-tabs'>
         <div class = 'half-section-title' id = 'nr-variants'>Variants</div><div class = 'half-section-title' id = 'nr-comments'>Comments</div>
       </div>
+      <div id = 'nr-variants-content'></div>
+      <div id = 'nr-comments-content'></div>
     </div>
   </div>
 </div>

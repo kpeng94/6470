@@ -433,3 +433,15 @@ body {
   height: 100%;
   margin: 0 0 -59px 0;
 }
+
+.section-title {
+  display: block;
+  text-align: center;
+  font-size: 30px;
+  font-family: Petrona;
+  width: 100%;
+  line-height: 50px;
+  height: 50px;
+  color: #FFFFFF;
+  margin-bottom: 20px;
+}

@@ -18,8 +18,8 @@ CONTENT
 #recipe-content {
   width: 80%;
   margin-left: 10%;
-  /*height: 1000px;*/
   margin-top: 0;
+  margin-bottom: 60px;
   background-color: #FFFFFF;
   position: relative;
   display: inline-block;
@@ -63,8 +63,8 @@ TITLE
   text-align: center;
 }
 
-/* RECIPE INFO
-
+/*
+RECIPE INFO
 */
 
 
@@ -538,4 +538,120 @@ select {
 #nutritional-facts {
   width: 94%;
   margin: 0 3% 20px 3%;
+}
+
+#nr-top-half {
+  border: 1px solid #C6C6C6;
+}
+
+#nr-bottom-half {
+  border: 1px solid #C6C6C6;
+}
+
+#nr-tabs {
+  width: 100%;
+  border-bottom: 1px solid #C6C6C6;
+}
+
+.half-section-title {
+  display: inline-block;
+  width: 50%;
+  font-family: Petrona;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  font-size: 30px;
+  color: #FFFFFF;
+  position: relative;
+}
+
+#nr-variants {
+  left: 0;
+  background-color: #3D8D3D;
+}
+
+#nr-comments {
+  background-color: #3D8D3D;
+}
+
+#nr-recipe-name {
+  display: block;
+  text-align: center;
+  font-size: 46px;
+  line-height: 60px;
+  height: 60px;
+  font-family: Petrona;
+  background-color: #f1f1f1;
+  width: 400px;
+  margin: 0 auto 40px auto;
+  position: relative;
+  top: 30px;
+}
+
+#nr-recipe-serve {
+  position: relative;
+  font-size: 36px;
+  text-align: center;
+  width: 400px;
+  height: 50px;
+  line-height: 50px;
+  margin: 10px auto 10px auto;
+}
+
+#nr-description {
+  height: 400px;
+  border: 1px solid #C6C6C6;
+}
+
+#nr-description-title {
+  background-color: #3C3C3C;
+}
+
+#nr-instructions {
+  border: 1px solid #C6C6C6;
+  margin-bottom: 30px;
+  height: 400px;
+}
+
+#nr-instructions-title {
+  background-color: #3C3C3C;
+}
+
+#nr-ingredients {
+  height: 800px;
+  border: 1px solid #C6C6C6;
+}
+
+#nr-ingredients-title {
+  background-color: #3C3C3C;
+}
+
+#nr-top-half-left {
+  vertical-align: top;
+  display: inline-block;
+  position: relative;
+  width: 40%;
+  margin: 0 5% 0 5%;
+}
+
+#nr-top-half-right {
+  vertical-align: top;
+  display: inline-block;
+  position: relative;
+  width: 39.5%;
+  margin: 0 5% 0 5%;
+}
+
+#nr-bottom-half {
+  width: 90%;
+  margin-left: 5%;
+  margin-bottom: 40px;
+}
+
+#nr-variants-content {
+  height: 200px;
+}
+
+#nr-comments-content {
+  height: 200px;
 }
