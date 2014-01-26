@@ -1,40 +1,71 @@
 body {
-	background-color: #f1f1f1;
+  background-color: #f1f1f1;
 }
 
+/*
+  WRAPPER
+*/
+
+#recipe-page-wrapper {
+  margin-top: 60px;
+  position: relative;
+}
+
+/*
+CONTENT
+*/
+
+#recipe-content {
+  width: 80%;
+  margin-left: 10%;
+  /*height: 1000px;*/
+  margin-top: 0;
+  background-color: #FFFFFF;
+  position: relative;
+  display: inline-block;
+}
+
+#recipe-content a {
+  text-decoration: none;
+  color: #000000;
+}
+
+/*
+TITLE
+*/
 #recipe-name {
   width: 400px;
-  margin: 10px auto 10px auto;
-  text-align: center;
+  margin: 0 auto 30px auto;
+  position: relative;
+  top: 30px;
 }
 
 #recipe-name div input[type=number] {
   background-color: #f1f1f1;
   text-align: center;
   width: 30px;
+  height: 30px;
+  margin: 10px auto 10px auto;
 }
 
 #recipe-name input[type=text] {
   display: block;
   text-align: center;
   font-size: 46px;
+  line-height: 46px;
+  height: 60px;
   font-family: Petrona;
   background-color: #f1f1f1;
   width: 400px;
 }
 
-.recipe-content {
-  width: 80%;
-  margin-left: 10%;
-  margin-top: 0px;
-  background-color: #ffffff;
-}
+/* RECIPE INFO
 
-.recipe-content a {
-  text-decoration: none;
-  color: #000000;
-}
+*/
 
+#recipe-info {
+  /*position: relative;*/
+}
 /*
  ______ ____   ____  _____    _________     _______  ______  _____
  |  ____/ __ \ / __ \|  __ \  |__   __\ \   / /  __ \|  ____|/ ____|
@@ -45,61 +76,200 @@ body {
 
 */
 
-.type-tabs {
+/* Top calculation: title offset + margin above title +
+                    title height + margin below title +
+                    margin above serving + height of serving +
+                    margin below serving text + border height +
+                    search box height
+  30 + 0 + 60 + 0 + 10 + 30 + 10 + 1 + 20
+*/
+#type-tabs {
   vertical-align: top;
   display: inline-block;
-  width: 120px;
+  width: 30px;
   position: relative;
+  margin-left: 2%;
 }
 
 .type-tab {
   height: 30px;
-  overflow: hidden;
+  position: relative;
+  /* This is to balance against the float property (so weird)*/
+  right: -4px;
+  margin: 2px 0 2px 0;
 }
 
 .type-tab-img {
-  background-image: url('/static/img/foods/png/32px/1.png');
   background-size: 20px 20px;
   background-repeat: no-repeat;
   background-position: center;
-  background-color: red;
+  background-color: black;
   height: 30px;
   width: 30px;
-  float: right;
   -webkit-filter: brightness(1000%);
 }
 
-.type-tab-text {
-  padding: 5px 0 5px 0;
-  text-align: center;
+.type-tab-text > a {
   text-decoration: none;
-  background-color: #C1C1C1;
+  text-align: center;
+}
+
+.type-tab-text {
+  right: 50px;
+  display: none;
+  position: absolute;
+  padding: 5px 20px 5px 20px;
+  border: 2px solid black;
+  background: yellow;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+
+.type-tab-text:before {
+  content: "";
+  position: absolute;
+  display: block;
   width: 0;
-  height: 20px;
-  float: right;
-  clear: right;
+  top: 5px;
+  right: -20px;
+  border-style: solid;
+  border-width: 10px 0 10px 20px;
+  border-color: transparent black;
+}
+
+.type-tab-text:after {
+  content: "";
+  position: absolute;
+  border-style: solid;
+  display: block;
+  width: 0;
+  top: 8px;
+  right: -17px;
+  border-width: 7px 0 7px 17px;
+}
+
+#type-tab-text-all {
+
+}
+
+#type-tab-text-all:after {
+  border-color: transparent yellow;
+}
+
+#type-tab-text-meat {
+
+}
+
+#type-tab-text-meat:after {
+  border-color: transparent yellow;
+}
+
+#type-tab-text-fruits {
+}
+
+#type-tab-text-fruits:after {
+ border-color: transparent yellow;
+}
+
+#type-tab-text-grains {
+
+}
+
+#type-tab-text-grains:after {
+ border-color: transparent yellow;
+}
+
+#type-tab-text-seafood {
+
+}
+
+#type-tab-text-seafood:after {
+ border-color: transparent yellow;
+}
+
+#type-tab-text-nuts-and-legumes {
+
+}
+
+#type-tab-text-nuts-and-legumes:after {
+ border-color: transparent yellow;
+}
+
+#type-tab-text-soups-and-sauces {
+
+}
+
+#type-tab-text-soups-and-sauces:after {
+ border-color: transparent yellow;
+}
+
+#type-tab-text-spices-and-herbs {
+
+}
+
+#type-tab-text-spices-and-herbs:after {
+ border-color: transparent yellow;
+}
+
+#type-tab-text-vegetables {
+
+}
+
+#type-tab-text-vegetables:after {
+ border-color: transparent yellow;
+}
+
+#type-tab-text-fats-and-oils {
+
+}
+
+#type-tab-text-fats-and-oils:after {
+ border-color: transparent yellow;
+}
+
+#type-tab-text-dairy-and-eggs {
+
+}
+
+#type-tab-text-dairy-and-eggs:after {
+ border-color: transparent yellow;
 }
 
 .type-tab:hover .type-tab-text {
-  width: 100px;
-  -webkit-transition: width 500ms ease;
+  display: block;
 }
 
-#all {
-}
+/* ADDING INGREDIENTS
+*/
 
+#recipe-add {
+  border: 1px solid #c6c6c6;
+  display: inline-block;
+  width: 42%;
+}
 
 .all-ingredients {
   display: inline-block;
   vertical-align: top;
+  width: 100%;
 }
 
 .simple-search-bar {
+  height: 20px;
+  border: 1px solid black;
+  margin: 5px;
+  padding: 5px 0 5px 0;
+}
+
+.simple-search-bar #ingredient-search {
+  height: 20px;
+  outline: none;
 }
 
 .ingredient-list {
   height: 500px;
-  width: 400px;
+  width: 96%;
+  margin: 0 2% 0 2%;
 }
 
 .ingredient-list > * {
@@ -109,6 +279,7 @@ body {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  width: 90%;
 }
 
 .ingredient-list > div:hover .ingredient-expanded-name {
@@ -119,6 +290,7 @@ body {
   padding: 10px;
   background-color: #00F2F2;
   z-index: 2;
+  width: 100%;
 }
 
 .ingredient-expanded-name {
@@ -168,60 +340,49 @@ body {
   display: none;
 }
 
-#recipe-add {
-  border: 1px solid #c6c6c6;
-  visibility: hidden;
-  display: none;
-}
-
-#recipe-add.selected {
-  visibility: visible;
-  display: block;
-}
-
 #recipe-summary.selected {
   visibility: visible;
-  display: block;
+  display: inline-block;
 }
 
 #recipe-instructions-and-descriptions.selected {
   visibility: visible;
-  display: block;
+  display: inline-block;
 }
 
 input {
-	border: 1px solid transparent;
-	font-size: 14px;
+  border: 1px solid transparent;
+  font-size: 14px;
 }
 
 input:hover {
-	border: 1px solid #c6c6c6;
+  border: 1px solid #c6c6c6;
   background-color: #ffffff;
 }
 
 select:hover {
-	border: 1px solid #c6c6c6;
+  border: 1px solid #c6c6c6;
 }
 
 input:focus {
-	background-color: #ffffff;
-	border: 1px solid #c6c6c6;
-	outline: none;
+  background-color: #ffffff;
+  border: 1px solid #c6c6c6;
+  outline: none;
 }
 
 input[type=number] {
-	width: 40px;
-	text-align: right;
+  width: 40px;
+  text-align: right;
 }
 
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button{
-	-webkit-appearance: none;
-	margin: 0;
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 select {
-	-webkit-appearance: none;
-	background-color: #fafafa;
-	border: 1px solid transparent;
+  -webkit-appearance: none;
+  background-color: #fafafa;
+  border: 1px solid transparent;
 }
