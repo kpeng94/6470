@@ -1,9 +1,28 @@
 {% extend "footer_header.html" %}
 
 {% block css %}
-<!-- Put your css stuff here -->
+<link rel = 'stylesheet' href = '/static/css/settings.css'>
 {% endblock %}
 
 {% block content %}
-<!-- Put your html here -->
+<div id = 'user-settings-wrapper'>
+	<div class = 'section-title' id = 'settings-title'>Settings</div>
+	<div id = 'settings-content'>
+    <div class = 'settings-password-wrapper'>
+      <div>Current password: </div>
+      <div>New password: </div>
+      <div>New password (again): </div>
+    </div>
+  </div>
+  <div class = 'section-title' id = 'diet-title'>Diet</div>
+  <div id = 'diet-content'>
+    <div>Dietary restrcitions:</div>
+    <div>Calories:</div>
+    <div>Protein:</div>
+    <div>Fat:</div>
+    <div>Carbohydrates:</div>
+  </div>
+  </div>
+</div>
+
 {% endblock %}
