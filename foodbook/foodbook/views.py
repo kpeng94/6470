@@ -11,7 +11,8 @@ from user import upload_picture
 
 def home(request):
 	message = ''
-	return render_to_response('index.html', {'message': message}, context_instance=RequestContext(request))
+	m_type = None
+	return render_to_response('index.html', {'message': message, 'type': m_type}, context_instance=RequestContext(request))
 
 def login_user(request):
 	if request.method == 'POST':

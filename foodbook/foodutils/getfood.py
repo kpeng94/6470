@@ -2,7 +2,8 @@ import urllib2
 import StringIO
 import csv
 import decimal
-from foodbook.models import Ingredient, IngredientType, ServingSize
+from models import Ingredient, IngredientType, ServingSize
+import os
 
 TOT = 8463
 
@@ -28,7 +29,6 @@ def parse_csv(dat, cut_first_letter=False):
     name = name[ind+1:]
     if(cut_first_letter):
         name = name[name.index(',')+1:].strip().capitalize()
-        print name
     ind = name.find(',')
     if ind == -1:
         modifier = ''
@@ -38,22 +38,21 @@ def parse_csv(dat, cut_first_letter=False):
     data = {}
 
     line = dat[4]
-    print line
-    print len(line)-1
     units.append(('g', 1.0))
     for i in xrange(3, len(line)-1):
         unit = line[i].split('"')
-        print unit[-1][:-1]
         units.append(('"'.join(unit[1:-1]).strip(), decimal.Decimal(unit[-1][:-1])))
 
     dat = dat[5:]
     for line in dat:
         if len(line) >= 3:
-            data[line[0]] = (float(line[2]) / 100, line[1].replace('\xc2\xb5', '\xe6')) 
+            if line[0][0] == '(':
+                break
+            data[line[0]] = (float(line[2]) / 100, line[1].replace('\xc2\xb5', '\xe6'))
 
     return FoodStuff(foodid, name, modifier, units, data)
 
-def save_foods(foodstuffs, type):
+def save_foods(foodstuffs, types, add_beans=False, restrictions=''):
     for food in foodstuffs:
         cal = 0
         if 'Energy' in food.data:
@@ -118,15 +117,17 @@ def save_foods(foodstuffs, type):
         magnesium = 0
         if 'Magnesium, Mg' in food.data:
             magnesium = food.data['Magnesium, Mg'][0]
-        new_food = Ingredient(name=food.name, modifier=food.modifier, ingredient_type=IngredientType.objects.get(name=type),
-            calories=cal, total_fat=total_fat, saturated_fat=sat_fat, polyunsaturated_fat=poly_fat,
-            monounsaturated_fat=mono_fat, trans_fat=trans_fat, cholesterol=cholesterol, sodium = sodium,
+        if add_beans:
+            food.name = food.name + ' beans'
+        new_food = Ingredient(name=food.name, modifier=food.modifier,
+            calories=cal, total_fat=total_fat, saturated_fat=sat_fat, ingredient_type=IngredientType.objects.get(name=types),polyunsaturated_fat=poly_fat,
+            monounsaturated_fat=mono_fat, trans_fat=trans_fat, cholesterol=cholesterol, sodium = sodium, dietary_fiber = fiber,
             potassium = potassium, total_carbohydrates=carbs, sugar=sugar, protein=protein,
             vitamin_a=vit_a, vitamin_c=vit_c, calcium=calcium, iron=iron, vitamin_d=vit_d, vitamin_b_6=vit_b_6,
-            vitamin_b_12=vit_b_12 ,magnesium=magnesium)
+            vitamin_b_12=vit_b_12 ,magnesium=magnesium, restrictions=restrictions)
         new_food.save()
         for unit in food.units:
-            new_unit = ServingSize(name=unit[0], gram_conversion=unit[1], ingredients=new_food)
+            new_unit = ServingSize(name=unit[0], gram_conversion=unit[1], ingredients = new_food)
             new_unit.save()
 
 
@@ -136,3 +137,16 @@ def get_foods(start=1, end=TOT, cut_first_letter=False):
         print "Getting food #%s" % i
         dat.append(parse_csv(get_csv(i),cut_first_letter))
     return dat
+
+def ss(string):
+    f = open('foodbook/' + string, 'r')
+    cut = False
+    #types = 'Soups and Sauces'
+    for line in f:
+        line = line.strip().split(' ')
+        types = line[2] + ''
+        beans = True if line[3] == 'T' else False
+        if len(line) == 5:
+            save_foods(get_foods(int(line[0]), int(line[1]), cut), types, beans, line[4])
+        else:
+            save_foods(get_foods(int(line[0]), int(line[1]), cut), types, beans, '')
