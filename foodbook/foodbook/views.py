@@ -104,6 +104,15 @@ def display_user_profile(request):
 		return render_to_response('user_page.html', {'form': form}, context_instance = RequestContext(request))
 	return redirect('/home')
 
+def display_user_settings(request):
+	if request.user.is_authenticated():
+		return render_to_response('user_settings.html', context_instance = RequestContext(request))
+	else:
+		return redirect('/home')
+
+def display_normal_recipe(request, rid):
+	return render_to_response('recipe_page.html', context_instance = RequestContext(request))
+
 ############################## CONTEXT PROCESSORS
 def login_processor(request):
 	# Makes sure the login form is always given to a page
