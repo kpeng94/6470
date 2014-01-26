@@ -98,12 +98,13 @@
 /* Total width right now: ~1020px for content*/
 
 #profile-tabs-container {
+  /*margin: 0px 0 10px 0;*/
   width: 100%;
 }
 
 #profile-tabs{
   width: 307px;
-  height: 200px;
+  height: 100px;
   margin: 0 auto 0 auto;
 }
 
@@ -115,4 +116,81 @@
   display: inline-block;
   width: 100px;
   height: 100px;
+}
+
+#profile-content-container {
+  width: 100%;
+  position: relative;
+}
+
+#profile-comments-container {
+  margin-top: 20px;
+  margin-left: 10%;
+  width: 80%;
+  position: relative;
+}
+
+#post-container {
+  position: relative;
+  height: 210px;
+}
+
+#post-box {
+  height: 150px;
+  border: 1px solid #C6C6C6;
+}
+
+#post-button {
+  position: absolute;
+  height: 40px;
+  right: 0;
+  border: 1px solid #C6C6C6;
+  width: 100px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#recent-posts {
+  position: relative;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#no-recent-posts {
+
+}
+
+.recent-post {
+  height: 150px;
+  border: 1px solid #C6C6C6;
+  position: relative;
+}
+
+.post-content {
+  position: relative;
+  top: 20px;
+  left: 20px;
+}
+
+.post-author {
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+  height: 30px;
+}
+
+.post-author-title {
+  font-size: 18px;
+  line-height: 30px;
+  height: 30px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.post-author-icon {
+  vertical-align: middle;
+  width: 26px;
+  height: 26px;
+  border: 1px solid #C6C6C6;
+  display: inline-block;
 }

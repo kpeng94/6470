@@ -2,11 +2,10 @@
 
 {% block css %}
 <link rel = 'stylesheet' type = 'text/css' href = '/static/css/profile.css'>
+<script src = '/static/js/profile.js'></script>
 {% endblock %}
 
 {% block content %}
-  <!-- TODO: Move this to somewhere else more appropriate later -->
-  <script src = '/static/js/profile.js'></script>
 	<div id = 'profile-body'>
 		<div id = 'profile-content-background'>
       <div id = 'profile-content'>
@@ -25,7 +24,32 @@
 		</div>
     <div id = 'profile-tabs-container'>
       <div id = 'profile-tabs'>
-        <div class = 'profile-tab'></div><div class = 'profile-tab'></div><div class = 'profile-tab'></div>
+        <div class = 'profile-tab' id = 'comments-icon'></div><div class = 'profile-tab' id = 'recipes-icon'></div><div class = 'profile-tab' id = 'recent-activity-icon'></div>
+      </div>
+    </div>
+    <div id = 'profile-content-container'>
+      <div id = 'profile-comments-container'>
+        <div id = 'post-container'>
+          <div id = 'post-box'></div>
+          <div id = 'post-button'></div>
+        </div>
+        <div id = 'recent-posts'>
+          <div id = 'no-recent-posts' class = 'profile-hidden'></div>
+          <div class = 'recent-post'>
+            <div class = 'post-content'> Wow! Nenenene!</div>
+            <div class = 'post-author'>
+              <div class = 'post-author-icon'> </div>
+              <div class = 'post-author-title'>gchau94</div>
+            </div>
+          </div>
+          <div class = 'recent-post'>
+            <div class = 'post-content'> Wow! Nenenene!</div>
+            <div class = 'post-author'>
+              <div class = 'post-author-icon'> </div>
+              <div class = 'post-author-title'>gchau94</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 	</div>
