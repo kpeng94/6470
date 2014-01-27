@@ -69,11 +69,11 @@ def update_recipe_ingredient_search(request, div_id, search, page='0', num_per_p
 	if page != 0:
 		out.append('<div id = "il-previous" class = "prev clickable" onclick="update_page(%d)"><i class = "fa fa-chevron-left"></i></div>' % (page-1))
 	else:
-		out.append('<div id = "il-previous" class = "prev" onclick="update_page(%d)"><i class = "fa fa-chevron-left"></i></div>' % (page-1))
+		out.append('<div id = "il-previous" class = "prev"><i class = "fa fa-chevron-left"></i></div>')
 	if page != count/num_per_page:
 		out.append('<div id = "il-next" class = "next clickable" onclick="update_page(%d)"><i class = "fa fa-chevron-right"></i></div>' % (page+1))
 	else:
-		out.append('<div id = "il-next" class = "next" onclick="update_page(%d)"><i class = "fa fa-chevron-right"></i></div>' % (page+1))
+		out.append('<div id = "il-next" class = "next"><i class = "fa fa-chevron-right"></i></div>')
 
 	out.append('</div>')
 
