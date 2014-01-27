@@ -31,8 +31,10 @@
               <div class = 'type-tab-text' id = 'type-tab-text-all'>
                 <a href="#" class="tab-link" id="all" onclick="change_search('All');">All</a>
               </div>
-
-              <div class = 'type-tab-img' id = "all-img"></div>
+              <div class = 'type-tab-bgimg'>
+                <div class = 'type-tab-background' id = 'all-background'></div>
+                <div class = 'type-tab-img' id = "all-img"></div>
+              </div>
             </div>
 
 
@@ -42,7 +44,10 @@
               <div class = 'type-tab-text' id = 'type-tab-text-{{ type.1 }}'>
                 <a href="#" class="tab-link" id='{{ type.1 }}'onclick="change_search('{{ type.1 }}');">{{ type.0 }}</a>
               </div>
-              <div class = 'type-tab-img' id = "{{ type.1 }}-img"></div>
+              <div class = 'type-tab-bgimg'>
+                <div class = 'type-tab-background' id = '{{type|lower}}-background'></div>
+                <div class = 'type-tab-img' id = "{{type|lower}}-img"></div>
+              </div>
             </div>
             {% endfor %}
           </div>
