@@ -11,13 +11,6 @@
   <div id = 'vr-tabs'>
     <div class = 'half-section-title' id = 'vr-view-all'>View All</div><div class = 'half-section-title' id = 'vr-view-mine'>View Mine</div>
   </div>
-<!-- 	<div class = 'recipe-list'>
-	{% for recipe in recipes %}
-	<a href=/recipe/edit?rid={{ recipe.id }}>{{ recipe.name }} </a><br/>
-	{% empty %}
-
-	{% endfor %}
- </div> -->
   <div id = 'vr-lookup'>
     <div id = 'vr-search'>
       <input type='text' id='vr-search-input' placeholder='Search'/>
@@ -29,15 +22,6 @@
     <div id = 'diet-checkbox'></div>
     <div id = 'diet-selection-text'>Hide recipes that are out of my diet.</div>
   </div>
-	<div class = 'my-diet'>
-		<div class = 'my-diet-title'> My Diet </div>
-		<div class = 'diet-content'> <div class = 'diet-text'> Description</div><input id='diet-description' value='{{ diet.diet_description }}' type = 'text'></div>
-		<div class = 'diet-content'> <div class = 'diet-text'> Calories</div><input id='diet-calories' value='{{ diet.calories }}' type = 'number'></div>
-		<div class = 'diet-content'> <div class = 'diet-text'> Fat</div><input id='diet-fat' value='{{ diet.fat }}' type = 'number'></div>
-		<div class = 'diet-content'> <div class = 'diet-text'> Sugar</div><input id='diet-sugar' value='{{ diet.sugar }}' type = 'number'></div>
-		<div class = 'diet-content'> <div class = 'diet-text'> Protein</div><input id='diet-protein' value='{{ diet.protein }}' type = 'number'></div>
-		<div class = 'diet-save-button' onclick='save_diet();'> Save </div>
-	</div>
   <div id = 'vr-table'>
     <div id = 'vr-table-header'>
       <div id = 'vr-table-recipe-label' class = 'vr-table-label'>Recipe</div><div id = 'vr-table-votes-label' class = 'vr-table-label'>Votes</div><div id = 'vr-table-made-label' class = 'vr-table-label'>Made</div>
