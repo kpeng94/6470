@@ -11,6 +11,9 @@
       <div id = 'profile-content'>
   			<div id = 'profile-image-container'>
   				<div id = 'profile-image' class ='user-icon'></div>
+          <div id = 'profile-image-edit'>
+            <i class = 'fa fa-pencil'></i> <div id = 'profile-image-edit-text'>&nbsp;Edit</div>
+          </div>
   			</div>
   		  <div id = 'profile-info'>
   			  <div id = 'profile-name'> Rene Zhang </div>
@@ -39,7 +42,7 @@
       <div id = 'profile-comments-container'>
         <div id = 'post-container'>
           <div id = 'post-box'></div>
-          <div id = 'post-button'></div>
+          <div id = 'post-button'>POST</div>
         </div>
         <div id = 'recent-posts'>
           <div id = 'no-recent-posts' class = 'profile-hidden'></div>
@@ -61,11 +64,7 @@
       </div>
     </div>
 	</div>
-  <script>
-    window.onresize = function(event) {
-      resizeProfileContent();
-    }
-  </script>
+
 
 	<!-- TODO: EDIT THIS LATER FOR A NICER INTERFACE -->
 	<form enctype='multipart/form-data' name='prof_pic' action='/user' method='post'>
