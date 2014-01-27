@@ -237,6 +237,7 @@
 
 #post-container {
   position: relative;
+  height: 150px;
 }
 
 #comment-box {
@@ -259,6 +260,7 @@
   position: absolute;
   height: 40px;
   right: 0;
+  bottom: 0;
   border: 1px solid #C6C6C6;
   width: 100px;
   margin-top: 10px;
