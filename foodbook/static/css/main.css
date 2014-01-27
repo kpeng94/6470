@@ -457,3 +457,11 @@ body {
   color: #FFFFFF;
   position: relative;
 }
+
+/* 404 PAGE */
+.404-content {
+  width: 998px;
+  border: 1px solid #c6c6c6;
+  padding: 30px auto 0px auto;
+  color: white;
+}

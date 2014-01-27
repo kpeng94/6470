@@ -64,7 +64,7 @@ def logout_user(request):
 	return HttpResponseRedirect('/home')
 
 def default_page(request):
-	return redirect('/home')
+	return render_to_response('404.html', context_instance=RequestContext(request))
 
 def show_ingredient(request, ingredient):
 	ingredient = Ingredient.objects.filter(name__iexact=ingredient)
