@@ -324,9 +324,15 @@
 }
 
 .post-author-icon {
+  overflow: hidden;
   vertical-align: middle;
   width: 26px;
   height: 26px;
   border: 1px solid #C6C6C6;
   display: inline-block;
+  position: relative;
+}
+
+.poster-img {
+  position: absolute;
 }

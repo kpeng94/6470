@@ -1,6 +1,6 @@
 from dajax.core import Dajax
 import json, decimal
-from foodbook.models import Ingredient, ServingSize, Recipe, UserDiet, Comment
+from foodbook.models import Ingredient, ServingSize, Recipe, UserDiet, Comment, UserPicture
 from dajaxice.decorators import dajaxice_register
 from recipe_utils import calculate_nutritional_value, decimal_json
 from django.contrib import messages
@@ -8,12 +8,15 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 import datetime
 from django.utils import timezone
+from django.db.models import Q
 
 @dajaxice_register(method='GET', name='ingredient.update')
 def update_search(request, div_id, search, search_type="All"):
 	dajax = Dajax()
-	if search_type != "All":
-		ingredients = Ingredient.objects.filter(name__icontains=search, ingredient_type__name__iexact=search_type)
+	if search_type == "All":
+		ingredients = Ingredient.objects.filter(name__icontains=search)
+	elif search_type == "Meat":
+		ingredients = Ingredient.objects.filter(Q(ingredient_type__name__iexact='Pork') | Q(ingredient_type__name__iexact='Beef') | Q(ingredient_type__name__iexact='Lamb') | Q(ingredient_type__name__iexact='Chicken'), name__icontains=search).order_by(name)
 	else:
 		ingredients = Ingredient.objects.filter(name__icontains=search)
 	out = []
@@ -31,10 +34,24 @@ def update_search(request, div_id, search, search_type="All"):
 def update_recipe_ingredient_search(request, div_id, search, page='0', num_per_page=15, search_type="All"):
 	dajax = Dajax()
 	page = int(page)
-	if search_type != "All":
-		ingredients = Ingredient.objects.filter(name__icontains=search, ingredient_type__name__iexact=search_type)
-	else:
+	if search_type == "All":
 		ingredients = Ingredient.objects.filter(name__icontains=search)
+	elif search_type == "meat":
+		ingredients = Ingredient.objects.filter(Q(ingredient_type__name__iexact='Pork') | Q(ingredient_type__name__iexact='Beef') | Q(ingredient_type__name__iexact='Lamb') | Q(ingredient_type__name__iexact='Chicken'), name__icontains=search).order_by('name')
+	elif search_type == 'seafood':
+		ingredients = Ingredient.objects.filter(Q(ingredient_type__name__iexact='Fish') | Q(ingredient_type__name__iexact='Shellfish'), name__icontains=search).order_by('name')	
+	elif search_type == 'nuts-and-legumes':
+		ingredients = Ingredient.objects.filter(Q(ingredient_type__name__iexact='Nuts') | Q(ingredient_type__name__iexact='Legumes') | Q(ingredient_type__name__iexact='Seeds') | Q(ingredient_type__name__iexact='Soy'), name__icontains=search).order_by('name')	
+	elif search_type == 'dairy-and-eggs':
+		ingredients = Ingredient.objects.filter(Q(ingredient_type__name__iexact='Dairy') | Q(ingredient_type__name__iexact='Eggs'), name__icontains=search).order_by('name')	
+	elif search_type == 'soups-and-sauces':
+		ingredients = Ingredient.objects.filter(ingredient_type__name__iexact='Soups and Sauces', name__icontains=search).order_by('name')
+	elif search_type == 'spices-and-herbs':
+		ingredients = Ingredient.objects.filter(ingredient_type__name__iexact='Spices and Herbs', name__icontains=search).order_by('name')
+	elif search_type == 'fats-and-oils':
+		ingredients = Ingredient.objects.filter(ingredient_type__name__iexact='Fats and Oils', name__icontains=search).order_by('name')	
+	else:
+		ingredients = Ingredient.objects.filter(name__icontains=search, ingredient_type__name__iexact=search_type)
 	count = ingredients.count()
 	ingredients = ingredients.order_by('name')[page*num_per_page:(page+1)*num_per_page]
 	out = []
@@ -63,6 +80,7 @@ def update_recipe_ingredient_search(request, div_id, search, page='0', num_per_p
 	dajax.assign('#' + div_id, 'innerHTML', "".join(out))
 	return dajax.json()
 
+@login_required
 @dajaxice_register(method='GET', name='recipe.add_ingredient')
 def add_ingredient(request, iid):
 	dajax = Dajax()
@@ -167,7 +185,11 @@ def get_comments(request, username='', num=5):
 	comments = Comment.objects.filter(receiving_user=user).order_by('-date')[:num]
 	out = []
 	for comment in comments:
-		out.append("<div class = 'recent-post'><div class = 'post-content'>%s</div><div class = 'post-author'><div class = 'post-author-icon'> </div><div class = 'post-author-title'>%s, %s</div></div></div>" % (comment.comment, comment.original_poster.username, comment.date.astimezone(timezone.get_default_timezone()).strftime('%-b %-d %-I:%M %p %Z')))
+		url = '/static/img/user/default'
+		pic = UserPicture.objects.filter(user_id=comment.original_poster)
+		if pic:
+			url = pic[0].pic_link
+		out.append("<div class = 'recent-post'><div class = 'post-content'>%s</div><div class = 'post-author'><div class = 'post-author-icon'><img class='poster-img' src='%s'/> </div><div class = 'post-author-title'>%s, %s</div></div></div>" % (comment.comment, url, comment.original_poster.username, comment.date.astimezone(timezone.get_default_timezone()).strftime('%-b %-d %-I:%M %p %Z')))
 	dajax.assign('#recent-posts', 'innerHTML', "".join(out))
+	dajax.script('resizeImages();')
 	return dajax.json()
-

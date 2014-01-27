@@ -84,17 +84,21 @@ RECIPE INFO
 
 .simple-search-bar {
   width: 90%;
-  height: 20px;
+  height: 30px;
   border: 1px solid black;
   margin: 5px 0 5px 5px;
-  padding: 5px 0 5px 0;
   display: inline-block;
-  background-color: white;
+  background-color: #FFFFFF;
 }
 
-.simple-search-bar #ingredient-search {
-  height: 20px;
+.simple-search-bar input {
+  height: 30px;
+  font-family: Roboto, 'sans-serif';
+  font-weight: 300;
+  background-color: #FFFFFF;
   outline: none;
+  width: 100%;
+  padding-left: 5px;
 }
 
 /*
@@ -474,18 +478,40 @@ ADDED INGREDIENTS
   display: inline-block;
   width: 76%;
   margin: 0 0 0 1%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  vertical-align: middle;
 }
 
 #recipe-instructions-and-descriptions {
-  border: 1px solid black;
+  border: 1px solid #C6C6C6;
   visibility: hidden;
   display: none;
+  width: 999px;
+  height: 851px;
+  margin-bottom: 28px;
 }
 
 #recipe-summary {
-  border: 10px solid black;
+  border: 1px solid #C6C6C6;
   visibility: hidden;
   display: none;
+  width: 999px;
+  height: 851px;
+  margin-bottom: 28px;
+}
+
+#recipe-info {
+  display: none;
+  width: 1000px;
+  height: 860px;
+  margin-bottom: 20px;
+}
+
+#recipe-info.selected {
+  visibility: visible;
+  display: inline-block;
 }
 
 #recipe-summary.selected {
@@ -739,8 +765,9 @@ select {
 }
 
 #il-previous {
-  top: 10px;
-  width: 60px;
+  top: 15px;
+  height: 40px;
+  width: 40px;
   display: inline-block;
   position: absolute;
   left: 150px;
@@ -750,32 +777,27 @@ select {
 }
 
 #il-next {
-  top: 10px;
-  width: 60px;
+  top: 15px;
+  width: 40px;
+  height: 40px;
   display: inline-block;
   position: absolute;
-  left: 230px;
+  left: 190px;
   cursor: pointer;
   -webkit-user-select: none;
   user-select: none;
 }
 
-#il-next i{
-  text-align: center;
-  color: green;
-  font-size: 40px;
-  line-height: 50px;
+#il-next i {
+  font-size: 30px;
+  line-height: 46px;
   position: absolute;
-  text-shadow: -1px 0px black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 #il-previous i {
-  text-align: center;
-  color: green;
-  font-size: 40px;
-  line-height: 50px;
+  font-size: 30px;
+  line-height: 46px;
   position: absolute;
-  text-shadow: -1px 0px black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 #recipe-next-prev {
@@ -783,44 +805,68 @@ select {
   margin: 0 auto 60px auto;
 }
 
-#prev {
+.prev {
+  background: -webkit-linear-gradient(#FFFFFF, #FAFAFA);
   border: 1px solid #C6C6C6;
   display: inline-block;
-  height: 100px;
-  width: 100px;
+  height: 80px;
+  width: 80px;
 }
 
-#prev i {
-  line-height: 106px;
+.prev i {
+  line-height: 86px;
   width: 100%;
   text-align: center;
-  font-size: 90px;
+  font-size: 60px;
+  color: #A3A3A3;
 }
 
-#next {
-  height: 100px;
-  width: 100px;
+.next {
+  background: -webkit-linear-gradient(#FFFFFF, #FAFAFA);
+  height: 80px;
+  width: 80px;
   border: 1px solid #C6C6C6;
   display: inline-block;
 }
 
-#next i {
-  line-height: 106px;
+.next i {
+  line-height: 86px;
   width: 100%;
   text-align: center;
-  font-size: 90px;
+  font-size: 60px;
+  color: #A3A3A3;
+}
+
+.clickable i {
+  color: #777878;
+}
+
+.clickable:hover {
+  border: 1px solid #A4A4A4;
+}
+
+.clickable:hover i{
+  color: #606162;
+}
+
+.clickable:active {
+  border: 1px solid #A3A3A3;
+}
+
+.clickable:active i {
+  color: #404142;
 }
 
 #save-recipe {
-  height: 100px;
-  width: 100px;
+  height: 80px;
+  width: 80px;
   border: 1px solid #C6C6C6;
   display: inline-block;
 }
 
 #save-recipe i {
-  line-height: 106px;
+  line-height: 86px;
   width: 100%;
   text-align: center;
-  font-size: 90px;
+  font-size: 60px;
 }

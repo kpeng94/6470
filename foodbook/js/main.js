@@ -101,21 +101,23 @@ var resizeImage = function(threshold, image) {
 	if (height > threshold && width > threshold) {
 		if (height > width) {
 			image.style.width = threshold + 'px';
-			image.style.top = -(image.height - threshold) / 2 + 'px';
+			image.style.top = -(height * threshold/width) / 2 + 'px';
 		} else {
-			image.style.height = threshold + 'px';
-			image.style.left = -(image.width - threshold) / 2 + 'px';
+			image.style.height = threshold + 'px'
+			image.style.left = -(width * threshold/height - threshold) / 2 + 'px';
 		}
 	}
 	else if(height > threshold){
-		image.style.top = -(image.height - threshold) / 2 + 'px';
+		image.style.left = -(width * threshold/height - threshold) / 2 + 'px';
+		image.style.top = -(height * threshold/width) / 2 + 'px';
 	}
 	else if(width > threshold){
-		image.style.left = -(image.width - threshold) / 2 + 'px';
+		image.style.left = -(width * threshold/height - threshold) / 2 + 'px';
+		image.style.top = -(height * threshold/width) / 2 + 'px';		
 	}
 	else{
-		image.style.top = -(image.height - threshold) / 2 + 'px';
-		image.style.left = -(image.width - threshold) / 2 + 'px';
+		image.style.top = -(height * threshold/width) / 2 + 'px';
+		image.style.left = -(width * threshold/height - threshold) / 2 + 'px';
 	}
 }
 

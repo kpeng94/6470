@@ -5,6 +5,13 @@ var retrieve_posts = function(){
 	return false;
 }
 
+var resizeImages = function(){
+	var elements = document.getElementsByClassName('poster-img');
+	for(var i = 0; i < elements.length; i++){
+	resizeImage(26, elements[i]);
+	}
+}
+
 var add_comment = function(){
 	Dajaxice.comment.user_add(Dajax.process, {'username': $('#username').val(), 'comment': $('#comment-box').val()});
 	return false;
