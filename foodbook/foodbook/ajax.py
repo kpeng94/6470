@@ -9,6 +9,7 @@ from django.contrib.auth.models import User
 import datetime
 from django.utils import timezone
 from django.db.models import Q
+from django.template.defaultfilters import timesince
 
 @dajaxice_register(method='GET', name='ingredient.update')
 def update_search(request, div_id, search, search_type="All"):
@@ -281,4 +282,26 @@ def get_comments(request, username='', num=5):
 		out.append("<div class = 'recent-post'><div class = 'post-content'>%s</div><div class = 'post-author'><div class = 'post-author-icon'><img class='poster-img' src='%s'/> </div><div class = 'post-author-title'>%s, %s</div></div></div>" % (comment.comment, url, comment.original_poster.username, comment.date.astimezone(timezone.get_default_timezone()).strftime('%-b %-d %-I:%M %p %Z')))
 	dajax.assign('#recent-posts', 'innerHTML', "".join(out))
 	dajax.script('resizeImages();')
+	return dajax.json()
+
+@dajaxice_register(method='GET', name='recipe.list_mine')
+def list_own_recipes(request, param='name'):
+	dajax = Dajax()
+	recipes = Recipe.objects.filter(user_id=request.user).order_by(param)
+	out = []
+	if recipes:
+		for recipe in recipes:
+			out.append("""<div class='recipe-line'>
+		  				<div class='recipe-link'>
+		    			<a href='/recipe/edit?rid=%d'>%s</a>
+		  				</div>
+		  				<div class='recipe-line-info'>
+		    			<div class='last-edited'>Last edited: %s ago</div><div class='upvotes'>Upvotes: %d</div>
+		  				</div>
+		  				<hr>""" % (recipe.id, recipe.name, timesince(recipe.last_edited), recipe.upvotes))
+	else:
+		out.append("""<div id='no-recipes'>
+    			You don't have any recipes - go and make some!
+    			</div>""")
+	dajax.assign('#recipe-list-container', 'innerHTML', "".join(out))
 	return dajax.json()

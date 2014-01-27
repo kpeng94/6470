@@ -448,14 +448,21 @@ body {
 
 .half-section-title {
   display: inline-block;
-  width: 50%;
-  font-family: Petrona;
+  width: 499px;
+  font-family: Roboto;
+  font-weight: 500;
   height: 50px;
   line-height: 50px;
   text-align: center;
   font-size: 30px;
-  color: #FFFFFF;
+  color: black;
   position: relative;
+  background-color: #f0f0f0;
+}
+
+.half-section-title.clicked {
+  background-color: white;
+  border-bottom: none !important;
 }
 
 /* 404 PAGE */
@@ -485,7 +492,6 @@ body {
 .bad-content-back {
   position: absolute;
   background-color: #ECA350;
-  border-radius: 2px;
   border: none;
   color: white;
   right: 15px;
