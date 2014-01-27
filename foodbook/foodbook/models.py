@@ -55,7 +55,6 @@ class Recipe(models.Model):
 	ingredients = models.ManyToManyField(Ingredient, blank=True, null=True)
 	instructions = models.TextField(blank=True)
 	suggested = models.TextField(blank=True)
-	restrictions = models.TextField(blank=True)
 	upvotes = models.IntegerField()
 	variant = models.ForeignKey('self', null = True, blank=True)
 	public = models.BooleanField()
@@ -80,6 +79,18 @@ class Recipe(models.Model):
 	vitamin_b_6 = models.DecimalField(max_digits=10, decimal_places=5, help_text="DV per ServingSize")
 	vitamin_b_12 = models.DecimalField(max_digits=10, decimal_places=5, help_text="DV per ServingSize")
 	magnesium = models.DecimalField(max_digits=10, decimal_places=5, help_text="DV per ServingSize")
+	halal = models.BooleanField()
+	lacto = models.BooleanField()
+	lactoovo = models.BooleanField()
+	vegan = models.BooleanField()
+	diabetes = models.BooleanField()
+	hypertension = models.BooleanField()
+	nuts = models.BooleanField()
+	lactose = models.BooleanField()
+	eggs = models.BooleanField()
+	soy = models.BooleanField()
+	shellfish = models.BooleanField()
+	fish = models.BooleanField()
 
 	def __unicode__(self):
 		return self.name
@@ -117,6 +128,9 @@ class IngredientWrapper():
 		self.unit = measurement
 		self.conversion = ServingSize.objects.get(name__iexact=measurement, ingredients__id=iid).gram_conversion
 		self.name = Ingredient.objects.get(id=iid).name
+		self.type = Ingredient.objects.get(id=iid).ingredient_type.name
+		self.restrictions = Ingredient.objects.get(id=iid).restrictions
+
 		ingredient_modifier = Ingredient.objects.get(id=iid).modifier
 		if ingredient_modifier:
 			self.name = self.name + ' (' + ingredient_modifier + ')'

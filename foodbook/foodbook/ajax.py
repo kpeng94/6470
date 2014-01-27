@@ -1,6 +1,6 @@
 from dajax.core import Dajax
 import json, decimal
-from foodbook.models import Ingredient, ServingSize, Recipe, UserDiet, Comment, UserPicture
+from foodbook.models import Ingredient, ServingSize, Recipe, UserDiet, Comment, UserPicture, IngredientWrapper
 from dajaxice.decorators import dajaxice_register
 from recipe_utils import calculate_nutritional_value, decimal_json
 from django.contrib import messages
@@ -97,25 +97,114 @@ def add_ingredient(request, iid):
 	return json.dumps({'html': "".join(out), 'id': ingredient.id})
 
 @dajaxice_register(method='POST', name='recipe.save')
-def save_recipe(request, rid, ingredients, name, description, instructions, ss):
+def save_recipe(request, rid, ingredients, name, description, suggestions, instructions, ss, public):
 	if request.user.is_authenticated():
+		nutrients = calculate_nutritional_value(ingredients, request.user, ss)
+		halal = False
+		lacto = False
+		lactoovo = False
+		vegan = False
+		diabetes = False
+		hypertension = False
+		nuts = False
+		lactose = False
+		eggs = False
+		soy = False
+		shellfish = False
+		fish = False
+		ingredient_list = []
+		for i in xrange(len(ingredients['id'])):
+			ingredient_list.append(IngredientWrapper(ingredients['id'][i], ingredients['qty'][i], ingredients['unit'][i]))
+		for ingredient in ingredient_list:
+			if ingredient.type == 'Pork' or 'pork' in ingredient.restrictions:
+				halal = True
+				vegan = True
+				lactoovo = True
+				lacto = True
+			elif ingredient.type == 'Dairy' or 'dairy' in ingredient.restrictions:
+				lactose = True
+				vegan = True
+			elif ingredient.type == 'Eggs' or 'eggs' in ingredient.restrictions:
+				vegan = True
+				lacto = True
+				eggs = True
+			elif ingredient.type == 'Fish' or 'fish' in ingredient.restrictions:
+				vegan = True
+				lacto = True
+				lactoovo = True
+				fish = True
+			elif ingredient.type == 'Beef' or ingredient.type=='Chicken' or ingredient.type == 'Lamb':
+				vegan = True
+				lacto = True
+				lactoovo = True
+			elif ingredient.type == 'Soy' or 'soy' in ingredient.restrictions:
+				soy = True
+			elif ingredient.type == 'Nuts' or 'nuts' in ingredient.restrictions:
+				nuts = True
+			elif ingredient.type == 'Shellfish' or 'shellfish' in ingredient.restrictions:
+				shellfish = True
+		if nutrients['carbohydrates'][1] > decimal.Decimal(66):
+			diabetes = True
+		if nutrients['total-fat'][1] > decimal.Decimal(66) or nutrients['sodium'][1] > decimal.Decimal(80):
+			hypertension = True
 		if rid:
 			try:
 				recipe = Recipe.objects.get(id=rid, user_id=request.user)
 			except:
 				return json.dumps({'success': False})
-			if recipe:
-				recipe.name = name
-				recipe.description = description
-				recipe.servings = ss
-				recipe.instructions = instructions
-				recipe.ingredients = json.dumps(ingredients)
-				recipe.save()
+		# IF RECIPE EXISTS
+			recipe.name = name
+			recipe.description = description
+			recipe.servings = ss
+			recipe.instructions = instructions
+			recipe.ingredients_text = json.dumps(ingredients)
+			recipe.calories = nutrients['calories'][0]
+			recipe.total_fat = nutrients['total-fat'][0]
+			recipe.saturated_fat = nutrients['saturated'][0]
+			recipe.polyunsaturated_fat = nutrients['polyunsaturated'][0]
+			recipe.monounsaturated_fat = nutrients['monounsaturated'][0]
+			recipe.trans_fat = nutrients['trans'][0]
+			recipe.cholesterol = nutrients['cholesterol'][0]
+			recipe.sodium = nutrients['sodium'][0]
+			recipe.potassium = nutrients['potassium'][0]
+			recipe.total_carbohydrates = nutrients['carbohydrates'][0]
+			recipe.dietary_fiber = nutrients['fiber'][0]
+			recipe.sugar = 0
+			recipe.protein = nutrients['protein'][0]
+			recipe.vitamin_a = nutrients['vita'][0]
+			recipe.vitamin_b_6 = nutrients['vitb6'][0]
+			recipe.vitamin_b_12 = nutrients['vitb12'][0]
+			recipe.calcium = nutrients['calcium'][0]
+			recipe.iron = nutrients['iron'][0]
+			recipe.vitamin_d = nutrients['vitd'][0]
+			recipe.magnesium = nutrients['magnesium'][0]
+			recipe.public = public
+			recipe.suggested = suggestions
+			recipe.halal = halal
+			recipe.lacto = lacto
+			recipe.lactoovo = lactoovo
+			recipe.vegan = vegan
+			recipe.diabetes = diabetes
+			recipe.hypertension = hypertension
+			recipe.nuts = nuts
+			recipe.lactose = lactose
+			recipe.eggs = eggs
+			recipe.soy = soy
+			recipe.shellfish = shellfish
+			recipe.fish = fish
+			recipe.save()
+		# NO RID
 		else:
-			recipe = Recipe(name=name, servings = ss, description=description, instructions=instructions, ingredients=json.dumps(ingredients), upvotes=0)
+			recipe = Recipe(name=name, user_id = request.user, servings = ss, description=description, instructions=instructions, ingredients_text=json.dumps(ingredients), upvotes=0,
+				calories = nutrients['calories'][0], total_fat = nutrients['total-fat'][0], saturated_fat = nutrients['saturated'][0], polyunsaturated_fat = nutrients['polyunsaturated'][0],
+				monounsaturated_fat = nutrients['monounsaturated'][0], trans_fat = nutrients['trans'][0], cholesterol = nutrients['cholesterol'][0], sodium = nutrients['sodium'][0], 
+				potassium = nutrients['potassium'][0], total_carbohydrates = nutrients['carbohydrates'][0], dietary_fiber = nutrients['fiber'][0], 
+				sugar=0, protein = nutrients['protein'][0], vitamin_a = nutrients['vita'][0], vitamin_b_6 = nutrients['vitb6'][0], vitamin_b_12 = nutrients['vitb12'][0],
+				vitamin_c=nutrients['vitc'][0], calcium = nutrients['calcium'][0], iron=nutrients['iron'][0], vitamin_d = nutrients['vitd'][0], magnesium = nutrients['magnesium'][0], public=public, suggested=suggestions,
+				halal=halal, lacto=lacto, lactoovo=lactoovo, diabetes=diabetes, vegan=vegan, hypertension=hypertension, nuts=nuts, lactose=lactose, eggs=eggs, soy=soy, shellfish=shellfish,
+				fish=fish)
 			recipe.save()
 			rid = recipe.id
-			recipe.user_id.add(request.user)
 	return json.dumps({'success': True, 'rid': rid})
 
 @dajaxice_register(method='GET', name='recipe.check')

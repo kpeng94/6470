@@ -79,15 +79,11 @@ def add_recipe(request):
 		try:
 			recipe = Recipe.objects.get(id=recipe, user_id=request.user)
 		except:
-			return HttpResponse("This isn't your recipe, or this recipe doesn't exist.")
-		else:
-			ingredients = json.loads(recipe.ingredients)
-			for i in xrange(len(ingredients['id'])):
-				ingredient_name, ingredient_modifier = Ingredient.objects.get(id=ingredients['id'][i]).name, Ingredient.objects.get(id=ingredients['id'][i]).modifier
-				if ingredient_modifier:
-					ingredient_name = ingredient_name + ' (' + ingredient_modifier + ')'
-				ingredient_list.append(IngredientWrapper(ingredients['id'][i], ingredients['qty'][i], ingredients['unit'][i]))
-	ingredient_types = IngredientType.objects.all()
+			messages.error(request, "Invalid recipe.")
+			return redirect('/recipe')
+		ingredients = json.loads(recipe.ingredients_text)
+		for i in xrange(len(ingredients['id'])):
+			ingredient_list.append(IngredientWrapper(ingredients['id'][i], ingredients['qty'][i], ingredients['unit'][i]))
 	i_types = [('Meat', 'meat'), ('Fruits', 'fruits'), ('Grains', 'grains'), ('Seafood', 'seafood'), ('Nuts and Legumes', 'nuts-and-legumes'), ('Soups and Sauces', 'soups-and-sauces'), ('Spices and Herbs', 'spices-and-herbs'), ('Vegetables', 'vegetables'), ('Fats and Oils', 'fats-and-oils'), ('Dairy and Eggs', 'dairy-and-eggs')]
 	return render_to_response('add_recipe.html', {'type_list': i_types, 'ingredient_list': ingredient_list, 'recipe': recipe}, context_instance=RequestContext(request))
 

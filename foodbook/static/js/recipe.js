@@ -68,8 +68,10 @@ function save_recipe(){
 	var instructions = $('#recipe-instructions').val();
 	var name = $('#recipe-name-i').val();
 	var ss = $('#recipe-serving-size').val();
+	var makepublic = $('#recipe-public').val();
+	var suggestions = $('#recipe-suggestions').val()
 	summary_ingredients();
-	Dajaxice.recipe.save(confirm_save, {'rid': id, 'ss': ss, 'ingredients': cache_list, 'name': name, 'description': description, 'instructions': instructions});
+	Dajaxice.recipe.save(confirm_save, {'rid': id, 'ss': ss, 'public': makepublic, 'ingredients': cache_list, 'name': name, 'description': description, 'instructions': instructions, 'suggestions': suggestions});
 	return false;
 }
 

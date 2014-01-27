@@ -17,14 +17,6 @@ function perform_search(){
 	return false;
 }
 
-function show_ingredient(data){
-	var div_elem = document.createElement("div");
-	div_elem.className = 'ingredient-line';
-	div_elem.id = 'ingredient_line_' + data.id;
-	div_elem.innerHTML = data.html;
-	$('#recipe-list').append(div_elem);
-}
-
 function update_page(num){
 	Dajaxice.ingredient.update_url(Dajax.process, {'search': $('#ingredient-search').val(), 'div_id': 'ingredient-list', 'search_type': selected_type, 'page': num});
 	return false;
@@ -40,15 +32,6 @@ function check_ingredient(){
 				iid_l.push(id);
 		}
 	}
-}
-
-function add_ingredient(iid){
-	check_ingredient();
-	if(iid_l.indexOf(iid) != -1)
-		return false;
-	Dajaxice.recipe.add_ingredient(show_ingredient, {'iid': iid.toString()});
-	iid_l.push(iid);
-	return true;
 }
 
 function clear_cache(){
@@ -85,8 +68,10 @@ function save_recipe(){
 	var instructions = $('#recipe-instructions').val();
 	var name = $('#recipe-name-i').val();
 	var ss = $('#recipe-serving-size').val();
+	var makepublic = $('#recipe-public').val();
+	var suggestions = $('#recipe-suggestions').val()
 	summary_ingredients();
-	Dajaxice.recipe.save(confirm_save, {'rid': id, 'ss': ss, 'ingredients': cache_list, 'name': name, 'description': description, 'instructions': instructions});
+	Dajaxice.recipe.save(confirm_save, {'rid': id, 'ss': ss, 'public': makepublic, 'ingredients': cache_list, 'name': name, 'description': description, 'instructions': instructions, 'suggestions': suggestions});
 	return false;
 }
 
@@ -106,12 +91,22 @@ function modify_nutrients(data){
 	}
 }
 
-window.onload = function(e){
-	perform_search();
-	$('#recipe-serving-size').blur(function(){
+var check_input = function(){
 	if($(this).val() == "" || isNaN($(this).val())){
 		$(this).val('1');
-	}});
+	}
+}
+
+var update_nutrients = function(){
+	if($(this).val() == "" || isNaN($(this).val())){
+		$(this).val('1');
+	}
+	check_nutrients();
+}
+
+window.onload = function(e){
+	perform_search();
+	$('#recipe-serving-size').blur(update_nutrients);
 	check_nutrients();
 }
 
@@ -155,3 +150,23 @@ var previousContent = function() {
 		removeClass(document.getElementById('recipe-prev'),'clickable');
 	}
 };
+
+function show_ingredient(data){
+	var div_elem = document.createElement("div");
+	div_elem.className = 'ingredient-line';
+	div_elem.id = 'ingredient_line_' + data.id;
+	div_elem.innerHTML = data.html;
+	$('#recipe-list').append(div_elem);
+	$('#ingredient_line_' + data.id + '_number').blur(update_nutrients);
+	$('#ingredient_line_' + data.id + '_select').change(check_nutrients);
+	check_nutrients();
+}
+
+function add_ingredient(iid){
+	check_ingredient();
+	if(iid_l.indexOf(iid) != -1)
+		return false;
+	Dajaxice.recipe.add_ingredient(show_ingredient, {'iid': iid.toString()});
+	iid_l.push(iid);
+	return true;
+}

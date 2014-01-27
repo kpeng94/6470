@@ -11,7 +11,7 @@
   <div id='recipe-content'>
     <div id = 'recipe-name'>
       <input id='recipe-name-i' value='{{ recipe.name|default:"Untitled Recipe" }}' placeholder='Recipe Name' type='text'/>
-      <div id = 'recipe-serve'>Serves: <input type='number' id='recipe-serving-size' value='{{ recipe.serving_size|default:"1" }}'/> person(s)</div>
+      <div id = 'recipe-serve'>Serves: <input type='number' id='recipe-serving-size' value='{{ recipe.servings|default:"1" }}'/> person(s)</div>
     </div>
 
     <div id='recipe-info' class = 'selected'>
@@ -68,14 +68,16 @@
         </div>
         {% for ingredient in ingredient_list %}
         <div class='ingredient-line' id='ingredient_line_{{ ingredient.ingredient_id }}'>
-          {{ ingredient.name }}<input type='number' size='5' id='ingredient_line_{{ ingredient.ingredient_id }}_number' value={{ingredient.qty }} />
+        <div class='ingredient-name'>
+          {{ ingredient.name }}</div><div class='ingredient-input-div'><input type='number' size='5' id='ingredient_line_{{ ingredient.ingredient_id }}_number' value={{ingredient.qty }} /></div><div class='ingredient-select-div'>
           <select class='ingredient-select' id='ingredient_line_{{ ingredient.ingredient_id }}_select'>
             {% for ss in ingredient.servingsize %}
             <option value='{{ ss.name }}'
             {% if ss.name == ingredient.unit %} selected='selected' {% endif %}>{{ ss.name }}</option>
             {% endfor %}
           </select>
-        </div>
+          </div>
+      </div>
         {% endfor %}
       </div>
       <div id='nutritional-info'>
@@ -116,6 +118,8 @@
     <div id = 'recipe-instructions-and-descriptions'>
       <textarea id='recipe-description' rows='10' cols='50' value='{{ recipe.description }}' placeholder='Description'>{{ recipe.description }}</textarea>
       <textarea id='recipe-instructions' rows='10' cols='50' value='{{ recipe.instructions }}' placeholder='Instructions'>{{ recipe.instructions }}</textarea>
+      <input type='checkbox' id='recipe-public'>Make public?</input>
+      <textarea id='recipe-suggestions' rows='10' cols='50' value='{{ recipe.suggestions }}' placeholder='Dietary suggestions'>{{ recipe.suggestions }}</textarea>
     </div>
 
     <div id = 'recipe-summary'></div>
@@ -125,7 +129,6 @@
   <div onclick='previousContent();' class='prev' id='recipe-prev'><i class="fa fa-chevron-left"></i></div><div onclick='nextContent();' class='next clickable' id='recipe-next'><i class="fa fa-chevron-right"></i></div>
 </div>
 <div>
-  <button onclick='check_nutrients();' id='check-nutr'>Nutrients</button>
   <div onclick='save_recipe();' id='save-recipe'><i class="fa fa-floppy-o"></i></div>
 </div>
 {% endblock %}
