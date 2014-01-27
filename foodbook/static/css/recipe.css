@@ -885,3 +885,23 @@ select {
   text-align: center;
   font-size: 60px;
 }
+
+
+#recipe-descriptions-title {
+  background-color: #323C43;
+}
+
+#recipe-instructions-title {
+  background-color: #323C43;
+}
+
+#recipe-suggestions-title {
+  background-color: #323C43;
+}
+
+#recipe-instructions-and-descriptions textarea {
+  resize: none;
+  margin-left: 0px;
+  width: 999px;
+  height: 227px;
+}

@@ -372,7 +372,7 @@ body {
   position: relative;
   background-color: #FFFFFF;
   width: 100%;
-  height: 50%;
+  height: 483px;
   background-image: url('/static/img/dummybackground.jpg');
   background-size: 100% 100%;
   background-repeat: no-repeat;
@@ -381,7 +381,7 @@ body {
 .bottom-half {
   position: relative;
   width: 100%;
-  height: 37%;
+  height: 363px;
   background-color: #DDDDDD;
 }
 
