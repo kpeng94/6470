@@ -88,31 +88,19 @@ RECIPE INFO
   border: 1px solid black;
   margin: 5px 0 5px 5px;
   display: inline-block;
-  background-color: #E1E1E1;
+  background-color: #FFFFFF;
 }
 
 .simple-search-bar input {
-  /*background-color: #F1F1F1;*/
   height: 30px;
   font-family: Roboto, 'sans-serif';
   font-weight: 300;
-  background-color: #E1E1E1;
+  background-color: #FFFFFF;
   outline: none;
   width: 100%;
   padding-left: 5px;
 }
 
-.simple-search-bar:hover,
-.simple-search-bar input:hover,
-.simple-search-bar:hover input {
-  background-color: #FFFFFF;
-  outline: none;
-}
-
-.simple-search-bar input:focus {
-  outline: none;
-  background-color: #FFFFFF;
-}
 /*
  ______ ____   ____  _____    _________     _______  ______  _____
  |  ____/ __ \ / __ \|  __ \  |__   __\ \   / /  __ \|  ____|/ ____|
