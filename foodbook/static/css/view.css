@@ -16,16 +16,36 @@
   width: 1000px;
 }
 
+#vr-all {
+  display: none;
+  height: 900px;
+}
+
+#vr-all.selected {
+  display: block;
+}
+
+#vr-mine {
+  display: none;
+  height: 900px;
+}
+
+#vr-mine.selected {
+  display: block;
+}
+
 #vr-view-all {
   padding: 5px 0 5px 0;
   background-color: #D3E1A1;
   text-align: center;
+  cursor: pointer;
 }
 
 #vr-view-mine {
   padding: 5px 0 5px 0;
   background-color: #DDDDDD;
   text-align: center;
+  cursor: pointer;
 }
 
 #vr-lookup {

@@ -10,39 +10,43 @@
 <div id='personal-recipe-list'>
 	<div class = 'section-title my-recipes-title'>My Recipes</div>
   <div id = 'vr-tabs'>
-    <div class = 'half-section-title' id = 'vr-view-all'>View All</div><div class = 'half-section-title' id = 'vr-view-mine'>View Mine</div>
+    <div class = 'half-section-title' id = 'vr-view-all' onclick = 'viewAll();'>View All</div><div class = 'half-section-title' id = 'vr-view-mine' onclick = 'viewMine();'>View Mine</div>
   </div>
-  <div id = 'vr-lookup'>
-    <div id = 'vr-search'>
-      <input type='text' id='vr-search-input' placeholder='Search'/>
-      <div class = 'search-icon'></div>
+  <div id = 'vr-all' class = 'selected'>
+    <div id = 'vr-lookup'>
+      <div id = 'vr-search'>
+        <input type='text' id='vr-search-input' placeholder='Search'/>
+        <div class = 'search-icon'></div>
+      </div>
+      <div id = 'vr-advanced-parameters'>
+        <div id = 'vr-adv-param-title-box'><div id = 'vr-adv-param-title'>Advanced Parameters:</div></div>
+        <div id = 'vr-adv-param-content'>
+          Calories: <br/>
+          Protein: <br/>
+          Fat: <br/>
+        </div>
+      </div>
     </div>
-    <div id = 'vr-advanced-parameters'>
-      <div id = 'vr-adv-param-title-box'><div id = 'vr-adv-param-title'>Advanced Parameters:</div></div>
-      <div id = 'vr-adv-param-content'>
-        Calories: <br/>
-        Protein: <br/>
-        Fat: <br/>
+    <div id ='diet-selection-box'>
+      <div id = 'diet-checkbox' onclick = 'toggleCheckbox()'>
+        <div id = 'diet-checkmark' class = ''>&#10004;</div>
+      </div>
+      <div id = 'diet-selection-text'>Hide recipes that are out of my diet.</div>
+    </div>
+    <div id = 'vr-table'>
+      <div id = 'vr-table-header'>
+        <div id = 'vr-table-recipe-label' class = 'vr-table-label'>Recipe</div><div id = 'vr-table-votes-label' class = 'vr-table-label'>Votes</div><div id = 'vr-table-made-label' class = 'vr-table-label'>Made</div>
+      </div>
+      <div id = 'vr-table-columns'>
+        <div id = 'vr-first-border'></div>
+        <div id = 'vr-second-border'></div>
+      </div>
+      <div class = 'vr-table-content'>
+        <div class = 'vr-table-recipe-content'></div><div class = 'vr-table-votes-content'></div><div class = 'vr-table-made-content'></div>
       </div>
     </div>
   </div>
-  <div id ='diet-selection-box'>
-    <div id = 'diet-checkbox' onclick = 'toggleCheckbox()'>
-      <div id = 'diet-checkmark' class = ''>&#10004;</div>
-    </div>
-    <div id = 'diet-selection-text'>Hide recipes that are out of my diet.</div>
-  </div>
-  <div id = 'vr-table'>
-    <div id = 'vr-table-header'>
-      <div id = 'vr-table-recipe-label' class = 'vr-table-label'>Recipe</div><div id = 'vr-table-votes-label' class = 'vr-table-label'>Votes</div><div id = 'vr-table-made-label' class = 'vr-table-label'>Made</div>
-    </div>
-    <div id = 'vr-table-columns'>
-      <div id = 'vr-first-border'></div>
-      <div id = 'vr-second-border'></div>
-    </div>
-    <div class = 'vr-table-content'>
-      <div class = 'vr-table-recipe-content'></div><div class = 'vr-table-votes-content'></div><div class = 'vr-table-made-content'></div>
-    </div>
+  <div id = 'vr-mine'>
   </div>
 </div>
 {% endblock %}
