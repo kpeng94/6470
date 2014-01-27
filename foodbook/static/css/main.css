@@ -459,9 +459,41 @@ body {
 }
 
 /* 404 PAGE */
-.404-content {
+.bad-content {
   width: 998px;
   border: 1px solid #c6c6c6;
-  padding: 30px auto 0px auto;
+  margin: 30px auto 0px auto;
+  background-color: white;
+  font-family: Roboto;
+  font-weight: 500;
+  position: relative;
+}
+
+.bad-content-title {
+  font-size: 30px;
+  height: 50px;
+  padding-top: 15px;
+  padding-left: 20px;
+}
+
+.bad-content-text {
+  font-size: 16px;
+  padding-left: 20px;
+  margin-bottom: 15px;
+}
+
+.bad-content-back {
+  position: absolute;
+  background-color: #ECA350;
+  border-radius: 2px;
+  border: none;
   color: white;
+  right: 15px;
+  bottom: 15px;
+  width: 150px;
+  height: 30px;
+  text-align: center;
+  font-family: Roboto;
+  font-weight: 700;
+  padding-top: 6px;
 }

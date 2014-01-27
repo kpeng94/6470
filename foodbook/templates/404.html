@@ -1,12 +1,15 @@
 {% extends "footer_header.html" %}
 
 {% block content %}
-<div class='404-content'>
-<div class='404-content-title'>
+<div class='bad-content'>
+<div class='bad-content-title'>
 Page not found...
 </div>
-<div class='404-content-text'>
+<div class='bad-content-text'>
 Sorry, but this page doesn't exist!
+</div>
+<div class='bad-content-back' onclick='history.back()'>
+	Back
 </div>
 </div>
 {% endblock %}
