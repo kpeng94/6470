@@ -275,3 +275,20 @@
 #diet-checkmark.enabled {
   display: block;
 }
+
+#vr-adv-param-title-box {
+  height: 60px;
+  font-size: 26px;
+  line-height: 60px;
+  border-bottom: 1px solid #C6C6C6;
+  width: 100%;
+}
+
+#vr-adv-param-title {
+  padding-left: 10px;
+}
+
+#vr-adv-param-content {
+  padding-left: 10px;
+  padding-top: 10px;
+}
