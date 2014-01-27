@@ -5,26 +5,26 @@ import decimal
 ## using a JSON array of ingredients.
 def calculate_nutritional_value(ingredients, user, ss):
 	nutrients = dict()
-	nutrients['calories'] = [0.0,0.0]
-	nutrients['total-fat'] = [0.0,0.0]
-	nutrients['saturated'] = [0.0,0.0]
-	nutrients['polyunsaturated'] = [0.0,0.0]
-	nutrients['monounsaturated'] = [0.0,0.0]
-	nutrients['trans'] = [0.0,0.0]
-	nutrients['cholesterol'] = [0.0,0.0]
-	nutrients['sodium'] = [0.0,0.0]
-	nutrients['potassium'] = [0.0,0.0]
-	nutrients['carbohydrates'] = [0.0,0.0]
-	nutrients['fiber'] = [0.0,0.0]
-	nutrients['vita'] = [0.0,0.0]
-	nutrients['vitc'] = [0.0,0.0]
-	nutrients['calcium'] = [0.0,0.0]
-	nutrients['iron'] = [0.0,0.0]
-	nutrients['vitd'] = [0.0,0.0]
-	nutrients['vitb6'] = [0.0,0.0]
-	nutrients['vitb12'] = [0.0,0.0]
-	nutrients['magnesium'] = [0.0,0.0]
-	nutrients['protein'] = [0.0,0.0]
+	nutrients['calories'] = [decimal.Decimal(0.0),decimal.Decimal(0.0)]
+	nutrients['total-fat'] = [decimal.Decimal(0.0),decimal.Decimal(0.0)]
+	nutrients['saturated'] = [decimal.Decimal(0.0),decimal.Decimal(0.0)]
+	nutrients['polyunsaturated'] = [decimal.Decimal(0.0),decimal.Decimal(0.0)]
+	nutrients['monounsaturated'] = [decimal.Decimal(0.0),decimal.Decimal(0.0)]
+	nutrients['trans'] = [decimal.Decimal(0.0),decimal.Decimal(0.0)]
+	nutrients['cholesterol'] = [decimal.Decimal(0.0),decimal.Decimal(0.0)]
+	nutrients['sodium'] = [decimal.Decimal(0.0),decimal.Decimal(0.0)]
+	nutrients['potassium'] = [decimal.Decimal(0.0),decimal.Decimal(0.0)]
+	nutrients['carbohydrates'] = [decimal.Decimal(0.0),decimal.Decimal(0.0)]
+	nutrients['fiber'] = [decimal.Decimal(0.0),decimal.Decimal(0.0)]
+	nutrients['vita'] = [decimal.Decimal(0.0),decimal.Decimal(0.0)]
+	nutrients['vitc'] = [decimal.Decimal(0.0),decimal.Decimal(0.0)]
+	nutrients['calcium'] = [decimal.Decimal(0.0),decimal.Decimal(0.0)]
+	nutrients['iron'] = [decimal.Decimal(0.0),decimal.Decimal(0.0)]
+	nutrients['vitd'] = [decimal.Decimal(0.0),decimal.Decimal(0.0)]
+	nutrients['vitb6'] = [decimal.Decimal(0.0),decimal.Decimal(0.0)]
+	nutrients['vitb12'] = [decimal.Decimal(0.0),decimal.Decimal(0.0)]
+	nutrients['magnesium'] = [decimal.Decimal(0.0),decimal.Decimal(0.0)]
+	nutrients['protein'] = [decimal.Decimal(0.0),decimal.Decimal(0.0)]
 	ingredient_list = []
 	for i in xrange(len(ingredients['id'])):
 		ingredient_list.append(IngredientWrapper(ingredients['id'][i], ingredients['qty'][i], ingredients['unit'][i]))
@@ -53,38 +53,40 @@ def calculate_nutritional_value(ingredients, user, ss):
 		nutrients['magnesium'][0] += decimal.Decimal(ingredient_info.magnesium) * conversion * qty
 		nutrients['protein'][0] += decimal.Decimal(ingredient_info.protein) * conversion * qty
 	user = UserDiet.objects.filter(user=user)
-	calories = 2000
-	fat = 65
-	sugar = 300
-	protein = 50
+	calories = decimal.Decimal(2000)
+	fat = decimal.Decimal(65)
+	sugar = decimal.Decimal(300)
+	protein = decimal.Decimal(50)
 	if len(user) > 0:
 		user = user[0]
 		if user.calories:
-			calories = user.calories
+			calories = decimal.Decimal(user.calories)
 		if user.fat:
-			fat = user.fat
+			fat = decimal.Decimal(user.fat)
 		if user.sugar:
-			sugar = user.sugar
+			sugar = decimal.Decimal(user.sugar)
 		if user.protein:
-			protein = user.protein
+			protein = decimal.Decimal(user.protein)
 	nutrients['calories'][1] = nutrients['calories'][0]/calories
 	nutrients['total-fat'][1] = nutrients['total-fat'][0]/fat
-	nutrients['saturated'][1] = nutrients['saturated'][0]/20
-	nutrients['trans'][1] = 100.0 if nutrients['trans'][0] > 0 else 0.0
-	nutrients['cholesterol'][1] = nutrients['cholesterol'][0]/300
-	nutrients['sodium'][1] = nutrients['sodium'][0]/2400
-	nutrients['potassium'][1] = nutrients['potassium'][0]/4700
+	nutrients['saturated'][1] = nutrients['saturated'][0]/decimal.Decimal(20)
+	nutrients['trans'][1] = 100.0 if nutrients['trans'][0] > 0 else decimal.Decimal(0.0)
+	nutrients['cholesterol'][1] = nutrients['cholesterol'][0]/decimal.Decimal(300)
+	nutrients['sodium'][1] = nutrients['sodium'][0]/decimal.Decimal(2400)
+	nutrients['potassium'][1] = nutrients['potassium'][0]/decimal.Decimal(4700)
 	nutrients['carbohydrates'][1] = nutrients['carbohydrates'][0]/sugar
-	nutrients['fiber'][1] = nutrients['fiber'][0]/25
-	nutrients['vita'][1] = nutrients['vita'][0]/900
-	nutrients['vitc'][1] = nutrients['vita'][0]/90
-	nutrients['calcium'][1] = nutrients['calcium'][0]/1300
-	nutrients['iron'][1] = nutrients['iron'][0]/18
-	nutrients['vitd'][1] = nutrients['vitd'][0]/15
-	nutrients['vitb6'][1] = nutrients['vitb6'][0]/2
-	nutrients['vitb12'][1] = nutrients['vitb12'][0]/2.4
-	nutrients['magnesium'][1] = nutrients['magnesium'][0]/420
-	nutrients['protein'][1] = nutrients['protein'][0]/protein
+	nutrients['fiber'][1] = nutrients['fiber'][0]/decimal.Decimal(25)
+	nutrients['vita'][1] = nutrients['vita'][0]/decimal.Decimal(900)
+	nutrients['vitc'][1] = nutrients['vita'][0]/decimal.Decimal(90)
+	nutrients['calcium'][1] = nutrients['calcium'][0]/decimal.Decimal(1300)
+	nutrients['iron'][1] = nutrients['iron'][0]/decimal.Decimal(18)
+	nutrients['vitd'][1] = nutrients['vitd'][0]/decimal.Decimal(15)
+	nutrients['vitb6'][1] = nutrients['vitb6'][0]/decimal.Decimal(2)
+	nutrients['vitb12'][1] = nutrients['vitb12'][0]/decimal.Decimal(2.4)
+	nutrients['magnesium'][1] = nutrients['magnesium'][0]/decimal.Decimal(420)
+	nutrients['protein'][1] = nutrients['protein'][0]/decimal.Decimal(protein)
+	for key in nutrients:
+		nutrients[key] = [nutrients[key][0]/ss, nutrients[key][1]/ss*decimal.Decimal(100)]
 	return nutrients
 
 ################## JSON Utils

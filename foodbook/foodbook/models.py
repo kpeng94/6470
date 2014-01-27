@@ -121,3 +121,8 @@ class IngredientWrapper():
 		if ingredient_modifier:
 			self.name = self.name + ' (' + ingredient_modifier + ')'
 		self.servingsize = Ingredient.objects.get(id=iid).servingsize_set.all()
+
+def clean():
+	for ingredient in Ingredient.objects.all():
+		if len(ServingSize.objects.filter(ingredient=ingredient, name='g')) == 2:
+			ServingSize.objects.filter(ingredient=ingredient, name='g')[1].delete()
