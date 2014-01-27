@@ -92,12 +92,13 @@ function save_recipe(){
 
 function check_nutrients(){
 	summary_ingredients();
-	Dajaxice.recipe.check(test, {'ingredients': cache_list, 'ss': $('#recipe-serving-size').val()});
+	Dajaxice.recipe.check(modify_nutrients, {'ingredients': cache_list, 'ss': $('#recipe-serving-size').val()});
 	return false;
 }
 
-function test(data){
-	alert(data);
+function modify_nutrients(data){
+	for key in data:
+		$('#' + key + '-num').val(data[key][0]);
 }
 
 window.onload = function(e){

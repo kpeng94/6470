@@ -45,8 +45,8 @@
                 <a href="#" class="tab-link" id='{{ type.1 }}'onclick="change_search('{{ type.1 }}');">{{ type.0 }}</a>
               </div>
               <div class = 'type-tab-bgimg'>
-                <div class = 'type-tab-background' id = '{{type|lower}}-background'></div>
-                <div class = 'type-tab-img' id = "{{type|lower}}-img"></div>
+                <div class = 'type-tab-background' id = '{{ type.1 }}-background'></div>
+                <div class = 'type-tab-img' id = "{{ type.1 }}-img"></div>
               </div>
             </div>
             {% endfor %}
@@ -83,32 +83,32 @@
         </div>
         <div id = 'nutritional-facts'>
           <div class='nutritional-column'>
-          <div class='nutritional-grid' id='calories'>Calories: <div class='prog-bar green'><span style='width: 5%'></span></div></div>
-          <div class='nutritional-grid' id='carbohydrates'>Carbohydrates: <div class='prog-bar green'><span style='width: 15%'></span></div></div>
-          <div class='nutritional-grid' id='protein'>Protein <div class='prog-bar green'><span style='width: 25%'></span></div></div>
-          <div class='nutritional-grid' id='cholesterol'>Cholesterol: <div class='prog-bar yellow'><span style='width: 35%'></span></div></div>
-          <div class='nutritional-grid' id='fiber'>Fiber: <div class='prog-bar yellow'><span style='width: 35%'></span></div></div>
+          <div class='nutritional-grid' id='calories'><div>Calories: </div><div id='calories-num'>0.0</div><div class='prog-bar green'><span></span></div></div>
+          <div class='nutritional-grid' id='carbohydrates'><div>Carbohydrates: </div><div id='carbohydrates-num'>0.0</div><div class='prog-bar green'><span></span></div></div>
+          <div class='nutritional-grid' id='protein'><div>Protein </div><div id='protein-num'>0.0</div><div class='prog-bar green'><span></span></div></div>
+          <div class='nutritional-grid' id='cholesterol'><div>Cholesterol: </div><div id='cholesterol-num'>0.0</div><div class='prog-bar yellow'><span></span></div></div>
+          <div class='nutritional-grid' id='fiber'><div>Fiber: </div><div id='fiber-num'>0.0</div><div class='prog-bar yellow'><span></span></div></div>
         </div>
         <div class='nutritional-column'>
-          <div class='nutritional-grid' id='total-fat'>Total Fat: <div class='prog-bar yellow'><span style='width: 45%'></span></div></div>
-          <div class='nutritional-grid' id='saturated'>Saturated: <div class='prog-bar yellow'><span style='width: 55%'></span></div></div>
-          <div class='nutritional-grid' id='monounsaturated'>Monounsaturated: <div class='prog-bar yellow'><span style='width: 65%'></span></div></div>
-          <div class='nutritional-grid' id='polyunsaturated'>Polyunsaturated: <div class='prog-bar red'><span style='width: 75%'></span></div></div>
-          <div class='nutritional-grid' id='trans'>Trans: <div class='prog-bar red'><span style='width: 75%'></span></div></div>
+          <div class='nutritional-grid' id='total-fat'><div>Total Fat: </div><div id='total-fat-num'>0.0</div><div class='prog-bar yellow'><span></span></div></div>
+          <div class='nutritional-grid' id='saturated'><div>Saturated: </div><div id='saturated-num'>0.0</div><div class='prog-bar yellow'><span></span></div></div>
+          <div class='nutritional-grid' id='monounsaturated'><div>Monounsaturated: </div><div id='monounsaturated-num'>0.0</div><div class='prog-bar yellow'><span></span></div></div>
+          <div class='nutritional-grid' id='polyunsaturated'><div>Polyunsaturated: </div><div id='polyunsaturated-num'>0.0</div><div class='prog-bar red'><span></span></div></div>
+          <div class='nutritional-grid' id='trans'><div>Trans: </div><div id='trans-num'>0.0</div><div class='prog-bar red'><span></span></div></div>
         </div>
         <div class='nutritional-column'>
-          <div class='nutritional-grid' id='vita'>Vitamin A: <div class='prog-bar red'><span style='width: 80%'></span></div></div>
-          <div class='nutritional-grid' id='vitb6'>Vitamin B6: <div class='prog-bar red'><span style='width: 85%'></span></div></div>
-          <div class='nutritional-grid' id='vitb12'>Vitamin B12: <div class='prog-bar red'><span style='width: 95%'></span></div></div>
-          <div class='nutritional-grid' id='vitc'>Vitamin C: <div class='prog-bar red'><span style='width: 100%'></span></div></div>
-          <div class='nutritional-grid' id='vitd'>Vitamin D: <div class='prog-bar red'><span style='width: 100%'></span></div></div>
+          <div class='nutritional-grid' id='vita'><div>Vitamin A: </div><div id='vita-num'>0.0</div><div class='prog-bar red'><span></span></div></div>
+          <div class='nutritional-grid' id='vitb6'><div>Vitamin B6: </div><div id='vitb6-num'>0.0</div><div class='prog-bar red'><span></span></div></div>
+          <div class='nutritional-grid' id='vitb12'><div>Vitamin B12: </div><div id='vitb12-num'>0.0</div><div class='prog-bar red'><span></span></div></div>
+          <div class='nutritional-grid' id='vitc'><div>Vitamin C: </div><div id='vitc-num'>0.0</div><div class='prog-bar red'><span></span></div></div>
+          <div class='nutritional-grid' id='vitd'><div>Vitamin D: </div><div id='vitd-num'>0.0</div><div class='prog-bar red'><span></span></div></div>
         </div>
         <div class='nutritional-column'>
-          <div class='nutritional-grid' id='potassium'>Potassium: <div class='prog-bar red'><span style='width: 80%'></span></div></div>
-          <div class='nutritional-grid' id='iron'>Iron: <div class='prog-bar red'><span style='width: 85%'></span></div></div>
-          <div class='nutritional-grid' id='sodium'>Sodium: <div class='prog-bar red'><span style='width: 95%'></span></div></div>
-          <div class='nutritional-grid' id='magnesium'>Magnesium: <div class='prog-bar red'><span style='width: 100%'></span></div></div>
-          <div class='nutritional-grid' id='calcium'>Calcium: <div class='prog-bar red'><span style='width: 100%'></span></div></div>
+          <div class='nutritional-grid' id='potassium'><div>Potassium: </div><div id='potassium-num'>0.0</div><div class='prog-bar red'><span></span></div></div>
+          <div class='nutritional-grid' id='iron'><div>Iron: </div><div id='iron-num'>0.0</div><div class='prog-bar red'><span></span></div></div>
+          <div class='nutritional-grid' id='sodium'><div>Sodium: </div><div id='sodium-num'>0.0</div><div class='prog-bar red'><span></span></div></div>
+          <div class='nutritional-grid' id='magnesium'><div>Magnesium: </div><div id='magnesium-num'>0.0</div><div class='prog-bar red'><span></span></div></div>
+          <div class='nutritional-grid' id='calcium'><div>Calcium: </div><div id='calcium-num'>0.0</div><div class='prog-bar red'><span></span></div></div>
         </div>
         </div>
       </div>

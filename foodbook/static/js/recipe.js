@@ -92,12 +92,18 @@ function save_recipe(){
 
 function check_nutrients(){
 	summary_ingredients();
-	Dajaxice.recipe.check(test, {'ingredients': cache_list, 'ss': $('#recipe-serving-size').val()});
+	Dajaxice.recipe.check(modify_nutrients, {'ingredients': cache_list, 'ss': $('#recipe-serving-size').val()});
 	return false;
 }
 
-function test(data){
-	alert(data);
+function modify_nutrients(data){
+	for(key in data){
+		$('#' + key + '-num').html(Number(data[key][0]).toFixed(1));
+		var percentage = Number(data[key][1]);
+		if(percentage > 100)
+			percentage = 100;
+		$('#' + key + ' div span').width(percentage + '%');
+	}
 }
 
 window.onload = function(e){
@@ -106,6 +112,7 @@ window.onload = function(e){
 	if($(this).val() == "" || isNaN($(this).val())){
 		$(this).val('1');
 	}});
+	check_nutrients();
 }
 
 var getTextWidth = function(div) {

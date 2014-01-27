@@ -88,7 +88,7 @@ def add_recipe(request):
 					ingredient_name = ingredient_name + ' (' + ingredient_modifier + ')'
 				ingredient_list.append(IngredientWrapper(ingredients['id'][i], ingredients['qty'][i], ingredients['unit'][i]))
 	ingredient_types = IngredientType.objects.all()
-	i_types = [('Meats', 'meats'), ('Fruits', 'fruits'), ('Grains', 'grains'), ('Seafood', 'seafood'), ('Nuts and Legumes', 'nuts-and-legumes'), ('Soups and Souces', 'soups-and-sauces'), ('Spices and Herbs', 'spices-and-herbs'), ('Vegetables', 'vegetables'), ('Fats and Oils', 'fats-and-oils'), ('Dairy and Eggs', 'dairy-and-eggs')]
+	i_types = [('Meat', 'meat'), ('Fruits', 'fruits'), ('Grains', 'grains'), ('Seafood', 'seafood'), ('Nuts and Legumes', 'nuts-and-legumes'), ('Soups and Sauces', 'soups-and-sauces'), ('Spices and Herbs', 'spices-and-herbs'), ('Vegetables', 'vegetables'), ('Fats and Oils', 'fats-and-oils'), ('Dairy and Eggs', 'dairy-and-eggs')]
 	return render_to_response('add_recipe.html', {'type_list': i_types, 'ingredient_list': ingredient_list, 'recipe': recipe}, context_instance=RequestContext(request))
 
 def list_my_recipes(request):
