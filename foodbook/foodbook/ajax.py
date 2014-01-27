@@ -167,7 +167,7 @@ def get_comments(request, username='', num=5):
 	comments = Comment.objects.filter(receiving_user=user).order_by('-date')[:num]
 	out = []
 	for comment in comments:
-		out.append("<div class = 'recent-post'><div class = 'post-content'>%s</div><div class = 'post-author'><div class = 'post-author-icon'> </div><div class = 'post-author-title'>%s, %s</div></div></div>" % (comment.comment, comment.receiving_user.username, comment.date.replace(tzinfo=timezone.get_default_timezone()).strftime('%-b %-d %-I:%M %p %Z')))
+		out.append("<div class = 'recent-post'><div class = 'post-content'>%s</div><div class = 'post-author'><div class = 'post-author-icon'> </div><div class = 'post-author-title'>%s, %s</div></div></div>" % (comment.comment, comment.original_poster.username, comment.date.astimezone(timezone.get_default_timezone()).strftime('%-b %-d %-I:%M %p %Z')))
 	dajax.assign('#recent-posts', 'innerHTML', "".join(out))
 	return dajax.json()
 
