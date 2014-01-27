@@ -610,8 +610,8 @@ select {
 }
 
 #nutritional-facts {
-  width: 990px;
-  margin: 0 5px 20px 5px;
+  width: 940px;
+  margin: 0 10px 20px auto;
 }
 
 .nutritional-num {
