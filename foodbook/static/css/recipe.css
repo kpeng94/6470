@@ -777,3 +777,50 @@ select {
   position: absolute;
   text-shadow: -1px 0px black, 0 1px black, 1px 0 black, 0 -1px black;
 }
+
+#recipe-next-prev {
+  width: 204px;
+  margin: 0 auto 60px auto;
+}
+
+#prev {
+  border: 1px solid #C6C6C6;
+  display: inline-block;
+  height: 100px;
+  width: 100px;
+}
+
+#prev i {
+  line-height: 106px;
+  width: 100%;
+  text-align: center;
+  font-size: 90px;
+}
+
+#next {
+  height: 100px;
+  width: 100px;
+  border: 1px solid #C6C6C6;
+  display: inline-block;
+}
+
+#next i {
+  line-height: 106px;
+  width: 100%;
+  text-align: center;
+  font-size: 90px;
+}
+
+#save-recipe {
+  height: 100px;
+  width: 100px;
+  border: 1px solid #C6C6C6;
+  display: inline-block;
+}
+
+#save-recipe i {
+  line-height: 106px;
+  width: 100%;
+  text-align: center;
+  font-size: 90px;
+}
