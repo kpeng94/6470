@@ -1,3 +1,9 @@
+.section-title {
+  font-family: Raleway;
+  font-weight: 700;
+  border-radius:3px;
+}
+
 #personal-recipe-list {
   width: 1000px;
   margin: 60px auto 60px auto;
