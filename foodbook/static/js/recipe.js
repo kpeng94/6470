@@ -129,25 +129,18 @@ var nextContent = function() {
 		removeClass(selectedDiv, 'selected');
 		addClass(document.getElementById('recipe-instructions-and-descriptions'), 'selected');
 		addClass(document.getElementById('recipe-prev'),'clickable');
-	} else if (selectedDiv.id == 'recipe-instructions-and-descriptions') {
-		removeClass(selectedDiv, 'selected');
-		addClass(document.getElementById('recipe-summary'),
-										 'selected');
-		removeClass(document.getElementById('recipe-next'),'clickable');
+		removeClass(document.getElementById('recipe-next'), 'clickable');
 	}
 };
 
 var previousContent = function() {
 	var selectedDiv = document.getElementsByClassName('selected')[0];
-	if (selectedDiv.id == 'recipe-summary') {
-		removeClass(selectedDiv, 'selected');
-		addClass(document.getElementById('recipe-instructions-and-descriptions'), 'selected');
-		addClass(document.getElementById('recipe-next'),'clickable');
-	} else if (selectedDiv.id == 'recipe-instructions-and-descriptions') {
+	if (selectedDiv.id == 'recipe-instructions-and-descriptions') {
 		removeClass(selectedDiv, 'selected');
 		addClass(document.getElementById('recipe-info'),
 										 'selected');
 		removeClass(document.getElementById('recipe-prev'),'clickable');
+		addClass(document.getElementById('recipe-next'),'clickable');
 	}
 };
 
