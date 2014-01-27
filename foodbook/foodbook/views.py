@@ -31,19 +31,27 @@ def login_user(request):
 		return redirect('' + request.META['HTTP_REFERER'])
 	return redirect('/home')
 
+def register_view(request):
+	form = UserCreationForm()
+	return render_to_response('register.html', {'form': form}, context_instance=RequestContext(request))
+
 def register(request):
-	message = ''
 	if request.method == 'POST':
 		form = UserCreationForm(request.POST)
 		if form.is_valid():
-			new_user = User.objects.create_user(form.cleaned_data['username'], form.cleaned_data['email'], form.cleaned_data['password'])
-			messages.success(request, 'Registration was successful.')
+			if len(User.objects.filter(username=form.cleaned_data['username'])) > 0:
+				messages.error(request, "This username has already been taken.")
+			elif len(User.objects.filter(email=form.cleaned_data['email'])) > 0:
+				messages.error(request, "This email is already tied to an account.")
+			else:
+				new_user = User.objects.create_user(form.cleaned_data['username'], form.cleaned_data['email'], form.cleaned_data['password'])
+				messages.success(request, 'Registration was successful.')
 		else:
-			messages.error(request, 'Registration failed.')
-		redirect('/register')
-	else:
-		form = UserCreationForm()
-	return render_to_response('register.html', {'form': form}, context_instance=RequestContext(request))
+			if form['username'].errors or form['password'].errors or form['email'].errors:
+				messages.error(request, "All fields are required.")
+			else:
+				messages.error(request, "Your passwords must match.")
+	return redirect('/register')
 
 def logout_user(request):
 	if request.user.is_authenticated():

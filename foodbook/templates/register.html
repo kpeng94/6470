@@ -12,23 +12,23 @@
   </div>
   <div class='form-box'>
   <div class='register-form-text'>Create an Account</div>
-    <form method = 'post' action = '/register'>
+    <form method = 'post' action = '/register/try'>
       {% csrf_token %}
       <div class='register-username'>
         <div class='username-img'></div>
-        <input class='register-input-box' type='text' id='id_username' placeholder='Username'/>
+        <input class='register-input-box' required type='text' id='id_username' name='username' placeholder='Username'/>
       </div>
       <div class='register-password'>
         <div class='password-img'></div>
-        <input class='register-input-box' type='password' id='id_password' placeholder='Password'/>
+        <input class='register-input-box' required type='password' id='id_password' name='password' placeholder='Password'/>
       </div>
       <div class='register-password2'>
         <div class='password2-img'></div>
-        <input class='register-input-box' type='password' id='id_pw_confirm' placeholder='Confirm Password'/>
+        <input class='register-input-box' required type='password' id='id_pw_confirm' name='pw_confirm' placeholder='Confirm Password'/>
       </div>
       <div class='register-email'>
         <div class='email-img'></div>
-        <input class='register-input-box' type='email' id='id_email' placeholder='E-mail'/>
+        <input class='register-input-box' required type='email' id='id_email' name='email' placeholder='E-mail'/>
       </div>
       <input type="submit" value="Register" id='register-submit'/>
     </form>
