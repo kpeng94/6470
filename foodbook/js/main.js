@@ -107,6 +107,16 @@ var resizeImage = function(threshold, image) {
 			image.style.left = -(image.width - threshold) / 2 + 'px';
 		}
 	}
+	else if(height > threshold){
+		image.style.top = -(image.height - threshold) / 2 + 'px';
+	}
+	else if(width > threshold){
+		image.style.left = -(image.width - threshold) / 2 + 'px';
+	}
+	else{
+		image.style.top = -(image.height - threshold) / 2 + 'px';
+		image.style.left = -(image.width - threshold) / 2 + 'px';
+	}
 }
 
 // Global functions
@@ -152,9 +162,4 @@ function confirm_save(data){
 
 var redirect = function(){
 	window.location.replace('/recipe/add');
-}
-
-var removeMessage = function(){
-	$(this).parent().remove();
-	console.log($(this));
 }

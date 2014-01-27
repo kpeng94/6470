@@ -7,6 +7,23 @@ var Dajaxice = {
     
 
     
+    comment: {
+    
+    user_get: function(callback_function, argv, custom_settings){
+        return Dajaxice.call('comment.user_get', 'POST', callback_function, argv, custom_settings);
+    },
+
+    user_add: function(callback_function, argv, custom_settings){
+        return Dajaxice.call('comment.user_add', 'POST', callback_function, argv, custom_settings);
+    }
+
+
+    
+    
+    }
+    
+,
+    
     recipe: {
     
     save: function(callback_function, argv, custom_settings){

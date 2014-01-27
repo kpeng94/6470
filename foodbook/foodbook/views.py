@@ -117,7 +117,7 @@ def display_user_profile(request):
 
 def display_other_profile(request, user):
 	try:
-		user = User.objects.filter(username=user)
+		user = User.objects.get(username=user)
 	except Exception, e:
 		user = None
 	url = '/static/img/user/default'
@@ -125,7 +125,7 @@ def display_other_profile(request, user):
 		pic = UserPicture.objects.filter(user_id=user)
 		if pic:
 			url = pic[0].pic_link
-	return render_to_response('user_page.html', {'is_me': False, 'profile_picture': url}, context_instance=RequestContext(request))
+	return render_to_response('user_page.html', {'username': user.username, 'is_me': False, 'profile_picture': url}, context_instance=RequestContext(request))
 
 
 def display_user_settings(request):

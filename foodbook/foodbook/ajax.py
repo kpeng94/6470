@@ -1,8 +1,13 @@
 from dajax.core import Dajax
 import json, decimal
-from foodbook.models import Ingredient, ServingSize, Recipe, UserDiet
+from foodbook.models import Ingredient, ServingSize, Recipe, UserDiet, Comment
 from dajaxice.decorators import dajaxice_register
 from recipe_utils import calculate_nutritional_value, decimal_json
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+import datetime
+from django.utils import timezone
 
 @dajaxice_register(method='GET', name='ingredient.update')
 def update_search(request, div_id, search, search_type="All"):
@@ -116,3 +121,48 @@ def update_diet(request, restrictions, calories, fat, sugar, protein):
 			diet.save()
 			return json.dumps({'success': True})
 		return json.dumps({'success': False})
+
+@login_required
+@dajaxice_register(method='POST', name='comment.user_add')
+def add_comment(request, username='', comment=''):
+	dajax = Dajax()
+	if username == '' or username == request.user.username:
+		messages.error(request, "Sadly, you can't add comments to your own profile.")
+		dajax.redirect('/user')
+		return dajax.json()
+	else:
+		try:
+			user = User.objects.get(username=username)
+		except:
+			messages.error(request, "That user doesn't exist.")
+			dajax.redirect(request.META['HTTP_REFERER'])
+			return dajax.json()
+	if comment == '':
+		messages.error(request, "Your comments have to actually say something.")
+		dajax.redirect(request.META['HTTP_REFERER'])
+		return dajax.json()
+	comment = Comment(original_poster=request.user, receiving_user=user, comment=comment)
+	comment.save()
+	messages.success(request, "Comment posted successfully!")
+	dajax.redirect(request.META['HTTP_REFERER'])
+	return dajax.json()
+
+@dajaxice_register(method='POST', name='comment.user_get')
+def get_comments(request, username='', num=5):
+	dajax = Dajax()
+	if username == '':
+		username = request.user.username
+	try:
+		user = User.objects.get(username=username)
+	# Should really never happen, but a failsafe
+	except:
+		message.error(request, "Something went wrong.")
+		dajax.redirect(request.META['HTTP_REFERER'])
+		return dajax.json()
+	comments = Comment.objects.filter(receiving_user=user).order_by('-date')[:num]
+	out = []
+	for comment in comments:
+		out.append("<div class = 'recent-post'><div class = 'post-content'>%s</div><div class = 'post-author'><div class = 'post-author-icon'> </div><div class = 'post-author-title'>%s, %s</div></div></div>" % (comment.comment, comment.receiving_user.username, comment.date.replace(tzinfo=timezone.get_default_timezone()).strftime('%-b %-d %-I:%M %p %Z')))
+	dajax.assign('#recent-posts', 'innerHTML', "".join(out))
+	return dajax.json()
+

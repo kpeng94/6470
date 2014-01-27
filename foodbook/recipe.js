@@ -97,8 +97,13 @@ function check_nutrients(){
 }
 
 function modify_nutrients(data){
-	for key in data:
-		$('#' + key + '-num').val(data[key][0]);
+	for(key in data){
+		$('#' + key + '-num').html(Number(data[key][0]).toFixed(1));
+		var percentage = Number(data[key][1]);
+		if(percentage > 100)
+			percentage = 100;
+		$('#' + key + ' div span').width(percentage + '%');
+	}
 }
 
 window.onload = function(e){
@@ -107,6 +112,7 @@ window.onload = function(e){
 	if($(this).val() == "" || isNaN($(this).val())){
 		$(this).val('1');
 	}});
+	check_nutrients();
 }
 
 var getTextWidth = function(div) {

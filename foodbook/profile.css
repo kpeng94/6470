@@ -22,9 +22,46 @@
   left: 5px;
   width: 150px;
   height: 150px;
-  background-color: #DDDDDD;
-  background-size: 150px 150px;
-  border: 1px solid black;
+  overflow: hidden;
+}
+
+#profile-image:hover ~ #profile-image-edit {
+  display: block;
+}
+
+#id_image {
+  visibility: hidden;
+  display: none;
+}
+
+#profile-image-edit:hover {
+  display: block;
+  cursor: pointer;
+}
+
+#profile-image-edit {
+  display: none;
+  position: absolute;
+  top: 10px;
+  right: 0;
+  width: 60px;
+  height: 26px;
+  z-index: 2;
+  background-color: white;
+  border: 1px solid #C6C6C6;
+  border-radius: 3px;
+  text-align: center;
+  line-height: 26px;
+}
+
+#profile-image-edit .fa-pencil {
+  display: inline-block;
+}
+
+#profile-image-edit-text {
+  display: inline-block;
+  font-family: Roboto;
+  font-weight: 700;
 }
 
 #profile-image-container {
@@ -35,6 +72,10 @@
   left: 20px;
   margin-right: 50px;
   height: 160px;
+}
+
+#profile-image-img {
+  position: absolute;
 }
 
 #profile-info {
@@ -84,7 +125,9 @@
   position: absolute;
   height: 30px;
   line-height: 30px;
-  font-size: 30px;
+  font-size: 20px;
+  font-family: Roboto;
+  font-weight: 500;
 }
 
 #profile-reputation #profile-reputation-img {
@@ -123,7 +166,9 @@
   position: absolute;
   height: 30px;
   line-height: 30px;
-  font-size: 30px;
+  font-size: 20px;
+  font-family: Roboto;
+  font-weight: 700;
 }
 
 #profile-recipes #profile-recipes-img {
@@ -201,22 +246,43 @@
 
 #post-container {
   position: relative;
-  height: 210px;
+  height: 160px;
 }
 
-#post-box {
-  height: 150px;
-  border: 1px solid #C6C6C6;
+#comment-box {
+  width: 898px;
+  height: 100px;
+  border: 1px solid #c6c6c6;
+  padding: 0px 0px 0px 0px;
+  resize: none;
+  font-size: 16px;
+  font-family: Roboto;
+  font-weight: 300;
+  padding: 10px 10px 10px 10px;
+  outline-color: #57B05F;
 }
 
 #post-button {
   position: absolute;
-  height: 40px;
-  right: 0;
-  border: 1px solid #C6C6C6;
-  width: 100px;
+  height: 30px;
+  right: 2px;
+  bottom: 0;
+  border-radius: 3px;
+  width: 250px;
   margin-top: 10px;
   margin-bottom: 10px;
+  background-color: #1FC62D;
+  line-height: 40px;
+  font-size: 20px;
+  text-align: center;
+  color: #FFFFFF;
+  font-family: Roboto;
+  font-weight: 700;
+  padding-bottom: 10px  ;
+}
+
+#post-button:hover{
+  background-color: #119F1D;
 }
 
 #recent-posts {

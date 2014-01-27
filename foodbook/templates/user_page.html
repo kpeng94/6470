@@ -6,6 +6,7 @@
 
 {% block content %}
 	<div id = 'profile-body'>
+    <input id='username' type='hidden' value='{{ username }}'/>
 		<div id = 'profile-content-background'>
       <div id = 'profile-content'>
   			<div id = 'profile-image-container'>
@@ -51,24 +52,11 @@
       <div id = 'profile-comments-container'>
         <div id = 'post-container'>
           <textarea id='comment-box' placeholder='Post something!'></textarea>
-          <div id = 'post-button'>Post</div>
+          <div id = 'post-button' onclick='add_comment()'>Post</div>
         </div>
         <div id = 'recent-posts'>
           <div id = 'no-recent-posts' class = 'profile-hidden'></div>
-          <div class = 'recent-post'>
-            <div class = 'post-content'> Wow! Nenenene!</div>
-            <div class = 'post-author'>
-              <div class = 'post-author-icon'> </div>
-              <div class = 'post-author-title'>gchau94</div>
-            </div>
-          </div>
-          <div class = 'recent-post'>
-            <div class = 'post-content'> Wow! Nenenene!</div>
-            <div class = 'post-author'>
-              <div class = 'post-author-icon'> </div>
-              <div class = 'post-author-title'>gchau94</div>
-            </div>
-          </div>
+          Loading posts...
         </div>
       </div>
     </div>

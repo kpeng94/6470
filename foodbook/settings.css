@@ -1,3 +1,10 @@
+#user-settings-wrapper {
+	width: 1000px;
+	margin: 30px auto 0 auto;
+	background-color: #FFFFFF;
+	border: 1px solid #C6C6C6;
+}
+
 #diet-title {
   background-color: #3D8D3D;
 }
