@@ -88,9 +88,9 @@ def save_recipe(request, rid, ingredients, name, description, instructions, ss):
 	return json.dumps({'success': True, 'rid': rid})
 
 @dajaxice_register(method='GET', name='recipe.check')
-def check_nutrients(request, ingredients):
+def check_nutrients(request, ingredients, ss):
 	if request.user.is_authenticated():
-		return json.dumps(calculate_nutritional_value(ingredients), default=decimal_json)
+		return json.dumps(calculate_nutritional_value(ingredients, request.user, float(ss)), default=decimal_json)
 
 @dajaxice_register(method='POST', name='diet.update')
 def update_diet(request, restrictions, calories, fat, sugar, protein):

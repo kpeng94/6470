@@ -11,7 +11,7 @@
   <div id='recipe-content'>
     <div id = 'recipe-name'>
       <input id='recipe-name-i' value='{{ recipe.name|default:"Untitled Recipe" }}' placeholder='Recipe Name' type='text'/>
-      <div id = 'recipe-serve'>Serves: <input type='number' id='recipe-serving-size' value='{{ recipe.serving_size|default:"1" }}' placeholder='Serving Size'/> person(s)</div>
+      <div id = 'recipe-serve'>Serves: <input type='number' id='recipe-serving-size' value='{{ recipe.serving_size|default:"1" }}'/> person(s)</div>
     </div>
 
     <div id='recipe-info'>
@@ -32,17 +32,17 @@
                 <a href="#" class="tab-link" id="all" onclick="change_search('All');">All</a>
               </div>
 
-              <div class = 'type-tab-img' id = "{{type|lower}}-img"></div>
+              <div class = 'type-tab-img' id = "all-img"></div>
             </div>
 
 
             <!-- Type tab for others -->
             {% for type in type_list %}
             <div class = 'type-tab'>
-              <div class = 'type-tab-text' id = 'type-tab-text-{{type|lower}}'>
-                <a href="#" class="tab-link" id='{{type|lower}}'onclick="change_search('{{type|lower}}');">{{ type }}</a>
+              <div class = 'type-tab-text' id = 'type-tab-text-{{ type.1 }}'>
+                <a href="#" class="tab-link" id='{{ type.1 }}'onclick="change_search('{{ type.1 }}');">{{ type.0 }}</a>
               </div>
-              <div class = 'type-tab-img' id = "{{type|lower}}-img"></div>
+              <div class = 'type-tab-img' id = "{{ type.1 }}-img"></div>
             </div>
             {% endfor %}
           </div>
@@ -77,18 +77,34 @@
         <div id = 'nutritional-title'> Nutrition Facts
         </div>
         <div id = 'nutritional-facts'>
+          <div class='nutritional-column'>
           <div class='nutritional-grid' id='calories'>Calories: <div class='prog-bar green'><span style='width: 5%'></span></div></div>
-          <div class='nutritional-grid' id='total-fat'>Total Fat: <div class='prog-bar green'><span style='width: 15%'></span></div></div>
-          <div class='nutritional-grid' id='saturated-fat'>Saturated Fat: <div class='prog-bar green'><span style='width: 25%'></span></div></div>
-          <div class='nutritional-grid' id='polyunsaturated-fat'>Polyunsaturated Fat: <div class='prog-bar yellow'><span style='width: 35%'></span></div></div>
-          <div class='nutritional-grid' id='monounsaturated-fat'>Monounsaturated Fat: <div class='prog-bar yellow'><span style='width: 45%'></span></div></div>
-          <div class='nutritional-grid' id='trans-fat'>Trans Fat: <div class='prog-bar yellow'><span style='width: 55%'></span></div></div>
-          <div class='nutritional-grid' id='cholesterol'>Cholesterol: <div class='prog-bar yellow'><span style='width: 65%'></span></div></div>
-          <div class='nutritional-grid' id='sodium'>Sodium: <div class='prog-bar red'><span style='width: 75%'></span></div></div>
+          <div class='nutritional-grid' id='carbohydrates'>Carbohydrates: <div class='prog-bar green'><span style='width: 15%'></span></div></div>
+          <div class='nutritional-grid' id='protein'>Protein <div class='prog-bar green'><span style='width: 25%'></span></div></div>
+          <div class='nutritional-grid' id='cholesterol'>Cholesterol: <div class='prog-bar yellow'><span style='width: 35%'></span></div></div>
+          <div class='nutritional-grid' id='fiber'>Fiber: <div class='prog-bar yellow'><span style='width: 35%'></span></div></div>
+        </div>
+        <div class='nutritional-column'>
+          <div class='nutritional-grid' id='total-fat'>Total Fat: <div class='prog-bar yellow'><span style='width: 45%'></span></div></div>
+          <div class='nutritional-grid' id='saturated'>Saturated: <div class='prog-bar yellow'><span style='width: 55%'></span></div></div>
+          <div class='nutritional-grid' id='monounsaturated'>Monounsaturated: <div class='prog-bar yellow'><span style='width: 65%'></span></div></div>
+          <div class='nutritional-grid' id='polyunsaturated'>Polyunsaturated: <div class='prog-bar red'><span style='width: 75%'></span></div></div>
+          <div class='nutritional-grid' id='trans'>Trans: <div class='prog-bar red'><span style='width: 75%'></span></div></div>
+        </div>
+        <div class='nutritional-column'>
+          <div class='nutritional-grid' id='vita'>Vitamin A: <div class='prog-bar red'><span style='width: 80%'></span></div></div>
+          <div class='nutritional-grid' id='vitb6'>Vitamin B6: <div class='prog-bar red'><span style='width: 85%'></span></div></div>
+          <div class='nutritional-grid' id='vitb12'>Vitamin B12: <div class='prog-bar red'><span style='width: 95%'></span></div></div>
+          <div class='nutritional-grid' id='vitc'>Vitamin C: <div class='prog-bar red'><span style='width: 100%'></span></div></div>
+          <div class='nutritional-grid' id='vitd'>Vitamin D: <div class='prog-bar red'><span style='width: 100%'></span></div></div>
+        </div>
+        <div class='nutritional-column'>
           <div class='nutritional-grid' id='potassium'>Potassium: <div class='prog-bar red'><span style='width: 80%'></span></div></div>
-          <div class='nutritional-grid' id='carbohydrates'>Total Carbohydrates: <div class='prog-bar red'><span style='width: 85%'></span></div></div>
-          <div class='nutritional-grid' id='sugars'>Sugar: <div class='prog-bar red'><span style='width: 95%'></span></div></div>
-          <div class='nutritional-grid' id='fiber'>Dietary Fiber: <div class='prog-bar red'><span style='width: 100%'></span></div></div>
+          <div class='nutritional-grid' id='iron'>Iron: <div class='prog-bar red'><span style='width: 85%'></span></div></div>
+          <div class='nutritional-grid' id='sodium'>Sodium: <div class='prog-bar red'><span style='width: 95%'></span></div></div>
+          <div class='nutritional-grid' id='magnesium'>Magnesium: <div class='prog-bar red'><span style='width: 100%'></span></div></div>
+          <div class='nutritional-grid' id='calcium'>Calcium: <div class='prog-bar red'><span style='width: 100%'></span></div></div>
+        </div>
         </div>
       </div>
       <div id = 'recipe-instructions-and-descriptions'>

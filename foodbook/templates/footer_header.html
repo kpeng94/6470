@@ -70,21 +70,25 @@
         </div>
 
       </nav>
-<!-- <div class='message-wrapper'>
+    {% for message in messages %}
+    {% if message.tags == 'success' %}
+  <div class='message-wrapper'>
   <div class='message-box success'>
-    This is a generic success message. Keep up the good work.
+    {{ message }}
   <div class='message-box-img' onclick=''>
   </div>
   </div>
 </div>
+    {% elif message.tags == 'error' %}
 <div class='message-wrapper'>
   <div class='message-box error'>
-    This is a generic error message. Bad things are happening.
+    {{ message }}
   <div class='message-box-img' onclick=''>
   </div>
   </div>
 </div>
- -->
+  {% endif %}
+  {% endfor %}
       {% block content %}
       {% endblock %}
       <div id = 'fill'></div>

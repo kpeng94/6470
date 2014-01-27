@@ -7,7 +7,8 @@ body {
 */
 
 #recipe-page-wrapper {
-  margin-top: 60px;
+  width: 1001px;
+  margin: 0px auto 0px auto;
   position: relative;
 }
 
@@ -16,11 +17,7 @@ CONTENT
 */
 
 #recipe-content {
-  width: 80%;
-  margin-left: 10%;
-  margin-top: 0;
-  margin-bottom: 60px;
-  background-color: #FFFFFF;
+  width: 1000px;
   position: relative;
   display: inline-block;
 }
@@ -69,10 +66,10 @@ RECIPE INFO
 
 
 #recipe-selection {
-  width: 46%;
+  width: 490px;
   display: inline-block;
   vertical-align: top;
-  margin: 0 2% 0 2%;
+  margin: 0 0% 0 0%;
 }
 
 .recipe-selection-line {
@@ -92,6 +89,7 @@ RECIPE INFO
   margin: 5px 0 5px 5px;
   padding: 5px 0 5px 0;
   display: inline-block;
+  background-color: white;
 }
 
 .simple-search-bar #ingredient-search {
@@ -321,6 +319,7 @@ RECIPE INFO
   display: inline-block;
   width: 90%;
   height: 500px;
+  background-color: white;
 }
 
 .all-ingredients {
@@ -373,23 +372,28 @@ ADDED INGREDIENTS
 
 .added-ingredients {
   display: inline-block;
-  width: 46%;
+  width: 490px;
   vertical-align: top;
-  margin: 0 0 0 2%;
+  margin: 0 0 0 13px;
   border: 1px solid #c6c6c6;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
   height: 542px;
+  background-color: white;
 }
 
 .ingredients-title {
   display: block;
   text-align: center;
   font-size: 24px;
-  font-family: Petrona;
+  font-family: Raleway;
+  font-weight: 700;
   width: 100%;
   line-height: 40px;
   height: 40px;
   color: #FFFFFF;
   background-color: #6F3F3F;
+  border-radius: 4px;
 }
 
 .ingredient-line {
@@ -480,30 +484,36 @@ select {
 }
 
 #nutritional-info {
-  width: 96.1%;
+  width: 998px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
   border: 1px solid #c6c6c6;
-  margin: 20px 1.6% 20px 2.3%;
+  margin: 20px 0px 20px 0px;
+  background-color: white;
 }
 
 #nutritional-title {
   display: block;
   text-align: center;
   font-size: 24px;
-  font-family: Petrona;
+  font-family: Raleway;
+  font-weight: 700;
   width: 100%;
   line-height: 40px;
   height: 40px;
   color: #FFFFFF;
   background-color: #3D8D3D;
   margin-bottom: 20px;
+  border-radius: 4px;
 }
 
 .prog-bar {
-  width: 200px;
-  height: 10px;
+  width: 180px;
+  height: 12px;
   border-radius: 7.5px;
-  background-color: #f0f0f0;
+  background-color: #f2f2f2;
   border: none;
+  margin-top: 4px;
 }
 
 .prog-bar > span {
@@ -529,15 +539,19 @@ select {
   background-color: #52CE54;
 }
 
-.nutritional-grid {
+.nutritional-column {
+  width: 230px;
   display: inline-block;
-  width: 19%;
-  margin: 5px 0.3% 5px 0.3%;
+}
+
+.nutritional-grid {
+  width: 197px;
+  margin: 5px 0px 5px 0px;
 }
 
 #nutritional-facts {
-  width: 94%;
-  margin: 0 3% 20px 3%;
+  width: 990px;
+  margin: 0 5px 20px 5px;
 }
 
 #nr-top-half {

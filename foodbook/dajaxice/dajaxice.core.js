@@ -28,6 +28,19 @@ var Dajaxice = {
     
 ,
     
+    diet: {
+    
+    update: function(callback_function, argv, custom_settings){
+        return Dajaxice.call('diet.update', 'POST', callback_function, argv, custom_settings);
+    }
+
+
+    
+    
+    }
+    
+,
+    
     ingredient: {
     
     update_url: function(callback_function, argv, custom_settings){

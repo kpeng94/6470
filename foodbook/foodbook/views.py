@@ -8,11 +8,10 @@ from foodbook.models import Ingredient, UserDiet, IngredientType, ServingSize, R
 import json
 from django.http import HttpResponse, HttpResponseRedirect
 from user import upload_picture
+from django.contrib import messages
 
 def home(request):
-	message = ''
-	m_type = None
-	return render_to_response('index.html', {'message': message, 'type': m_type}, context_instance=RequestContext(request))
+	return render_to_response('index.html', context_instance=RequestContext(request))
 
 def login_user(request):
 	if request.method == 'POST':
@@ -24,6 +23,11 @@ def login_user(request):
 			user = authenticate(username=username, password=password)
 			if user is not None:
 				login(request,user)
+				messages.success(request, 'You have successfully logged in.')
+			else:
+				messages.error(request, 'Username/password combination was incorrect.')
+		else:
+			messages.error(request, 'Improper username/password.')
 		return redirect('' + request.META['HTTP_REFERER'])
 	return redirect('/home')
 
@@ -33,10 +37,13 @@ def register(request):
 		form = UserCreationForm(request.POST)
 		if form.is_valid():
 			new_user = User.objects.create_user(form.cleaned_data['username'], form.cleaned_data['email'], form.cleaned_data['password'])
-			message = 'Registration successful!'
+			messages.success(request, 'Registration was successful.')
+		else:
+			messages.error(request, 'Registration failed.')
+		redirect('/register')
 	else:
 		form = UserCreationForm()
-	return render_to_response('register.html', {'message': message, 'form': form}, context_instance=RequestContext(request))
+	return render_to_response('register.html', {'form': form}, context_instance=RequestContext(request))
 
 def logout_user(request):
 	if request.user.is_authenticated():
@@ -81,7 +88,7 @@ def add_recipe(request):
 					ingredient_name = ingredient_name + ' (' + ingredient_modifier + ')'
 				ingredient_list.append(IngredientWrapper(ingredients['id'][i], ingredients['qty'][i], ingredients['unit'][i]))
 	ingredient_types = IngredientType.objects.all()
-	i_types = [types.name for types in ingredient_types]
+	i_types = [('Meats', 'meats'), ('Fruits', 'fruits'), ('Grains', 'grains'), ('Seafood', 'seafood'), ('Nuts and Legumes', 'nuts-and-legumes'), ('Soups and Souces', 'soups-and-sauces'), ('Spices and Herbs', 'spices-and-herbs'), ('Vegetables', 'vegetables'), ('Fats and Oils', 'fats-and-oils'), ('Dairy and Eggs', 'dairy-and-eggs')]
 	return render_to_response('add_recipe.html', {'type_list': i_types, 'ingredient_list': ingredient_list, 'recipe': recipe}, context_instance=RequestContext(request))
 
 def list_my_recipes(request):

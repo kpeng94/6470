@@ -120,6 +120,8 @@ MIDDLEWARE_CLASSES = (
 
 SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
 
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+
 ROOT_URLCONF = 'foodbook.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.

@@ -1,6 +1,6 @@
 #profile-body {
   background-color: #F1F1F1;
-  width: 1200px;
+  width: 1000px;
   margin: 60px auto 0 auto;
   border: 1px solid #C6C6C6;
 }
@@ -42,7 +42,7 @@
   display: inline-block;
   width: 300px;
   height: 150px;
-  padding: 25px 40px 25px 40px;
+  padding: 25px 40px 25px 0px;
   vertical-align: top;
 }
 
@@ -59,14 +59,10 @@
   vertical-align: top;
 }
 
-#profile-achievements * {
-  width: 200px;
-}
-
 #profile-reputation {
   vertical-align: top;
   height: 100%;
-  width: 302px;
+  width: 202px;
   display: inline-block;
   position: relative;
 }
@@ -82,7 +78,7 @@
 #profile-recipes {
   vertical-align: top;
   height: 100%;
-  width: 312px;
+  width: 212px;
   display: inline-block;
   position: relative;
 }
@@ -124,9 +120,8 @@
 }
 
 #profile-comments-container {
-  margin-top: 20px;
-  margin-left: 10%;
-  width: 80%;
+  margin: 20px auto 0px auto;
+  width: 900px;
   position: relative;
 }
 
@@ -164,6 +159,7 @@
   height: 150px;
   border: 1px solid #C6C6C6;
   position: relative;
+  background-color: white;
 }
 
 .post-content {

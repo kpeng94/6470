@@ -129,4 +129,32 @@ $('#header-search').hover(function(){
 	if(!$('#global-search').is(':focus')){
 		$('#global-search').css('background-color', '#F1F1F1');
 		$('#header-search').css('background-color', '#F1F1F1');
-}}); 
+}});
+
+var save_diet = function(){
+	var description = $('#diet-description').val()
+	var calories = $('#diet-calories').val()
+	var fat = $('#diet-fat').val()
+	var sugar = $('#diet-sugar').val()
+	var protein = $('#diet-protein').val()
+	Dajaxice.diet.update(confirm_save, {'restrictions': description, 'calories': calories, 'fat': fat, 'sugar': sugar, 'protein': protein});
+}
+
+function confirm_save(data){
+	if(data.success){
+		$('#recipe-id-unique').val(data.rid);
+		alert("Save successful.");
+	}
+	else{
+		alert("Save failed.");
+	}
+}
+
+var redirect = function(){
+	window.location.replace('/recipe/add');
+}
+
+var removeMessage = function(){
+	$(this).parent().remove();
+	console.log($(this));
+}

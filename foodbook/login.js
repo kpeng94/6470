@@ -28,4 +28,4 @@ $('.login-password').hover(function(){
 }, function(){
 	if(!$('#id_password').is(':focus')){
 		$('#id_password').css('background-color', '#F1F1F1');
-}}); 
+}});

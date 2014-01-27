@@ -1,0 +1,257 @@
+#personal-recipe-list {
+  width: 1000px;
+  margin: 60px auto 60px auto;
+  background-color: #ffffff;
+  border: 1px solid #c6c6c6;
+  position: relative;
+}
+
+.my-recipes-title {
+  background-color: #C34C4C;
+  padding: 10px 0 10px 0;
+  text-align: center;
+}
+
+#vr-tabs {
+  width: 1000px;
+}
+
+#vr-view-all {
+  padding: 5px 0 5px 0;
+  background-color: #D3E1A1;
+  text-align: center;
+}
+
+#vr-view-mine {
+  padding: 5px 0 5px 0;
+  background-color: #DDDDDD;
+  text-align: center;
+}
+
+#vr-lookup {
+  margin: 30px auto 0 auto;
+  width: 800px;
+  position: relative;
+}
+
+#vr-search {
+  position: relative;
+  width: 100%;
+  height: 40px;
+}
+
+#vr-search-input {
+  color: black;
+  height: 40px;
+  font-size: 18px;
+  line-height: 24px;
+  position: absolute;
+  padding-left: 40px;
+  border: none;
+  outline: none;
+  font-family: Roboto, 'sans-serif';
+  font-weight: 300;
+  background-color: #F1F1F1;
+  width: 100%;
+}
+
+#vr-search .search-icon {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  height: 20px;
+  width: 20px;
+  border: 1px solid black;
+  background: url('/static/img/glyphicons_free/glyphicons/png/glyphicons_027_search.png') no-repeat 0px 0px;
+  background-size: 20px 20px;
+  border: none;
+  opacity: 0.3;
+}
+
+#vr-advanced-parameters {
+  border-left: 1px solid #c6c6c6;
+  border-bottom: 1px solid #c6c6c6;
+  border-right: 1px solid #c6c6c6;
+  height: 200px;
+  margin-bottom: 50px;
+}
+
+#diet-selection-box {
+  width: 500px;
+  margin: 10px auto 10px auto;
+}
+
+#diet-checkbox {
+  width: 20px;
+  height: 20px;
+  margin: 5px;
+  border: 1px solid black;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#diet-selection-text {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 26px;
+  line-height: 30px;
+}
+
+.recipe-list {
+  border: 1px solid #c6c6c6;
+  height: 260px;
+  width: 50%;
+  margin-left: 5%;
+  margin-top: 20px;
+}
+
+.recipe-add-button {
+	position: absolute;
+	width: 80px;
+	height: 40px;
+	border: 1px solid green;
+	background-color: lightgreen;
+	right: 10px;
+	bottom: 10px;
+	font-size: 23px;
+	line-height: 40px;
+	text-align: center;
+}
+
+.my-diet-title {
+  margin-top: 20px;
+  font-family: Petrona;
+  text-align: center;
+  font-size: 46px;
+  line-height: 46px;
+}
+
+.my-diet {
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 10px;
+  background-color: #ffffff;
+  border: 1px solid #c6c6c6;
+  height: 260px;
+  position: relative;
+}
+
+.diet-save-button {
+	position: absolute;
+	width: 80px;
+	height: 40px;
+	border: 1px solid green;
+	background-color: lightgreen;
+	right: 10px;
+	bottom: 10px;
+	font-size: 23px;
+	line-height: 40px;
+	text-align: center;
+}
+
+.diet-content {
+	margin-left: 20px;
+}
+
+.diet-text {
+	display: inline-block;
+	width: 120px;
+}
+
+.diet-content input {
+  padding: 5px;
+  padding-left: 30px;
+  margin: 2px 10px 2px 10px;
+  border: 1px solid #c6c6c6;
+  -webkit-box-shadow: 0;
+  outline-color: #09E809;
+  bottom: 4px;
+  width: 230px;
+  font-family: Roboto;
+  font-weight: 100;
+}
+
+#vr-table {
+  width: 800px;
+  margin: 40px auto 40px auto;
+  height: 500px;
+  border: 1px solid #C6C6C6;
+  position: relative;
+}
+
+#vr-table-header {
+  border-bottom: 1px solid #C6C6C6;
+  height: 60px;
+  position: relative;
+}
+
+#vr-table-recipe-label {
+  background-color: #C34C4C;
+  width: 600px;
+}
+
+.vr-table-label {
+  color: #FFFFFF;
+  height: 60px;
+  display: inline-block;
+  line-height: 60px;
+  font-size: 30px;
+  text-align: center;
+  position: relative;
+}
+
+#vr-table-made-label {
+  background-color: #4CC34C;
+  width: 100px;
+}
+
+#vr-table-votes-label {
+  background-color: #4C4CC3;
+  width: 100px;
+}
+
+.vr-table-content {
+  height: 30px;
+}
+
+.vr-table-recipe-content {
+  height: 100%;
+  width: 599px;
+  display: inline-block;
+  position: relative;
+}
+
+.vr-table-votes-content {
+  height: 100%;
+  width: 99px;
+  display: inline-block;
+  position: relative;
+}
+
+.vr-table-made-content {
+  width: 100px;
+  display: inline-block;
+  position: relative;
+}
+
+#vr-table-columns {
+  position: absolute;
+  top: 60px;
+  height: 440px;
+}
+
+#vr-first-border {
+  width: 0px;
+  border-right: 1px solid #C6C6C6;
+  height: 100%;
+  left: 599px;
+  position: absolute;
+}
+
+#vr-second-border {
+  width: 0px;
+  border-right: 1px solid #C6C6C6;
+  height: 100%;
+  left: 699px;
+  position: absolute;
+}

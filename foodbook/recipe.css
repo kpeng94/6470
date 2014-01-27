@@ -1,63 +1,337 @@
 body {
-	background-color: #f1f1f1;
+  background-color: #f1f1f1;
 }
 
+/*
+  WRAPPER
+*/
+
+#recipe-page-wrapper {
+  width: 1001px;
+  margin: 0px auto 0px auto;
+  position: relative;
+}
+
+/*
+CONTENT
+*/
+
+#recipe-content {
+  width: 1000px;
+  position: relative;
+  display: inline-block;
+}
+
+#recipe-content a {
+  text-decoration: none;
+  color: #000000;
+}
+
+/*
+TITLE
+*/
 #recipe-name {
   width: 400px;
-  margin: 10px auto 10px auto;
-  text-align: center;
+  margin: 0 auto 30px auto;
+  position: relative;
+  top: 30px;
 }
 
 #recipe-name div input[type=number] {
   background-color: #f1f1f1;
   text-align: center;
   width: 30px;
+  height: 30px;
+  margin: 10px auto 10px auto;
 }
 
 #recipe-name input[type=text] {
   display: block;
   text-align: center;
   font-size: 46px;
+  line-height: 46px;
+  height: 60px;
   font-family: Petrona;
   background-color: #f1f1f1;
   width: 400px;
 }
 
-.recipe-content {
-  width: 80%;
-  margin-left: 10%;
-  margin-top: 0px;
-  background-color: #ffffff;
+#recipe-serve {
+  text-align: center;
 }
 
-.recipe-content a {
-  text-decoration: none;
-  color: #000000;
+/*
+RECIPE INFO
+*/
+
+
+#recipe-selection {
+  width: 490px;
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 0% 0 0%;
 }
 
-.type-tabs {
+.recipe-selection-line {
+  position: relative;
+}
+
+.recipe-selection-filter {
+  width: 25px;
+  visibility: hidden;
+  display: inline-block;
+}
+
+.simple-search-bar {
+  width: 90%;
+  height: 20px;
+  border: 1px solid black;
+  margin: 5px 0 5px 5px;
+  padding: 5px 0 5px 0;
+  display: inline-block;
+  background-color: white;
+}
+
+.simple-search-bar #ingredient-search {
+  height: 20px;
+  outline: none;
+}
+
+/*
+ ______ ____   ____  _____    _________     _______  ______  _____
+ |  ____/ __ \ / __ \|  __ \  |__   __\ \   / /  __ \|  ____|/ ____|
+ | |__ | |  | | |  | | |  | |    | |   \ \_/ /| |__) | |__  | (___
+ |  __|| |  | | |  | | |  | |    | |    \   / |  ___/|  __|  \___ \
+ | |   | |__| | |__| | |__| |    | |     | |  | |    | |____ ____) |
+ |_|    \____/ \____/|_____/     |_|     |_|  |_|    |______|_____/
+
+*/
+
+#type-tabs {
   vertical-align: top;
   display: inline-block;
-  width: 150px;
+  width: 30px;
+  position: relative;
 }
 
 .type-tab {
-  padding: 5px 0 5px 0;
+  height: 30px;
+  position: relative;
+  /* This is to balance against the float property (so weird)*/
+  right: -4px;
+  margin: 2px 0 2px 0;
+}
+
+.type-tab-img {
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: black;
+  height: 30px;
+  width: 30px;
+  -webkit-filter: brightness(1000%);
+}
+
+.type-tab-text > a {
+  text-decoration: none;
   text-align: center;
-  border: 1px solid black;
+}
+
+.type-tab-text {
+  right: 50px;
+  display: none;
+  position: absolute;
+  padding: 5px 20px 5px 20px;
+  border: 2px solid black;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+}
+
+.type-tab-text:before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 0;
+  top: 11px;
+  right: -12px;
+  border-style: solid;
+  border-width: 5px 0 5px 12px;
+  border-color: transparent black;
+}
+
+.type-tab-text:after {
+  content: "";
+  position: absolute;
+  border-style: solid;
+  display: block;
+  width: 0;
+  top: 13px;
+  right: -10px;
+  border-width: 3px 0 3px 10px;
+}
+
+#type-tab-text-all {
+  background: yellow;
+}
+
+#type-tab-text-all:after {
+  border-color: transparent yellow;
+}
+
+#all-img {
+
+}
+
+#type-tab-text-meat {
+  background: yellow;
+}
+
+#type-tab-text-meat:after {
+  border-color: transparent yellow;
+}
+
+#meat-img {
+
+}
+
+#type-tab-text-fruits {
+  background: yellow;
+}
+
+#type-tab-text-fruits:after {
+ border-color: transparent yellow;
+}
+
+#fruits-img {
+
+}
+
+#type-tab-text-grains {
+  background: yellow;
+}
+
+#type-tab-text-grains:after {
+ border-color: transparent yellow;
+}
+
+#grains-img {
+
+}
+
+#type-tab-text-seafood {
+  background: yellow;
+}
+
+#type-tab-text-seafood:after {
+ border-color: transparent yellow;
+}
+
+#seafood-img {
+
+}
+
+#type-tab-text-nuts-and-legumes {
+  background: yellow;
+}
+
+#type-tab-text-nuts-and-legumes:after {
+ border-color: transparent yellow;
+}
+
+#nuts-and-legumes-img {
+
+}
+
+#type-tab-text-soups-and-sauces {
+  background: yellow;
+}
+
+#type-tab-text-soups-and-sauces:after {
+ border-color: transparent yellow;
+}
+
+#soups-and-sauces-img {
+
+}
+
+#type-tab-text-spices-and-herbs {
+  background: yellow;
+}
+
+#type-tab-text-spices-and-herbs:after {
+ border-color: transparent yellow;
+}
+
+#spices-and-herbs-img {
+
+}
+
+#type-tab-text-vegetables {
+  background: yellow;
+}
+
+#type-tab-text-vegetables:after {
+ border-color: transparent yellow;
+}
+
+#vegetables-img {
+
+}
+
+#type-tab-text-fats-and-oils {
+  background: yellow;
+}
+
+#type-tab-text-fats-and-oils:after {
+ border-color: transparent yellow;
+}
+
+#fats-and-oils-img {
+
+}
+
+#type-tab-text-dairy-and-eggs {
+  background: yellow;
+}
+
+#type-tab-text-dairy-and-eggs:after {
+ border-color: transparent yellow;
+}
+
+#dairy-and-eggs-img {
+
+}
+
+.type-tab:hover .type-tab-text {
+  display: block;
+}
+
+.mini {
+
+}
+
+/* ADDING INGREDIENTS
+*/
+
+#recipe-add {
+  vertical-align: top;
+  border: 1px solid #c6c6c6;
+  display: inline-block;
+  width: 90%;
+  height: 500px;
+  background-color: white;
 }
 
 .all-ingredients {
   display: inline-block;
   vertical-align: top;
-}
-
-.simple-search-bar {
+  width: 100%;
 }
 
 .ingredient-list {
   height: 500px;
-  width: 400px;
+  width: 96%;
+  margin: 0 2% 0 2%;
 }
 
 .ingredient-list > * {
@@ -67,6 +341,7 @@ body {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  width: 90%;
 }
 
 .ingredient-list > div:hover .ingredient-expanded-name {
@@ -77,6 +352,7 @@ body {
   padding: 10px;
   background-color: #00F2F2;
   z-index: 2;
+  width: 100%;
 }
 
 .ingredient-expanded-name {
@@ -84,30 +360,68 @@ body {
   display: none;
 }
 
-.ingredient-fruit {
+.ingredient-select {
+  width: 50px;
 }
 
-.ingredient-meat {
-}
+/*
 
-.ingredient-grain {
-}
+ADDED INGREDIENTS
+
+*/
 
 .added-ingredients {
   display: inline-block;
-  width: 400px;
+  width: 490px;
+  vertical-align: top;
+  margin: 0 0 0 13px;
+  border: 1px solid #c6c6c6;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  height: 542px;
+  background-color: white;
 }
 
-.ingredient-line .ingredient-input-div{
-  display: inline-block;
+.ingredients-title {
+  display: block;
+  text-align: center;
+  font-size: 24px;
+  font-family: Raleway;
+  font-weight: 700;
+  width: 100%;
+  line-height: 40px;
+  height: 40px;
+  color: #FFFFFF;
+  background-color: #6F3F3F;
+  border-radius: 4px;
 }
 
-.ingredient-line .ingredient-select-div {
+.ingredient-line {
+  width: 96%;
+  margin: 0 2% 0 2%;
+}
+
+.ingredient-input-div{
   display: inline-block;
+  width: 10%;
+  margin: 0 1% 0 0;
+}
+
+.ingredient-select-div {
+  display: inline-block;
+  width: 10%;
+  margin: 2px 1% 2px 1%;
+}
+
+.ingredient-select-div select {
+  text-align: center;
+  outline: red;
 }
 
 .ingredient-line .ingredient-name {
   display: inline-block;
+  width: 76%;
+  margin: 0 0 0 1%;
 }
 
 #recipe-instructions-and-descriptions {
@@ -122,60 +436,224 @@ body {
   display: none;
 }
 
-#recipe-add {
-  border: 1px solid #c6c6c6;
-  visibility: hidden;
-  display: none;
-}
-
-#recipe-add.selected {
-  visibility: visible;
-  display: block;
-}
-
 #recipe-summary.selected {
   visibility: visible;
-  display: block;
+  display: inline-block;
 }
 
 #recipe-instructions-and-descriptions.selected {
   visibility: visible;
-  display: block;
+  display: inline-block;
 }
 
 input {
-	border: 1px solid transparent;
-	font-size: 14px;
+  border: 1px solid transparent;
+  font-size: 14px;
 }
 
 input:hover {
-	border: 1px solid #c6c6c6;
+  border: 1px solid #c6c6c6;
   background-color: #ffffff;
 }
 
 select:hover {
-	border: 1px solid #c6c6c6;
+  border: 1px solid #c6c6c6;
 }
 
 input:focus {
-	background-color: #ffffff;
-	border: 1px solid #c6c6c6;
-	outline: none;
+  background-color: #ffffff;
+  border: 1px solid #c6c6c6;
+  outline: none;
 }
 
 input[type=number] {
-	width: 40px;
-	text-align: right;
+  width: 40px;
+  text-align: right;
 }
 
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button{
-	-webkit-appearance: none;
-	margin: 0;
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 select {
-	-webkit-appearance: none;
-	background-color: #fafafa;
-	border: 1px solid transparent;
+  -webkit-appearance: none;
+  background-color: #fafafa;
+  border: 1px solid transparent;
+}
+
+#nutritional-info {
+  width: 998px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border: 1px solid #c6c6c6;
+  margin: 20px 0px 20px 0px;
+  background-color: white;
+}
+
+#nutritional-title {
+  display: block;
+  text-align: center;
+  font-size: 24px;
+  font-family: Raleway;
+  font-weight: 700;
+  width: 100%;
+  line-height: 40px;
+  height: 40px;
+  color: #FFFFFF;
+  background-color: #3D8D3D;
+  margin-bottom: 20px;
+  border-radius: 4px;
+}
+
+.prog-bar {
+  width: 180px;
+  height: 12px;
+  border-radius: 7.5px;
+  background-color: #f2f2f2;
+  border: none;
+  margin-top: 4px;
+}
+
+.prog-bar > span {
+  display: block;
+  height: 100%;
+  width: 100%;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border: none;
+}
+
+.prog-bar.red > span {
+  background-color: #F26553;
+}
+
+.prog-bar.yellow > span {
+  background-color: #F2F219;
+}
+
+.prog-bar.green > span {
+  background-color: #52CE54;
+}
+
+.nutritional-column {
+  width: 230px;
+  display: inline-block;
+}
+
+.nutritional-grid {
+  width: 197px;
+  margin: 5px 0px 5px 0px;
+}
+
+#nutritional-facts {
+  width: 990px;
+  margin: 0 5px 20px 5px;
+}
+
+#nr-top-half {
+  border: 1px solid #C6C6C6;
+}
+
+#nr-bottom-half {
+  border: 1px solid #C6C6C6;
+}
+
+#nr-tabs {
+  width: 100%;
+  border-bottom: 1px solid #C6C6C6;
+}
+
+#nr-variants {
+  left: 0;
+  background-color: #3D8D3D;
+}
+
+#nr-comments {
+  background-color: #3D8D3D;
+}
+
+#nr-recipe-name {
+  display: block;
+  text-align: center;
+  font-size: 46px;
+  line-height: 60px;
+  height: 60px;
+  font-family: Petrona;
+  background-color: #f1f1f1;
+  width: 400px;
+  margin: 0 auto 40px auto;
+  position: relative;
+  top: 30px;
+}
+
+#nr-recipe-serve {
+  position: relative;
+  font-size: 36px;
+  text-align: center;
+  width: 400px;
+  height: 50px;
+  line-height: 50px;
+  margin: 10px auto 10px auto;
+}
+
+#nr-description {
+  height: 400px;
+  border: 1px solid #C6C6C6;
+}
+
+#nr-description-title {
+  background-color: #3C3C3C;
+}
+
+#nr-instructions {
+  border: 1px solid #C6C6C6;
+  margin-bottom: 30px;
+  height: 400px;
+}
+
+#nr-instructions-title {
+  background-color: #3C3C3C;
+}
+
+#nr-ingredients {
+  height: 800px;
+  border: 1px solid #C6C6C6;
+}
+
+#nr-ingredients-title {
+  background-color: #3C3C3C;
+}
+
+#nr-top-half-left {
+  vertical-align: top;
+  display: inline-block;
+  position: relative;
+  width: 40%;
+  margin: 0 5% 0 5%;
+}
+
+#nr-top-half-right {
+  vertical-align: top;
+  display: inline-block;
+  position: relative;
+  width: 39.5%;
+  margin: 0 5% 0 5%;
+}
+
+#nr-bottom-half {
+  width: 90%;
+  margin-left: 5%;
+  margin-bottom: 40px;
+}
+
+#nr-variants-content {
+  height: 200px;
+}
+
+#nr-comments-content {
+  height: 200px;
 }
