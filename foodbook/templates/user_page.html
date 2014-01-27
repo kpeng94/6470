@@ -2,7 +2,6 @@
 
 {% block css %}
 <link rel = 'stylesheet' type = 'text/css' href = '/static/css/profile.css'>
-<script src = '/static/js/profile.js'></script>
 {% endblock %}
 
 {% block content %}
@@ -10,10 +9,20 @@
 		<div id = 'profile-content-background'>
       <div id = 'profile-content'>
   			<div id = 'profile-image-container'>
-  				<div id = 'profile-image' class ='user-icon'></div>
+  				<div id = 'profile-image' class ='user-icon'>
+          <img id='profile-image-img' src='{{ profile_picture }}'></img>
+          {% if is_me %}
+          <form enctype='multipart/form-data' id='profile-pic-form' name='prof_pic' action='/user' method='post'>
+          {% csrf_token %}
+          <input id="id_image" name="image" type="file" />
+          </form>
+          {% endif %}
+          </div>
+          {% if is_me %}
           <div id = 'profile-image-edit'>
             <i class = 'fa fa-pencil'></i> <div id = 'profile-image-edit-text'>&nbsp;Edit</div>
           </div>
+          {% endif %}
   			</div>
   		  <div id = 'profile-info'>
   			  <div id = 'profile-name'> Rene Zhang </div>
@@ -42,7 +51,7 @@
       <div id = 'profile-comments-container'>
         <div id = 'post-container'>
           <textarea id='comment-box' placeholder='Post something!'></textarea>
-          <div id = 'post-button'>POST</div>
+          <div id = 'post-button'>Post</div>
         </div>
         <div id = 'recent-posts'>
           <div id = 'no-recent-posts' class = 'profile-hidden'></div>
@@ -65,12 +74,8 @@
     </div>
 	</div>
 
+{% endblock %}
 
-	<!-- TODO: EDIT THIS LATER FOR A NICER INTERFACE -->
-	<form enctype='multipart/form-data' name='prof_pic' action='/user' method='post'>
-		{% csrf_token %}
-		{{ form.as_p }}
-	<button type='submit' value='Submit'>SUBMIT THIS</button>
-	</form>
-
+{% block js %}
+<script src = '/static/js/profile.js'></script>
 {% endblock %}

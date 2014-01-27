@@ -108,8 +108,25 @@ def display_user_profile(request):
 		return redirect('/user')
 	if request.user.is_authenticated():
 		form = ProfilePictureForm()
-		return render_to_response('user_page.html', {'form': form}, context_instance = RequestContext(request))
+		url = '/static/img/user/default'
+		pic = UserPicture.objects.filter(user_id=request.user)
+		if pic:
+			url = pic[0].pic_link
+		return render_to_response('user_page.html', {'form': form, 'is_me': True, 'profile_picture': url}, context_instance = RequestContext(request))
 	return redirect('/home')
+
+def display_other_profile(request, user):
+	try:
+		user = User.objects.filter(username=user)
+	except Exception, e:
+		user = None
+	url = '/static/img/user/default'
+	if user:
+		pic = UserPicture.objects.filter(user_id=user)
+		if pic:
+			url = pic[0].pic_link
+	return render_to_response('user_page.html', {'is_me': False, 'profile_picture': url}, context_instance=RequestContext(request))
+
 
 def display_user_settings(request):
 	if request.user.is_authenticated():

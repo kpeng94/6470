@@ -22,13 +22,16 @@
   left: 5px;
   width: 150px;
   height: 150px;
-  background-color: #DDDDDD;
-  background-size: 150px 150px;
-  border: 1px solid black;
+  overflow: hidden;
 }
 
 #profile-image:hover ~ #profile-image-edit {
   display: block;
+}
+
+#id_image {
+  visibility: hidden;
+  display: none;
 }
 
 #profile-image-edit:hover {
@@ -57,6 +60,8 @@
 
 #profile-image-edit-text {
   display: inline-block;
+  font-family: Roboto;
+  font-weight: 700;
 }
 
 #profile-image-container {
@@ -67,6 +72,10 @@
   left: 20px;
   margin-right: 50px;
   height: 160px;
+}
+
+#profile-image-img {
+  position: absolute;
 }
 
 #profile-info {
@@ -237,7 +246,7 @@
 
 #post-container {
   position: relative;
-  height: 150px;
+  height: 160px;
 }
 
 #comment-box {
@@ -250,27 +259,30 @@
   font-family: Roboto;
   font-weight: 300;
   padding: 10px 10px 10px 10px;
-}
-
-#post-box {
-  border: 1px solid #C6C6C6;
+  outline-color: #57B05F;
 }
 
 #post-button {
   position: absolute;
-  height: 40px;
-  right: 0;
+  height: 30px;
+  right: 2px;
   bottom: 0;
-  border: 1px solid #C6C6C6;
-  width: 100px;
+  border-radius: 3px;
+  width: 250px;
   margin-top: 10px;
   margin-bottom: 10px;
-  background-color: #009900;
+  background-color: #1FC62D;
   line-height: 40px;
   font-size: 20px;
   text-align: center;
   color: #FFFFFF;
+  font-family: Roboto;
+  font-weight: 700;
+  padding-bottom: 10px  ;
+}
 
+#post-button:hover{
+  background-color: #119F1D;
 }
 
 #recent-posts {
