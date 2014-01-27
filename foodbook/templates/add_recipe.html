@@ -14,7 +14,7 @@
       <div id = 'recipe-serve'>Serves: <input type='number' id='recipe-serving-size' value='{{ recipe.serving_size|default:"1" }}'/> person(s)</div>
     </div>
 
-    <div id='recipe-info'>
+    <div id='recipe-info' class = 'selected'>
       <!-- RECIPE SELECT -->
       <div id = 'recipe-selection'>
         <div class = 'recipe-selection-line'>
@@ -51,7 +51,7 @@
             </div>
             {% endfor %}
           </div>
-          <div id = 'recipe-add' class = 'selected'>
+          <div id = 'recipe-add'>
             <input id='recipe-id-unique' type='hidden' value='{{ recipe.id }}'/>
             <div class = 'all-ingredients'>
               <div class='ingredient-list' id='ingredient-list'>
@@ -112,20 +112,20 @@
           </div>
         </div>
       </div>
-      <div id = 'recipe-instructions-and-descriptions'>
-        <textarea id='recipe-description' rows='10' cols='50' value='{{ recipe.description }}' placeholder='Description'>{{ recipe.description }}</textarea>
-        <textarea id='recipe-instructions' rows='10' cols='50' value='{{ recipe.instructions }}' placeholder='Instructions'>{{ recipe.instructions }}</textarea>
-      </div>
-
-      <div id = 'recipe-summary'></div>
     </div>
+    <div id = 'recipe-instructions-and-descriptions'>
+      <textarea id='recipe-description' rows='10' cols='50' value='{{ recipe.description }}' placeholder='Description'>{{ recipe.description }}</textarea>
+      <textarea id='recipe-instructions' rows='10' cols='50' value='{{ recipe.instructions }}' placeholder='Instructions'>{{ recipe.instructions }}</textarea>
+    </div>
+
+    <div id = 'recipe-summary'></div>
   </div>
 </div>
-<div>
+<!-- <div>
   <button onclick='check_nutrients();' id='check-nutr'>Nutrients</button>
   <div onclick='save_recipe();' id='save-recipe'><i class="fa fa-floppy-o"></i></div>
 </div>
-<div id = 'recipe-next-prev'>
-  <div onclick='previousContent();' id='prev'><i class="fa fa-chevron-left"></i></div><div onclick='nextContent();' id='next'><i class="fa fa-chevron-right"></i></div>
+ --><div id = 'recipe-next-prev'>
+  <div onclick='previousContent();' class='prev' id='recipe-prev'><i class="fa fa-chevron-left"></i></div><div onclick='nextContent();' class='next clickable' id='recipe-next'><i class="fa fa-chevron-right"></i></div>
 </div>
 {% endblock %}
