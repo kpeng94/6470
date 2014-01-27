@@ -42,9 +42,9 @@
             {% for type in type_list %}
             <div class = 'type-tab'>
               <div class = 'type-tab-text' id = 'type-tab-text-{{ type.1 }}'>
-                <a href="#" class="tab-link" id='{{ type.1 }}'onclick="change_search('{{ type.1 }}');">{{ type.0 }}</a>
+                <a href="#" class="tab-link" id='{{ type.1 }}'>{{ type.0 }}</a>
               </div>
-              <div class = 'type-tab-bgimg'>
+              <div class = 'type-tab-bgimg' onclick="change_search('{{ type.1 }}');">
                 <div class = 'type-tab-background' id = '{{ type.1 }}-background'></div>
                 <div class = 'type-tab-img' id = "{{ type.1 }}-img"></div>
               </div>
