@@ -70,6 +70,8 @@ def calculate_nutritional_value(ingredients, user, ss):
 	nutrients['calories'][1] = nutrients['calories'][0]/calories
 	nutrients['total-fat'][1] = nutrients['total-fat'][0]/fat
 	nutrients['saturated'][1] = nutrients['saturated'][0]/decimal.Decimal(20)
+	nutrients['monounsaturated'][1] = nutrients['monounsaturated'][0]/decimal.Decimal(22.5)
+	nutrients['polyunsaturated'][1] = nutrients['polyunsaturated'][0]/decimal.Decimal(22.5)
 	nutrients['trans'][1] = 100.0 if nutrients['trans'][0] > 0 else decimal.Decimal(0.0)
 	nutrients['cholesterol'][1] = nutrients['cholesterol'][0]/decimal.Decimal(300)
 	nutrients['sodium'][1] = nutrients['sodium'][0]/decimal.Decimal(2400)

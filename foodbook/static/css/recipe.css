@@ -587,6 +587,10 @@ select {
   background-color: #F2F219;
 }
 
+.prog-bar.orange > span {
+  background-color: #E7A855;
+}
+
 .prog-bar.green > span {
   background-color: #52CE54;
 }
@@ -608,6 +612,10 @@ select {
 #nutritional-facts {
   width: 990px;
   margin: 0 5px 20px 5px;
+}
+
+.nutritional-num {
+  float: right;
 }
 
 #nr-top-half {
