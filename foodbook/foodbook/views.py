@@ -32,10 +32,14 @@ def login_user(request):
 	return redirect('/home')
 
 def register_view(request):
+	if request.user.is_authenticated():
+		return redirect('/home')
 	form = UserCreationForm()
 	return render_to_response('register.html', {'form': form}, context_instance=RequestContext(request))
 
 def register(request):
+	if request.user.is_authenticated():
+		return redirect('/home')
 	if request.method == 'POST':
 		form = UserCreationForm(request.POST)
 		if form.is_valid():
@@ -45,7 +49,7 @@ def register(request):
 				messages.error(request, "This email is already tied to an account.")
 			else:
 				new_user = User.objects.create_user(form.cleaned_data['username'], form.cleaned_data['email'], form.cleaned_data['password'])
-				messages.success(request, 'Registration was successful.')
+				messages.success(request, 'Registration was successful. You can now log in to your account.')
 		else:
 			if form['username'].errors or form['password'].errors or form['email'].errors:
 				messages.error(request, "All fields are required.")
@@ -55,6 +59,7 @@ def register(request):
 
 def logout_user(request):
 	if request.user.is_authenticated():
+		messages.success(request, "You have successfully logged out.")
 		logout(request)
 	return HttpResponseRedirect('/home')
 
