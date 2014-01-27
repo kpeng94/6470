@@ -386,7 +386,7 @@ RECIPE INFO
   margin: 0 2% 0 2%;
 }
 
-.ingredient-list > * {
+.ingredient-list > div {
   padding: 2px 10px 2px 10px;
   margin: 4px 10px 4px 10px;
   background-color: #DDDDDD;
@@ -727,4 +727,53 @@ select {
   margin-top: 60px;
   padding-bottom: 30px;
   margin-bottom: 60px;
+}
+
+#il-previous-next {
+  padding: 0;
+  margin: 0;
+  position: relative;
+  width: 100%;
+  background-color: #FFFFFF;
+  height: 70px;
+}
+
+#il-previous {
+  top: 10px;
+  width: 60px;
+  display: inline-block;
+  position: absolute;
+  left: 150px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#il-next {
+  top: 10px;
+  width: 60px;
+  display: inline-block;
+  position: absolute;
+  left: 230px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#il-next i{
+  text-align: center;
+  color: green;
+  font-size: 40px;
+  line-height: 50px;
+  position: absolute;
+  text-shadow: -1px 0px black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+#il-previous i {
+  text-align: center;
+  color: green;
+  font-size: 40px;
+  line-height: 50px;
+  position: absolute;
+  text-shadow: -1px 0px black, 0 1px black, 1px 0 black, 0 -1px black;
 }

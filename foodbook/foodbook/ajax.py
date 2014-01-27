@@ -43,10 +43,13 @@ def update_recipe_ingredient_search(request, div_id, search, page='0', num_per_p
 		next += "</a></div>"
 		out.append(next)
 
+	out.append('<div id = "il-previous-next">');
 	if page != 0:
-		out.append('<button onclick="update_page(%d)">Previous</button>' % (page-1))
+		out.append('<div id = "il-previous" onclick="update_page(%d)"><i class = "fa fa-arrow-left"></i></div>' % (page-1))
 	if page != count/num_per_page:
-		out.append('<button onclick="update_page(%d)">Next</button>' % (page+1))
+		out.append('<div id = "il-next" onclick="update_page(%d)"><i class = "fa fa-arrow-right"></i></div>' % (page+1))
+	out.append('</div>')
+
 	dajax.assign('#' + div_id, 'innerHTML', "".join(out))
 	return dajax.json()
 
