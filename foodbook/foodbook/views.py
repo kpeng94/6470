@@ -122,7 +122,7 @@ def display_other_profile(request, user):
 		user = None
 	url = '/static/img/user/default'
 	if user:
-		pic = UserPicture.objects.filter(user_id=request.user)
+		pic = UserPicture.objects.filter(user_id=user)
 		if pic:
 			url = pic[0].pic_link
 	return render_to_response('user_page.html', {'is_me': False, 'profile_picture': url}, context_instance=RequestContext(request))
