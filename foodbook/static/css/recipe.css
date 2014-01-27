@@ -194,19 +194,19 @@ RECIPE INFO
 #all-img {
 }
 
-#type-tab-text-meats {
+#type-tab-text-meat {
   background: yellow;
 }
 
-#type-tab-text-meats:after {
+#type-tab-text-meat:after {
   border-color: transparent yellow;
 }
 
-#meats-background {
+#meat-background {
   background-color: brown;
 }
 
-#meats-img {
+#meat-img {
   background-image: url('/static/img/foods/png/32px/129.png');
 }
 
