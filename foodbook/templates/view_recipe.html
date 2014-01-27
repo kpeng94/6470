@@ -2,6 +2,7 @@
 
 {% block css %}
 <link rel = 'stylesheet' href = '/static/css/view.css'>
+<script src = '/static/js/view.js'></script>
 {% endblock %}
 
 {% block content %}
@@ -19,7 +20,9 @@
     <div id = 'vr-advanced-parameters'></div>
   </div>
   <div id ='diet-selection-box'>
-    <div id = 'diet-checkbox'></div>
+    <div id = 'diet-checkbox' onclick = 'toggleCheckbox()'>
+      <div id = 'diet-checkmark' class = ''>&#10004;</div>
+    </div>
     <div id = 'diet-selection-text'>Hide recipes that are out of my diet.</div>
   </div>
   <div id = 'vr-table'>

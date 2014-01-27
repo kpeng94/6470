@@ -194,19 +194,19 @@ RECIPE INFO
 #all-img {
 }
 
-#type-tab-text-meat {
+#type-tab-text-meats {
   background: yellow;
 }
 
-#type-tab-text-meat:after {
+#type-tab-text-meats:after {
   border-color: transparent yellow;
 }
 
-#meat-background {
+#meats-background {
   background-color: brown;
 }
 
-#meat-img {
+#meats-img {
   background-image: url('/static/img/foods/png/32px/129.png');
 }
 
@@ -703,7 +703,6 @@ select {
 #nr-bottom-half {
   width: 90%;
   margin-left: 5%;
-  margin-bottom: 40px;
 }
 
 #nr-variants-content {
@@ -712,4 +711,12 @@ select {
 
 #nr-comments-content {
   height: 200px;
+}
+
+#nr-recipe-content {
+  width: 1000px;
+  background-color: #FFFFFF;
+  margin-top: 60px;
+  padding-bottom: 30px;
+  margin-bottom: 60px;
 }
