@@ -205,11 +205,11 @@ RECIPE INFO
 }
 
 #type-tab-text-meat {
-  background: #ad7553;
+  background: #c49b83;
 }
 
 #type-tab-text-meat:after {
-  border-color: transparent #ad7553;
+  border-color: transparent #c49b83;
 }
 
 #meat-background {
@@ -221,11 +221,11 @@ RECIPE INFO
 }
 
 #type-tab-text-fruits {
-  background-color: #F76767;
+  background-color: #ed9595;
 }
 
 #type-tab-text-fruits:after {
-  border-color: transparent #F76767;
+  border-color: transparent #ed9595;
 }
 
 #fruits-background {
@@ -253,11 +253,11 @@ RECIPE INFO
 }
 
 #type-tab-text-seafood {
-  background: #8086f7;
+  background: #a9aff9;
 }
 
 #type-tab-text-seafood:after {
- border-color: transparent #8086f7;
+ border-color: transparent #a9aff9;
 }
 
 #seafood-background {
@@ -269,11 +269,11 @@ RECIPE INFO
 }
 
 #type-tab-text-nuts-and-legumes {
-  background: #258952;
+  background: #3ba56b;
 }
 
 #type-tab-text-nuts-and-legumes:after {
- border-color: transparent #258952;
+ border-color: transparent #3ba56b;
 }
 
 #nuts-and-legumes-background {
@@ -333,11 +333,11 @@ RECIPE INFO
 }
 
 #type-tab-text-fats-and-oils {
-  background: #93684c;
+  background: #c49b83;
 }
 
 #type-tab-text-fats-and-oils:after {
-  border-color: transparent #93684c;
+  border-color: transparent #c49b83;
 }
 
 #fats-and-oils-background {
