@@ -305,3 +305,31 @@ def list_own_recipes(request, param='name'):
     			</div>""")
 	dajax.assign('#recipe-list-container', 'innerHTML', "".join(out))
 	return dajax.json()
+
+@dajaxice_register(method='GET', name='recipe.list_all')
+def list_all_recipes(request, search=None, param='name'):
+	dajax = Dajax()
+	out = []
+	recipes = Recipe.objects.filter(public=True)
+	if search:
+		search = search.split(' ')
+		for item in search:
+			recipes.filter(name__icontains=item.strip())
+	recipes.order_by(param)
+	if recipes:
+		for recipe in recipes:
+			out.append("""<div class='public-recipe-line'>
+		  				<div class='public-recipe-link'>
+		    			<a href='/recipe/%d'>%s</a>
+		  				</div>
+		  				<div class='public-recipe-line-info'>
+		  				<div class='public-recipe-author'>by %s</div>
+		    			<div class='public-upvotes'>Upvotes: %d</div><div class='public-last-edited'>Last edited: %s ago</div>
+		  				</div>
+		  				<hr>""" % (recipe.id, recipe.name, recipe.user_id.username, recipe.upvotes, timesince(recipe.last_edited)))
+	else:
+		out.append("""<div id='public-no-recipes'>
+    			There aren't any public recipes.
+    			</div>""")
+	dajax.assign('#public-recipe-list-container', 'innerHTML', "".join(out))
+	return dajax.json()

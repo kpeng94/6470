@@ -28,6 +28,12 @@ var load_my_recipes = function(param){
 	return false;
 }
 
+var load_all_recipes = function(param){
+	Dajaxice.recipe.list_all(Dajax.process, {'param': param});
+	return false;
+}
+
 window.onload = function(event) {
 	load_my_recipes('name');
+	load_all_recipes('-upvotes');
 }
