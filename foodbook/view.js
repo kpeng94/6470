@@ -1,6 +1,7 @@
 var toggleCheckbox = function() {
 	var dietCB = document.getElementById('diet-checkmark');
 	toggleClass(dietCB, 'enabled');
+	load_recipes('name', 0)
 }
 
 var viewAll = function() {
@@ -23,17 +24,17 @@ var viewMine = function() {
 	}
 }
 
-var load_my_recipes = function(param){
-	Dajaxice.recipe.list_mine(Dajax.process, {'param': param});
+var load_my_recipes = function(param, num){
+	Dajaxice.recipe.list_mine(Dajax.process, {'param': param, 'page': num});
 	return false;
 }
 
-var load_all_recipes = function(param){
-	Dajaxice.recipe.list_all(Dajax.process, {'param': param});
+var load_recipes = function(param, num){
+	Dajaxice.recipe.list_all(Dajax.process, {'page': num, 'param': param, 'hide': hasClass(document.getElementById('diet-checkmark'), 'enabled')});
 	return false;
 }
 
 window.onload = function(event) {
-	load_my_recipes('name');
-	load_all_recipes('-upvotes');
+	load_my_recipes('name', 0);
+	load_recipes('-upvotes', 0);
 }

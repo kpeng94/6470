@@ -92,32 +92,45 @@ def calculate_nutritional_value(ingredients, user, ss):
 		nutrients[key] = [nutrients[key][0]/ss, nutrients[key][1]/ss*decimal.Decimal(100)]
 	return nutrients
 
-def is_allowed(request, recipe, hide, sugar='', fat='', protein='', calories=''):
+def search_recipes(request, recipes, search='', sugar=None, fat=None, protein=None, calories=None, hide=False):
+	recipes = recipes.filter(name__icontains=search)
+	allow = []
+	new_recipes = recipes
+	if hide:
+		for recipe in recipes:
+			if not is_allowed(request, recipe, sugar=sugar, fat=fat, protein=protein, calories=calories):
+				new_recipes = new_recipes.exclude(id=recipe.id)
+		return list([new_recipes])
+	else:
+		for recipe in recipes:
+			if is_allowed(request, recipe, sugar=sugar, fat=fat, protein=protein, calories=calories):
+				allow.append(True)
+			else:
+				allow.append(False)
+		return [new_recipes,allow]
+
+def is_allowed(request, recipe, sugar=None, fat=None, protein=None, calories=None):
 	if request.user.is_authenticated():
-		user = UserDiet.objects.filter(user=request.user)
-		if len(user) > 0:
-			for recipe in recipes:
-				if(recipe.halal != diet.halal or recipe.lacto != diet.lacto or recipe.lactoovo != diet.lactoovo or recipe.vegan != diet.vegan
-					or recipe.diabetes != diet.diabetes or recipe.hypertension != diet.hypertension or recipe.nuts != diet.nuts or recipe.eggs != diet.eggs
-					or recipe.soy != diet.soy or recipe.shellfish != diet.shellfish or recipe.fish != diet.fish):
-					return True
-				else:
-					return False
-			if sugar == '':
+		diet = UserDiet.objects.filter(user=request.user)
+		if len(diet) > 0:
+			diet = diet[0]
+			if (recipe.halal and diet.halal) or (recipe.lacto and diet.lacto) or (recipe.lactoovo and diet.lactoovo) or (recipe.vegan and diet.vegan) or (recipe.diabetes and diet.diabetes) or (recipe.hypertension and diet.hypertension) or (recipe.nuts and diet.nuts) or (recipe.eggs and diet.eggs) or (recipe.soy and diet.soy) or (recipe.shellfish and diet.shellfish) or (recipe.fish and diet.fish):
+				return False
+			if not sugar:
 				sugar = diet.sugar
-			if fat == '':
+			if not fat:
 				fat = diet.fat
-			if protein == '':
+			if not protein:
 				protein = diet.protein
-			if calories == '':
+			if not calories:
 				calories = diet.calories
-	if sugar != '' and sugar < recipe.sugar:
+	if sugar and (sugar <= recipe.total_carbohydrates):
+		return sugar
+	if fat and fat <= recipe.total_fat:
 		return False
-	if fat != '' and fat < recipe.fat:
+	if protein and protein <= recipe.protein:
 		return False
-	if protein != '' and protein < recipe.protein:
-		return False
-	if calories != '' and calories < recipe.calories:
+	if calories and calories <= recipe.calories:
 		return False
 	return True
 

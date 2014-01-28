@@ -813,17 +813,24 @@ select {
   font-size: 30px;
   line-height: 46px;
   position: absolute;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 #il-previous i {
   font-size: 30px;
   line-height: 46px;
   position: absolute;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 #recipe-next-prev {
-  width: 204px;
+  width: 1000px;
   margin: 0 auto 60px auto;
+  position: relative;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .prev {
@@ -832,6 +839,8 @@ select {
   display: inline-block;
   height: 80px;
   width: 80px;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .prev i {
@@ -840,6 +849,8 @@ select {
   text-align: center;
   font-size: 60px;
   color: #A3A3A3;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .next {
@@ -848,6 +859,8 @@ select {
   width: 80px;
   border: 1px solid #C6C6C6;
   display: inline-block;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .next i {
@@ -856,9 +869,16 @@ select {
   text-align: center;
   font-size: 60px;
   color: #A3A3A3;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.clickable {
+  cursor: pointer;
 }
 
 .clickable i {
+  cursor: pointer;
   color: #777878;
 }
 
@@ -870,6 +890,14 @@ select {
   color: #606162;
 }
 
+.clickable:focus {
+  border: 1px solid #A3A3A3;
+}
+
+.clickable:focus i {
+  color: #404142;
+}
+
 .clickable:active {
   border: 1px solid #A3A3A3;
 }
@@ -879,10 +907,15 @@ select {
 }
 
 #save-recipe {
+  position: absolute;
   height: 80px;
   width: 80px;
   border: 1px solid #C6C6C6;
-  display: inline-block;
+  right: 0;
+  top: 0;
+  background: -webkit-linear-gradient(#FFFFFF, #FAFAFA);
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 #save-recipe i {
@@ -890,6 +923,25 @@ select {
   width: 100%;
   text-align: center;
   font-size: 60px;
+  color: #737373;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#save-recipe:hover {
+  border: 1px solid #A4A4A4;
+}
+
+#save-recipe:hover i {
+  color: #616161;
+}
+
+#save-recipe:active {
+  border: 1px solid #838383;
+}
+
+#save-recipe:active i {
+  color: #404040;
 }
 
 
@@ -914,4 +966,10 @@ select {
 
 #nr-ingredients-title {
 
+}
+
+#next-prev-wrap {
+  position: relative;
+  width: 204px;
+  margin: 0 auto 0 auto;
 }

@@ -124,21 +124,21 @@ def display_user_profile(request):
 			pic = UserPicture.objects.filter(user_id=request.user)
 			if pic:
 				url = pic[0].pic_link
-			return render_to_response('user_page.html', {'form': form, 'is_me': True, 'user':request.user, 'profile_picture': url, 'recipe_count': len(request.user.recipe_set.filter(public=True)), 'reputation': sum([recipe.upvotes for recipe in request.user.recipe_set.filter(public=True)])}, context_instance = RequestContext(request))
-		return redirect('/home')
+			return render_to_response('user_page.html', {'form': form, 'is_me': True, 'user':request.user, 'users':request.user, 'profile_picture': url, 'recipe_count': len(request.user.recipe_set.filter(public=True)), 'reputation': sum([recipe.upvotes for recipe in request.user.recipe_set.filter(public=True)])}, context_instance = RequestContext(request))
+	return redirect('/home')
 
 def display_other_profile(request, user):
 	try:
 		user = User.objects.get(username=user)
 	except Exception, e:
 		messages.error(request, "That user doesn't exist.")
-		return redirect(request.META['HTTP_REF'])
+		return redirect('/home')
 	url = '/static/img/user/default'
 	if user:
 		pic = UserPicture.objects.filter(user_id=user)
 		if pic:
 			url = pic[0].pic_link
-	return render_to_response('user_page.html', {'user': user, 'recipe_count': len(user.recipe_set.filter(public=True)), 'is_me': False, 'profile_picture': url, 'reputation': sum([recipe.upvotes for recipe in user.recipe_set.filter(public=True)])}, context_instance=RequestContext(request))
+	return render_to_response('user_page.html', {'users': user, 'recipe_count': len(user.recipe_set.filter(public=True)), 'is_me': False, 'profile_picture': url, 'reputation': sum([recipe.upvotes for recipe in user.recipe_set.filter(public=True)])}, context_instance=RequestContext(request))
 
 def display_user_settings(request):
 	if request.user.is_authenticated():
@@ -147,8 +147,7 @@ def display_user_settings(request):
 		except:
 			diet = None
 		return render_to_response('user_settings.html', {'diet': diet}, context_instance = RequestContext(request))
-	else:
-		return redirect('/home')
+	return redirect('/home')
 
 def display_normal_recipe(request, rid):
 	return render_to_response('recipe_page.html', context_instance = RequestContext(request))
@@ -198,8 +197,7 @@ def save_settings(request):
 		diet.save()
 		messages.success(request, "Save successful.")
 		return redirect('/settings')
-	else:
-		return redirect('/home')
+	return redirect('/home')
 
 def json_database(request):
     search = User.objects.filter(username__istartswith=request.GET['term'])

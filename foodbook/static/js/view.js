@@ -1,6 +1,7 @@
 var toggleCheckbox = function() {
 	var dietCB = document.getElementById('diet-checkmark');
 	toggleClass(dietCB, 'enabled');
+	load_recipes('name', 0)
 }
 
 var viewAll = function() {
@@ -29,7 +30,7 @@ var load_my_recipes = function(param, num){
 }
 
 var load_recipes = function(param, num){
-	Dajaxice.recipe.list_all(Dajax.process, {'page': num, 'param': param});
+	Dajaxice.recipe.list_all(Dajax.process, {'page': num, 'param': param, 'hide': hasClass(document.getElementById('diet-checkmark'), 'enabled')});
 	return false;
 }
 

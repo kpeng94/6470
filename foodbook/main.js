@@ -91,7 +91,22 @@ $(document).ready(function(){
 	var image = document.getElementById('login-pic');
 	resizeImage(50, image);
 	searchResult();
+	handleSearch();
+	$("#gsearch").submit(function(e){
+    	e.preventDefault();
+    	window.location.replace('/user/' + $('#global-search').val());
+	});
 });
+
+
+var handleSearch = function() {
+	$("#global-search").keyup(function(event){
+	    if(event.keyCode == 13){
+	    	var username = document.getElementById('global-search').value;
+	    	window.location = '/user/' + username;
+	    }
+	});
+}
 
 /**
  * Resizes the image based on the threshold
@@ -167,14 +182,39 @@ var redirect = function(){
 	window.location.replace('/recipe/add');
 }
 
+var button_redirect = function(){
+	window.location.replace('/recipe')
+}
+
 var removeBox = function(div) {
 	$(div).parent().parent().hide();
 }
 
 
-function searchResult() {
+var searchResult = function() {
     $("#global-search").autocomplete({
-      minLength: 0,
-      source: '/search.json',
-    });
+	  source: '/search.json',
+      focus: function( event, ui ) {
+        $( "#global-search" ).val( ui.item.label );
+        return false;
+      },
+	}).data( "ui-autocomplete" )._renderItem = function( ul, item ) {
+      return $("<li>" )
+        .append("<a href = '/user/" + item.label + "'>" + item.label + "</a>")
+        .appendTo( ul );
+ 	};
+ 	$("#global-search").data( "ui-autocomplete")._resizeMenu = function() {
+  		this.menu.element.outerWidth( 550 );
+	};
+ 	$("#global-search").data( "ui-autocomplete")._renderMenu = function(ul, items) {
+	  var that = this;
+	  $.each( items, function( index, item ) {
+	    that._renderItemData( ul, item );
+	  });
+	  $(ul).css("border-radius", "0px");
+	  $(ul).find("a").css("border-radius", "0px");
+	  var find = $(ul).find("a");
+	  find.hover(function(){
+	  });
+	};
 }

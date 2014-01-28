@@ -127,7 +127,7 @@
   line-height: 30px;
   font-size: 20px;
   font-family: Roboto;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 #profile-reputation #profile-reputation-img {
@@ -138,7 +138,7 @@
   height: 50px;
   position: absolute;
   bottom: 50px;
-  color: #00FF00;
+  color: #07bf07;
 }
 
 #profile-recipes {
@@ -243,7 +243,7 @@
 #profile-content-container {
   width: 100%;
   position: relative;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
   display: none;
 }
 
@@ -300,14 +300,15 @@
   width: 250px;
   margin-top: 10px;
   margin-bottom: 10px;
-  background-color: #1FC62D;
+  background-color: #1bba29;
   line-height: 40px;
   font-size: 20px;
   text-align: center;
   color: #FFFFFF;
   font-family: Roboto;
   font-weight: 700;
-  padding-bottom: 10px  ;
+  padding-bottom: 10px;
+  cursor: pointer;
 }
 
 #post-button:hover{
@@ -379,8 +380,122 @@
 
 #profile-recipe-container {
   display: none;
-  height: 500px;
   width: 100%;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
   position: relative;
+}
+
+.more-posts {
+  margin: 0 auto 0 auto;
+  font-family: Roboto;
+  font-weight: 700;
+  color: white;
+  background-color: #6E86E8;
+  height: 40px;
+  font-size: 16px;
+  width: 400px;
+  text-align: center;
+  line-height: 40px;
+}
+
+#il-previous-next {
+  padding: 0;
+  margin: 0;
+  position: relative;
+  width: 100%;
+  background-color: #FFFFFF;
+  height: 70px;
+}
+
+#il-previous {
+  top: 15px;
+  height: 40px;
+  width: 40px;
+  display: inline-block;
+  position: absolute;
+  left: 170px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#il-next {
+  top: 15px;
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  position: absolute;
+  left: 210px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#il-next i {
+  font-size: 30px;
+  line-height: 46px;
+  position: absolute;
+}
+
+#il-previous i {
+  font-size: 30px;
+  line-height: 46px;
+  position: absolute;
+}
+
+#recipe-next-prev {
+  width: 204px;
+  margin: 0 auto 60px auto;
+}
+
+.prev {
+  background: -webkit-linear-gradient(#FFFFFF, #FAFAFA);
+  border: 1px solid #C6C6C6;
+  display: inline-block;
+  height: 80px;
+  width: 80px;
+}
+
+.prev i {
+  line-height: 86px;
+  width: 100%;
+  text-align: center;
+  font-size: 60px;
+  color: #A3A3A3;
+}
+
+.next {
+  background: -webkit-linear-gradient(#FFFFFF, #FAFAFA);
+  height: 80px;
+  width: 80px;
+  border: 1px solid #C6C6C6;
+  display: inline-block;
+}
+
+.next i {
+  line-height: 86px;
+  width: 100%;
+  text-align: center;
+  font-size: 60px;
+  color: #A3A3A3;
+}
+
+.clickable i {
+  color: #777878;
+}
+
+.clickable:hover {
+  border: 1px solid #A4A4A4;
+}
+
+.clickable:hover i{
+  color: #606162;
+}
+
+.clickable:active {
+  border: 1px solid #A3A3A3;
+}
+
+.clickable:active i {
+  color: #404142;
 }

@@ -24,6 +24,7 @@ window.onload = function(event) {
 	})
 	retrieve_posts(5);
 	resizeImage(150, document.getElementById('profile-image-img'));
+	load_recipes('name', 0);
 }
 
 var comments = function() {
@@ -34,4 +35,9 @@ var comments = function() {
 var recipes = function() {
 	removeClass(document.getElementById('profile-content-container'), 'selected');
 	addClass(document.getElementById('profile-recipe-container'), 'selected');
+}
+
+var load_recipes = function(param, num){
+	Dajaxice.recipe.list_all(Dajax.process, {'param': param, 'page': num, 'username': $('#username').val()});
+	return false;
 }

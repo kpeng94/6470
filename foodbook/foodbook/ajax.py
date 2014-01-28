@@ -2,7 +2,7 @@ from dajax.core import Dajax
 import json, decimal
 from foodbook.models import Ingredient, ServingSize, Recipe, UserDiet, Comment, UserPicture, IngredientWrapper
 from dajaxice.decorators import dajaxice_register
-from recipe_utils import calculate_nutritional_value, decimal_json
+from recipe_utils import calculate_nutritional_value, decimal_json, search_recipes
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -81,21 +81,20 @@ def update_recipe_ingredient_search(request, div_id, search, page='0', num_per_p
 	dajax.assign('#' + div_id, 'innerHTML', "".join(out))
 	return dajax.json()
 
-@login_required
 @dajaxice_register(method='GET', name='recipe.add_ingredient')
 def add_ingredient(request, iid):
-	dajax = Dajax()
-	ingredient = Ingredient.objects.get(id__exact=iid)
-	serving_sizes = ingredient.servingsize_set.all()
-	out = []
-	out.append("<div class='ingredient-name'>%s (%s)</div><div class='ingredient-input-div'><input type='number' value=1 id='ingredient_line_%s_number'/> </div><div class='ingredient-select-div'><select class='ingredient-select' id='ingredient_line_%s_select'>" % (ingredient.name, ingredient.modifier, ingredient.id, ingredient.id))
-	for ss in serving_sizes:
-		next = "<option value='%s'>%s </option>" % (ss.name, ss.name)
-		out.append(next)
-	out.append("</select>")
-	out.append("</div>")
-
-	return json.dumps({'html': "".join(out), 'id': ingredient.id})
+	if request.user.is_authenticated():
+		ingredient = Ingredient.objects.get(id__exact=iid)
+		serving_sizes = ingredient.servingsize_set.all()
+		out = []
+		out.append("<div class='ingredient-name'>%s (%s)</div><div class='ingredient-input-div'><input type='number' value=1 id='ingredient_line_%s_number'/> </div><div class='ingredient-select-div'><select class='ingredient-select' id='ingredient_line_%s_select'>" % (ingredient.name, ingredient.modifier, ingredient.id, ingredient.id))
+		for ss in serving_sizes:
+			next = "<option value='%s'>%s </option>" % (ss.name, ss.name)
+			out.append(next)
+		out.append("</select>")
+		out.append("</div>")
+		return json.dumps({'html': "".join(out), 'id': ingredient.id})
+	return json.dumps()
 
 @dajaxice_register(method='POST', name='recipe.save')
 def save_recipe(request, rid, ingredients, name, description, suggestions, instructions, ss, public):
@@ -206,7 +205,8 @@ def save_recipe(request, rid, ingredients, name, description, suggestions, instr
 				fish=fish)
 			recipe.save()
 			rid = recipe.id
-	return json.dumps({'success': True, 'rid': rid})
+		return json.dumps({'success': True, 'rid': rid})
+	return json.dumps({'success': False})
 
 @dajaxice_register(method='GET', name='recipe.check')
 def check_nutrients(request, ingredients, ss):
@@ -233,30 +233,32 @@ def update_diet(request, restrictions, calories, fat, sugar, protein):
 			diet = UserDiet(user=request.user, diet_description=restrictions, calories=calories, fat=fat, sugar=sugar, protein=protein)
 			diet.save()
 			return json.dumps({'success': True})
-		return json.dumps({'success': False})
+	return json.dumps({'success': False})
 
-@login_required
 @dajaxice_register(method='POST', name='comment.user_add')
 def add_comment(request, username='', comment=''):
 	dajax = Dajax()
-	if username == '' or username == request.user.username:
-		messages.error(request, "Sadly, you can't add comments to your own profile.")
-		dajax.redirect('/user')
-		return dajax.json()
-	else:
-		try:
-			user = User.objects.get(username=username)
-		except:
-			messages.error(request, "That user doesn't exist.")
+	if request.user.is_authenticated():
+		if username == '' or username == request.user.username:
+			messages.error(request, "Sadly, you can't add comments to your own profile.")
+			dajax.redirect('/user')
+			return dajax.json()
+		else:
+			try:
+				user = User.objects.get(username=username)
+			except:
+				messages.error(request, "That user doesn't exist.")
+				dajax.redirect(request.META['HTTP_REFERER'])
+				return dajax.json()
+		if comment == '':
+			messages.error(request, "Your comments have to actually say something.")
 			dajax.redirect(request.META['HTTP_REFERER'])
 			return dajax.json()
-	if comment == '':
-		messages.error(request, "Your comments have to actually say something.")
-		dajax.redirect(request.META['HTTP_REFERER'])
-		return dajax.json()
-	comment = Comment(original_poster=request.user, receiving_user=user, comment=comment)
-	comment.save()
-	messages.success(request, "Comment posted successfully!")
+		comment = Comment(original_poster=request.user, receiving_user=user, comment=comment)
+		comment.save()
+		messages.success(request, "Comment posted successfully!")
+	else:
+		messages.error(request, "You must be logged in to comment.")
 	dajax.redirect(request.META['HTTP_REFERER'])
 	return dajax.json()
 
@@ -297,41 +299,47 @@ def get_comments(request, username='', num=5):
 @dajaxice_register(method='GET', name='recipe.list_mine')
 def list_own_recipes(request, param='name', page=0):
 	dajax = Dajax()
-	num_per_page = 5
-	recipes = Recipe.objects.filter(user_id=request.user).order_by(param)
-	count = len(recipes)
-	recipes = recipes[page*num_per_page:(page+1)*num_per_page]
 	out = []
-	if recipes:
-		for recipe in recipes:
-			out.append("""<div class='recipe-line'>
-		  				<div class='recipe-link'>
-		    			<a href='/recipe/edit?rid=%d'>%s</a>
-		  				</div>
-		  				<div class='recipe-line-info'>
-		    			<div class='last-edited'>Last edited: %s ago</div><div class='upvotes'>Upvotes: %d</div>
-		  				</div>
-		  				<div class='created'>Created: %s ago</div>
-		  				<hr></div>""" % (recipe.id, recipe.name, timesince(recipe.last_edited), recipe.upvotes, timesince(recipe.added)))
-		out.append('<div id = "il-previous-next">');
-		if page != 0:
-			out.append('<div id = "il-previous" class = "prev clickable" onclick="load_my_recipes(&apos;%s&apos;, %d)"><i class = "fa fa-chevron-left"></i></div>' % (param, page-1))
+	if request.user.is_authenticated():
+		num_per_page = 5
+		recipes = Recipe.objects.filter(user_id=request.user).order_by(param)
+		count = len(recipes)-1
+		recipes = recipes[page*num_per_page:(page+1)*num_per_page]
+		if recipes:
+			for recipe in recipes:
+				out.append("""<div class='recipe-line'>
+			  				<div class='recipe-link'>
+			    			<a href='/recipe/edit?rid=%d'>%s</a>
+			  				</div>
+			  				<div class='recipe-line-info'>
+			    			<div class='last-edited'>Last edited: %s ago</div><div class='upvotes'>Upvotes: %d</div>
+			  				</div>
+			  				<div class='created'>Created: %s ago</div>
+			  				<hr></div>""" % (recipe.id, recipe.name, timesince(recipe.last_edited), recipe.upvotes, timesince(recipe.added)))
+			out.append('<div id = "il-previous-next">');
+			if page != 0:
+				out.append('<div id = "il-previous" class = "prev clickable" onclick="load_my_recipes(&apos;%s&apos;, %d)"><i class = "fa fa-chevron-left"></i></div>' % (param, page-1))
+			else:
+				out.append('<div id = "il-previous" class = "prev"><i class = "fa fa-chevron-left"></i></div>')
+			if page != count/num_per_page:
+				out.append('<div id = "il-next" class = "next clickable" onclick="load_my_recipes(&apos;%s&apos;, %d)"><i class = "fa fa-chevron-right"></i></div>' % (param, page+1))
+			else:
+				out.append('<div id = "il-next" class = "next"><i class = "fa fa-chevron-right"></i></div>')
+			out.append('</div>')
 		else:
-			out.append('<div id = "il-previous" class = "prev"><i class = "fa fa-chevron-left"></i></div>')
-		if page != count/num_per_page:
-			out.append('<div id = "il-next" class = "next clickable" onclick="load_my_recipes(&apos;%s&apos;, %d)"><i class = "fa fa-chevron-right"></i></div>' % (param, page+1))
-		else:
-			out.append('<div id = "il-next" class = "next"><i class = "fa fa-chevron-right"></i></div>')
-		out.append('</div>')
+			out.append("""<div id='recipe-line'>
+	    			You don't have any recipes - go and make some!
+	    			</div>""")
+		dajax.assign('#recipe-list-container', 'innerHTML', "".join(out))
 	else:
-		out.append("""<div id='recipe-line'>
-    			You don't have any recipes - go and make some!
-    			</div>""")
-	dajax.assign('#recipe-list-container', 'innerHTML', "".join(out))
+		out.append("""<div class='recipe-line'>
+	    			Log in to see your own recipes.
+	    			</div>""")
+		dajax.assign('#recipe-list-container', 'innerHTML', "".join(out))
 	return dajax.json()
 
 @dajaxice_register(method='GET', name='recipe.list_all')
-def list_all_recipes(request, param='name', username=None, page=0):
+def list_all_recipes(request, param='name', search='', hide=False, username=None, page=0):
 	dajax = Dajax()
 	out = []
 	num_per_page = 5
@@ -339,7 +347,11 @@ def list_all_recipes(request, param='name', username=None, page=0):
 	if username and username != '':
 		recipes = recipes.filter(user_id__username=username)
 	recipes = recipes.filter(public=True).order_by(param)
-	count = len(recipes)
+	temp = search_recipes(request, recipes, search=search, hide=hide)
+	recipes = temp[0]
+	if len(temp) == 2:
+		allow = temp[1]
+	count = len(recipes)-1
 	recipes = recipes[page*num_per_page:(page+1)*num_per_page]
 	if recipes:
 		for recipe in recipes:

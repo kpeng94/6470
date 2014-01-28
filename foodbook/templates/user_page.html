@@ -7,7 +7,7 @@
 
 {% block content %}
 	<div id = 'profile-body'>
-    <input id='username' type='hidden' value='{{ user.username }}'/>
+    <input id='username' type='hidden' value='{{ users.username }}'/>
 		<div id = 'profile-content-background'>
       <div id = 'profile-content'>
   			<div id = 'profile-image-container'>
@@ -27,15 +27,15 @@
           {% endif %}
   			</div>
   		  <div id = 'profile-info'>
-  			  <div id = 'profile-name'> {{ user.username }}</div>
-          <div id = 'profile-email'> {{ user.email }} </div>
+  			  <div id = 'profile-name'> {{ users.username }}</div>
+          <div id = 'profile-email'> {{ users.email }} </div>
   		  </div><div id = 'profile-achievements'>
   				<div id = 'profile-recipes'>
             <div id = 'profile-recipes-count'>{{ recipe_count|default:'0' }}</div>
             <div id = 'profile-recipes-img'></div>
             <div id = 'profile-recipes-text'>Recipes</div>
           </div><div id = 'profile-reputation'>
-            <div id = 'profile-reputation-count'>{{ reputation }}</div>
+            <div id = 'profile-reputation-count'>{{ reputation|default:'0' }}</div>
             <div id = 'profile-reputation-img'>&#10004;</div>
             <div id = 'profile-reputation-text'>Reputation</div>
           </div>
