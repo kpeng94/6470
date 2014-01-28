@@ -449,6 +449,7 @@ ADDED INGREDIENTS
 */
 
 .added-ingredients {
+  position: relative;
   display: inline-block;
   width: 480px;
   vertical-align: top;
@@ -498,7 +499,7 @@ ADDED INGREDIENTS
 
 .ingredient-line .ingredient-name {
   display: inline-block;
-  width: 76%;
+  width: 70%;
   margin: 0 0 0 1%;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -712,47 +713,68 @@ select {
 }
 
 #nr-description {
-  height: 400px;
+  height: 180px;
   border: 1px solid #C6C6C6;
 }
 
 #nr-description-title {
+  height: 40px;
+  line-height: 40px;
+  font-size: 24px;
   background-color: #3C3C3C;
 }
 
 #nr-instructions {
   border: 1px solid #C6C6C6;
-  margin-bottom: 30px;
-  height: 400px;
+  height: 180px;
 }
 
 #nr-instructions-title {
+  height: 40px;
+  line-height: 40px;
+  font-size: 24px;
+  background-color: #3C3C3C;
+}
+
+#nr-suggestions {
+  height: 140px;
+  border: 1px solid #C6C6C6;
+  margin-bottom: 30px;
+}
+
+#nr-suggestions-title {
+  height: 40px;
+  line-height: 40px;
+  font-size: 24px;
   background-color: #3C3C3C;
 }
 
 #nr-ingredients {
-  height: 800px;
+  height: 500px;
   border: 1px solid #C6C6C6;
 }
 
 #nr-ingredients-title {
-  background-color: #3C3C3C;
+  height: 40px;
+  line-height: 40px;
+  font-size: 24px;
+  background-color: #6F3F3F;
 }
 
 #nr-top-half-left {
   vertical-align: top;
   display: inline-block;
   position: relative;
-  width: 40%;
-  margin: 0 5% 0 5%;
+  width: 450px;
+  margin: 0 25px 0 25px;
 }
 
 #nr-top-half-right {
   vertical-align: top;
   display: inline-block;
   position: relative;
-  width: 39.5%;
-  margin: 0 5% 0 5%;
+  width: 450px;
+  margin: 0 25px 0 21px;
 }
 
 #nr-bottom-half {
@@ -774,6 +796,10 @@ select {
   margin-top: 60px;
   padding-bottom: 30px;
   margin-bottom: 60px;
+}
+
+#nr-suggestions-content {
+  height: 200px;
 }
 
 #il-previous-next {
@@ -972,4 +998,22 @@ select {
   position: relative;
   width: 204px;
   margin: 0 auto 0 auto;
+}
+
+#recipe-list {
+  overflow: auto;
+}
+
+.ingredient-delete-button {
+  margin-left: 4px;
+  vertical-align: middle;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: url('/static/img/glyphicons_free/glyphicons/png/glyphicons_207_remove_2.png') no-repeat 4px 4px;
+  background-size: 12px 12px;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.4;
+  cursor: pointer;
 }

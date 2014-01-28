@@ -68,16 +68,16 @@
         </div>
         {% for ingredient in ingredient_list %}
         <div class='ingredient-line' id='ingredient_line_{{ ingredient.ingredient_id }}'>
-        <div class='ingredient-name'>
-          {{ ingredient.name }}</div><div class='ingredient-input-div'><input type='number' size='5' id='ingredient_line_{{ ingredient.ingredient_id }}_number' value={{ingredient.qty }} /></div><div class='ingredient-select-div'>
-          <select class='ingredient-select' id='ingredient_line_{{ ingredient.ingredient_id }}_select'>
-            {% for ss in ingredient.servingsize %}
-            <option value='{{ ss.name }}'
-            {% if ss.name == ingredient.unit %} selected='selected' {% endif %}>{{ ss.name }}</option>
-            {% endfor %}
-          </select>
-          </div>
-      </div>
+          <div class='ingredient-name'>
+            {{ ingredient.name }}</div><div class='ingredient-input-div'><input type='number' size='5' id='ingredient_line_{{ ingredient.ingredient_id }}_number' value={{ingredient.qty }} /></div><div class='ingredient-select-div'>
+            <select class='ingredient-select' id='ingredient_line_{{ ingredient.ingredient_id }}_select'>
+              {% for ss in ingredient.servingsize %}
+              <option value='{{ ss.name }}'
+              {% if ss.name == ingredient.unit %} selected='selected' {% endif %}>{{ ss.name }}</option>
+              {% endfor %}
+            </select>
+          </div><div class = 'ingredient-delete-button' onclick = 'jimmyWu(this)'></div>
+        </div>
         {% endfor %}
       </div>
       <div id='nutritional-info'>

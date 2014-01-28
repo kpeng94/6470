@@ -30,11 +30,18 @@ var load_my_recipes = function(param, num){
 }
 
 var load_recipes = function(param, num){
-	Dajaxice.recipe.list_all(Dajax.process, {'page': num, 'param': param, 'hide': hasClass(document.getElementById('diet-checkmark'), 'enabled')});
+	var calories = $('#adv-calories').val() == '' || isNaN($('#adv-calories').val()) ? null : Number($('#adv-calories').val());
+	var fat = $('#adv-fat').val() == '' || isNaN($('#adv-fat').val()) ? null : Number($('#adv-fat').val());
+	var sugar = $('#adv-carbs').val() == '' || isNaN($('#adv-carbs').val()) ? null : Number($('#adv-carbs').val());
+	var protein = $('#adv-protein').val() == '' || isNaN($('#adv-protein').val()) ? null : Number($('#adv-protein').val());
+	Dajaxice.recipe.list_all(Dajax.process, {'page': num, 'calories': calories, 'fat': fat, 'sugar': sugar, 'protein': protein, 'param': param, 'search': $('#vr-search-input').val(), 'hide': hasClass(document.getElementById('diet-checkmark'), 'enabled')});
 	return false;
 }
 
 window.onload = function(event) {
 	load_my_recipes('name', 0);
 	load_recipes('-upvotes', 0);
+	document.getElementById('vr-search-input').onkeyup = function(){
+		load_recipes('-upvotes', 0);
+	};
 }

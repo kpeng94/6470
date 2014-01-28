@@ -105,12 +105,12 @@
 
 #vr-advanced-parameters {
   border: 1px solid #c6c6c6;
-  height: 200px;
-  margin-bottom: 50px;
+  height: 235px;
+  margin-bottom: 20px;
 }
 
 #diet-selection-box {
-  width: 500px;
+  width: 350px;
   margin: 10px auto 10px auto;
 }
 
@@ -124,9 +124,10 @@
 }
 
 #diet-selection-text {
+
   display: inline-block;
   vertical-align: middle;
-  font-size: 26px;
+  font-size: 18px;
   line-height: 30px;
 }
 
@@ -153,7 +154,7 @@
 
 #vr-table {
   width: 900px;
-  margin: 40px auto 40px auto;
+  margin: 30px auto 40px auto;
   height: 650px;
   border: 1px solid #B2C7F0;
   position: relative;
@@ -167,7 +168,7 @@
 }
 
 #vr-table-recipe-label {
-  width: 885px;
+  width: 890px;
 }
 
 .vr-table-label {

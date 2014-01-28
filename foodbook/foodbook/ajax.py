@@ -40,17 +40,17 @@ def update_recipe_ingredient_search(request, div_id, search, page='0', num_per_p
 	elif search_type == "meat":
 		ingredients = Ingredient.objects.filter(Q(ingredient_type__name__iexact='Pork') | Q(ingredient_type__name__iexact='Beef') | Q(ingredient_type__name__iexact='Lamb') | Q(ingredient_type__name__iexact='Chicken'), name__icontains=search).order_by('name')
 	elif search_type == 'seafood':
-		ingredients = Ingredient.objects.filter(Q(ingredient_type__name__iexact='Fish') | Q(ingredient_type__name__iexact='Shellfish'), name__icontains=search).order_by('name')	
+		ingredients = Ingredient.objects.filter(Q(ingredient_type__name__iexact='Fish') | Q(ingredient_type__name__iexact='Shellfish'), name__icontains=search).order_by('name')
 	elif search_type == 'nuts-and-legumes':
-		ingredients = Ingredient.objects.filter(Q(ingredient_type__name__iexact='Nuts') | Q(ingredient_type__name__iexact='Legumes') | Q(ingredient_type__name__iexact='Seeds') | Q(ingredient_type__name__iexact='Soy'), name__icontains=search).order_by('name')	
+		ingredients = Ingredient.objects.filter(Q(ingredient_type__name__iexact='Nuts') | Q(ingredient_type__name__iexact='Legumes') | Q(ingredient_type__name__iexact='Seeds') | Q(ingredient_type__name__iexact='Soy'), name__icontains=search).order_by('name')
 	elif search_type == 'dairy-and-eggs':
-		ingredients = Ingredient.objects.filter(Q(ingredient_type__name__iexact='Dairy') | Q(ingredient_type__name__iexact='Eggs'), name__icontains=search).order_by('name')	
+		ingredients = Ingredient.objects.filter(Q(ingredient_type__name__iexact='Dairy') | Q(ingredient_type__name__iexact='Eggs'), name__icontains=search).order_by('name')
 	elif search_type == 'soups-and-sauces':
 		ingredients = Ingredient.objects.filter(ingredient_type__name__iexact='Soups and Sauces', name__icontains=search).order_by('name')
 	elif search_type == 'spices-and-herbs':
 		ingredients = Ingredient.objects.filter(ingredient_type__name__iexact='Spices and Herbs', name__icontains=search).order_by('name')
 	elif search_type == 'fats-and-oils':
-		ingredients = Ingredient.objects.filter(ingredient_type__name__iexact='Fats and Oils', name__icontains=search).order_by('name')	
+		ingredients = Ingredient.objects.filter(ingredient_type__name__iexact='Fats and Oils', name__icontains=search).order_by('name')
 	else:
 		ingredients = Ingredient.objects.filter(name__icontains=search, ingredient_type__name__iexact=search_type)
 	count = ingredients.count()
@@ -93,6 +93,7 @@ def add_ingredient(request, iid):
 			out.append(next)
 		out.append("</select>")
 		out.append("</div>")
+		out.append("<div class = 'ingredient-delete-button' onclick = 'jimmyWu(this)'></div>")
 		return json.dumps({'html': "".join(out), 'id': ingredient.id})
 	return json.dumps()
 
@@ -197,8 +198,8 @@ def save_recipe(request, rid, ingredients, name, description, suggestions, instr
 		else:
 			recipe = Recipe(name=name, user_id = request.user, servings = ss, description=description, instructions=instructions, ingredients_text=json.dumps(ingredients), upvotes=0,
 				calories = nutrients['calories'][0], total_fat = nutrients['total-fat'][0], saturated_fat = nutrients['saturated'][0], polyunsaturated_fat = nutrients['polyunsaturated'][0],
-				monounsaturated_fat = nutrients['monounsaturated'][0], trans_fat = nutrients['trans'][0], cholesterol = nutrients['cholesterol'][0], sodium = nutrients['sodium'][0], 
-				potassium = nutrients['potassium'][0], total_carbohydrates = nutrients['carbohydrates'][0], dietary_fiber = nutrients['fiber'][0], 
+				monounsaturated_fat = nutrients['monounsaturated'][0], trans_fat = nutrients['trans'][0], cholesterol = nutrients['cholesterol'][0], sodium = nutrients['sodium'][0],
+				potassium = nutrients['potassium'][0], total_carbohydrates = nutrients['carbohydrates'][0], dietary_fiber = nutrients['fiber'][0],
 				sugar=0, protein = nutrients['protein'][0], vitamin_a = nutrients['vita'][0], vitamin_b_6 = nutrients['vitb6'][0], vitamin_b_12 = nutrients['vitb12'][0],
 				vitamin_c=nutrients['vitc'][0], calcium = nutrients['calcium'][0], iron=nutrients['iron'][0], vitamin_d = nutrients['vitd'][0], magnesium = nutrients['magnesium'][0], public=public, suggested=suggestions,
 				halal=halal, lacto=lacto, lactoovo=lactoovo, diabetes=diabetes, vegan=vegan, hypertension=hypertension, nuts=nuts, lactose=lactose, eggs=eggs, soy=soy, shellfish=shellfish,
@@ -293,7 +294,6 @@ def get_comments(request, username='', num=5):
 	if len(Comment.objects.filter(receiving_user=user)) > num:
 		out.append("<div class='more-posts' onclick='retrieve_posts(%d);'>More posts</div>" % (num + 5))
 	dajax.assign('#recent-posts', 'innerHTML', "".join(out))
-	dajax.script('resizeImages();')
 	return dajax.json()
 
 @dajaxice_register(method='GET', name='recipe.list_mine')
@@ -328,18 +328,17 @@ def list_own_recipes(request, param='name', page=0):
 			out.append('</div>')
 		else:
 			out.append("""<div id='recipe-line'>
-	    			You don't have any recipes - go and make some!
-	    			</div>""")
-		dajax.assign('#recipe-list-container', 'innerHTML', "".join(out))
+				You don't have any recipes - go and <a href = '/recipe/add'>make some</a>!
+    			</div>""")
 	else:
 		out.append("""<div class='recipe-line'>
 	    			Log in to see your own recipes.
 	    			</div>""")
-		dajax.assign('#recipe-list-container', 'innerHTML', "".join(out))
+	dajax.assign('#recipe-list-container', 'innerHTML', "".join(out))
 	return dajax.json()
 
 @dajaxice_register(method='GET', name='recipe.list_all')
-def list_all_recipes(request, param='name', search='', hide=False, username=None, page=0):
+def list_all_recipes(request, param='name', search='', hide=False, username=None, page=0, sugar=None, calories=None, fat=None, protein=None):
 	dajax = Dajax()
 	out = []
 	num_per_page = 5
@@ -347,7 +346,7 @@ def list_all_recipes(request, param='name', search='', hide=False, username=None
 	if username and username != '':
 		recipes = recipes.filter(user_id__username=username)
 	recipes = recipes.filter(public=True).order_by(param)
-	temp = search_recipes(request, recipes, search=search, hide=hide)
+	temp = search_recipes(request, recipes, search=search, hide=hide, sugar=sugar, protein=protein, calories=calories, fat=fat)
 	recipes = temp[0]
 	if len(temp) == 2:
 		allow = temp[1]
@@ -376,7 +375,7 @@ def list_all_recipes(request, param='name', search='', hide=False, username=None
 		out.append('</div>')
 	else:
 		out.append("""<div class='public-recipe-line'>
-    			No recipes here!
+    			No recipes here - try again?
     			</div>""")
 	dajax.assign('#public-recipe-list-container', 'innerHTML', "".join(out))
 	return dajax.json()

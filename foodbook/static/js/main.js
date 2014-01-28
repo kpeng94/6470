@@ -89,6 +89,9 @@ var toggleToolbar = function() {
 
 $(document).ready(function(){
 	var image = document.getElementById('login-pic');
+	image.onload = function(){
+		resizeImage(50, this);
+	};
 	resizeImage(50, image);
 	searchResult();
 	handleSearch();
@@ -193,11 +196,7 @@ var removeBox = function(div) {
 
 var searchResult = function() {
     $("#global-search").autocomplete({
-	  source: '/search.json',
-      focus: function( event, ui ) {
-        $( "#global-search" ).val( ui.item.label );
-        return false;
-      },
+	  source: '/search.json'
 	}).data( "ui-autocomplete" )._renderItem = function( ul, item ) {
       return $("<li>" )
         .append("<a href = '/user/" + item.label + "'>" + item.label + "</a>")
