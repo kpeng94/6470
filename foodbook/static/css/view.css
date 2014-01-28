@@ -167,7 +167,7 @@
 }
 
 #vr-table-recipe-label {
-  width: 600px;
+  width: 885px;
 }
 
 .vr-table-label {
@@ -269,4 +269,20 @@
 #vr-adv-param-contnet input[type=number]::-webkit-outer-spin-button{
   -webkit-appearance: none;
   margin: 0;
+}
+
+.public-recipe-line {
+  padding: 5px 0 0 10px;
+}
+
+.public-recipe-line hr {
+  margin-left: -10px;
+}
+
+#vr-view-all {
+  width: 499px;
+}
+
+#vr-view-mine {
+  width: 499px;
 }

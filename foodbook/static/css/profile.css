@@ -1,7 +1,7 @@
 #profile-body {
   background-color: #F1F1F1;
   width: 1000px;
-  margin: 60px auto 0 auto;
+  margin: 60px auto 60px auto;
   border: 1px solid #C6C6C6;
 }
 
@@ -189,7 +189,7 @@
 }
 
 #profile-tabs{
-  width: 307px;
+  width: 204px;
   height: 100px;
   margin: 0 auto 0 auto;
 }
@@ -198,7 +198,9 @@
   position: relative;
   padding: 0;
   margin: 0;
-  border: 1px solid black;
+  background-color: #FFFFFF;
+  border: 1px solid #C6C6C6;
+  /*border-top: 0px;*/
   display: inline-block;
   width: 100px;
   height: 100px;
@@ -216,6 +218,7 @@
 #profile-content-container {
   width: 100%;
   position: relative;
+  margin-bottom: 30px;
 }
 
 #comments-icon {
@@ -295,9 +298,11 @@
 
 }
 
+
 .recent-post {
   height: 150px;
   border: 1px solid #C6C6C6;
+  margin-bottom: 7px;
   position: relative;
   background-color: white;
 }
@@ -328,6 +333,7 @@
   vertical-align: middle;
   width: 26px;
   height: 26px;
+  margin-right: 5px;
   border: 1px solid #C6C6C6;
   display: inline-block;
   position: relative;
