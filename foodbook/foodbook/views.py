@@ -29,7 +29,7 @@ def login_user(request):
 				messages.error(request, 'Username/password combination was incorrect.')
 		else:
 			messages.error(request, 'Improper username/password.')
-		return redirect('' + request.META['HTTP_REFERER'])
+		return redirect(request.META['HTTP_REFERER'])
 	return redirect('/home')
 
 def register_view(request):
@@ -102,34 +102,37 @@ def add_recipe(request):
 	return render_to_response('add_recipe.html', {'type_list': i_types, 'ingredient_list': ingredient_list, 'recipe': recipe}, context_instance=RequestContext(request))
 
 def list_my_recipes(request):
+	my_recipes = None
+	my_diet = None
 	if request.user.is_authenticated():
 		my_recipes = Recipe.objects.filter(user_id=request.user)
 		try:
 			my_diet = UserDiet.objects.get(user=request.user)
 		except:
 			my_diet = None
-		return render_to_response('view_recipe.html', {'recipes': my_recipes, 'diet': my_diet}, context_instance=RequestContext(request))
-	else:
-		return HttpResponse("Log in to see your recipes.")
+	return render_to_response('view_recipe.html', {'recipes': my_recipes, 'diet': my_diet}, context_instance=RequestContext(request))
+
 
 def display_user_profile(request):
-	if request.method == 'POST':
-		upload_picture(request)
-		return redirect('/user')
 	if request.user.is_authenticated():
-		form = ProfilePictureForm()
-		url = '/static/img/user/default'
-		pic = UserPicture.objects.filter(user_id=request.user)
-		if pic:
-			url = pic[0].pic_link
-		return render_to_response('user_page.html', {'form': form, 'is_me': True, 'user':request.user, 'profile_picture': url, 'recipe_count': len(request.user.recipe_set.filter(public=True)), 'reputation': sum([recipe.upvotes for recipe in request.user.recipe_set.filter(public=True)])}, context_instance = RequestContext(request))
-	return redirect('/home')
+		if request.method == 'POST':
+			upload_picture(request)
+			return redirect('/user')
+		else:
+			form = ProfilePictureForm()
+			url = '/static/img/user/default'
+			pic = UserPicture.objects.filter(user_id=request.user)
+			if pic:
+				url = pic[0].pic_link
+			return render_to_response('user_page.html', {'form': form, 'is_me': True, 'user':request.user, 'profile_picture': url, 'recipe_count': len(request.user.recipe_set.filter(public=True)), 'reputation': sum([recipe.upvotes for recipe in request.user.recipe_set.filter(public=True)])}, context_instance = RequestContext(request))
+		return redirect('/home')
 
 def display_other_profile(request, user):
 	try:
 		user = User.objects.get(username=user)
 	except Exception, e:
-		return redirect('/home')
+		messages.error(request, "That user doesn't exist.")
+		return redirect(request.META['HTTP_REF'])
 	url = '/static/img/user/default'
 	if user:
 		pic = UserPicture.objects.filter(user_id=user)
@@ -197,7 +200,7 @@ def save_settings(request):
 		return redirect('/settings')
 	else:
 		return redirect('/home')
-		
+
 def json_database(request):
     search = User.objects.filter(username__istartswith=request.GET['term'])
     results = []

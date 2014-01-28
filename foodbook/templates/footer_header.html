@@ -7,6 +7,8 @@
     <meta charset = 'utf-8' />
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     <link rel = 'stylesheet' href = '/static/css/main.css'>
+<!--    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>-->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
     <script src="//code.jquery.com/jquery-1.9.1.js"></script>
     <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
@@ -30,9 +32,11 @@
         <div id = 'header-wrapper'>
           <div id = 'header-logo'></div>
           <div id = 'header-search'>
+            <form id='gsearch'>
             <input type='text' id='global-search' name='search' placeholder='Search'/>
 
             <div class = 'search-icon'></div>
+          </form>
           </div>
           <div class = 'header-content header-login user-icon' onclick = 'toggleLoginVisibility()'><img id='login-pic' src='{{PROFILE_PICTURE}}'/></div>
           <div class = 'header-content header-data'></div>

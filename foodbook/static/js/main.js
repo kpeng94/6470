@@ -92,6 +92,10 @@ $(document).ready(function(){
 	resizeImage(50, image);
 	searchResult();
 	handleSearch();
+	$("#gsearch").submit(function(e){
+    	e.preventDefault();
+    	window.location.replace('/user/' + $('#global-search').val());
+	});
 });
 
 
