@@ -511,3 +511,7 @@ body {
   font-weight: 700;
   padding-top: 6px;
 }
+
+.ui-menu {
+  background-color: blue;
+}
