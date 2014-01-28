@@ -91,7 +91,18 @@ $(document).ready(function(){
 	var image = document.getElementById('login-pic');
 	resizeImage(50, image);
 	searchResult();
+	handleSearch();
 });
+
+
+var handleSearch = function() {
+	$("#global-search").keyup(function(event){
+	    if(event.keyCode == 13){
+	    	var username = document.getElementById('global-search').value;
+	    	window.location = '/user/' + username;
+	    }
+	});
+}
 
 /**
  * Resizes the image based on the threshold
