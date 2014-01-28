@@ -1,4 +1,4 @@
 Django==1.6.1
 django-dajax==0.9.2
-dajango-dajaxice==0.5.4
+django-dajaxice==0.5.4
 python-dateutil==1.5
