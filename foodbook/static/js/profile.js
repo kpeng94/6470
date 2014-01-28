@@ -24,7 +24,7 @@ window.onload = function(event) {
 	})
 	retrieve_posts(5);
 	resizeImage(150, document.getElementById('profile-image-img'));
-	load_recipes('name',0);
+	load_recipes('name', 0);
 }
 
 var comments = function() {

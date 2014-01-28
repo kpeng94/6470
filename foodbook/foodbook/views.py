@@ -197,16 +197,7 @@ def save_settings(request):
 		return redirect('/settings')
 	else:
 		return redirect('/home')
-
-def search_global(request):
-	users = None
-	search = ''
-	if request.method=='GET':
-		if request.GET['search']:
-			search = request.GET['search']
-			users = User.objects.filter(username__contains=search)
-	return render_to_response('search.html', {'search_term': search, 'search_list': users}, context_instance=RequestContext(request))
-
+		
 def json_database(request):
     search = User.objects.filter(username__istartswith=request.GET['term'])
     results = []

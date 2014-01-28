@@ -295,9 +295,12 @@ def get_comments(request, username='', num=5):
 	return dajax.json()
 
 @dajaxice_register(method='GET', name='recipe.list_mine')
-def list_own_recipes(request, param='name'):
+def list_own_recipes(request, param='name', page=0):
 	dajax = Dajax()
+	num_per_page = 5
 	recipes = Recipe.objects.filter(user_id=request.user).order_by(param)
+	count = len(recipes)
+	recipes = recipes[page*num_per_page:(page+1)*num_per_page]
 	out = []
 	if recipes:
 		for recipe in recipes:
@@ -308,9 +311,20 @@ def list_own_recipes(request, param='name'):
 		  				<div class='recipe-line-info'>
 		    			<div class='last-edited'>Last edited: %s ago</div><div class='upvotes'>Upvotes: %d</div>
 		  				</div>
-		  				<hr>""" % (recipe.id, recipe.name, timesince(recipe.last_edited), recipe.upvotes))
+		  				<div class='created'>Created: %s ago</div>
+		  				<hr></div>""" % (recipe.id, recipe.name, timesince(recipe.last_edited), recipe.upvotes, timesince(recipe.added)))
+		out.append('<div id = "il-previous-next">');
+		if page != 0:
+			out.append('<div id = "il-previous" class = "prev clickable" onclick="load_my_recipes(&apos;%s&apos;, %d)"><i class = "fa fa-chevron-left"></i></div>' % (param, page-1))
+		else:
+			out.append('<div id = "il-previous" class = "prev"><i class = "fa fa-chevron-left"></i></div>')
+		if page != count/num_per_page:
+			out.append('<div id = "il-next" class = "next clickable" onclick="load_my_recipes(&apos;%s&apos;, %d)"><i class = "fa fa-chevron-right"></i></div>' % (param, page+1))
+		else:
+			out.append('<div id = "il-next" class = "next"><i class = "fa fa-chevron-right"></i></div>')
+		out.append('</div>')
 	else:
-		out.append("""<div id='no-recipes'>
+		out.append("""<div id='recipe-line'>
     			You don't have any recipes - go and make some!
     			</div>""")
 	dajax.assign('#recipe-list-container', 'innerHTML', "".join(out))
@@ -323,10 +337,10 @@ def list_all_recipes(request, param='name', username=None, page=0):
 	num_per_page = 5
 	recipes = Recipe.objects.all()
 	if username and username != '':
-		recipes = recipe.objects.filter(user_id__username=username)
+		recipes = recipes.filter(user_id__username=username)
 	recipes = recipes.filter(public=True).order_by(param)
 	count = len(recipes)
-	recipes = recipes[page*num_per_page:(num_per_page+1)*5]
+	recipes = recipes[page*num_per_page:(page+1)*num_per_page]
 	if recipes:
 		for recipe in recipes:
 			out.append("""<div class='public-recipe-line'>
@@ -337,14 +351,14 @@ def list_all_recipes(request, param='name', username=None, page=0):
 		  				<div class='public-recipe-author'>by %s</div>
 		    			<div class='public-upvotes'>Upvotes: %d</div><div class='public-last-edited'>Last edited: %s ago</div>
 		  				</div>
-		  				<hr>""" % (recipe.id, recipe.name, recipe.user_id.username, recipe.upvotes, timesince(recipe.last_edited)))
+		  				<hr></div>""" % (recipe.id, recipe.name, recipe.user_id.username, recipe.upvotes, timesince(recipe.last_edited)))
 		out.append('<div id = "il-previous-next">');
 		if page != 0:
-			out.append('<div id = "il-previous" class = "prev clickable" onclick="load_recipes("param", %d)"><i class = "fa fa-chevron-left"></i></div>' % (page-1))
+			out.append('<div id = "il-previous" class = "prev clickable" onclick="load_recipes(&apos;%s&apos;, %d)"><i class = "fa fa-chevron-left"></i></div>' % (param, page-1))
 		else:
 			out.append('<div id = "il-previous" class = "prev"><i class = "fa fa-chevron-left"></i></div>')
 		if page != count/num_per_page:
-			out.append('<div id = "il-next" class = "next clickable" load_recipes("param", %d)"><i class = "fa fa-chevron-right"></i></div>' % (page+1))
+			out.append('<div id = "il-next" class = "next clickable" onclick="load_recipes(&apos;%s&apos;, %d)"><i class = "fa fa-chevron-right"></i></div>' % (param, page+1))
 		else:
 			out.append('<div id = "il-next" class = "next"><i class = "fa fa-chevron-right"></i></div>')
 		out.append('</div>')

@@ -23,22 +23,17 @@ var viewMine = function() {
 	}
 }
 
-var load_my_recipes = function(param){
-	Dajaxice.recipe.list_mine(Dajax.process, {'param': param});
+var load_my_recipes = function(param, num){
+	Dajaxice.recipe.list_mine(Dajax.process, {'param': param, 'page': num});
 	return false;
 }
 
-var load_all_recipes = function(param){
-	Dajaxice.recipe.list_all(Dajax.process, {'param': param});
+var load_recipes = function(param, num){
+	Dajaxice.recipe.list_all(Dajax.process, {'page': num, 'param': param});
 	return false;
 }
 
 window.onload = function(event) {
-	load_my_recipes('name');
-	load_all_recipes('-upvotes');
-}
-
-var load_recipes = function(param, num){
-	Dajaxice.recipe.list_all(Dajax.process, {'param': param, 'page': num, 'username': $('#username').val()});
-	return false;
+	load_my_recipes('name', 0);
+	load_recipes('-upvotes', 0);
 }
