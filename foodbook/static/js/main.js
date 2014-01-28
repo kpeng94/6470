@@ -172,9 +172,9 @@ var removeBox = function(div) {
 }
 
 
-function searchResult() {
+var searchResult = function() {
     $("#global-search").autocomplete({
-      minLength: 0,
-      source: '/search.json',
-    });
+	  source: '/search.json'
+	});
 }
+

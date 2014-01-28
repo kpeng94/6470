@@ -127,7 +127,7 @@
   line-height: 30px;
   font-size: 20px;
   font-family: Roboto;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 #profile-reputation #profile-reputation-img {
@@ -138,7 +138,7 @@
   height: 50px;
   position: absolute;
   bottom: 50px;
-  color: #00FF00;
+  color: #07bf07;
 }
 
 #profile-recipes {
@@ -300,14 +300,15 @@
   width: 250px;
   margin-top: 10px;
   margin-bottom: 10px;
-  background-color: #1FC62D;
+  background-color: #1bba29;
   line-height: 40px;
   font-size: 20px;
   text-align: center;
   color: #FFFFFF;
   font-family: Roboto;
   font-weight: 700;
-  padding-bottom: 10px  ;
+  padding-bottom: 10px;
+  cursor: pointer;
 }
 
 #post-button:hover{
