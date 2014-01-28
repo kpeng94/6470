@@ -1,0 +1,17 @@
+{% extends "footer_header.html" %}
+
+{% block content %}
+<div class='search-content'>
+<div class='search-title'> Search results for {{ search_term }}:
+</div>
+{% for entry in search_list %}
+<div class='search-list'>
+	<a href='/users/{{ entry.username }}'> {{ entry.username }} <a/>
+</div>
+{% empty %}
+<div class='no-results'>
+	No results were found.
+</div>
+{% endfor %}
+</div>
+{% endblock %}

@@ -26,8 +26,10 @@
         <div id = 'header-wrapper'>
           <div id = 'header-logo'></div>
           <div id = 'header-search'>
-            <input type='text' id='global-search' placeholder='Search'/>
+            <form method='get' action='/search'>
+            <input type='text' id='global-search' name='search' placeholder='Search'/>
             <div class = 'search-icon'></div>
+          </form>
           </div>
           <div class = 'header-content header-login user-icon' onclick = 'toggleLoginVisibility()'><img id='login-pic' src='{{PROFILE_PICTURE}}'/></div>
           <div class = 'header-content header-data'></div>
