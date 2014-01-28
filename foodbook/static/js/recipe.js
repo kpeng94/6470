@@ -163,3 +163,8 @@ function add_ingredient(iid){
 	iid_l.push(iid);
 	return true;
 }
+
+var jimmyWu = function(element) {
+	var div = element.parentNode;
+	div.parentNode.removeChild(div);
+}

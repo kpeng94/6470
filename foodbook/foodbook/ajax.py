@@ -40,17 +40,17 @@ def update_recipe_ingredient_search(request, div_id, search, page='0', num_per_p
 	elif search_type == "meat":
 		ingredients = Ingredient.objects.filter(Q(ingredient_type__name__iexact='Pork') | Q(ingredient_type__name__iexact='Beef') | Q(ingredient_type__name__iexact='Lamb') | Q(ingredient_type__name__iexact='Chicken'), name__icontains=search).order_by('name')
 	elif search_type == 'seafood':
-		ingredients = Ingredient.objects.filter(Q(ingredient_type__name__iexact='Fish') | Q(ingredient_type__name__iexact='Shellfish'), name__icontains=search).order_by('name')	
+		ingredients = Ingredient.objects.filter(Q(ingredient_type__name__iexact='Fish') | Q(ingredient_type__name__iexact='Shellfish'), name__icontains=search).order_by('name')
 	elif search_type == 'nuts-and-legumes':
-		ingredients = Ingredient.objects.filter(Q(ingredient_type__name__iexact='Nuts') | Q(ingredient_type__name__iexact='Legumes') | Q(ingredient_type__name__iexact='Seeds') | Q(ingredient_type__name__iexact='Soy'), name__icontains=search).order_by('name')	
+		ingredients = Ingredient.objects.filter(Q(ingredient_type__name__iexact='Nuts') | Q(ingredient_type__name__iexact='Legumes') | Q(ingredient_type__name__iexact='Seeds') | Q(ingredient_type__name__iexact='Soy'), name__icontains=search).order_by('name')
 	elif search_type == 'dairy-and-eggs':
-		ingredients = Ingredient.objects.filter(Q(ingredient_type__name__iexact='Dairy') | Q(ingredient_type__name__iexact='Eggs'), name__icontains=search).order_by('name')	
+		ingredients = Ingredient.objects.filter(Q(ingredient_type__name__iexact='Dairy') | Q(ingredient_type__name__iexact='Eggs'), name__icontains=search).order_by('name')
 	elif search_type == 'soups-and-sauces':
 		ingredients = Ingredient.objects.filter(ingredient_type__name__iexact='Soups and Sauces', name__icontains=search).order_by('name')
 	elif search_type == 'spices-and-herbs':
 		ingredients = Ingredient.objects.filter(ingredient_type__name__iexact='Spices and Herbs', name__icontains=search).order_by('name')
 	elif search_type == 'fats-and-oils':
-		ingredients = Ingredient.objects.filter(ingredient_type__name__iexact='Fats and Oils', name__icontains=search).order_by('name')	
+		ingredients = Ingredient.objects.filter(ingredient_type__name__iexact='Fats and Oils', name__icontains=search).order_by('name')
 	else:
 		ingredients = Ingredient.objects.filter(name__icontains=search, ingredient_type__name__iexact=search_type)
 	count = ingredients.count()
@@ -94,6 +94,7 @@ def add_ingredient(request, iid):
 		out.append(next)
 	out.append("</select>")
 	out.append("</div>")
+	out.append("<div class = 'ingredient-delete-button' onclick = 'jimmyWu(this)'></div>")
 
 	return json.dumps({'html': "".join(out), 'id': ingredient.id})
 
@@ -198,8 +199,8 @@ def save_recipe(request, rid, ingredients, name, description, suggestions, instr
 		else:
 			recipe = Recipe(name=name, user_id = request.user, servings = ss, description=description, instructions=instructions, ingredients_text=json.dumps(ingredients), upvotes=0,
 				calories = nutrients['calories'][0], total_fat = nutrients['total-fat'][0], saturated_fat = nutrients['saturated'][0], polyunsaturated_fat = nutrients['polyunsaturated'][0],
-				monounsaturated_fat = nutrients['monounsaturated'][0], trans_fat = nutrients['trans'][0], cholesterol = nutrients['cholesterol'][0], sodium = nutrients['sodium'][0], 
-				potassium = nutrients['potassium'][0], total_carbohydrates = nutrients['carbohydrates'][0], dietary_fiber = nutrients['fiber'][0], 
+				monounsaturated_fat = nutrients['monounsaturated'][0], trans_fat = nutrients['trans'][0], cholesterol = nutrients['cholesterol'][0], sodium = nutrients['sodium'][0],
+				potassium = nutrients['potassium'][0], total_carbohydrates = nutrients['carbohydrates'][0], dietary_fiber = nutrients['fiber'][0],
 				sugar=0, protein = nutrients['protein'][0], vitamin_a = nutrients['vita'][0], vitamin_b_6 = nutrients['vitb6'][0], vitamin_b_12 = nutrients['vitb12'][0],
 				vitamin_c=nutrients['vitc'][0], calcium = nutrients['calcium'][0], iron=nutrients['iron'][0], vitamin_d = nutrients['vitd'][0], magnesium = nutrients['magnesium'][0], public=public, suggested=suggestions,
 				halal=halal, lacto=lacto, lactoovo=lactoovo, diabetes=diabetes, vegan=vegan, hypertension=hypertension, nuts=nuts, lactose=lactose, eggs=eggs, soy=soy, shellfish=shellfish,
