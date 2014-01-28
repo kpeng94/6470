@@ -174,7 +174,28 @@ var removeBox = function(div) {
 
 var searchResult = function() {
     $("#global-search").autocomplete({
-	  source: '/search.json'
-	});
+	  source: '/search.json',
+      focus: function( event, ui ) {
+        $( "#global-search" ).val( ui.item.label );
+        return false;
+      },
+	}).data( "ui-autocomplete" )._renderItem = function( ul, item ) {
+      return $("<li>" )
+        .append("<a href = '/user/" + item.label + "'>" + item.label + "</a>")
+        .appendTo( ul );
+ 	};
+ 	$("#global-search").data( "ui-autocomplete")._resizeMenu = function() {
+  		this.menu.element.outerWidth( 550 );
+	};
+ 	$("#global-search").data( "ui-autocomplete")._renderMenu = function(ul, items) {
+	  var that = this;
+	  $.each( items, function( index, item ) {
+	    that._renderItemData( ul, item );
+	  });
+	  $(ul).css("border-radius", "0px");
+	  $(ul).find("a").css("border-radius", "0px");
+	  var find = $(ul).find("a");
+	  find.hover(function(){
+	  });
+	};
 }
-
