@@ -2,44 +2,99 @@
 
 {% block css %}
 <link rel = 'stylesheet' href = '/static/css/recipe.css'>
-<script type='text/javascript' src='/static/js/recipe.js'></script>
 {% endblock %}
 
 {% block content %}
 <div id = 'recipe-page-wrapper'>
-  <div id='nr-recipe-content'>
+  <div id='recipe-content'>
+    <div id = 'nr-recipe-name'>
+      <input type='hidden' id='rid' value='{{ recipe.id }}'/>
+      <div id='nr-recipe-name-i'>{{ recipe.name }}</div>
+      <div id = 'nr-recipe-serve'>Serves: <span id='nrecipe-serving-size'>{{ recipe.servings }}</span> person(s)</div>
+    </div>
     <div id = 'recipe-top-half'>
-      <div id = 'nr-recipe-title'>
-        <div id = 'nr-recipe-name'>
-        {{ recipe.name|default:"Untitled Recipe" }}</div>
-        <div id = 'nr-recipe-serve'>Serves: {{ recipe.serving_size|default:"1" }} person(s)</div>
-      </div>
       <div id = 'nr-top-half-content'>
         <div id = 'nr-top-half-left'>
           <div id = 'nr-description'>
-            <div class = 'section-title' id = 'nr-description-title'>Description</div><div id = 'nr-description-content'></div>
+            <div class = 'section-title' id = 'nr-description-title'>Description</div>
+            <div id = 'nr-description-content'> {{ recipe.description|default:"No description given." }}</div>
           </div>
           <div id = 'nr-instructions'>
-            <div class = 'section-title' id = 'nr-instructions-title'>Instructions</div><div id = 'nr-instructions-content'></div>
+            <div class = 'section-title' id = 'nr-instructions-title'>Instructions</div>
+            <div id = 'nr-instructions-content'>{{ recipe.instructions|default:"No instructions given." }}</div>
           </div>
           <div id = 'nr-suggestions'>
-            <div class = 'section-title' id = 'nr-suggestions-title'>Suggestions</div><div id = 'nr-suggestions-content'></div>
+            <div class = 'section-title' id = 'nr-suggestions-title'>Suggestions</div>
+            <div id = 'nr-suggestions-content'>{{ recipe.suggested|default:"No suggestions given." }}</div>
           </div>
         </div>
-        <div id = 'nr-top-half-right'>
-          <div id = 'nr-ingredients'>
-            <div class = 'section-title' id = 'nr-ingredients-title'>Ingredients</div><div id = 'nr-ingredients-content'></div>
+      <div id = 'nr-top-half-right'>
+        <div id = 'nr-ingredients'>
+          <div class = 'section-title' id = 'nr-ingredients-title'>Ingredients</div>
+          <div id = 'nr-ingredients-content'>
+            {% for ingredient in ingredient_list %}
+            <div class='ingredient-line' id='ingredient_line_{{ ingredient.ingredient_id }}'>
+              <div class='ingredient-name'>{{ ingredient.name }}</div>
+              <div class='ingredient-input-div' id='ingredient_line_{{ ingredient.ingredient_id }}_number'>{{ingredient.qty }}</div>
+              <div class='ingredient-select-div' id='ingredient_line_{{ ingredient.ingredient_id }}_select'>{{ ingredient.unit }}</div>
+            </div>
+            {% endfor %}
           </div>
         </div>
       </div>
     </div>
-    <div id = 'nr-bottom-half'>
-      <div id = 'nr-tabs'>
-        <div class = 'half-section-title' id = 'nr-variants'>Variants</div><div class = 'half-section-title' id = 'nr-comments'>Comments</div>
+  </div>
+  <div id='nutritional-info'>
+    <div id = 'nutritional-title'> Nutrition Facts</div>
+    <div id = 'nutritional-facts'>
+      <div class='nutritional-column'>
+        <div class='nutritional-grid' id='calories'><div>Calories(kcal): </div><div class='nutritional-num' id='calories-num'>0.0</div><div class='prog-bar orange'><span style="width: 0%;"></span></div></div>
+        <div class='nutritional-grid' id='carbohydrates'><div>Carbs(g): </div><div class='nutritional-num' id='carbohydrates-num'>0.0</div><div class='prog-bar orange'><span style="width: 0%;"></span></div></div>
+        <div class='nutritional-grid' id='protein'><div>Protein(g): </div><div class='nutritional-num' id='protein-num'>0.0</div><div class='prog-bar green'><span style="width: 0%;"></span></div></div>
+        <div class='nutritional-grid' id='cholesterol'><div>Cholesterol(mg): </div><div class='nutritional-num' id='cholesterol-num'>0.0</div><div class='prog-bar orange'><span style="width: 0%;"></span></div></div>
+        <div class='nutritional-grid' id='fiber'><div>Fiber(g): </div><div class='nutritional-num' id='fiber-num'>0.0</div><div class='prog-bar green'><span style="width: 0%;"></span></div></div>
       </div>
-      <div id = 'nr-variants-content'></div>
-      <div id = 'nr-comments-content'></div>
+      <div class='nutritional-column'>
+        <div class='nutritional-grid' id='total-fat'><div>Total Fat(g): </div><div class='nutritional-num' id='total-fat-num'>0.0</div><div class='prog-bar red'><span style="width: 0%;"></span></div></div>
+        <div class='nutritional-grid' id='saturated'><div>Saturated(g): </div><div class='nutritional-num' id='saturated-num'>0.0</div><div class='prog-bar red'><span style="width: 0%;"></span></div></div>
+        <div class='nutritional-grid' id='monounsaturated'><div>Monounsaturated(g): </div><div class='nutritional-num' id='monounsaturated-num'>0.0</div><div class='prog-bar green'><span style="width: 0%;"></span></div></div>
+        <div class='nutritional-grid' id='polyunsaturated'><div>Polyunsaturated(g): </div><div class='nutritional-num' id='polyunsaturated-num'>0.0</div><div class='prog-bar green'><span style="width: 0%;"></span></div></div>
+        <div class='nutritional-grid' id='trans'><div>Trans(g): </div><div class='nutritional-num' id='trans-num'>0.0</div><div class='prog-bar red'><span style="width: 0%;"></span></div></div>
+      </div>
+      <div class='nutritional-column'>
+        <div class='nutritional-grid' id='vita'><div>Vitamin A(μg): </div><div class='nutritional-num' id='vita-num'>0.0</div><div class='prog-bar green'><span style="width: 0%;"></span></div></div>
+        <div class='nutritional-grid' id='vitb6'><div>Vitamin B6(mg): </div><div class='nutritional-num' id='vitb6-num'>0.0</div><div class='prog-bar green'><span style="width: 0%;"></span></div></div>
+        <div class='nutritional-grid' id='vitb12'><div>Vitamin B12(μg): </div><div class='nutritional-num' id='vitb12-num'>0.0</div><div class='prog-bar green'><span style="width: 0%;"></span></div></div>
+        <div class='nutritional-grid' id='vitc'><div>Vitamin C(mg): </div><div class='nutritional-num' id='vitc-num'>0.0</div><div class='prog-bar green'><span style="width: 0%;"></span></div></div>
+        <div class='nutritional-grid' id='vitd'><div>Vitamin D(μg): </div><div class='nutritional-num' id='vitd-num'>0.0</div><div class='prog-bar green'><span style="width: 0%;"></span></div></div>
+      </div>
+      <div class='nutritional-column'>
+        <div class='nutritional-grid' id='potassium'><div>Potassium(mg): </div><div class='nutritional-num' id='potassium-num'>0.0</div><div class='prog-bar green'><span style="width: 0%;"></span></div></div>
+        <div class='nutritional-grid' id='iron'><div>Iron(mg): </div><div class='nutritional-num' id='iron-num'>0.0</div><div class='prog-bar green'><span style="width: 0%;"></span></div></div>
+        <div class='nutritional-grid' id='sodium'><div>Sodium(mg): </div><div class='nutritional-num' id='sodium-num'>0.0</div><div class='prog-bar orange'><span style="width: 0%;"></span></div></div>
+        <div class='nutritional-grid' id='magnesium'><div>Magnesium(mg): </div><div class='nutritional-num' id='magnesium-num'>0.0</div><div class='prog-bar green'><span style="width: 0%;"></span></div></div>
+        <div class='nutritional-grid' id='calcium'><div>Calcium(mg): </div><div class='nutritional-num' id='calcium-num'>0.0</div><div class='prog-bar green'><span style="width: 0%;"></span></div></div>
+      </div>
+    </div>
+  </div> 
+  <div id='upvote-buttons'><div onclick='upvote();' id='upvote-button'><i class="fa fa-thumbs-o-up"></i></div><div onclick='downvote();' id='downvote-button'><i class="fa fa-thumbs-o-down"></i></div></div>
+  <div id = 'nr-bottom-half'>
+    <div class = 'recipe-comments' id = 'nr-comments'><div class='recipe-comments-title' id='recipe-comments-title'>Comments</div>
+      <div id = 'nr-comments-container'>
+        <div id = 'post-container'>
+          <textarea id='comment-box' placeholder='Post something!'></textarea>
+          <div id = 'post-button' onclick='add_comment()'>Post</div>
+        </div>
+        <div id = 'recent-posts'>
+          <div id = 'no-recent-posts' class = 'profile-hidden'></div>
+          Loading posts...
+        </div>
+      </div>
     </div>
   </div>
 </div>
+{% endblock %}
+
+{% block js %}
+<script type='text/javascript' src='/static/js/nrecipe.js'></script>
 {% endblock %}

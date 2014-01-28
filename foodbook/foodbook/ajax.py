@@ -249,7 +249,10 @@ def add_comment(request, username='', comment=''):
 				user = User.objects.get(username=username)
 			except:
 				messages.error(request, "That user doesn't exist.")
-				dajax.redirect(request.META['HTTP_REFERER'])
+				if 'HTTP_REFERER' in request.META:
+					dajax.redirect(request.META['HTTP_REFERER'])
+				else:
+					dajax.redirect('/home')
 				return dajax.json()
 		if comment == '':
 			messages.error(request, "Your comments have to actually say something.")
@@ -260,7 +263,46 @@ def add_comment(request, username='', comment=''):
 		messages.success(request, "Comment posted successfully!")
 	else:
 		messages.error(request, "You must be logged in to comment.")
-	dajax.redirect(request.META['HTTP_REFERER'])
+	if 'HTTP_REFERER' in request.META:
+		dajax.redirect(request.META['HTTP_REFERER'])
+	else:
+		dajax.redirect('/home')
+	return dajax.json()
+
+@dajaxice_register(method='POST', name='comment.recipe_add')
+def add_recipe_comment(request, rid='', comment=''):
+	dajax = Dajax()
+	if request.user.is_authenticated() and request.method == 'POST':
+		if rid == '':
+			messages.error(request, "That recipe doesn't exist.")
+			dajax.redirect('/recipe')
+			return dajax.json()
+		else:
+			try:
+				recipe = Recipe.objects.get(id=rid)
+			except:
+				messages.error(request, "That recipe doesn't exist.")
+				if 'HTTP_REFERER' in request.META:
+					dajax.redirect(request.META['HTTP_REFERER'])
+				else:
+					dajax.redirect('/recipe')
+				return dajax.json()
+		if comment == '':
+			messages.error(request, "Your comments have to actually say something.")
+			if 'HTTP_REFERER' in request.META:
+				dajax.redirect(request.META['HTTP_REFERER'])
+			else:
+				dajax.redirect('/recipe')
+			return dajax.json()
+		comment = Comment(original_poster=request.user, receiving_recipe=recipe, comment=comment)
+		comment.save()
+		messages.success(request, "Comment posted successfully!")
+	else:
+		messages.error(request, "You must be logged in to comment.")
+	if 'HTTP_REFERER' in request.META:
+		dajax.redirect(request.META['HTTP_REFERER'])
+	else:
+		dajax.redirect('/recipe')
 	return dajax.json()
 
 @dajaxice_register(method='POST', name='comment.user_get')
@@ -270,7 +312,10 @@ def get_comments(request, username='', num=5):
 		num = int(num)
 	except:
 		messages.error(request, "Stop playing around with the Javascript!")
-		dajax.redirect(request.META['HTTP_REFERER'])
+		if 'HTTP_REFERER' in request.META:
+			dajax.redirect(request.META['HTTP_REFERER'])
+		else:
+			dajax.redirect('/home')
 		return dajax.json()
 	if num < 0:
 		num = 5
@@ -281,7 +326,10 @@ def get_comments(request, username='', num=5):
 	# Should really never happen, but a failsafe
 	except:
 		message.error(request, "Something went wrong.")
-		dajax.redirect(request.META['HTTP_REFERER'])
+		if 'HTTP_REFERER' in request.META:
+			dajax.redirect(request.META['HTTP_REFERER'])
+		else:
+			dajax.redirect('/home')
 		return dajax.json()
 	comments = Comment.objects.filter(receiving_user=user).order_by('-date')[:num]
 	out = []
@@ -290,8 +338,45 @@ def get_comments(request, username='', num=5):
 		pic = UserPicture.objects.filter(user_id=comment.original_poster)
 		if pic:
 			url = pic[0].pic_link
-		out.append("<div class = 'recent-post'><div class = 'post-content'>%s</div><div class = 'post-author'><div class = 'post-author-icon'><img class='poster-img' src='%s'/> </div><div class = 'post-author-title'>%s, %s</div></div></div>" % (comment.comment, url, comment.original_poster.username, comment.date.astimezone(timezone.get_default_timezone()).strftime('%-b %-d %-I:%M %p %Z')))
+		out.append("<div class = 'recent-post'><div class = 'post-content'>%s</div><div class = 'post-author'><div class = 'post-author-icon'><img class='poster-img' src='%s'/> </div><div class = 'post-author-title'><a href='/user/%s'>%s</a>, %s</div></div></div>" % (comment.comment, url, comment.original_poster.username, comment.original_poster.username, comment.date.astimezone(timezone.get_default_timezone()).strftime('%-b %-d %-I:%M %p %Z')))
 	if len(Comment.objects.filter(receiving_user=user)) > num:
+		out.append("<div class='more-posts' onclick='retrieve_posts(%d);'>More posts</div>" % (num + 5))
+	dajax.assign('#recent-posts', 'innerHTML', "".join(out))
+	return dajax.json()
+
+@dajaxice_register(method='POST', name='comment.recipe_get')
+def get_recipe_comments(request, rid='', num=5):
+	dajax = Dajax()
+	try:
+		num = int(num)
+	except:
+		messages.error(request, "Stop playing around with the Javascript!")
+		if 'HTTP_REFERER' in request.META:
+			dajax.redirect(request.META['HTTP_REFERER'])
+		else:
+			dajax.redirect('/recipe')
+		return dajax.json()
+	if num < 0:
+		num = 5
+	try:
+		recipe = Recipe.objects.get(id=rid)
+	# Should really never happen, but a failsafe
+	except:
+		messages.error(request, "Something went wrong, you sure this recipe exists?")
+		if 'HTTP_REFERER' in request.META:
+			dajax.redirect(request.META['HTTP_REFERER'])
+		else:
+			dajax.redirect('/recipe')
+		return dajax.json()
+	comments = Comment.objects.filter(receiving_recipe=recipe).order_by('-date')[:num]
+	out = []
+	for comment in comments:
+		url = '/static/img/user/default'
+		pic = UserPicture.objects.filter(user_id=comment.original_poster)
+		if pic:
+			url = pic[0].pic_link
+		out.append("<div class = 'recent-post'><div class = 'post-content'>%s</div><div class = 'post-author'><div class = 'post-author-icon'><img class='poster-img' src='%s'/> </div><div class = 'post-author-title'><a href='/user/%s'>%s</a>, %s</div></div></div>" % (comment.comment, url, comment.original_poster.username, comment.original_poster.username, comment.date.astimezone(timezone.get_default_timezone()).strftime('%-b %-d %-I:%M %p %Z')))
+	if len(Comment.objects.filter(receiving_recipe=recipe)) > num:
 		out.append("<div class='more-posts' onclick='retrieve_posts(%d);'>More posts</div>" % (num + 5))
 	dajax.assign('#recent-posts', 'innerHTML', "".join(out))
 	return dajax.json()
@@ -378,4 +463,48 @@ def list_all_recipes(request, param='name', search='', hide=False, username=None
     			No recipes here - try again?
     			</div>""")
 	dajax.assign('#public-recipe-list-container', 'innerHTML', "".join(out))
+	return dajax.json()
+
+@dajaxice_register(method='POST', name='recipe.upvote')
+def upvote(request, rid=''):
+	dajax = Dajax()
+	if request.user.is_authenticated() and request.method == 'POST':
+		recipe = None
+		try:
+			recipe = Recipe.objects.get(id=rid)
+		except:
+			messages.error(request, "That recipe doesn't exist.")
+			return redirect('/recipe')
+		recipe.upvotes = recipe.upvotes + 1
+		recipe.save()
+		messages.success(request, "Upvoted! If you're curious, this recipe has " + str(recipe.upvotes) + ' upvotes.')
+		if 'HTTP_REFERER' in request.META:
+			dajax.redirect(request.META['HTTP_REFERER'])
+		else:
+			dajax.redirect('/recipe')
+		return dajax.json()
+	messages.error(request, "You must be logged in to be able to upvote.")
+	dajax.redirect('/recipes')
+	return dajax.json()
+
+@dajaxice_register(method='POST', name='recipe.downvote')
+def downvote(request, rid=''):
+	dajax = Dajax()
+	if request.user.is_authenticated() and request.method == 'POST':
+		recipe = None
+		try:
+			recipe = Recipe.objects.get(id=rid)
+		except:
+			messages.error(request, "That recipe doesn't exist.")
+			return redirect('/recipe')
+		recipe.upvotes = recipe.upvotes - 1
+		recipe.save()
+		messages.success(request, "Downvoted! If you're curious, this recipe has " + str(recipe.upvotes) + ' upvotes.')
+		if 'HTTP_REFERER' in request.META:
+			dajax.redirect(request.META['HTTP_REFERER'])
+		else:
+			dajax.redirect('/recipe')
+		return dajax.json()
+	messages.error(request, "You must be logged in to be able to downvote.")
+	dajax.redirect('/recipes')
 	return dajax.json()

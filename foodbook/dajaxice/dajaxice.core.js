@@ -13,8 +13,16 @@ var Dajaxice = {
         return Dajaxice.call('comment.user_get', 'POST', callback_function, argv, custom_settings);
     },
 
+    recipe_add: function(callback_function, argv, custom_settings){
+        return Dajaxice.call('comment.recipe_add', 'POST', callback_function, argv, custom_settings);
+    },
+
     user_add: function(callback_function, argv, custom_settings){
         return Dajaxice.call('comment.user_add', 'POST', callback_function, argv, custom_settings);
+    },
+
+    recipe_get: function(callback_function, argv, custom_settings){
+        return Dajaxice.call('comment.recipe_get', 'POST', callback_function, argv, custom_settings);
     }
 
 
@@ -26,24 +34,32 @@ var Dajaxice = {
     
     recipe: {
     
-    list_mine: function(callback_function, argv, custom_settings){
-        return Dajaxice.call('recipe.list_mine', 'GET', callback_function, argv, custom_settings);
+    add_ingredient: function(callback_function, argv, custom_settings){
+        return Dajaxice.call('recipe.add_ingredient', 'GET', callback_function, argv, custom_settings);
     },
 
-    save: function(callback_function, argv, custom_settings){
-        return Dajaxice.call('recipe.save', 'POST', callback_function, argv, custom_settings);
+    upvote: function(callback_function, argv, custom_settings){
+        return Dajaxice.call('recipe.upvote', 'POST', callback_function, argv, custom_settings);
+    },
+
+    list_mine: function(callback_function, argv, custom_settings){
+        return Dajaxice.call('recipe.list_mine', 'GET', callback_function, argv, custom_settings);
     },
 
     list_all: function(callback_function, argv, custom_settings){
         return Dajaxice.call('recipe.list_all', 'GET', callback_function, argv, custom_settings);
     },
 
-    check: function(callback_function, argv, custom_settings){
-        return Dajaxice.call('recipe.check', 'GET', callback_function, argv, custom_settings);
+    downvote: function(callback_function, argv, custom_settings){
+        return Dajaxice.call('recipe.downvote', 'POST', callback_function, argv, custom_settings);
     },
 
-    add_ingredient: function(callback_function, argv, custom_settings){
-        return Dajaxice.call('recipe.add_ingredient', 'GET', callback_function, argv, custom_settings);
+    save: function(callback_function, argv, custom_settings){
+        return Dajaxice.call('recipe.save', 'POST', callback_function, argv, custom_settings);
+    },
+
+    check: function(callback_function, argv, custom_settings){
+        return Dajaxice.call('recipe.check', 'GET', callback_function, argv, custom_settings);
     }
 
 

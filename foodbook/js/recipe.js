@@ -166,5 +166,10 @@ function add_ingredient(iid){
 
 var jimmyWu = function(element) {
 	var div = element.parentNode;
+	var iid = Number(div.id.match('[0-9]+')[0]);
+	var index = iid_l.indexOf(iid);
+	if(index != -1)
+		iid_l.splice(index, 1);
 	div.parentNode.removeChild(div);
+	check_nutrients();
 }

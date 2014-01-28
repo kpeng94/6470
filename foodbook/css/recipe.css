@@ -31,7 +31,7 @@ CONTENT
 TITLE
 */
 #recipe-name {
-  width: 400px;
+  width: 500px;
   margin: 0 auto 30px auto;
   position: relative;
   top: 30px;
@@ -53,11 +53,12 @@ TITLE
   height: 60px;
   font-family: Petrona;
   background-color: #f1f1f1;
-  width: 400px;
+  width: 500px;
 }
 
 #recipe-serve {
   text-align: center;
+  font-family: Petrona;
 }
 
 /*
@@ -671,10 +672,6 @@ select {
   border: 1px solid #C6C6C6;
 }
 
-#nr-bottom-half {
-  border: 1px solid #C6C6C6;
-}
-
 #nr-tabs {
   width: 100%;
   border-bottom: 1px solid #C6C6C6;
@@ -694,27 +691,38 @@ select {
   text-align: center;
   font-size: 46px;
   line-height: 60px;
-  height: 60px;
+  height: 110px;
   font-family: Petrona;
-  width: 400px;
-  margin: 0 auto 40px auto;
+  width: 500px;
+  margin: 0 auto 30px auto;
   position: relative;
   top: 30px;
 }
 
+#nr-name-i {
+  display: block;
+  text-align: center;
+  font-size: 46px;
+  line-height: 46px;
+  height: 60px;
+  font-family: Petrona;
+}
+
 #nr-recipe-serve {
   position: relative;
-  font-size: 36px;
+  font-size: 18px;
+  line-height: 20px;
   text-align: center;
+  font-weight: 500;
   width: 400px;
   height: 50px;
-  line-height: 50px;
-  margin: 10px auto 10px auto;
+  margin: 15px auto 15px auto;
 }
 
 #nr-description {
   height: 180px;
   border: 1px solid #C6C6C6;
+  border-radius: 4px;
 }
 
 #nr-description-title {
@@ -722,11 +730,13 @@ select {
   line-height: 40px;
   font-size: 24px;
   background-color: #3C3C3C;
+  border-radius: 4px;
 }
 
 #nr-instructions {
   border: 1px solid #C6C6C6;
-  height: 180px;
+  height: 217px;
+  border-radius: 4px;
 }
 
 #nr-instructions-title {
@@ -734,12 +744,32 @@ select {
   line-height: 40px;
   font-size: 24px;
   background-color: #3C3C3C;
+  border-radius: 4px;
 }
 
 #nr-suggestions {
   height: 140px;
   border: 1px solid #C6C6C6;
   margin-bottom: 30px;
+  border-radius: 4px;
+}
+
+#nr-suggestions-content {
+  height: 96px;
+  padding: 3px 3px 3px 3px;
+  overflow: auto;
+}
+
+#nr-instructions-content {
+  height: 173px;
+  padding: 3px 3px 3px 3px;
+  overflow: auto;
+}
+
+#nr-description-content {
+  height: 138px;
+  padding: 3px 3px 3px 3px;
+  overflow: auto;
 }
 
 #nr-suggestions-title {
@@ -747,47 +777,69 @@ select {
   line-height: 40px;
   font-size: 24px;
   background-color: #3C3C3C;
+  border-radius: 4px;
 }
 
 #nr-ingredients {
-  height: 500px;
+  width: 480px;
+  height: 542px;
   border: 1px solid #C6C6C6;
+  border-radius: 4px;
+  background-color: white;
 }
 
 #nr-ingredients-title {
-  height: 40px;
-  line-height: 40px;
+  display: block;
+  text-align: center;
   font-size: 24px;
+  font-family: Raleway;
+  font-weight: 700;
+  width: 100%;
+  line-height: 40px;
+  height: 40px;
+  color: #FFFFFF;
   background-color: #6F3F3F;
+  border-radius: 4px;
 }
 
 #nr-top-half-left {
   vertical-align: top;
   display: inline-block;
   position: relative;
-  width: 450px;
-  margin: 0 25px 0 25px;
+  width: 470px;
+  height: 545px;
+  background-color: white;
 }
 
 #nr-top-half-right {
   vertical-align: top;
   display: inline-block;
   position: relative;
-  width: 450px;
-  margin: 0 25px 0 21px;
+  width: 470px;
+  margin: 0 0px 0 43px;
 }
 
-#nr-bottom-half {
-  width: 90%;
-  margin-left: 5%;
+#nr-comments {
+  width: 998px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border: 1px solid #c6c6c6;
+  background-color: white;
 }
 
-#nr-variants-content {
-  height: 200px;
-}
-
-#nr-comments-content {
-  height: 200px;
+#recipe-comments-title {
+  display: block;
+  text-align: center;
+  font-size: 24px;
+  font-family: Raleway;
+  font-weight: 700;
+  width: 100%;
+  line-height: 40px;
+  height: 40px;
+  color: #FFFFFF;
+  background-color: #CE9135;
+  margin-bottom: 20px;
+  border-radius: 4px;
 }
 
 #nr-recipe-content {
@@ -796,10 +848,6 @@ select {
   margin-top: 60px;
   padding-bottom: 30px;
   margin-bottom: 60px;
-}
-
-#nr-suggestions-content {
-  height: 200px;
 }
 
 #il-previous-next {
@@ -1016,4 +1064,171 @@ select {
   background-position: center;
   opacity: 0.4;
   cursor: pointer;
+}
+
+#recipe-name-normal {
+  text-align: center;
+  font-size: 30px;
+  font-family: Raleway;
+  height: 50px;
+}
+
+/* COMMENTS */
+#nr-comments-container {
+  margin: 20px auto 0px auto;
+  width: 900px;
+  position: relative;
+}
+
+#post-container {
+  position: relative;
+  height: 160px;
+}
+
+#comment-box {
+  width: 898px;
+  height: 100px;
+  border: 1px solid #c6c6c6;
+  padding: 0px 0px 0px 0px;
+  resize: none;
+  font-size: 16px;
+  font-family: Roboto;
+  font-weight: 300;
+  padding: 10px 10px 10px 10px;
+  outline-color: #57B05F;
+}
+
+#post-button {
+  position: absolute;
+  height: 30px;
+  right: 2px;
+  bottom: 0;
+  border-radius: 3px;
+  width: 250px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: #1bba29;
+  line-height: 40px;
+  font-size: 20px;
+  text-align: center;
+  color: #FFFFFF;
+  font-family: Roboto;
+  font-weight: 700;
+  padding-bottom: 10px;
+  cursor: pointer;
+}
+
+#post-button:hover{
+  background-color: #119F1D;
+}
+
+#recent-posts {
+  position: relative;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.recent-post {
+  height: 150px;
+  border: 1px solid #C6C6C6;
+  margin-bottom: 7px;
+  position: relative;
+  background-color: white;
+}
+
+.post-content {
+  position: relative;
+  top: 20px;
+  left: 20px;
+}
+
+.post-author {
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+  height: 30px;
+}
+
+.post-author-title {
+  font-size: 18px;
+  line-height: 30px;
+  height: 30px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.post-author-icon {
+  overflow: hidden;
+  vertical-align: middle;
+  width: 26px;
+  height: 26px;
+  margin-right: 5px;
+  border: 1px solid #C6C6C6;
+  display: inline-block;
+  position: relative;
+}
+
+.poster-img {
+  position: absolute;
+}
+
+.more-posts {
+  margin: 0 auto 0 auto;
+  font-family: Roboto;
+  font-weight: 700;
+  color: white;
+  background-color: #6E86E8;
+  height: 40px;
+  font-size: 16px;
+  width: 400px;
+  text-align: center;
+  line-height: 40px;
+}
+
+#upvote-button {
+  position: absolute;
+  left: 425px;
+  width: 50px;
+  height: 50px;
+  background-color: #11812F;
+  color: white;
+  text-align: center;
+  border-radius: 4px;
+  line-height: 50px;
+  text-align: center;
+  font-family: Roboto;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+#downvote-button {
+  position: absolute;
+  left: 525px;
+  text-align: center;
+  width: 50px;
+  height: 50px;
+  background-color: #A93333;
+  color: white;
+  border-radius: 4px;
+  line-height: 50px;
+  font-family: Roboto;
+  font-weight: 700;
+  font-size: 16px;
+  overflow: hidden;
+}
+
+i {
+  padding-top: 18px;
+}
+
+#downvote-button:hover {
+  background-color: #7B1414;
+}
+
+#upvote-button:hover {
+  background-color: #0C6E12;
+}
+
+#upvote-buttons {
+  height: 75px;
 }

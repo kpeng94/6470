@@ -29,7 +29,10 @@ def login_user(request):
 				messages.error(request, 'Username/password combination was incorrect.')
 		else:
 			messages.error(request, 'Improper username/password.')
-		return redirect(request.META['HTTP_REFERER'])
+		if 'HTTP_REFERER' in request.META:
+			return redirect(request.META['HTTP_REFERER'])
+		else:
+			return redirect('/home')
 	return redirect('/home')
 
 def register_view(request):
@@ -99,7 +102,11 @@ def add_recipe(request):
 		for i in xrange(len(ingredients['id'])):
 			ingredient_list.append(IngredientWrapper(ingredients['id'][i], ingredients['qty'][i], ingredients['unit'][i]))
 	i_types = [('Meat', 'meat'), ('Fruits', 'fruits'), ('Grains', 'grains'), ('Seafood', 'seafood'), ('Nuts and Legumes', 'nuts-and-legumes'), ('Soups and Sauces', 'soups-and-sauces'), ('Spices and Herbs', 'spices-and-herbs'), ('Vegetables', 'vegetables'), ('Fats and Oils', 'fats-and-oils'), ('Dairy and Eggs', 'dairy-and-eggs')]
-	return render_to_response('add_recipe.html', {'type_list': i_types, 'ingredient_list': ingredient_list, 'recipe': recipe}, context_instance=RequestContext(request))
+	if request.user.is_authenticated():
+		return render_to_response('add_recipe.html', {'type_list': i_types, 'ingredient_list': ingredient_list, 'recipe': recipe}, context_instance=RequestContext(request))
+	else:
+		messages.error(request, "You must log in to add recipes.")
+		return redirect('/recipe')
 
 def list_my_recipes(request):
 	my_recipes = None
@@ -150,7 +157,19 @@ def display_user_settings(request):
 	return redirect('/home')
 
 def display_normal_recipe(request, rid):
-	return render_to_response('recipe_page.html', context_instance = RequestContext(request))
+	ingredient_list = []
+	try:
+		recipe = Recipe.objects.get(id=rid)
+		ingredients = json.loads(recipe.ingredients_text)
+		for i in xrange(len(ingredients['id'])):
+			ingredient_list.append(IngredientWrapper(ingredients['id'][i], ingredients['qty'][i], ingredients['unit'][i]))
+	except:
+		messages.error(request, "That recipe doesn't exist.")
+		if 'HTTP_REFERER' in request.META:
+			return redirect(request.META['HTTP_REFERER'])
+		else:
+			return redirect('/recipe')
+	return render_to_response('recipe_page.html', {'recipe': recipe, 'ingredient_list': ingredient_list}, context_instance = RequestContext(request))
 
 def save_settings(request):
 	if request.user.is_authenticated() and request.method == 'POST':

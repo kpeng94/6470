@@ -20,19 +20,45 @@
   <div id = 'diet-content'>
     <div>
       Check any restriction you would like all recipes to be filtered by.
+    <div class='checkbox-container'>
       <input type='checkbox' {% if diet.halal %}checked{% endif %} name='halal'>Halal</input>
+    </div>
+    <div class='checkbox-container'>
       <input type='checkbox' {% if diet.lacto %}checked{% endif %} name='lacto'>Vegetarian (w/ dairy)</input>
+    </div>
+    <div class='checkbox-container'>
       <input type='checkbox' {% if diet.lactoovo %}checked{% endif %} name='lactoovo'>Vegetarian (w/ dairy and eggs)</input>
+    </div>
+    <div class='checkbox-container'>
       <input type='checkbox' {% if diet.vegan %}checked{% endif %} name='vegan'>Vegan</input>
+    </div>
+    <div class='checkbox-container'>
       <input type='checkbox' {% if diet.diabetes %}checked{% endif %} name='diabetes'>Diabetic</input>
+    </div>
+    <div class='checkbox-container'>
       <input type='checkbox' {% if diet.hypertension %}checked{% endif %} name='hypertension'>Hypertension</input>
+    </div>
+    <div class='checkbox-container'>
       <input type='checkbox' {% if diet.nuts %}checked{% endif %} name='nuts'>Nuts</input>
+    </div>
+    <div class='checkbox-container'>
       <input type='checkbox' {% if diet.eggs %}checked{% endif %} name='eggs'>Eggs</input>
+    </div>
+    <div class='checkbox-container'>
       <input type='checkbox' {% if diet.dairy %}checked{% endif %} name='dairy'>Dairy</input>
+    </div>
+    <div class='checkbox-container'>
       <input type='checkbox' {% if diet.shellfish %}checked{% endif %} name='shellfish'>Shellfish</input>
-      <input type='checkbox' {% if diet.fish %}checked{% endif %} name='fish'>Fish</input>      
+    </div>
+    <div class='checkbox-container'>
+      <input type='checkbox' {% if diet.fish %}checked{% endif %} name='fish'>Fish</input>
+    </div>
+    <div class='checkbox-container'>
       <input type='checkbox' {% if diet.soy %}checked{% endif %} name='soy'>Soy</input>
+    </div>
+    <div class='checkbox-container'>
       <input type='checkbox' {% if diet.lactose %}checked{% endif %} name='lactose'>Lactose-intolerant</input>
+    </div>
     </div>
     <div>Calories: <input type='number' value='{{ diet.calories }}' name='calories'/></div>
     <div>Protein: <input type='number' value='{{ diet.protein }}' name='protein'/></div>

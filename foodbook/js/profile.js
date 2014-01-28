@@ -1,12 +1,19 @@
 var retrieve_posts = function(num){
-	Dajaxice.comment.user_get(Dajax.process, {'username': $('#username').val(), 'num': num});
+	Dajaxice.comment.user_get(confirm_resize, {'username': $('#username').val(), 'num': num});
 	return false;
+}
+
+var confirm_resize = function(data){
+	Dajax.process(data);
+	resizeImages();
 }
 
 var resizeImages = function(){
 	var elements = document.getElementsByClassName('poster-img');
 	for(var i = 0; i < elements.length; i++){
-	resizeImage(26, elements[i]);
+		elements[i].onload = function(){
+			resizeImage(26, this);
+		};
 	}
 }
 
@@ -23,6 +30,9 @@ window.onload = function(event) {
 		document.getElementById('profile-pic-form').submit();
 	})
 	retrieve_posts(5);
+	document.getElementById('profile-image-img').onload = function(){
+		resizeImage(150, this);
+	};
 	resizeImage(150, document.getElementById('profile-image-img'));
 	load_recipes('name', 0);
 }

@@ -89,6 +89,9 @@ var toggleToolbar = function() {
 
 $(document).ready(function(){
 	var image = document.getElementById('login-pic');
+	image.onload = function(){
+		resizeImage(50, this);
+	};
 	resizeImage(50, image);
 	searchResult();
 	handleSearch();

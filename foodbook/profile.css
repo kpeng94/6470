@@ -92,6 +92,15 @@
   font-size: 32px;
 }
 
+#profile-name {
+  padding-top: 20px;
+}
+
+#profile-email {
+  padding-top: 5px;
+  font-size: 24px;
+}
+
 #profile-achievements {
   display: inline-block;
   position: relative;
