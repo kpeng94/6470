@@ -92,6 +92,35 @@ def calculate_nutritional_value(ingredients, user, ss):
 		nutrients[key] = [nutrients[key][0]/ss, nutrients[key][1]/ss*decimal.Decimal(100)]
 	return nutrients
 
+def is_allowed(request, recipe, hide, sugar='', fat='', protein='', calories=''):
+	if request.user.is_authenticated():
+		user = UserDiet.objects.filter(user=request.user)
+		if len(user) > 0:
+			for recipe in recipes:
+				if(recipe.halal != diet.halal or recipe.lacto != diet.lacto or recipe.lactoovo != diet.lactoovo or recipe.vegan != diet.vegan
+					or recipe.diabetes != diet.diabetes or recipe.hypertension != diet.hypertension or recipe.nuts != diet.nuts or recipe.eggs != diet.eggs
+					or recipe.soy != diet.soy or recipe.shellfish != diet.shellfish or recipe.fish != diet.fish):
+					return True
+				else:
+					return False
+			if sugar == '':
+				sugar = diet.sugar
+			if fat == '':
+				fat = diet.fat
+			if protein == '':
+				protein = diet.protein
+			if calories == '':
+				calories = diet.calories
+	if sugar != '' and sugar < recipe.sugar:
+		return False
+	if fat != '' and fat < recipe.fat:
+		return False
+	if protein != '' and protein < recipe.protein:
+		return False
+	if calories != '' and calories < recipe.calories:
+		return False
+	return True
+
 ################## JSON Utils
 def decimal_json(obj):
     if isinstance(obj, decimal.Decimal):

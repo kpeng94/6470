@@ -207,6 +207,14 @@ def search_global(request):
 			users = User.objects.filter(username__contains=search)
 	return render_to_response('search.html', {'search_term': search, 'search_list': users}, context_instance=RequestContext(request))
 
+def json_database(request):
+    search = User.objects.filter(username__istartswith=request.REQUEST['search'])
+    results = []
+    for r in search:
+        results.append(r.username)
+    resp = request.REQUEST['callback'] + '(' + json.dumps(results) + ');'
+    return HttpResponse(resp, content_type='application/json')
+
 
 ############################## CONTEXT PROCESSORS
 def login_processor(request):

@@ -9,6 +9,7 @@
     <!-- <link rel = 'stylesheet' href = '/static/css/font-awesome.css'> -->
     <link rel = 'stylesheet' href = '/static/css/main.css'>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
     {% block css %}
     {% endblock %}
     <link href='http://fonts.googleapis.com/css?family=Petrona' rel='stylesheet' type='text/css'>
@@ -27,7 +28,7 @@
           <div id = 'header-logo'></div>
           <div id = 'header-search'>
             <form method='get' action='/search'>
-            <input type='text' id='global-search' name='search' placeholder='Search'/>
+            <input type='text' id='global-search' name='search' placeholder='Search' onkeyup='searchOpen()'/>
             <div class = 'search-icon'></div>
           </form>
           </div>

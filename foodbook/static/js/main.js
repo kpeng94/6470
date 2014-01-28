@@ -169,3 +169,24 @@ var redirect = function(){
 var removeBox = function(div) {
 	$(div).parent().parent().hide();
 }
+
+function searchOpen() {
+    var search = $('#global-search').val()
+    var data = {
+        search: search
+    };
+    $.ajax({
+        url: '/search.json',
+        data: data,
+        dataType: 'jsonp',
+        jsonp: 'callback',
+        jsonpCallback: 'global-search'
+    });
+}
+
+
+function searchResult(data) {
+    $( "#global-search" ).autocomplete ({
+        source: data
+    });
+}
