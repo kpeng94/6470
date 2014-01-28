@@ -183,36 +183,8 @@
   background-color: #B2C7F0;
 }
 
-#vr-table-made-label {
-  width: 155px;
-}
-
-#vr-table-votes-label {
-  width: 100px;
-}
-
 .vr-table-content {
   height: 30px;
-}
-
-.vr-table-recipe-content {
-  height: 100%;
-  width: 599px;
-  display: inline-block;
-  position: relative;
-}
-
-.vr-table-votes-content {
-  height: 100%;
-  width: 99px;
-  display: inline-block;
-  position: relative;
-}
-
-.vr-table-made-content {
-  width: 100px;
-  display: inline-block;
-  position: relative;
 }
 
 #vr-table-columns {
@@ -289,4 +261,107 @@
 
 #vr-view-mine {
   width: 499px;
+}
+
+/* BLAH */
+#il-previous-next {
+  padding: 0;
+  margin: 0;
+  position: relative;
+  width: 100%;
+  background-color: #FFFFFF;
+  height: 70px;
+}
+
+#il-previous {
+  top: 15px;
+  height: 40px;
+  width: 40px;
+  display: inline-block;
+  position: absolute;
+  left: 400px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#il-next {
+  top: 15px;
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  position: absolute;
+  left: 440px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#il-next i {
+  font-size: 30px;
+  line-height: 46px;
+  position: absolute;
+}
+
+#il-previous i {
+  font-size: 30px;
+  line-height: 46px;
+  position: absolute;
+}
+
+#recipe-next-prev {
+  width: 204px;
+  margin: 0 auto 60px auto;
+}
+
+.prev {
+  background: -webkit-linear-gradient(#FFFFFF, #FAFAFA);
+  border: 1px solid #C6C6C6;
+  display: inline-block;
+  height: 80px;
+  width: 80px;
+}
+
+.prev i {
+  line-height: 86px;
+  width: 100%;
+  text-align: center;
+  font-size: 60px;
+  color: #A3A3A3;
+}
+
+.next {
+  background: -webkit-linear-gradient(#FFFFFF, #FAFAFA);
+  height: 80px;
+  width: 80px;
+  border: 1px solid #C6C6C6;
+  display: inline-block;
+}
+
+.next i {
+  line-height: 86px;
+  width: 100%;
+  text-align: center;
+  font-size: 60px;
+  color: #A3A3A3;
+}
+
+.clickable i {
+  color: #777878;
+}
+
+.clickable:hover {
+  border: 1px solid #A4A4A4;
+}
+
+.clickable:hover i{
+  color: #606162;
+}
+
+.clickable:active {
+  border: 1px solid #A3A3A3;
+}
+
+.clickable:active i {
+  color: #404142;
 }

@@ -90,6 +90,7 @@ var toggleToolbar = function() {
 $(document).ready(function(){
 	var image = document.getElementById('login-pic');
 	resizeImage(50, image);
+	searchResult();
 });
 
 /**
@@ -113,7 +114,7 @@ var resizeImage = function(threshold, image) {
 	}
 	else if(width > threshold){
 		image.style.left = -(width * threshold/height - threshold) / 2 + 'px';
-		image.style.top = -(height * threshold/width) / 2 + 'px';		
+		image.style.top = -(height * threshold/width) / 2 + 'px';
 	}
 	else{
 		image.style.top = -(height * threshold/width) / 2 + 'px';
@@ -164,4 +165,16 @@ function confirm_save(data){
 
 var redirect = function(){
 	window.location.replace('/recipe/add');
+}
+
+var removeBox = function(div) {
+	$(div).parent().parent().hide();
+}
+
+
+function searchResult() {
+    $("#global-search").autocomplete({
+      minLength: 0,
+      source: '/search.json',
+    });
 }

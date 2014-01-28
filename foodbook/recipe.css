@@ -66,7 +66,9 @@ RECIPE INFO
 
 
 #recipe-selection {
-  width: 490px;
+  position: relative;
+  left: -32px;
+  width: 510px;
   display: inline-block;
   vertical-align: top;
   margin: 0 0% 0 0%;
@@ -83,7 +85,8 @@ RECIPE INFO
 }
 
 .simple-search-bar {
-  width: 90%;
+  position: relative;
+  width: 470px;
   height: 30px;
   border: 1px solid black;
   margin: 5px 0 5px 5px;
@@ -140,6 +143,7 @@ RECIPE INFO
 }
 
 .type-tab-img {
+  cursor: pointer;
   position: absolute;
   background-size: 30px 30px;
   background-repeat: no-repeat;
@@ -155,10 +159,11 @@ RECIPE INFO
 }
 
 .type-tab-text {
-  right: 50px;
+  cursor: pointer;
+  right: 47px;
   display: none;
   position: absolute;
-  padding: 5px 20px 5px 20px;
+  padding: 5px 10px 5px 10px;
   border: 2px solid black;
   -webkit-border-radius: 4px;
   border-radius: 4px;
@@ -188,26 +193,27 @@ RECIPE INFO
 }
 
 #type-tab-text-all {
-  background: yellow;
+  background: #DDDDDD;
 }
 
 #type-tab-text-all:after {
-  border-color: transparent yellow;
+  border-color: transparent #DDDDDD;
 }
 
 #all-img {
+  background-image: url('/static/img/foods/png/32px/191.png');
 }
 
 #type-tab-text-meat {
-  background: yellow;
+  background: #c49b83;
 }
 
 #type-tab-text-meat:after {
-  border-color: transparent yellow;
+  border-color: transparent #c49b83;
 }
 
 #meat-background {
-  background-color: brown;
+  background-color: #5B2A0A;
 }
 
 #meat-img {
@@ -215,15 +221,15 @@ RECIPE INFO
 }
 
 #type-tab-text-fruits {
-  background-color: #F76767;
+  background-color: #ed9595;
 }
 
 #type-tab-text-fruits:after {
-  border-color: transparent #F76767;
+  border-color: transparent #ed9595;
 }
 
 #fruits-background {
-  background-color: #FF0000;
+  background-color: #b21e1e;
 }
 
 #fruits-img {
@@ -231,15 +237,15 @@ RECIPE INFO
 }
 
 #type-tab-text-grains {
-  background: yellow;
+  background: #E5BF6E;
 }
 
 #type-tab-text-grains:after {
-  border-color: transparent yellow;
+  border-color: transparent #E5BF6E;
 }
 
 #grains-background {
-  background-color: #724519;
+  background-color: #b39058;
 }
 
 #grains-img {
@@ -247,15 +253,15 @@ RECIPE INFO
 }
 
 #type-tab-text-seafood {
-  background: yellow;
+  background: #a9aff9;
 }
 
 #type-tab-text-seafood:after {
- border-color: transparent yellow;
+ border-color: transparent #a9aff9;
 }
 
 #seafood-background {
-  background-color: #7C7B7B;
+  background-color: #0009C1;
 }
 
 #seafood-img {
@@ -263,15 +269,15 @@ RECIPE INFO
 }
 
 #type-tab-text-nuts-and-legumes {
-  background: yellow;
+  background: #3ba56b;
 }
 
 #type-tab-text-nuts-and-legumes:after {
- border-color: transparent yellow;
+ border-color: transparent #3ba56b;
 }
 
 #nuts-and-legumes-background {
-  background-color: lightgreen;
+  background-color: #165b36;
 }
 
 #nuts-and-legumes-img {
@@ -279,15 +285,15 @@ RECIPE INFO
 }
 
 #type-tab-text-soups-and-sauces {
-  background: yellow;
+  background: #acc657;
 }
 
 #type-tab-text-soups-and-sauces:after {
- border-color: transparent yellow;
+ border-color: transparent #acc657;
 }
 
 #soups-and-sauces-background {
-  background-color: yellow;
+  background-color: #869e38;
 }
 
 #soups-and-sauces-img {
@@ -295,11 +301,11 @@ RECIPE INFO
 }
 
 #type-tab-text-spices-and-herbs {
-  background: yellow;
+  background: #60e060;
 }
 
 #type-tab-text-spices-and-herbs:after {
-  border-color: transparent yellow;
+  border-color: transparent #60e060;
 }
 
 #spices-and-herbs-background {
@@ -311,15 +317,15 @@ RECIPE INFO
 }
 
 #type-tab-text-vegetables {
-  background: yellow;
+  background: #3ba56b;
 }
 
 #type-tab-text-vegetables:after {
-  border-color: transparent yellow;
+  border-color: transparent #3ba56b;
 }
 
 #vegetables-background {
-  background-color: #008800;
+  background-color: #165b36;
 }
 
 #vegetables-img {
@@ -327,15 +333,15 @@ RECIPE INFO
 }
 
 #type-tab-text-fats-and-oils {
-  background: yellow;
+  background: #c49b83;
 }
 
 #type-tab-text-fats-and-oils:after {
-  border-color: transparent yellow;
+  border-color: transparent #c49b83;
 }
 
 #fats-and-oils-background {
-  background-color: brown;
+  background-color: #5A2808;
 }
 
 #fats-and-oils-img {
@@ -343,15 +349,15 @@ RECIPE INFO
 }
 
 #type-tab-text-dairy-and-eggs {
-  background-color: #FCFF84;
+  background-color: #f2e479;
 }
 
 #type-tab-text-dairy-and-eggs:after {
-  border-color: transparent #FCFF84;
+  border-color: transparent #f2e479;
 }
 
 #dairy-and-eggs-background {
-  background-color: #FCFF54;
+  background-color: #aa9e2e;
 }
 
 #dairy-and-eggs-img {
@@ -370,10 +376,11 @@ RECIPE INFO
 */
 
 #recipe-add {
+  position: relative;
   vertical-align: top;
   border: 1px solid #c6c6c6;
   display: inline-block;
-  width: 90%;
+  width: 470px;
   height: 500px;
   background-color: white;
 }
@@ -403,15 +410,30 @@ RECIPE INFO
 .ingredient-list > div:hover .ingredient-expanded-name {
   visibility: visible;
   display: block;
+}
+
+.ingredient-expanded-name:before {
+  content: '';
   position: absolute;
-  left: 700px;
-  padding: 10px;
-  background-color: #00F2F2;
-  z-index: 2;
-  width: 100%;
+  width: 0;
+  height: 0;
+  left: 20px;
+  top: -9px;
+  border: 5px solid;
+  border-color: transparent transparent #000000 transparent;
 }
 
 .ingredient-expanded-name {
+  position: absolute;
+  margin-top: 30px;
+  color: white;
+  left: 100px;
+  padding: 5px;
+  text-align: center;
+  background-color: #000000;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  z-index: 2;
   visibility: hidden;
   display: none;
 }
@@ -428,9 +450,9 @@ ADDED INGREDIENTS
 
 .added-ingredients {
   display: inline-block;
-  width: 490px;
+  width: 480px;
   vertical-align: top;
-  margin: 0 0 0 13px;
+  margin: 0 0 0 3px;
   border: 1px solid #c6c6c6;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
@@ -673,7 +695,6 @@ select {
   line-height: 60px;
   height: 60px;
   font-family: Petrona;
-  background-color: #f1f1f1;
   width: 400px;
   margin: 0 auto 40px auto;
   position: relative;
@@ -770,7 +791,7 @@ select {
   width: 40px;
   display: inline-block;
   position: absolute;
-  left: 150px;
+  left: 170px;
   cursor: pointer;
   -webkit-user-select: none;
   user-select: none;
@@ -782,7 +803,7 @@ select {
   height: 40px;
   display: inline-block;
   position: absolute;
-  left: 190px;
+  left: 210px;
   cursor: pointer;
   -webkit-user-select: none;
   user-select: none;
@@ -869,4 +890,28 @@ select {
   width: 100%;
   text-align: center;
   font-size: 60px;
+}
+
+
+#recipe-descriptions-title {
+  background-color: #323C43;
+}
+
+#recipe-instructions-title {
+  background-color: #323C43;
+}
+
+#recipe-suggestions-title {
+  background-color: #323C43;
+}
+
+#recipe-instructions-and-descriptions textarea {
+  resize: none;
+  margin-left: 0px;
+  width: 999px;
+  height: 227px;
+}
+
+#nr-ingredients-title {
+
 }

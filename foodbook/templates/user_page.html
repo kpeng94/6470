@@ -2,11 +2,12 @@
 
 {% block css %}
 <link rel = 'stylesheet' type = 'text/css' href = '/static/css/profile.css'>
+<link rel = 'stylesheet' type = 'text/css' href = '/static/css/view.css'>
 {% endblock %}
 
 {% block content %}
 	<div id = 'profile-body'>
-    <input id='username' type='hidden' value='{{ username }}'/>
+    <input id='username' type='hidden' value='{{ user.username }}'/>
 		<div id = 'profile-content-background'>
       <div id = 'profile-content'>
   			<div id = 'profile-image-container'>
@@ -26,16 +27,15 @@
           {% endif %}
   			</div>
   		  <div id = 'profile-info'>
-  			  <div id = 'profile-name'> Rene Zhang </div>
-          <div id = 'profile-location'> New York City </div>
-          <div id = 'profile-email'> rz99@cornell.edu </div>
+  			  <div id = 'profile-name'> {{ user.username }}</div>
+          <div id = 'profile-email'> {{ user.email }} </div>
   		  </div><div id = 'profile-achievements'>
   				<div id = 'profile-recipes'>
-            <div id = 'profile-recipes-count'>0</div>
+            <div id = 'profile-recipes-count'>{{ recipe_count|default:'0' }}</div>
             <div id = 'profile-recipes-img'></div>
             <div id = 'profile-recipes-text'>Recipes</div>
           </div><div id = 'profile-reputation'>
-            <div id = 'profile-reputation-count'>0</div>
+            <div id = 'profile-reputation-count'>{{ reputation }}</div>
             <div id = 'profile-reputation-img'>&#10004;</div>
             <div id = 'profile-reputation-text'>Reputation</div>
           </div>
@@ -61,6 +61,15 @@
       </div>
     </div>
     <div id = 'profile-recipe-container'>
+      <div id = 'vr-table'>
+      <div id = 'vr-table-header'>
+        <div id = 'vr-table-recipe-label' class = 'vr-table-label'>Recipe</div>
+      </div>
+      <div id = 'vr-table-columns'>
+      </div>
+      <div class = 'vr-table-content' id='public-recipe-list-container'>
+      </div>
+    </div>
     </div>
 	</div>
 

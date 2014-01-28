@@ -122,20 +122,20 @@ def display_user_profile(request):
 		pic = UserPicture.objects.filter(user_id=request.user)
 		if pic:
 			url = pic[0].pic_link
-		return render_to_response('user_page.html', {'form': form, 'is_me': True, 'profile_picture': url}, context_instance = RequestContext(request))
+		return render_to_response('user_page.html', {'form': form, 'is_me': True, 'user':request.user, 'profile_picture': url, 'recipe_count': len(request.user.recipe_set.filter(public=True)), 'reputation': sum([recipe.upvotes for recipe in request.user.recipe_set.filter(public=True)])}, context_instance = RequestContext(request))
 	return redirect('/home')
 
 def display_other_profile(request, user):
 	try:
 		user = User.objects.get(username=user)
 	except Exception, e:
-		user = None
+		return redirect('/home')
 	url = '/static/img/user/default'
 	if user:
 		pic = UserPicture.objects.filter(user_id=user)
 		if pic:
 			url = pic[0].pic_link
-	return render_to_response('user_page.html', {'username': user.username, 'is_me': False, 'profile_picture': url}, context_instance=RequestContext(request))
+	return render_to_response('user_page.html', {'user': user, 'recipe_count': len(user.recipe_set.filter(public=True)), 'is_me': False, 'profile_picture': url, 'reputation': sum([recipe.upvotes for recipe in user.recipe_set.filter(public=True)])}, context_instance=RequestContext(request))
 
 def display_user_settings(request):
 	if request.user.is_authenticated():

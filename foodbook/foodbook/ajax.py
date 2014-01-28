@@ -263,6 +263,14 @@ def add_comment(request, username='', comment=''):
 @dajaxice_register(method='POST', name='comment.user_get')
 def get_comments(request, username='', num=5):
 	dajax = Dajax()
+	try:
+		num = int(num)
+	except:
+		messages.error(request, "Stop playing around with the Javascript!")
+		dajax.redirect(request.META['HTTP_REFERER'])
+		return dajax.json()
+	if num < 0:
+		num = 5
 	if username == '':
 		username = request.user.username
 	try:
@@ -280,6 +288,8 @@ def get_comments(request, username='', num=5):
 		if pic:
 			url = pic[0].pic_link
 		out.append("<div class = 'recent-post'><div class = 'post-content'>%s</div><div class = 'post-author'><div class = 'post-author-icon'><img class='poster-img' src='%s'/> </div><div class = 'post-author-title'>%s, %s</div></div></div>" % (comment.comment, url, comment.original_poster.username, comment.date.astimezone(timezone.get_default_timezone()).strftime('%-b %-d %-I:%M %p %Z')))
+	if len(Comment.objects.filter(receiving_user=user)) > num:
+		out.append("<div class='more-posts' onclick='retrieve_posts(%d);'>More posts</div>" % (num + 5))
 	dajax.assign('#recent-posts', 'innerHTML', "".join(out))
 	dajax.script('resizeImages();')
 	return dajax.json()
@@ -307,15 +317,16 @@ def list_own_recipes(request, param='name'):
 	return dajax.json()
 
 @dajaxice_register(method='GET', name='recipe.list_all')
-def list_all_recipes(request, search=None, param='name'):
+def list_all_recipes(request, param='name', username=None, page=0):
 	dajax = Dajax()
 	out = []
-	recipes = Recipe.objects.filter(public=True)
-	if search:
-		search = search.split(' ')
-		for item in search:
-			recipes.filter(name__icontains=item.strip())
-	recipes.order_by(param)
+	num_per_page = 5
+	recipes = Recipe.objects.all()
+	if username and username != '':
+		recipes = recipe.objects.filter(user_id__username=username)
+	recipes = recipes.filter(public=True).order_by(param)
+	count = len(recipes)
+	recipes = recipes[page*num_per_page:(num_per_page+1)*5]
 	if recipes:
 		for recipe in recipes:
 			out.append("""<div class='public-recipe-line'>
@@ -327,9 +338,19 @@ def list_all_recipes(request, search=None, param='name'):
 		    			<div class='public-upvotes'>Upvotes: %d</div><div class='public-last-edited'>Last edited: %s ago</div>
 		  				</div>
 		  				<hr>""" % (recipe.id, recipe.name, recipe.user_id.username, recipe.upvotes, timesince(recipe.last_edited)))
+		out.append('<div id = "il-previous-next">');
+		if page != 0:
+			out.append('<div id = "il-previous" class = "prev clickable" onclick="load_recipes("param", %d)"><i class = "fa fa-chevron-left"></i></div>' % (page-1))
+		else:
+			out.append('<div id = "il-previous" class = "prev"><i class = "fa fa-chevron-left"></i></div>')
+		if page != count/num_per_page:
+			out.append('<div id = "il-next" class = "next clickable" load_recipes("param", %d)"><i class = "fa fa-chevron-right"></i></div>' % (page+1))
+		else:
+			out.append('<div id = "il-next" class = "next"><i class = "fa fa-chevron-right"></i></div>')
+		out.append('</div>')
 	else:
-		out.append("""<div id='public-no-recipes'>
-    			There aren't any public recipes.
+		out.append("""<div class='public-recipe-line'>
+    			No recipes here!
     			</div>""")
 	dajax.assign('#public-recipe-list-container', 'innerHTML', "".join(out))
 	return dajax.json()

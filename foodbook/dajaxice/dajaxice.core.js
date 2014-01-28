@@ -26,8 +26,16 @@ var Dajaxice = {
     
     recipe: {
     
+    list_mine: function(callback_function, argv, custom_settings){
+        return Dajaxice.call('recipe.list_mine', 'GET', callback_function, argv, custom_settings);
+    },
+
     save: function(callback_function, argv, custom_settings){
         return Dajaxice.call('recipe.save', 'POST', callback_function, argv, custom_settings);
+    },
+
+    list_all: function(callback_function, argv, custom_settings){
+        return Dajaxice.call('recipe.list_all', 'GET', callback_function, argv, custom_settings);
     },
 
     check: function(callback_function, argv, custom_settings){

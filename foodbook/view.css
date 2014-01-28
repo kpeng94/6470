@@ -1,6 +1,12 @@
+.section-title {
+  font-family: Raleway;
+  font-weight: 700;
+  border-radius:3px;
+}
+
 #personal-recipe-list {
   width: 1000px;
-  margin: 60px auto 60px auto;
+  margin: 40px auto 60px auto;
   background-color: #ffffff;
   border: 1px solid #c6c6c6;
   position: relative;
@@ -16,21 +22,51 @@
   width: 1000px;
 }
 
+#vr-all {
+  display: none;
+  height: 900px;
+}
+
+#vr-all.selected {
+  display: block;
+}
+
+#vr-mine {
+  display: none;
+  height: 900px;
+}
+
+#vr-mine hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #c6c6c6;
+  width: 90%;
+}
+
+#vr-mine.selected {
+  display: block;
+}
+
 #vr-view-all {
   padding: 5px 0 5px 0;
-  background-color: #D3E1A1;
   text-align: center;
+  cursor: pointer;
+  border-bottom: 1px solid #c6c6c6;
+  border-right: 1px solid #c6c6c6;
 }
 
 #vr-view-mine {
   padding: 5px 0 5px 0;
-  background-color: #DDDDDD;
   text-align: center;
+  cursor: pointer;
+  border-bottom: 1px solid #c6c6c6;
+  border-right: 1px solid #c6c6c6;
 }
 
 #vr-lookup {
   margin: 30px auto 0 auto;
-  width: 800px;
+  width: 900px;
   position: relative;
 }
 
@@ -69,9 +105,7 @@
 }
 
 #vr-advanced-parameters {
-  border-left: 1px solid #c6c6c6;
-  border-bottom: 1px solid #c6c6c6;
-  border-right: 1px solid #c6c6c6;
+  border: 1px solid #c6c6c6;
   height: 200px;
   margin-bottom: 50px;
 }
@@ -118,95 +152,42 @@
 	text-align: center;
 }
 
-.my-diet-title {
-  margin-top: 20px;
-  font-family: Petrona;
-  text-align: center;
-  font-size: 46px;
-  line-height: 46px;
-}
-
-.my-diet {
-  width: 80%;
-  margin-left: 10%;
-  margin-top: 10px;
-  background-color: #ffffff;
-  border: 1px solid #c6c6c6;
-  height: 260px;
-  position: relative;
-}
-
-.diet-save-button {
-	position: absolute;
-	width: 80px;
-	height: 40px;
-	border: 1px solid green;
-	background-color: lightgreen;
-	right: 10px;
-	bottom: 10px;
-	font-size: 23px;
-	line-height: 40px;
-	text-align: center;
-}
-
-.diet-content {
-	margin-left: 20px;
-}
-
-.diet-text {
-	display: inline-block;
-	width: 120px;
-}
-
-.diet-content input {
-  padding: 5px;
-  padding-left: 30px;
-  margin: 2px 10px 2px 10px;
-  border: 1px solid #c6c6c6;
-  -webkit-box-shadow: 0;
-  outline-color: #09E809;
-  bottom: 4px;
-  width: 230px;
-  font-family: Roboto;
-  font-weight: 100;
-}
-
 #vr-table {
-  width: 800px;
+  width: 900px;
   margin: 40px auto 40px auto;
   height: 500px;
-  border: 1px solid #C6C6C6;
+  border: 1px solid #B2C7F0;
   position: relative;
 }
 
 #vr-table-header {
   border-bottom: 1px solid #C6C6C6;
-  height: 60px;
+  height: 34px;
   position: relative;
 }
 
 #vr-table-recipe-label {
-  background-color: #C34C4C;
-  width: 600px;
+  width: 885px;
 }
 
 .vr-table-label {
-  color: #FFFFFF;
-  height: 60px;
+  color: black;
+  height: 34px;
   display: inline-block;
-  line-height: 60px;
-  font-size: 30px;
-  text-align: center;
+  line-height: 34px;
+  font-family: Roboto;
+  font-size: 16px;
+  text-align: left;
+  padding-left: 15px;
   position: relative;
+  background-color: #B2C7F0;
 }
 
 #vr-table-made-label {
-  background-color: #4CC34C;
-  width: 100px;
+  width: 155px;
 }
 
 #vr-table-votes-label {
-  background-color: #4C4CC3;
   width: 100px;
 }
 
@@ -240,22 +221,6 @@
   height: 440px;
 }
 
-#vr-first-border {
-  width: 0px;
-  border-right: 1px solid #C6C6C6;
-  height: 100%;
-  left: 599px;
-  position: absolute;
-}
-
-#vr-second-border {
-  width: 0px;
-  border-right: 1px solid #C6C6C6;
-  height: 100%;
-  left: 699px;
-  position: absolute;
-}
-
 #diet-checkbox {
   position: relative;
   cursor: pointer;
@@ -277,11 +242,11 @@
 }
 
 #vr-adv-param-title-box {
-  height: 60px;
+  height: 40px;
   font-size: 26px;
-  line-height: 60px;
-  border-bottom: 1px solid #C6C6C6;
+  line-height: 40px;
   width: 100%;
+  font-family: Roboto;
 }
 
 #vr-adv-param-title {
@@ -291,4 +256,37 @@
 #vr-adv-param-content {
   padding-left: 10px;
   padding-top: 10px;
+  font-family: Roboto;
+}
+
+#vr-adv-param-content input {
+  font-family: Roboto;
+  border: 1px solid #c6c6c6;
+  text-align: right;
+}
+
+#vr-adv-param-content input[type=number]::-webkit-inner-spin-button,
+#vr-adv-param-contnet input[type=number]::-webkit-outer-spin-button{
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.public-recipe-line {
+  padding: 5px 0 0 10px;
+}
+
+.public-recipe-line.bad {
+  background-color: #FDC9C9;
+}
+
+.public-recipe-line hr {
+  margin-left: -10px;
+}
+
+#vr-view-all {
+  width: 499px;
+}
+
+#vr-view-mine {
+  width: 499px;
 }
