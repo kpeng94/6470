@@ -424,10 +424,15 @@ body {
 #footer-content {
   text-align: center;
   color: #FFFFFF;
-  width: 350px;
+  width: 650px;
   padding-top: 10px;
   margin: auto;
   height: 30px;
+}
+
+#footer a {
+  text-decoration: none;
+  color: #8eb0f9;
 }
 
 #fill {
