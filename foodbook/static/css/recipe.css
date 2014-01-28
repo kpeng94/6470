@@ -193,14 +193,15 @@ RECIPE INFO
 }
 
 #type-tab-text-all {
-  background: yellow;
+  background: #DDDDDD;
 }
 
 #type-tab-text-all:after {
-  border-color: transparent yellow;
+  border-color: transparent #DDDDDD;
 }
 
 #all-img {
+  background-image: url('/static/img/foods/png/32px/191.png');
 }
 
 #type-tab-text-meat {
@@ -244,7 +245,7 @@ RECIPE INFO
 }
 
 #grains-background {
-  background-color: #c4a058;
+  background-color: #b39058;
 }
 
 #grains-img {
@@ -252,15 +253,15 @@ RECIPE INFO
 }
 
 #type-tab-text-seafood {
-  background: yellow;
+  background: #8086f7;
 }
 
 #type-tab-text-seafood:after {
- border-color: transparent yellow;
+ border-color: transparent #8086f7;
 }
 
 #seafood-background {
-  background-color: #7C7B7B;
+  background-color: #0009C1;
 }
 
 #seafood-img {
@@ -300,11 +301,11 @@ RECIPE INFO
 }
 
 #type-tab-text-spices-and-herbs {
-  background: yellow;
+  background: #60e060;
 }
 
 #type-tab-text-spices-and-herbs:after {
-  border-color: transparent yellow;
+  border-color: transparent #60e060;
 }
 
 #spices-and-herbs-background {
