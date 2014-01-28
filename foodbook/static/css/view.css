@@ -275,6 +275,10 @@
   padding: 5px 0 0 10px;
 }
 
+.public-recipe-line.bad {
+  background-color: #FDC9C9;
+}
+
 .public-recipe-line hr {
   margin-left: -10px;
 }
