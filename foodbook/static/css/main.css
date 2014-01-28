@@ -21,17 +21,24 @@ body {
   z-index: 100;
 }
 
+#header-wrapper {
+  width: 1000px;
+  margin: 0 auto 0 auto;
+  height: 100%;
+  position: relative;
+}
+
 #header * {
   text-decoration: none;
 }
 
 #header #header-search {
-  right: 33%;
+  right: 200px;
   position: absolute;
   height: 40px;
   background-color: #F1F1F1;
   margin-top: 10px;
-  width: 700px;
+  width: 550px;
 }
 
 #header #header-search input {
@@ -42,7 +49,7 @@ body {
   padding-left: 40px;
   top: 9px;
   bottom: 9px;
-  width: 690px;
+  width: 540px;
   border: none;
   outline: none;
   font-family: Roboto, 'sans-serif';
@@ -75,10 +82,10 @@ body {
   -webkit-filter: grayscale(1);
   filter: grayscale(1);
   margin: 5px;
-  right: 10%;
+  right: 0;
 }
 
-#header .header-login.user-icon{
+#header .header-login.user-icon {
   -webkit-border-radius: 100px;
   -moz-border-radius: 100px;
   border-radius: 100px;
@@ -89,7 +96,7 @@ body {
   -moz-border-radius: 50px;
 	border-radius: 50px;
   display: inline-block;
-  overflow:hidden;
+  overflow: hidden;
   text-align: center;
   background-size: 50px 50px;
 }
@@ -112,7 +119,7 @@ body {
 
 #header .header-recipe {
   position: absolute;
-  right: 15%;
+  right: 70px;
   width: 50px;
   height: 50px;
   background-color: white;
@@ -131,7 +138,7 @@ body {
 	position: absolute;
   background-color: #EEEEEE;
   height: 160px;
-	right: 10%;
+  right: 0;
   top: 60px;
   width: 250px;
 	bottom: 0;
@@ -144,7 +151,7 @@ body {
   visibility: visible;
 }
 
-#header > .login > form > input {
+#header .login > form > input {
   border: 1px solid transparent;
   background-color: #0AD60A;
   margin-right: 10px;
@@ -162,7 +169,7 @@ body {
   top: 84px;
 }
 
-#header > .login > form > input:hover{
+#header .login > form > input:hover{
   background-color: #07BF07;
 }
 
