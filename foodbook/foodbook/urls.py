@@ -33,6 +33,7 @@ urlpatterns = patterns('',
     url(r'^user/([a-zA-Z0-9]+)$', display_other_profile),
     url(r'^settings/save$', save_settings),
     url(r'^settings[/]?$', display_user_settings),
+    url(r'^$', home),
     url(dajaxice_config.dajaxice_url, include('dajaxice.urls')),
     url(r'', default_page),
 )
