@@ -24,7 +24,7 @@
 
 #vr-all {
   display: none;
-  height: 900px;
+  height: 970px;
 }
 
 #vr-all.selected {
@@ -33,7 +33,7 @@
 
 #vr-mine {
   display: none;
-  height: 900px;
+  height: 700px;
 }
 
 #vr-mine hr {
@@ -41,7 +41,6 @@
   height: 1px;
   border: 0;
   border-top: 1px solid #c6c6c6;
-  width: 90%;
 }
 
 #vr-mine.selected {
@@ -155,9 +154,10 @@
 #vr-table {
   width: 900px;
   margin: 40px auto 40px auto;
-  height: 500px;
+  height: 650px;
   border: 1px solid #B2C7F0;
   position: relative;
+  background-color: white;
 }
 
 #vr-table-header {
@@ -252,6 +252,18 @@
 }
 
 .public-recipe-line hr {
+  margin-left: -10px;
+}
+
+.recipe-line {
+  padding: 5px 0 0 10px;
+}
+
+.recipe-line.bad {
+  background-color: #FDC9C9;
+}
+
+.recipe-line hr {
   margin-left: -10px;
 }
 
