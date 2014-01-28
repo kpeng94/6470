@@ -326,7 +326,7 @@ def list_own_recipes(request, param='name', page=0):
 		out.append('</div>')
 	else:
 		out.append("""<div id='recipe-line'>
-    			You don't have any recipes - go and make some!
+    			You don't have any recipes - go and <a href = '/recipe/add'>make some</a>!
     			</div>""")
 	dajax.assign('#recipe-list-container', 'innerHTML', "".join(out))
 	return dajax.json()
