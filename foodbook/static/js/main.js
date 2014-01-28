@@ -167,6 +167,10 @@ var redirect = function(){
 	window.location.replace('/recipe/add');
 }
 
+var button_redirect = function(){
+	window.location.replace('/recipe')
+}
+
 var removeBox = function(div) {
 	$(div).parent().parent().hide();
 }

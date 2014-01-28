@@ -9,7 +9,7 @@ body {
   width: 100%;
   height: 100%;
   position: absolute;
-  background-color: #DDDDDD;
+  background-color: #dddddd;
 }
 
 /* Header (Navigation bar) code */
@@ -389,7 +389,7 @@ body {
   position: relative;
   width: 100%;
   height: 363px;
-  background-color: #DDDDDD;
+  background-color: #dddddd;
 }
 
 #start-button {
@@ -403,12 +403,13 @@ body {
   margin: auto auto;
   line-height: 50px;
   color: white;
+  cursor: pointer;
 }
 
 .main-content {
   text-align: center;
   margin: 0px auto 0px auto;
-  padding-top: 40px;
+  padding-top: 67px;
   padding-bottom: 40px;
   width: 400px;
 }
