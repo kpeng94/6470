@@ -26,3 +26,25 @@ class UserCreationForm(forms.Form):
 
 class ProfilePictureForm(forms.Form):
 	image = forms.ImageField()
+
+class Settings(forms.Form):
+	old_password = forms.CharField(widget=forms.PasswordInput)
+	new_password = forms.CharField(widget=forms.PasswordInput)
+	new_password_confirm = forms.CharField(widget=forms.PasswordInput)
+	halal = forms.BooleanField(required=False)
+	lacto = forms.BooleanField(required=False)
+	lactoovo = forms.BooleanField(required=False)
+	vegan = forms.BooleanField(required=False)
+	diabetes = forms.BooleanField(required=False)
+	hypertension = forms.BooleanField(required=False)
+	nuts = forms.BooleanField(required=False)
+	eggs = forms.BooleanField(required=False)
+	dairy = forms.BooleanField(required=False)
+	shellfish = forms.BooleanField(required=False)
+	fish = forms.BooleanField(required=False)
+	soy = forms.BooleanField(required=False)
+	lactose = forms.BooleanField(required=False)
+	calories = forms.IntegerField(required=False)
+	fat = forms.IntegerField(required=False)
+	protein = forms.IntegerField(required=False)
+	carbs = forms.IntegerField(required=False)

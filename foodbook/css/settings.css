@@ -5,6 +5,10 @@
 	border: 1px solid #C6C6C6;
 }
 
+input[type='password'] {
+	border: 1px solid #c6c6c6;
+}
+
 #diet-title {
   background-color: #3D8D3D;
 }
@@ -12,4 +16,3 @@
 #settings-title {
   background-color: #3D8D3D;
 }
-

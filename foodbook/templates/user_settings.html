@@ -6,23 +6,41 @@
 
 {% block content %}
 <div id = 'user-settings-wrapper'>
+  <form id='settings-form' name='settings-form' method='post' action='/settings/save'>
+    {% csrf_token %}
 	<div class = 'section-title' id = 'settings-title'>Settings</div>
 	<div id = 'settings-content'>
-    <div class = 'settings-password-wrapper'>
-      <div>Current password: </div>
-      <div>New password: </div>
-      <div>New password (again): </div>
+    <div class='settings-password-wrapper'>
+      <div>Current password: <input type='password' name='old_password'/></div>
+      <div>New password: <input type='password' name='new_password'/></div>
+      <div>New password (again): <input type='password' name='new_password_confirm'/></div>
     </div>
   </div>
   <div class = 'section-title' id = 'diet-title'>Diet</div>
   <div id = 'diet-content'>
-    <div>Dietary restrictions:</div>
-    <div>Calories:</div>
-    <div>Protein:</div>
-    <div>Fat:</div>
-    <div>Carbohydrates:</div>
+    <div>
+      Check any restriction you would like all recipes to be filtered by.
+      <input type='checkbox' {% if diet.halal %}checked{% endif %} name='halal'>Halal</input>
+      <input type='checkbox' {% if diet.lacto %}checked{% endif %} name='lacto'>Vegetarian (w/ dairy)</input>
+      <input type='checkbox' {% if diet.lactoovo %}checked{% endif %} name='lactoovo'>Vegetarian (w/ dairy and eggs)</input>
+      <input type='checkbox' {% if diet.vegan %}checked{% endif %} name='vegan'>Vegan</input>
+      <input type='checkbox' {% if diet.diabetes %}checked{% endif %} name='diabetes'>Diabetic</input>
+      <input type='checkbox' {% if diet.hypertension %}checked{% endif %} name='hypertension'>Hypertension</input>
+      <input type='checkbox' {% if diet.nuts %}checked{% endif %} name='nuts'>Nuts</input>
+      <input type='checkbox' {% if diet.eggs %}checked{% endif %} name='eggs'>Eggs</input>
+      <input type='checkbox' {% if diet.dairy %}checked{% endif %} name='dairy'>Dairy</input>
+      <input type='checkbox' {% if diet.shellfish %}checked{% endif %} name='shellfish'>Shellfish</input>
+      <input type='checkbox' {% if diet.fish %}checked{% endif %} name='fish'>Fish</input>      
+      <input type='checkbox' {% if diet.soy %}checked{% endif %} name='soy'>Soy</input>
+      <input type='checkbox' {% if diet.lactose %}checked{% endif %} name='lactose'>Lactose-intolerant</input>
+    </div>
+    <div>Calories: <input type='number' value='{{ diet.calories }}' name='calories'/></div>
+    <div>Protein: <input type='number' value='{{ diet.protein }}' name='protein'/></div>
+    <div>Fat: <input type='number' value='{{ diet.fat }}' name='fat'/></div>
+    <div>Carbohydrates: <input value='{{ diet.carbs }}'' type='number' name='carbs'/></div>
   </div>
+  <button type='submit' onclick=''>Save</button>
+</form>
   </div>
-</div>
 
 {% endblock %}

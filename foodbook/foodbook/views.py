@@ -2,13 +2,14 @@ from django.shortcuts import render_to_response, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.template import RequestContext
-from forms import UserLoginForm, SearchBar, UserCreationForm, ProfilePictureForm
+from forms import UserLoginForm, SearchBar, UserCreationForm, ProfilePictureForm, Settings
 from django.contrib.auth.decorators import login_required
 from foodbook.models import Ingredient, UserDiet, IngredientType, ServingSize, Recipe, IngredientWrapper, UserPicture
 import json
 from django.http import HttpResponse, HttpResponseRedirect
 from user import upload_picture
 from django.contrib import messages
+from django.contrib.auth.hashers import check_password
 
 def home(request):
 	return render_to_response('index.html', context_instance=RequestContext(request))
@@ -136,15 +137,67 @@ def display_other_profile(request, user):
 			url = pic[0].pic_link
 	return render_to_response('user_page.html', {'username': user.username, 'is_me': False, 'profile_picture': url}, context_instance=RequestContext(request))
 
-
 def display_user_settings(request):
 	if request.user.is_authenticated():
-		return render_to_response('user_settings.html', context_instance = RequestContext(request))
+		try:
+			diet = UserDiet.objects.get(user=request.user)
+		except:
+			diet = None
+		return render_to_response('user_settings.html', {'diet': diet}, context_instance = RequestContext(request))
 	else:
 		return redirect('/home')
 
 def display_normal_recipe(request, rid):
 	return render_to_response('recipe_page.html', context_instance = RequestContext(request))
+
+def save_settings(request):
+	if request.user.is_authenticated() and request.method == 'POST':
+		form = Settings(request.POST)
+		form.is_valid()
+		if 'old_password' in form.cleaned_data:
+			if not check_password(form.cleaned_data['old_password'],request.user.password):
+				messages.error(request, "Incorrect password.")
+				return redirect('/settings')
+			if form.cleaned_data['new_password'] == form.cleaned_data['new_password_confirm']:
+				request.user.set_password(form.cleaned_data['new_password'])
+				request.user.save()
+				messages.success(request, "Save successful.")
+				return redirect('/settings')
+			else:
+				messages.error(request, "Your new passwords did not match.")
+				return redirect('/settings')
+		if form['fat'].errors or form['calories'].errors or form['protein'].errors or form['carbs'].errors:
+			messages.error(request, "Diet parameters must be integers.")
+			return redirect('/settings')
+		try:
+			diet = UserDiet.objects.get(user=request.user)
+			diet.halal = form.cleaned_data['halal']
+			diet.lacto = form.cleaned_data['lacto']
+			diet.lactoovo = form.cleaned_data['lactoovo']
+			diet.vegan = form.cleaned_data['vegan']
+			diet.diabetes = form.cleaned_data['diabetes']
+			diet.hypertension = form.cleaned_data['hypertension']
+			diet.nuts = form.cleaned_data['nuts']
+			diet.lactose = form.cleaned_data['lactose']
+			diet.eggs = form.cleaned_data['eggs']
+			diet.soy = form.cleaned_data['soy']
+			diet.shellfish = form.cleaned_data['shellfish']
+			diet.fish = form.cleaned_data['fish']
+		except:
+			diet = UserDiet(user=request.user, halal=form.cleaned_data['halal'], lacto=form.cleaned_data['lacto'],
+				lactoovo=form.cleaned_data['lactoovo'], vegan=form.cleaned_data['vegan'], diabetes=form.cleaned_data['diabetes'],
+				hypertension=form.cleaned_data['hypertension'], nuts=form.cleaned_data['nuts'], lactose=form.cleaned_data['lactose'],
+				eggs=form.cleaned_data['eggs'], soy=form.cleaned_data['soy'], shellfish=form.cleaned_data['shellfish'], fish=form.cleaned_data['fish'])
+		diet.calories = form.cleaned_data['calories']
+		diet.fat = form.cleaned_data['fat']
+		diet.sugar = form.cleaned_data['carbs']
+		diet.protein = form.cleaned_data['protein']
+		diet.save()
+		messages.success(request, "Save successful.")
+		return redirect('/settings')
+	else:
+		return redirect('/home')
+
 
 ############################## CONTEXT PROCESSORS
 def login_processor(request):
