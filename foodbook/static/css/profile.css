@@ -206,14 +206,39 @@
   height: 100px;
 }
 
+#comment-tab:hover #comments-icon {
+  color: #555555;
+}
+
+#comment-tab:hover {
+  cursor: pointer;
+  border: 1px solid #777777;
+}
+
+#recipes-tab {
+  position: relative;
+  cursor: pointer;
+}
+
+#recipes-tab:hover {
+  border: 1px solid #777777;
+}
+
 #recipes-icon {
+  width: 100px;
+  height: 100px;
   background-size: 80px 80px;
   background-position: center;
   background-image: url('/static/img/foods/png/128px/191.png');
   background-repeat: no-repeat;
   margin: 0px auto 0px auto;
+  z-index: 1;
+  position: absolute;
 }
 
+#recipes-tab:hover #recipes-icon{
+  -webkit-filter: brightness(50%);
+}
 
 #profile-content-container {
   width: 100%;
@@ -229,6 +254,10 @@
   line-height: 100px;
   color: gray;
   position: absolute;
+}
+
+#comments-icon {
+
 }
 
 #recent-activity-icon {
