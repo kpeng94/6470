@@ -244,6 +244,7 @@
   width: 100%;
   position: relative;
   margin-bottom: 30px;
+  display: none;
 }
 
 #comments-icon {
@@ -254,10 +255,6 @@
   line-height: 100px;
   color: gray;
   position: absolute;
-}
-
-#comments-icon {
-
 }
 
 #recent-activity-icon {
@@ -370,4 +367,20 @@
 
 .poster-img {
   position: absolute;
+}
+
+#profile-content-container.selected {
+  display: block;
+}
+
+#profile-recipe-container.selected {
+  display: block;
+}
+
+#profile-recipe-container {
+  display: none;
+  height: 500px;
+  width: 100%;
+  margin-bottom: 30px;
+  position: relative;
 }
