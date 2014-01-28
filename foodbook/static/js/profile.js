@@ -27,3 +27,13 @@ window.onload = function(event) {
 	retrieve_posts();
 	resizeImage(150, document.getElementById('profile-image-img'));
 }
+
+var comments = function() {
+	addClass(document.getElementById('profile-content-container'), 'selected');
+	removeClass(document.getElementById('profile-recipe-container'), 'selected');
+}
+
+var recipes = function() {
+	removeClass(document.getElementById('profile-content-container'), 'selected');
+	addClass(document.getElementById('profile-recipe-container'), 'selected');
+}
