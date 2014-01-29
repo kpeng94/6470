@@ -217,6 +217,8 @@ def check_nutrients(request, ingredients, ss):
 		ss = decimal.Decimal(1)
 	if request.user.is_authenticated():
 		return json.dumps(calculate_nutritional_value(ingredients, request.user, ss), default=decimal_json)
+	else:
+		return json.dumps(calculate_nutritional_value(ingredients, None, ss), default=decimal_json)
 
 @dajaxice_register(method='POST', name='diet.update')
 def update_diet(request, restrictions, calories, fat, sugar, protein):

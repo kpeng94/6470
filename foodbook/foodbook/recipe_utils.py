@@ -53,7 +53,10 @@ def calculate_nutritional_value(ingredients, user, ss):
 		nutrients['vitb12'][0] += decimal.Decimal(ingredient_info.vitamin_b_12) * conversion * qty
 		nutrients['magnesium'][0] += decimal.Decimal(ingredient_info.magnesium) * conversion * qty
 		nutrients['protein'][0] += decimal.Decimal(ingredient_info.protein) * conversion * qty
-	user = UserDiet.objects.filter(user=user)
+	if user:
+		user = UserDiet.objects.filter(user=user)
+	else:
+		user = []
 	calories = decimal.Decimal(2000)
 	fat = decimal.Decimal(65)
 	sugar = decimal.Decimal(300)

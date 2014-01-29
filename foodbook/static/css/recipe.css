@@ -693,7 +693,7 @@ select {
   line-height: 60px;
   height: 110px;
   font-family: Petrona;
-  width: 500px;
+  width: 900px;
   margin: 0 auto 30px auto;
   position: relative;
   top: 30px;
@@ -786,6 +786,7 @@ select {
   border: 1px solid #C6C6C6;
   border-radius: 4px;
   background-color: white;
+  overflow: auto;
 }
 
 #nr-ingredients-title {

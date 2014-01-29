@@ -17,15 +17,15 @@
         <div id = 'nr-top-half-left'>
           <div id = 'nr-description'>
             <div class = 'section-title' id = 'nr-description-title'>Description</div>
-            <div id = 'nr-description-content'> {{ recipe.description|default:"No description given." }}</div>
+            <div id = 'nr-description-content'> {{ recipe.description|default:"No description given."|linebreaksbr }}</div>
           </div>
           <div id = 'nr-instructions'>
             <div class = 'section-title' id = 'nr-instructions-title'>Instructions</div>
-            <div id = 'nr-instructions-content'>{{ recipe.instructions|default:"No instructions given." }}</div>
+            <div id = 'nr-instructions-content'>{{ recipe.instructions|default:"No instructions given."|linebreaksbr }}</div>
           </div>
           <div id = 'nr-suggestions'>
             <div class = 'section-title' id = 'nr-suggestions-title'>Suggestions</div>
-            <div id = 'nr-suggestions-content'>{{ recipe.suggested|default:"No suggestions given." }}</div>
+            <div id = 'nr-suggestions-content'>{{ recipe.suggested|default:"No suggestions given."|linebreaksbr }}</div>
           </div>
         </div>
       <div id = 'nr-top-half-right'>

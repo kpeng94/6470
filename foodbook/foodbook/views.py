@@ -10,6 +10,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from user import upload_picture
 from django.contrib import messages
 from django.contrib.auth.hashers import check_password
+from django.template.defaultfilters import striptags
 
 def home(request):
 	return render_to_response('index.html', context_instance=RequestContext(request))
@@ -57,8 +58,8 @@ def register(request):
 		else:
 			if form['username'].errors or form['password'].errors or form['email'].errors:
 				messages.error(request, "All fields are required.")
-			else:
-				messages.error(request, "Your passwords must match.")
+			elif form.non_field_errors():
+				messages.error(request, striptags(form.non_field_errors()))
 	return redirect('/register')
 
 def logout_user(request):

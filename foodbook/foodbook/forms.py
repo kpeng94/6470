@@ -1,4 +1,5 @@
 from django import forms
+import re
 
 class UserLoginForm(forms.Form):
 	username = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Username'}))
@@ -18,6 +19,9 @@ class UserCreationForm(forms.Form):
 		pw_confirm = cleaned_data.get("pw_confirm")
 		password = cleaned_data.get("password")
 
+		valid = re.match('^[\w]+$', cleaned_data.get("username"))
+		if not valid:
+			raise forms.ValidationError(u'Your username must only consist of alphanumericals.')
 		if password and pw_confirm:
 			if password != pw_confirm:
 				raise forms.ValidationError(u'Your passwords must be the same.')

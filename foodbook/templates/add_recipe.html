@@ -117,11 +117,11 @@
     </div>
     <div id = 'recipe-instructions-and-descriptions'>
       <div id = 'recipe-descriptions-title' class = 'section-title'>Description</div>
-      <textarea id='recipe-description' rows='10' cols='50' value='{{ recipe.description }}' placeholder='Description'>{{ recipe.description }}</textarea>
+      <textarea id='recipe-description' rows='10' cols='50' value='{{ recipe.description }}' placeholder='Description'>{{ recipe.description|linebreaksbr }}</textarea>
       <div id = 'recipe-instructions-title' class = 'section-title'>Instructions</div>
-      <textarea id='recipe-instructions' rows='10' cols='50' value='{{ recipe.instructions }}' placeholder='Instructions'>{{ recipe.instructions }}</textarea>
+      <textarea id='recipe-instructions' rows='10' cols='50' value='{{ recipe.instructions }}' placeholder='Instructions'>{{ recipe.instructions|linebreaksbr }}</textarea>
       <div id = 'recipe-suggestions-title' class = 'section-title'>Suggestions</div>
-      <textarea id='recipe-suggestions' rows='10' cols='50' placeholder='Dietary suggestions'>{{ recipe.suggestions }}</textarea>
+      <textarea id='recipe-suggestions' rows='10' cols='50' placeholder='Dietary suggestions'>{{ recipe.suggestions|linebreaksbr }}</textarea>
       <input type='checkbox' {% if recipe.public %}checked{% endif %} id='recipe-public' value='{{ recipe.public }}'>Make public?</input>
     </div>
   </div>
