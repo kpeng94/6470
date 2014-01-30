@@ -9,10 +9,10 @@ class SearchBar(forms.Form):
 	searchbar = forms.CharField(max_length=100)
 
 class UserCreationForm(forms.Form):
-	username = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder':'Username'}))
-	password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Password'}))
-	pw_confirm = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Confirm Password'}))
-	email = forms.CharField(widget=forms.EmailInput(attrs={'placeholder': 'E-Mail'}))
+	username = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder':'Username'}), required=True)
+	password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Password'}), required=True)
+	pw_confirm = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Confirm Password'}), required=True)
+	email = forms.CharField(widget=forms.EmailInput(attrs={'placeholder': 'E-Mail'}), required=True)
 
 	def clean(self):
 		cleaned_data = super(UserCreationForm, self).clean()

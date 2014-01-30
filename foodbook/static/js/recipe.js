@@ -98,8 +98,11 @@ var check_input = function(){
 }
 
 var update_nutrients = function(){
-	if($(this).val() == "" || isNaN($(this).val())){
+	if($(this).val() == "" || isNaN($(this).val()) || Number($(this).val()) < 0){
 		$(this).val('1');
+	}
+	else if(!isNaN($(this).val()) && Number($(this).val()) >= 1000000){
+		$(this).val('999999');
 	}
 	check_nutrients();
 }
